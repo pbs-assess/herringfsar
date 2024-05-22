@@ -1,0 +1,46 @@
+---
+report_title: "Stock status update with application of management procedures for Pacific Herring (_Clupea pallasii_) in British Columbia: Status in 2024 and forecast for 2025"
+report_year: "2025"
+release_month: "January"
+report_number: "XXX"
+meeting_date: "September XX, 2024"
+region: "Pacific Region"
+phone: "(250) 555-5555"
+email: "DFO.PacificCSA-CASPacifique.MPO@dfo-mpo.gc.ca"
+csa_address: "3190 Hammond Bay Rd., Nanaimo, BC, V9T 6N7"
+report_title_french: "Mise à jour de l'état des stocks avec application des procédures de gestion pour le hareng du Pacifique (*Clupea pallasii*) en Colombie-Britannique : État en 2023 et prévisions pour 2024"
+inuktitut_citation: "Inuktitut citation here"
+context: |
+  [Mandatory section; less than 150 words.]
+output:
+ csasdown::fsar_word
+link-citations: false
+bibliography: bib/refs.bib
+# End of options to set
+title: ""
+knit: (function(input, ...) {
+       csasdown::render_sar()
+      })
+---
+
+```{r setup, echo=FALSE, cache=FALSE, message=FALSE, results='hide', warning=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.path = "knitr-figs-docx/",
+  fig.asp = 0.618,
+  fig.width = 7,
+  echo = FALSE,
+  dev = "png",
+  dpi = 180
+)
+```
+
+```{r load-libraries, cache=FALSE}
+# add other packages here:
+library(dplyr)
+library(ggplot2)
+library(rosettafish)
+library(csasdown)
+```

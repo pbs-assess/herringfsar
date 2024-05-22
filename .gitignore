@@ -1,0 +1,40 @@
+# R files
+.Rproj.user
+.Rhistory
+.RData
+.DS_Store
+
+# Folders
+csas-style
+knitr-cache-docx
+knitr-cache-tex
+knitr-figs-docx
+knitr-figs-pdf
+models*
+translation
+_book
+
+# Temporary knitr files
+HerringFSAR.aux
+HerringFSAR.log
+HerringFSAR.Rmd
+HerringFSAR.tex
+HerringFSAR.upa
+HerringFSAR.upb
+HerringFSAR.pdf
+HerringFSAR.knit.md
+HerringFSAR.utf8.md
+
+# General file types
+*.zip
+*.docx
+*.pdf
+*.log
+*.png
+*.jpg
+*.jpeg
+
+# Data files
+data/incidental-*.csv
+
+# Figures and tables

@@ -1,0 +1,21 @@
+## SOURCES OF INFORMATION {-}
+
+[Mandatory.]
+
+[References should only be included to understand the advice, and
+should not be included to give credit to the work
+as they are done in the Research Document.
+References to the unpublished working paper should be
+integrated as footnotes through this document.]
+
+[References must be formatted according to
+the Guide for the Production of Fisheries and Oceans Canada Reports.]
+
+[References listed in the References Cited section should be
+publicly available when the report is posted on the website.
+The only exception is for books or articles that
+have been accepted for publication
+(page proof stage or where there is an acceptance letter).
+These can be listed followed by the notation “in press”.
+All others should be included in the text
+as unpublished data or working papers.]

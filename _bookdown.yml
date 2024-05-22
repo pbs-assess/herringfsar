@@ -1,0 +1,13 @@
+book_filename: "fsar"
+rmd_files: ["index.Rmd",
+            "english/01_advice.Rmd",
+            "english/02_basis.Rmd",
+            "english/03_assessment.Rmd",
+            "english/04_bycatch.Rmd",
+            "english/05_interim.Rmd",
+            "english/06_other.Rmd",
+            "english/07_uncertainty.Rmd",
+            "english/08_participants.Rmd",
+            "english/09_sources.Rmd"
+            ]
+delete_merged_file: true
