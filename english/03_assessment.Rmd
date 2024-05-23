@@ -3,14 +3,9 @@
 [Mandatory panel of images comes first – example shown.
 Refer to the Guidance Document for options and further instructions.]
 
-(ref:caption) (A) Catch and Total Allowable Catch,
-(B) Spawning Stock Biomass (SSB) in relation to
-the Limit Reference Point (LRP; X) and
-(proposed) Upper Stock Reference (USR; X),
-(C) Fishing Mortality (F; X), Removal Reference (RR) and Natural Mortality (M),
-(D) Recruitment (numbers).
+(ref:base-fig-cap) (A) Catch and total allowable catch (TAC), (B) Spawning stock biomass (SSB) in relation to the limit reference point (LRP; X) and (proposed) upper stock reference (USR; X), (C) Fishing mortality (F; X), removal reference (RR), and natural mortality (M), (D) Recruitment (numbers).
 
-```{r base1, fig.cap="(ref:caption)"}
+```{r base-fig, fig.cap = "(ref:base-fig-cap)"}
 in.df <- sim_fsar_data("long")
 
 ## English template
