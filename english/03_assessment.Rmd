@@ -3,14 +3,20 @@
 [Mandatory panel of images comes first – example shown.
 Refer to the Guidance Document for options and further instructions.]
 
-(ref:base-fig-cap) (A) Catch and total allowable catch (TAC), (B) Spawning stock biomass (SSB) in relation to the limit reference point (LRP; X) and (proposed) upper stock reference (USR; X), (C) Fishing mortality (F; X), removal reference (RR), and natural mortality (M), (D) Recruitment (numbers).
+(ref:indicators-cap) (A) Catch and total allowable catch (TAC), (B) Spawning stock biomass (SSB) in relation to the limit reference point (LRP; X) and (proposed) upper stock reference (USR; X), (C) Fishing mortality (F; X), removal reference (RR), and natural mortality (M), (D) Recruitment (numbers).
 
-```{r base-fig, fig.cap = "(ref:base-fig-cap)"}
+```{r indicators, fig.cap = "(ref:indicators-cap)"}
+# Load data
 in.df <- sim_fsar_data("long")
-
-## English template
+# English template with base graphics
 fsar_plot_base(in.df, "English")
 ```
+
+Example cross-reference:
+Stock status in relation to four indicators (see Figure \@ref(fig:indicators)).
+
+Example citation:
+The first MSE cycle for the SoG SAR was completed in 2018 [@dfo2019a].
 
 [Optional. Add an additional optional panel of 4 indicators
 if relevant to developing advice.] 
