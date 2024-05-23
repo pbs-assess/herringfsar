@@ -1,22 +1,20 @@
 ## ASSESSMENT {-}
 
+- Example cross-reference:
+Stock status in relation to four indicators (see Figure \@ref(fig:indicators)).
+
+- Example citation:
+The first MSE cycle for the SoG SAR was completed in 2018 [@dfo2019a].
+
 [Mandatory panel of images comes first – example shown.
 Refer to the Guidance Document for options and further instructions.]
 
 (ref:indicators-cap) Stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`. (A) Catch (line) and total allowable catch (TAC; dashed line). (B) Spawning stock biomass (SSB) in relation to the limit reference point (LRP; dashed red line) and upper stock reference (USR; dotted green line). (C) Fishing mortality (F; black line), removal reference (RR; dashed red line), and natural mortality (M; dotted line). (D) Recruitment of age-`r age_recruit` fish. Legend: lines indicate median values, grey shading indicates `r ci_pct`% confidence intervals, mortality is per year (yr), biomass is in tonnes (t), and recruitment is number of fish.
 
 ```{r indicators, fig.cap = "(ref:indicators-cap)"}
-# Load data
-in.df <- sim_fsar_data("long")
-# English template with base graphics
-fsar_plot_base(in.df, "English")
+# Four-panel indicator plot
+plot_indicators(dat = sim_dat)
 ```
-
-Example cross-reference:
-Stock status in relation to four indicators (see Figure \@ref(fig:indicators)).
-
-Example citation:
-The first MSE cycle for the SoG SAR was completed in 2018 [@dfo2019a].
 
 [Optional. Add an additional optional panel of 4 indicators
 if relevant to developing advice.] 
