@@ -29,7 +29,7 @@ knit: (function(input, ...) {
       })
 ---
 
-```{r setup, echo=FALSE, cache=FALSE, message=FALSE, results='hide', warning=FALSE}
+```{r setup, echo = FALSE, cache = FALSE, message = FALSE, results = 'hide', warning = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
@@ -43,10 +43,24 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r load-libraries, cache=FALSE}
-# add other packages here:
-library(dplyr)
-library(ggplot2)
+```{r load-libraries, cache = FALSE}
+# Add packages here
+library(tidyverse)
 library(rosettafish)
 library(csasdown)
+library(here)
+library(patchwork)
+library(scales)
 ```
+
+```{r code}
+# Scripts
+source(here("R", "variables.R"))
+source(here("R", "figures.R"))
+source(here("R", "themes.R"))
+# Theme for figures
+theme_set(theme_herring())
+```
+
+<!-- Compile the document on the command line: -->
+<!-- bookdown::render_book("index.Rmd") -->
