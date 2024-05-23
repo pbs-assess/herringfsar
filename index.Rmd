@@ -1,5 +1,8 @@
 ---
-report_title: "Stock status update with application of management procedures for Pacific Herring (_Clupea pallasii_) in British Columbia: Status in 2024 and forecast for 2025"
+# Start of options to set
+report_title: |
+  Strait of Georgia Pacific Herring (*Clupea pallasii*)
+  stock update in 2024
 report_year: "2025"
 release_month: "January"
 report_number: "XXX"
@@ -8,8 +11,11 @@ region: "Pacific Region"
 phone: "(250) 555-5555"
 email: "DFO.PacificCSA-CASPacifique.MPO@dfo-mpo.gc.ca"
 csa_address: "3190 Hammond Bay Rd., Nanaimo, BC, V9T 6N7"
-report_title_french: "Mise à jour de l'état des stocks avec application des procédures de gestion pour le hareng du Pacifique (*Clupea pallasii*) en Colombie-Britannique : État en 2023 et prévisions pour 2024"
-inuktitut_citation: "Inuktitut citation here"
+report_title_french: |
+  Mise à jour du stock de hareng du Pacifique (*Clupea pallasii*)
+  du détroit de Géorgie en 2024
+inuktitut_citation: |
+  Inuktitut citation here
 context: |
   [Mandatory section; less than 150 words.]
 output:
