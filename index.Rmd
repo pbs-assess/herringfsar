@@ -29,7 +29,8 @@ knit: (function(input, ...) {
       })
 ---
 
-```{r setup, echo = FALSE, cache = FALSE, message = FALSE, results = 'hide', warning = FALSE}
+```{r setup, echo = FALSE}
+# Set knitr options
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
@@ -43,8 +44,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r load-libraries, cache = FALSE}
+```{r libraries}
 # Add packages here
+library(knitr)
 library(tidyverse)
 library(rosettafish)
 library(csasdown)
@@ -53,7 +55,7 @@ library(patchwork)
 library(scales)
 ```
 
-```{r code}
+```{r scripts}
 # Scripts
 source(here("R", "variables.R"))
 source(here("R", "figures.R"))
