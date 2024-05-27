@@ -3,9 +3,6 @@
 - Example cross-reference:
 Stock status in relation to four indicators (see Figure \@ref(fig:indicators)).
 
-- Example citation:
-The first MSE cycle for the SoG SAR was completed in 2018 [@dfo2019a].
-
 [Mandatory panel of images comes first – example shown.
 Refer to the Guidance Document for options and further instructions.]
 
@@ -47,13 +44,13 @@ otherwise, do not include.]
 Title can vary.
 Maximum text length one page.] 
 
-#### History of Hatchery and Supplementation {-}
+<!-- #### History of Hatchery and Supplementation {-} -->
 
-[If applicable (otherwise, do not include).]
+<!-- [If applicable (otherwise, do not include).] -->
 
-#### History of Freshwater Habitat Impacts {-}
+<!-- #### History of Freshwater Habitat Impacts {-} -->
 
-[If applicable (otherwise, do not include).]
+<!-- [If applicable (otherwise, do not include).] -->
 
 ### Projections [optional titles: Simulations, Future Scenarios] {-}
 
