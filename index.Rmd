@@ -1,8 +1,8 @@
 ---
 # Start of options to set
 report_title: |
-  Strait of Georgia Pacific Herring (*Clupea pallasii*)
-  stock update in 2024
+  Strait of Georgia Pacific Herring (*Clupea pallasii*) stock update in 2024
+assess_yr: "2024"
 report_year: "2025"
 release_month: "January"
 report_number: "XXX"
@@ -29,6 +29,18 @@ knit: (function(input, ...) {
       })
 ---
 
+```{r libraries, echo = FALSE, message = FALSE}
+# Add packages here
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(rosettafish)
+library(csasdown)
+library(here)
+library(patchwork)
+library(scales)
+```
+
 ```{r setup, echo = FALSE}
 # Set knitr options
 knitr::opts_chunk$set(
@@ -44,15 +56,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r libraries}
-# Add packages here
-library(knitr)
-library(tidyverse)
-library(rosettafish)
-library(csasdown)
-library(here)
-library(patchwork)
-library(scales)
+```{r metadata}
+assess_yr <- metadata$assess_yr
+meta_out <- metadata$output
 ```
 
 ```{r scripts}
