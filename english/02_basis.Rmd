@@ -6,50 +6,55 @@
 
 #### Year Assessment Approach was Approved {-}
 
-[Mandatory; year and reference]
+<!-- [Mandatory; year and reference] -->
+2017 [@cleary2018].
 
 #### Assessment Type {-}
 
-[Mandatory.
-Select one of the following:
-Full Assessment, Interim Year Update, or Harvest Decision Rule (HDR) Update.
-See the Guidance Document for definitions.] 
+<!-- [Mandatory. -->
+<!-- Select one of the following: -->
+Full Assessment.
+<!-- Interim Year Update, or -->
+<!-- Harvest Decision Rule (HDR) Update. -->
+<!-- See the Guidance Document for definitions.]  -->
 
 #### Most Recent Assessment Date {-}
 
-1.	Last Full Assessment: [date and reference]
+1.	Last Full Assessment: 2023 [@dfo2024].
 
-1.	Last Interim Year Update: [date and reference]
+<!-- 1.	Last Interim Year Update: [date and reference] -->
 
 #### Assessment Approach {-}
 
 1. Broad category:
-[Select one of the following:
-Data-poor (e.g., catch-MSY, very limited data, etc.),
-index-based (trends in empirical indices only),
-single stock assessment model,
-model ensemble,
-MSE (full or MSE-lite),
-Wild Salmon Policy Integrated Assessment,
-multiple approaches,
-other (specify)]
+<!-- [Select one of the following: -->
+<!-- Data-poor (e.g., catch-MSY, very limited data, etc.), -->
+<!-- index-based (trends in empirical indices only), -->
+<!-- single stock assessment model, -->
+<!-- model ensemble, -->
+MSE (full).
+<!-- or MSE-lite), -->
+<!-- Wild Salmon Policy Integrated Assessment, -->
+<!-- multiple approaches, -->
+<!-- other (specify)] -->
 
 1.	Specific category:
-[Select one or as many as apply:
-No data,
-Index-based (fishery-dependent indices only),
-Index-based (including fishery-dependent and fishery-independent indices),
-Delay difference,
-Biomass dynamics,
-Virtual population analysis,
-Statistical catch-at-length,
-Statistical catch-at-age,
-State-Space,
-Sequential Population Analysis,
-Surplus Production,
-Stock-Recruitment Relationship,
-Potential Biological Removal,
-Other (please explain)]
+<!-- [Select one or as many as apply: -->
+<!-- No data, -->
+<!-- Index-based (fishery-dependent indices only), -->
+index-based,
+<!-- (including fishery-dependent and fishery-independent indices), -->
+<!-- Delay difference, -->
+<!-- Biomass dynamics, -->
+<!-- Virtual population analysis, -->
+<!-- Statistical catch-at-length, -->
+statistical catch-at-age, and
+<!-- State-Space, -->
+<!-- Sequential Population Analysis, -->
+<!-- Surplus Production, -->
+stock-recruitment relationship.
+<!-- Potential Biological Removal, -->
+<!-- Other (please explain)] -->
 
 [Optional short summary of stock assessment methodology.
 Include the method of considering ecosystem variables.
