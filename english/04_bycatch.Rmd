@@ -1,3 +1,36 @@
 ## BYCATCH {-}
 
-[Optional (otherwise, do not include).] 
+<!-- In order to advance progress towards -->
+<!-- a holistic ecosystem-based management (EBM) approach for Pacific Herring, -->
+<!-- we present information to describe indirect effects -->
+<!-- on herring populations such as incidental mortality.  -->
+Some fisheries and aquaculture activities in BC cause
+incidental mortality to Pacific Herring.
+Similar to SOK harvest as well as FSC and recreational catch,
+incidental mortality is currently only indirectly accounted for 
+in Pacific Herring stock assessment by
+estimating annual rates of natural mortality, 
+and is considered minor relative to commercial harvest.
+<!-- Impacts of additional mortality sources will be explored with the new  -->
+<!-- modelling framework. -->
+
+<!-- Again this year, we include data for -->
+<!-- incidental mortality in finfish aquaculture activities -->
+
+<!-- (Figure XX). -->
+<!-- Note that incidental mortality data are reported by -->
+<!-- Pacific Fishery Management Area (PFMA) -->
+<!-- which are analogous to Statistical Areas, but -->
+<!-- PFMAs are larger and can extend beyond SAR boundaries. -->
+<!-- Data indicate the number of Pacific Herring dead and released, -->
+<!-- with the following caveats: -->
+
+<!-- 1. Unknown mortality rate for "released" fish, -->
+
+<!-- 1. Unknown length, weight, age, and sex of fish, and -->
+
+<!-- 1. "Herring-like" fish are assumed to be herring -->
+<!-- when decomposition hinders identification. -->
+
+<!-- Note that data from previous years are updated  -->
+<!-- as DFO receives additional reports. -->

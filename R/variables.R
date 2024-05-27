@@ -12,6 +12,9 @@ sim_dat <- sim_fsar_data("wide") %>%
 # Years for the time series
 yr_range <- range(sim_dat$Year)
 
+# Years for incidental catch
+# ic_yrs <- 2014:(assess_yr - 1)
+
 # Recruitment age
 age_recruit <- 2
 
