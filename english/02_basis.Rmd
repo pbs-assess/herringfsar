@@ -5,17 +5,18 @@
 <!-- [Mandatory] -->
 
 Pacific Herring in BC are managed as
-five major and two minor
+`r number_to_word(length(major_regions_short))` major and
+`r number_to_word(length(minor_regions_short))` minor
 SARs (Figure XX).
-The major SARs are ...
-The minor SARs are ...
+The major SARs are `r commify(major_regions_full_parens)`.
+The minor SARs are `r commify(minor_regions_full_parens)`.
 We conduct formal analyses of stock trend information for the major SARs.
 For the minor SARs, we present available
 catch data, biological data, and spawn survey data
 (Section XX).
 Beginning in 2021 we include similar data for the special area, Area 10
 (Section XX).
-Note that Area 10 is a subset of the Central Coast
+Note that Area 10 is a subset of the CC SAR
 and is outside the SAR boundary.
 Formal analyses of stock trends are not included for
 minor SARs or special areas.

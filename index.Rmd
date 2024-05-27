@@ -17,7 +17,8 @@ report_title_french: |
 inuktitut_citation: |
   Inuktitut citation here
 context: |
-  [Mandatory section; less than 150 words.]
+  [Mandatory section;
+  less than 150 words.]
 output:
  csasdown::fsar_word
 link-citations: false
@@ -39,6 +40,7 @@ library(csasdown)
 library(here)
 library(patchwork)
 library(scales)
+library(gfutilities)
 ```
 
 ```{r setup, echo = FALSE}
