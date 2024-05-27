@@ -57,8 +57,11 @@ knitr::opts_chunk$set(
 ```
 
 ```{r metadata}
-assess_yr <- metadata$assess_yr
-meta_out <- metadata$output
+# assess_yr <- metadata$assess_yr
+assess_yr <- 2024
+# meta_out <- metadata$output
+# french <- meta_out$`csasdown::fsar_word`$french
+french <- FALSE
 ```
 
 ```{r scripts}
@@ -69,6 +72,12 @@ source(here("R", "themes.R"))
 # Theme for figures
 theme_set(theme_herring())
 ```
+
+<!-- Math expressions -->
+\newcommand{\mli}[1]{\mathit{#1}}
+\newcommand{\SB}{\mli{`r en2fr("SB", translate = french)`}}
+\newcommand{\BR}{\mli{BR}}
+\newcommand{\AVE}{\text{`r en2fr("AVE", translate = french)`}}
 
 <!-- Compile the document on the command line: -->
 <!-- bookdown::render_book("index.Rmd") -->
