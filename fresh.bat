@@ -11,6 +11,8 @@ del HerringSR.upb
 del HerringSR.utf8.md
 del texput.log
 
+del fsar.Rmd
+
 rmdir /S /Q csas-style
 rmdir /S /Q knitr-figs-pdf
 rmdir /S /Q knitr-figs-docx
