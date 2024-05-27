@@ -9,11 +9,20 @@ sim_dat <- sim_fsar_data("wide") %>%
     R_med = `R-E06`, R_min = `Rlow-E06`, R_max = `Rhigh-E06`
   )
 
+# Years and seasons
+assess_yr <- 2024  # TODO: This should come from the metadata
+last_assess_yr <- assess_yr - 1
+this_season <- paste(last_assess_yr, assess_yr, sep = "/")
+
 # Years for the time series
 yr_range <- range(sim_dat$Year)
 
 # Years for incidental catch
 # ic_yrs <- 2014:(assess_yr - 1)
+
+# Start of time series for major SARs
+major_start_yr <- yr_range[1]
+minor_start_yr <- yr_range[1]
 
 # Recruitment age
 age_recruit <- 2

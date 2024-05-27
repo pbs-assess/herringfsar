@@ -2,12 +2,36 @@
 
 ### Assessment Details {-}
 
-[Mandatory]
+<!-- [Mandatory] -->
+
+Pacific Herring in BC are managed as
+five major and two minor
+SARs (Figure XX).
+The major SARs are ...
+The minor SARs are ...
+We conduct formal analyses of stock trend information for the major SARs.
+For the minor SARs, we present available
+catch data, biological data, and spawn survey data
+(Section XX).
+Beginning in 2021 we include similar data for the special area, Area 10
+(Section XX).
+Note that Area 10 is a subset of the Central Coast
+and is outside the SAR boundary.
+Formal analyses of stock trends are not included for
+minor SARs or special areas.
+
+Pacific Herring in the major SARs are assessed using a
+spatially integrated statistical catch at age herring (SISCAH)
+stock assessment model [@dfo2023a].
+SISCAH is fit to
+spawn survey indices,
+fishery age composition data, and
+commercial catches.
 
 #### Year Assessment Approach was Approved {-}
 
 <!-- [Mandatory; year and reference] -->
-2017 [@cleary2018].
+2023 [@dfo2023a].
 
 #### Assessment Type {-}
 
@@ -19,6 +43,10 @@ Full Assessment.
 <!-- See the Guidance Document for definitions.]  -->
 
 #### Most Recent Assessment Date {-}
+
+MP evaluations were updated for
+SoG and WCVI SARs in 2020 [@dfo2021b], and then
+PRD, CC, SoG, and WCVI in 2023 [@dfo2022a; @dfo2022b].
 
 1.	Last Full Assessment: 2023 [@dfo2024].
 
@@ -56,11 +84,45 @@ stock-recruitment relationship.
 <!-- Potential Biological Removal, -->
 <!-- Other (please explain)] -->
 
-[Optional short summary of stock assessment methodology.
-Include the method of considering ecosystem variables.
-Include a reference to a Research Document or other publication,
-and/or footnote to the working paper.
-Maximum length 100 words.]
+<!-- [Optional short summary of stock assessment methodology. -->
+<!-- Include the method of considering ecosystem variables. -->
+<!-- Include a reference to a Research Document or other publication, -->
+<!-- and/or footnote to the working paper. -->
+<!-- Maximum length 100 words.] -->
+
+Since initiating the Pacific Herring MSE process,
+we have included MP evaluations in annual stock assessments:
+
+1. The 2018 stock assessment includes
+MP recommendations for the SoG and WCVI SARs [@dfo2019a].
+
+1. The 2019 stock assessment includes
+MP recommendations for the HG, PRD, and CC SARs [@dfo2020a], and
+implements the previous years' MP recommendations for the SoG and WCVI SARs. 
+
+1. The 2020 stock assessment includes
+an update to MP recommendations for the SoG and WCVI SARs [@dfo2021b], and
+implements the previous years' MP recommendations for the HG, PRD, and CC SARs.
+
+1. The 2021 stock assessment includes
+an update to MP recommendations for the PRD and CC SARs [@dfo2021c], and
+implements the previous years MP recommendations for the SoG and WCVI SARs.
+
+1. The 2022 stock assessment includes
+an update to MP recommendations for the PRD, CC, SoG, and WCVI SARs [@dfo2022b].
+
+1. The 2023 stock assessment includes... [@dfo2024].
+
+1. SISCAH updates... [@dfo2023a]
+
+<!-- TODO: Update -->
+This `r assess_yr` stock assessment includes
+MP recommendations for PRD, CC, SoG, and WCVI,
+derived in 2022 by updating herring OM conditioning [@benson2022] using 
+the latest historic stock and fishery data
+from `r major_start_yr` to 2021 [@dfo2022b].
+There are no new MP evaluations for `r assess_yr`
+(all probability metrics reflect MP evaluations presented in 2022).
 
 ### Stock Structure Assumption {-}
 
@@ -72,13 +134,16 @@ and/or footnote to the working paper]
 
 ### Reference Points {-}
 
-[Mandatory.
-A table may be used in lieu of bullets for this section.
-Refer to the Guidance Document for further instructions.]
+<!-- [Mandatory. -->
+<!-- A table may be used in lieu of bullets for this section. -->
+<!-- Refer to the Guidance Document for further instructions.] -->
 
-- Limit Reference Point (LRP): 
+- Limit Reference Point (LRP): $0.3\SB_0$ [@kronlund2017],
+where $\SB_0$ is estimated unfished spawning biomass.
 
-- Upper Stock Reference (USR):
+- Upper Stock Reference (USR): average spawning biomass
+from `r yr_range[1]` to `r yr_range[2]` $\overline{\SB}$
+(provisional; IFMP).
 
 - Removal Reference (RR): 
 
@@ -89,10 +154,10 @@ Refer to the Guidance Document for further instructions.]
 [If applicable (otherwise, do not include).
 A table may be used in lieu of bullets for this section.] 
 
-#### Hatchery Reference Points {-}
+<!-- #### Hatchery Reference Points {-} -->
 
-[If applicable (otherwise, do not include).
-A table may be used in lieu of bullets for this section.] 
+<!-- [If applicable (otherwise, do not include). -->
+<!-- A table may be used in lieu of bullets for this section.]  -->
 
 #### Habitat or Ecosystem Reference Points {-}
 
@@ -116,9 +181,19 @@ Maximum length 100 words.]
 
 ### Data {-}
 
-[Mandatory.
-Maximum length 300 words.] 
+<!-- [Mandatory. -->
+<!-- Maximum length 300 words.]  -->
 
-Data changes:
-[Optional (otherwise, do not include).]
+<!-- Data changes: -->
+<!-- [Optional (otherwise, do not include).] -->
 
+There are three types of input data used for
+the Pacific Herring stock assessment:
+catch data, biological data, and abundance data.
+<!-- These data are described in the following sections, and -->
+<!-- summarized in Table XX. -->
+Relative to the previous assessment,
+the only change to input data was to extend all the time series
+to include the `r this_season` herring season (July 1 to June 30).
+Note that we refer to 'year' instead of 'herring season' in this report;
+therefore `r assess_yr` refers to the `r this_season` Pacific Herring season.
