@@ -44,6 +44,15 @@ otherwise, do not include.]
 Title can vary.
 Maximum text length one page.] 
 
+Harvest options for `r assess_yr+1` reflect application of
+simulation-tested MPs for each major SAR,
+derived from the Herring OM [@benson2022]. 
+OM conditioning was updated in 2022 using
+historic stock and fishery data from `r major_start_yr` to 2021;
+no MP updates were conducted for 2023.
+MPs are not provided for HG because this is now conducted within the 
+HG rebuilding plan process.$^{\ref{fn:rebuild}}$
+
 <!-- #### History of Hatchery and Supplementation {-} -->
 
 <!-- [If applicable (otherwise, do not include).] -->

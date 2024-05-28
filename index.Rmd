@@ -22,9 +22,9 @@ context: |
   using a spatially integrated statistical catch at age model fit to
   spawn survey indices, fishery age composition data, and commercial catches.
   This stock assessment evaluates abundance relative to
-  the limit reference point, the upper stock reference, and
-  fisheries management objectives.
-  We recommend a management procedure for the
+  the limit reference point, the upper stock reference,
+  fisheries management objectives, and then
+  recommends a management procedure for the
   Strait of Georgia stock assessment region.
 output:
  csasdown::fsar_word
