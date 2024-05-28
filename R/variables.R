@@ -1,3 +1,7 @@
+# TODO: These should come from the metadata -- not working
+assess_yr <- 2024
+french <- FALSE
+
 # SARs
 regions <- tribble(
   ~SAR, ~Region,                      ~RegionName,     ~Type,
@@ -49,7 +53,6 @@ sim_dat <- sim_fsar_data("wide") %>%
   )
 
 # Years and seasons
-assess_yr <- 2024  # TODO: This should come from the metadata
 last_assess_yr <- assess_yr - 1
 this_season <- paste(last_assess_yr, assess_yr, sep = "/")
 
