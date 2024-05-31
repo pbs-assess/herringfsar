@@ -5,14 +5,14 @@
 .DS_Store
 
 # Folders
-csas-style
-knitr-cache-docx
-knitr-cache-tex
-knitr-figs-docx
-knitr-figs-pdf
-models*
-translation
-_book
+csas-style/*
+knitr-cache-docx/*
+knitr-cache-tex/*
+knitr-figs-docx/*
+knitr-figs-pdf/*
+models/*
+translation/*
+_book/*
 
 # Temporary knitr files
 HerringFSAR.aux
