@@ -76,21 +76,13 @@ assess_yr <- 2024
 french <- FALSE
 ```
 
-```{r scripts}
+```{r models}
 models_dir <- here("models")
 major_stock_dir <- list("SoG")
+```
 
-# mcmc_length <- 20000000 # Default: 20,000,000
-# mcmc_samp_freq <- 4000  # Default: 4,000
-# mcmc_burnin <- 1000     # Default: 1,000
-# retro_yrs <- 1:10       # Default: 1:10
-
-# run_sca_models <- FALSE            # Run SCA for SARs in `major_stock_dir`
-# rebuild_rdata_model_files <- FALSE # Rebuild RData files (replace existing)
-# run_retros <- FALSE                # Run retrospectives
-
-# Scripts
-# source(here("R", "models.R"))
+```{r scripts}
+source(here("R", "models.R"))
 source(here("R", "variables.R"))
 source(here("R", "figures.R"))
 source(here("R", "themes.R"))
