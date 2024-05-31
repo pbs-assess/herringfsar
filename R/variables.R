@@ -1,4 +1,4 @@
-# TODO: These should come from the metadata -- not working
+# TODO: These should come from metadata and code in index.Rmd-- not working
 assess_yr <- 2024
 french <- FALSE
 
