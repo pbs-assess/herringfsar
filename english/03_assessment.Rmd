@@ -28,6 +28,16 @@ Must be first section in Assessment section.]
 [Report trends in relevant indicator(s), one per paragraph,
 in the following format:]
 
+Insert `stock_status_text()` function to automate text:
+
+- Estimated unfished spawning biomass $\SB_0$ is 138,491 t, and
+the LRP of $0.3\SB_0$ is 41,547 t (posterior medians).
+Compared to last year, estimated spawning biomass in 2023 $\SB_{2023}$
+decreased from 75,523 to 72,782 t (posterior median), and
+is equivalent to 52.1% of $\SB_0$ (Tables XX & XX).
+Spawning biomass in 2023 is estimated to be
+above the LRP with a 94.3% probability (Table XX).
+
 #### [Indicator 1] [specify name, e.g., Abundance]: {-}
 
 [Provide values and trends for the stock (as applicable).]
@@ -51,7 +61,11 @@ OM conditioning was updated in 2022 using
 historic stock and fishery data from `r major_start_yr` to 2021;
 no MP updates were conducted for 2023.
 MPs are not provided for HG because this is now conducted within the 
-HG rebuilding plan process.$^{\ref{fn:rebuild}}$
+HG rebuilding plan process.^[Haida Gwaii 'íináang | iinang Pacific Herring:
+An ecosystem overview and ecosystem-based rebuilding plan.
+Draft consultation period occurred September 26 to December 16, 2022; 
+Final approval scheduled for fall 2023.]
+<!-- TODO: Need to update rebuilding plan reference -->
 
 <!-- #### History of Hatchery and Supplementation {-} -->
 
@@ -66,6 +80,15 @@ HG rebuilding plan process.$^{\ref{fn:rebuild}}$
 [Mandatory.
 Title can vary.
 Tables or figures can be used as necessary to support decision-making.]
+
+Insert `proj_biomass_text()` function to automate text:
+
+- In the absence of fishing,
+spawning biomass in 2024 $\SB_{2024}$ is forecast
+to be 73,375 t (posterior median; Table XX).
+Spawning biomass in 2024 is forecast to be
+below the LRP of $0.3\SB_0$ (41,547 t) with a 8.0% probability,
+in the absence of fishing (Table XX and Figure XX).
 
 ### Ecosystem and Climate Change Considerations {-}
 
