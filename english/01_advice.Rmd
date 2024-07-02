@@ -10,7 +10,7 @@ and what to avoid in this section.]
 ### Status {-}
 
 ::: {custom-style="fsar-bullet"}
-[Mandatory bullet(s)]
+[The Strait of Georgia (SOG) major stock assessment region (SAR) is healthy.]
 :::
 
 ### Trends {-}
