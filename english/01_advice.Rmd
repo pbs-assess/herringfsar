@@ -13,8 +13,6 @@ and what to avoid in this section.]
 [The Strait of Georgia (SOG) major stock assessment region (SAR) is healthy.]
 :::
 
-define the word SAR 
-
 ### Trends {-}
 
 ::: {custom-style="fsar-bullet"}
