@@ -1,0 +1,581 @@
+---  
+title: "Strait of Georgia MP evaluation summary"
+geometry: letterpaper
+nocaption: false
+always_allow_html: yes
+output: 
+  bookdown::html_document2:
+    self_contained: true
+    df_print: kable
+    keep_md: false
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: false
+---
+
+
+```{r, setup, message=FALSE, warning=FALSE, include=FALSE, echo = FALSE}
+
+# I usually load my libraries up front to keep things organized
+library(bookdown)
+library(knitr)
+library(kableExtra)
+library(dplyr)
+library(stringr)
+library(tidyverse)
+library(here)
+
+fig_asp <- 0.618
+fig_width <- 10
+fig_out_width <- "600px"
+fig_dpi <- 180
+fig_align <- "center"
+fig_pos <- "htb"
+fig_out_type <- "png"
+kable_format <- "pandoc"
+opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  comment = "#>",
+  fig.asp = fig_asp,
+  fig.width = fig_width,
+  out.width = fig_out_width,
+  echo = FALSE,
+  knitr.kable.NA = '',
+  #  autodep = TRUE,
+  #  cache = TRUE,
+  cache.comments = FALSE,
+  dev = fig_out_type,
+  dpi = fig_dpi,
+  fig.align = fig_align,
+  fig.pos = fig_pos )
+
+
+# knitr::opts_chunk$set(  fig.pos = 'p',
+#                         out.width = '100%', dpi=300, 
+#                         root.dir = here(),
+#                         message = FALSE, warning = FALSE, echo = FALSE)
+
+options(warn = -1)
+
+
+source(("functions/ms3Rplots.R"))
+source(("functions/ms3Rtools.R"))
+source(("functions/ms3RrefPts.R"))
+source(("functions/ms3Rstats.R"))
+
+# first, load model histories
+# projFolder is in "Outputs"
+histFolder <- file.path("data","SOG_DDM_omGrid")
+
+fitFolders <- c(  "fit_parBatSOG_MbhGrid_h.71",
+                  "fit_parBatSOG_OMgrid_h.70_2",
+                  "fit_parBatSOG_OMgrid_h.70_3",
+                  "fit_parBatSOG_OMgrid_h.70_4",
+                  "fit_parBatSOG_OMgrid_h.70_5")
+
+fitPaths <- file.path(histFolder,fitFolders,paste0(fitFolders,".rds"))
+
+histRpts <- lapply(X = fitPaths, FUN = readRDS)
+
+scenarios <- c( "SOG_Mb0.532_h0.70",
+                "SOG_Mb0.562_h0.65",
+                "SOG_Mb0.562_h0.70",
+                "SOG_Mb0.562_h0.75",
+                "SOG_Mb0.584_h0.70")
+
+names(histRpts) <- scenarios
+
+# order hist reports
+histRpts <- histRpts[c(3,2,4,1,5)]
+
+
+simFolder <- file.path("data","SOG_wtdPerf_Ugrid")
+# Now read the infoFile in each sim folder
+dirList   <- list.dirs(simFolder, recursive = FALSE)
+dirList   <- dirList[grepl(x = dirList, pattern = "sim_")]
+
+infoList  <- file.path(dirList,"infoFile.txt")
+infoList  <- lapply(X = infoList, FUN = lisread)
+infoList  <- lapply(X = infoList, FUN = as.data.frame)
+info.df   <- do.call(rbind, infoList)
+
+mps   <- c("Ugrid_0.06","Ugrid_0.14")
+mps2  <- c("maxTHR_0.06","maxTHR_0.14")
+
+# Filter info.df
+info.df <- info.df |> filter( mp %in% mps )
+mpBlobList <- list()
+
+for(k in 1:nrow(info.df))
+{
+  simLabel <- paste0("sim_",info.df$simLabel[k])
+  path <- file.path(simFolder,simLabel,paste0(simLabel,".RData"))
+  # Load blob
+  load(path)
+
+  # Save to mpBlobList
+  mpBlobList[[k]] <- blob
+
+}
+names(mpBlobList) <- info.df$simLabel
+
+
+fYear   <- blob$ctlList$opMod$fYear
+nS      <- blob$om$nS
+nP      <- blob$om$nP
+nT      <- blob$om$nT
+tMP     <- blob$om$tMP
+pT      <- blob$ctlList$opMod$pT
+
+isProj <- pT > 1
+
+species <- blob$om$speciesNames
+stock   <- blob$om$stockNames
+
+goodRepIdx <- which(blob$goodRep)
+
+# Draw a random replicate for plotting
+set.seed(101)
+randReplicate <- sample(goodRepIdx, size = 1)
+randTraces    <- sample(goodRepIdx, size = 3)
+usePosts      <- blob$ctlList$opMod$posteriorSamples
+
+# Replace passed objectives with a filled circle dot 
+# (use unicode??)
+passObj <- function( X, target = .95, comp = "gt" )
+{
+  out <- character(length = length(X))
+  for( l in 1:length(X))
+  { 
+    if( length(target) > 1 )
+      tar <- target[l]
+    else tar <- target
+
+    if( comp == "gt")
+    {
+      if( round(X,2) >= tar )
+        out[l] <- paste("$\\bullet$")
+      else out[l] <- paste(X,sep = "")
+    }
+
+    if( comp == "lt")
+    {
+      if( round(X,2) <= tar )
+        out[l] <- paste("$\\bullet$")
+      else out[l] <- paste("$",X,">",target,"$",sep = "")
+    }    
+
+  }
+  return(out)
+}
+
+```
+
+# Background
+
+Pacific Herring (*Clupea pallasii*) fisheries in British Columbia (BC), Canada, 
+have been managed via a management procedure approach since 2017. Management
+procedures are formal, repeatable rules for deriving harvest advice (usually
+total allowable catches; TACs) from fishery monitoring data, and are tested
+against quantitative fishery management objectives in closed loop simulations.
+Simulation results are often tested against multiple uncertainties by
+defining multiple simulation scenarios, representing alternative hypotheses
+about the state of nature. The process of designing, testing, and choosing a 
+management procedure is often called a Management Strategy Evaluation (MSE).
+
+This document summarises closed loop simulations evaluating candidate
+management procedures for the Strait of Georgia (SOG) herring fishery. SOG herring
+is the first BC herring fishery to use the new herring operating model framework, 
+named the Spatially Integrated Statistical Catch-at-Age Herring Operating Model 
+(SISCAH-OM). Although there are several differences between SISCAH and the 
+previous herring assessment and operating models, the main novelty in SISCAH-OM
+is a depensatory density-dependent mortality (DDM) model, where natural mortality 
+is higher when biomass is lower. The SISCAH-OM, with the use of appropriate
+mortality hypothesis, was accepted as an operating model for all 5 major herring 
+stock assessment regions by Fisheries and Oceans, Canada (DFO) via a 
+regional peer review review process in 2023.
+
+This document summarises simulation tests for a group of candidate SOG 
+management procedures. All candidate MPs are tested against a suite of five 
+SISCAH operating models, which incorporate uncertainty in future productivity 
+at both low and high stock sizes. We first summarise the simulation approach,
+and then present results averaged (with a weighting) over the five operating 
+models, with some brief discussion of the management implications.  
+
+# Simulation approach
+
+
+## Operating models
+
+We define five SOG Herring operating models that test against
+uncertainty in productivity at high and low stock sizes. Productivity
+at high stock sizes is heavily influenced by the $M_b$ parameter, which 
+represents the average mortality rate at very high biomass (generally above 
+unfished levels). At low stock size, productivity is more influenced by the 
+stock-recruit relationship's steepness parameter $h$, which is the ratio of 
+recruitment at 20\% of unfished to the unfished recruitment $R_0$.
+
+We tested three values of each parameter in a cross design (Table 
+\@ref(tab:parRefPtsTable)). Steepness $h$ values were taken across a uniform 
+grid of 0.65, 0.7, and 0.75, while $M_b$ was chosen via a Likelihood Profile approach 
+with a steepness of $h = 0.7$ (Figure \@ref(fig:LPfig)). The grids for each 
+individual parameter are intersected at their central value, giving a total of 
+five OMs. We are unable to choose a grid of $h$ values via a likelihood profile, 
+as there is limited information in SOG data supporting a single 'most likely' 
+steepness value. Information on steepness is gathered when stock biomass is low
+which has not occurred in SOG's history.
+
+OM weighting favours the central OM (called OM1, $M_b=0.562$ and $h = 0.7$)
+with a weight of 0.34. OM1's weight is the average of the weights of each axis in the
+cross desgn, with $h$ being uniform (i.e., 0.33) and the $M_b$ value's weight based 
+on the relative data likelihood function value (i.e, around 0.35). The remaining
+operating models are weighted equally across the remaining  with a weight of 
+0.165.
+
+For all operating models, we report leading OM parameters, current biomass and 
+stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
+
+```{r parRefPtsTable, echo = FALSE, warnings = FALSE}
+
+postParTable <- read.csv("data/omGrid_postPars.csv")
+refPtsTable <- read.csv("data/SOG_allScenRefPts.csv")
+
+postParTable$X <- NULL
+refPtsTable$X <- NULL
+
+allEstTable <- postParTable |> 
+                left_join(refPtsTable, by = "Scenario") 
+# reorder
+allEstTable <- allEstTable[c(3,2,4,1,5),] |>
+                dplyr::select(  h,
+                                Mb,
+                                B0, 
+                                R0, 
+                                M0,
+                                m1,
+                                Mbar,
+                                qs,
+                                BT,
+                                DT = DT.x,
+                                PBTGtLRP,
+                                Bmsy,
+                                Umsy,
+                                MSY,
+                                USR,
+                                Uusr,
+                                Yusr,
+                                Ucrash) |>
+                t()
+
+colnames(allEstTable) <- c("OM1","OM2","OM3","OM4","OM5")
+
+rownames(allEstTable) <- c( "$h$",
+                            "$M_b$",
+                            "$SB_0$",
+                            "$R_0$",
+                            "$M_0$",
+                            "$m_1$",
+                            "$\\overline{M}$",
+                            "$q_s$",
+                            "$SB_{2023}$",
+                            "$SB_{2023}/SB_0$",
+                            "$P(SB_{2023} > 0.3 SB_0)$",
+                            "$SB_{MSY}$",
+                            "$U_{MSY}$",
+                            "$MSY$",
+                            "$USR$",
+                            "$U_{USR}$",
+                            "$Y_{USR}$",
+                            "$U_{Crash}$")
+
+allEstTabCap <- "SISCAH-OM life-history and management parameter values for stock-recruit steepness ($h$), asymptotic lower limit on depensatory $M$ ($M_b$, /yr), unfished biomass ($SB_0$, kt), unfished recruitment ($R_0$, 1e6), unfished mortality ($M_0$, /yr), mortality depensation rate ($m_1$), time-averaged mortality ($\\overline{M}$, /yr), surface survey design catchability ($q_s$), spawning biomass in 2023 ($SB_{2023}/SB_0$), stock status ($P(SB_{2023} > 0.3 SB_0)$), spawning biomass at maximum sustainable yield ($SB_{MSY}$, kt), harvest rate targeting maximum sustainable yield ($U_{MSY}$), maximum sustainable yield ($MSY$), upper stock reference ($USR$, kt), harvest rate targeting the upper stock reference ($U_{USR}$), equilibrium yield at the upper stock reference ($Y_{USR}$), harvest rate associated with negative production and higher risk of extirpation ($U_{Crash}$). Uncertainty is shown as the 95\\% credible interval where estimates could be drawn from posterior samples (indicated by two parenthetical values), or half the interquartile range where estimates were drawn from 200 year simulations (one parenthetical value)."
+
+kable(  allEstTable, escape = FALSE, 
+        caption = allEstTabCap, booktabs = T,
+        align = rep("r",5)) %>%
+  kable_styling( latex_options = c("striped", "scale_down","hold_position"),
+                 bootstrap_options = c("striped", "hover") )
+
+```
+
+```{r LPfig, echo = FALSE, fig.cap = LPfigCap }
+LPfigCap <- "Fishery monitoring data likelihood function profiles relative to a range of natural mortality asymptotic lower limit ($M_b$) parameter values. The red point shows the most likely value, while the two vertical dashed lines show two values with equal likelihood chosen to bound the central OM1. All SISCAH model fits here have a steepness value of $h = 0.7$"
+filepath <- "figure/LP_chooseMb.png"
+knitr::include_graphics(filepath)
+
+```
+
+
+
+## Management Procedures
+
+Management procedures are a combination of data, biomass estimation method (EM), 
+and a harvest control rule (HCR). 
+
+All MPs tested here use the same data, namely the blended spawn index, commercial
+fishery catch, and commercial fishery catch-at-age data. The EM, which is fit to 
+those data, is a SISCAH model with a density dependent $M$ (DDM) hypothesis. 
+A DDM hypothesis is supported by figure <insert figure> which shows that and 
+biomass declines natural mortality increases.The EM provides annual estimates of 
+unfished biomass and a 1-year ahead 
+forecast of spawning biomass.
+
+TACs are derived from EM estimates via the harvest control rule. For
+SOG herring, we use the status quo HS 30-60 rule, a "hockey-stick" shaped 
+function with control points at 30\% and 60\% of unfished biomass. When spawning
+biomass is estimated to be below the lower control point, the rule sets harvest
+rates to zero; when biomass estimates are above the upper control point, the rule
+sets harvest rates to the maximum target harvest rate, called $maxTHR$. We show
+results for maximum target harvest rates of 6\% and 14\% (Figure \@ref(fig:hcrPlot)).
+
+
+```{r hcrPlot, echo = FALSE, fig.cap = HCRcap}
+HCRcap <- "Two harvest control rules tested for candidate SOG herring MPs, showing maximum target harvest rates $maxTHR$ of 6\\% and 14\\%."
+
+plotHCRex(maxSeq = c(0.06,0.14))
+```
+
+
+## Performance metrics
+
+MPs are evaluated against two quantitative management objectives, listed below.
+
+1. $P(B_t > 0.3 B_0) \geq 0.75$, or **avoid the limit reference point (LRP) with high 
+probability over three herring generations.**
+
+2. $P(B_t > USR) \geq 0.5$, or **target the upper stock reference (USR) with neutral
+probability**.
+
+Objective 1, also known as the conservation objective, must be passed by
+all herring management procedures. Objective 2 is a target objective related 
+to a recently described provisional $USR$.
+
+To help fishery managers understand trade-offs among biomass and yield, 
+additional quantitative performance metrics are estimated. These metrics 
+do not have a minimum or target value like objectives, but give greater 
+detail on biomass and yield outcomes of each MP over the
+15 year simulation.
+
+
+1. $P(B_t > B_{MSY})$: The probability that biomass is above $B_{MSY}$.
+
+2. $P(U_t > U_{MSY})$: The probability that the effective harvest rate
+is above $U_{MSY}$. 
+
+3. $P(C_t > 650 t)$: The probability of a viable fishery where catch is
+greater than 650 tonnes.
+
+4. $C_{5pc}$: Catch risk, measured as the fifth percentile of catch over all years and replicates.
+
+5. $\overline{C}$: Median (over replicates) of the average (over years) total
+landings.
+
+6. $AAV$: Average annual variation in catch, or the mean percentage difference
+in catch from year-to-year.
+
+7. $C_{2024}$: The MP's TAC in 2024.
+
+8. $\overline{B_{t}/B_0}$: Average biomass depletion from 2024 - 2038.
+
+9. ${B_{2038}/B_0}$: Median biomass depletion in 2038.
+
+10. $B_{2038}$: Median biomass in 2038.
+
+
+<!-- Add average depletion -->
+
+
+
+
+Performance metrics are estimated via closed loop feedback simulations
+with the following simulation algorithm: 
+
+1. For each Operating Model, initialize a pre-conditioned 
+simulation model for the period 1951 – 2023 based on a random
+draw from the operating model posterior distribution;
+
+2.  Project the operating model population and fishery 
+into the future one time-step at a time. At each step, 
+apply the following:
+      i)   Generate the catch and spawn survey data available 
+      for stock assessment;
+      ii)  Determine 1-year ahead forecast of spawning biomass depletion 
+      level from a Density Independent $M$ SISCAH estimation model;
+      iii) Apply the HS 30-60 harvest control rule to generate a
+      catch limit according to the maximum target harvest rate;
+      iv)  Update the operating model population given the catch 
+           limits for each fishery and new recruitment;
+      v)   Repeat steps 2.i - 2.iv until the projection period ends (2038).
+
+3.  Repeat steps 1. and 2. 99 more times;
+
+4.  Calculate quantitative performance statistics above across all 
+    100 replicates.
+
+
+# MP performance and discussion
+
+A fishery that meets Objective 1 could target a 13\% harvest rate with an 
+average yield in the 10 - 11 kt range (Table \@ref(tab:statTable). If management
+procedures are also targeting the USR (Objective 2), then harvest rates need
+to drop to around 7\% (as predicted by the reference point estimates, Table 
+\@ref(tab:parRefPtsTable)), and average catches would be closer to the 6 - 7 kt 
+range. Any harvest rate above 13\%, including $U_{MSY}$ estimates for every
+OM, do not meet either fishery objective. As such, meeting both fishery objectives
+requires accepting that TACs will need to be lower in the future, in contrast
+to the average of around 20 kt up to 2019. 
+
+Harvest rates need to be much lower than $U_{MSY}$ to avoid the LRP with high 
+probability (75\% or more). This is because the LRP is quite high relative to 
+$B_{MSY}$ (Table \@ref(tab:parRefPtsTable), Figure \@ref(fig:simEnv)), 
+roughly around 70\% of $B_{MSY \vert OM1}$ for OM1. For comparison, the default
+limit reference point in Canadian fisheries policy is 40\% of $B_{MSY}$
+or some proxy, although this is largely applied to longer lived groundfish
+species with less variable recruitment and lower predation pressures.
+
+The EM based on the Density Independent $M$ model appears to overestimate 
+biomass in the 1-year ahead forecast. So called positive assessment errors are 
+reflected in the higher than neutral probability the effective harvest rates exceed
+the maximum target harvest rate (Table \@ref(tab:statTable), $P(U_t > U_{ref})$,
+Figure \@ref(fig:simEnv), bottom row). As such, MPs should aim for slightly 
+lower maximum harvest rates than the biomass target implies. For example,
+reference points imply a harvest rate of around 8\% (weighted over OMs) to
+achieve the USR target in the long term, but positive assessment errors mean
+that MPs should target closer to 7\%.
+
+The metrics for the probability of a viable fishery and the 5th percentile of 
+simulated TACs are closely related (Table \@ref(tab:statTable), $C_t > 650 t$
+and $C_{5pc}$). Each shows that increasing harvest rates generally means accepting 
+a higher proportion of years with low catch. Additionally, both metrics appear to 
+show an optimal range of 4\% - 6\% harvest rates where the risk of poor fishing 
+is lowest. The $C_{5pc}$ column is more informative, however, as it uses absolute 
+landings estimates that have a broader range than the more intangible probability 
+of viable fishing.
+
+
+
+
+```{r, statTable, echo = FALSE }
+wtdPerfTable <- read.csv("data/wtdTable.csv")
+
+statTable <- wtdPerfTable |>
+              filter( mp %in% mps2 ) |>
+              mutate_if(is.numeric, round, 2) |>
+              dplyr::select(  mp,
+                              pBtGt.3B0,
+                              pBtGtBmsy,
+                              pBtGtUSR,
+                              pUtGtUmsy,
+                              pCtGt650t,
+                              C5pc,
+                              avgCatch_t,
+                              catchAAV,
+                              CtMP,
+                              aveDep, 
+                              DnT,
+                              BnT ) |>
+              mutate( avgCatch_t = round(avgCatch_t/1e3,2),
+                      pBtGt.3B0 = sapply(X = pBtGt.3B0, FUN = passObj, target = .75),
+                      pBtGtUSR  = sapply(X = pBtGtUSR, FUN = passObj, target = .5) )
+
+colnames(statTable) <- c( "MP",
+                          "$B_t \\geq 0.3 B_0$",
+                          "$B_t \\geq B_{MSY}$",
+                          "$B_t \\geq USR$",
+                          "$U_t \\geq U_{MSY}$", # Replace with Umsy
+                          "$C_t \\geq 650 t$",
+                          "$C_{5pc}$",
+                          "$\\overline{C}$",
+                          "$AAV$",
+                          "$C_{2024}$",
+                          "$\\overline{B_{t}/B_0}$", 
+                          "$B_{2038}/B_0$",
+                          "$B_{2038}$"
+                          )
+
+statTabCap <- "Performance statistics for the selected harvest rates. Objectives that are passed by an MP are indicated by a bullet. Conservation, Biomass, Overfishing, and Viable Fishery metrics are all in probability units. Catch at Risk 5\\%, Average Catch, 2024 Catch and Final Biomass are all in biomass units (kt), and Stock Status is biomass depletion relative to unfished (proportion)."
+
+# criteria <- c( " " = 1,
+#                "P > .75" = 1,
+#                "Obs < Acc" = 1,
+#                "P > .5" = 1,
+#                "min" = 1,
+#                "max" = 1,
+#                " " = nOtherCols)
+
+# typeNames <- c( " " = 1,
+                
+#                 "Catch metrics" = 5,
+
+
+objNames <- c(  " " = 1,
+                "Conservation" = 1,
+                "Biomass" = 2,
+                "Overfishing" = 1,
+                "Viable Fishery" = 1,
+                "Catch at Risk 5\\% " = 1,
+                "Average Catch" = 1,
+                "Catch Variability" = 1,
+                "2024 Catch" = 1,
+                "Stock Status" = 2,
+                "Final Biomass" = 1)
+
+
+
+# objNames <- c(" " = 1,
+#               "Objective 1" = 1,
+#               "Objective 2" = 1,
+#               "Objective 3" = 1,
+#               "Objective 4" = 1,
+#               "Objective 5" = 1,
+#               "Other Important Quantities" = nOtherCols )
+
+
+kable(  statTable, escape = FALSE, 
+        caption = statTabCap, booktabs = T,
+        align = c(rep("c",ncol(statTable)))) %>%
+  kable_styling( latex_options = c("striped", "scale_down","hold_position"),
+                 bootstrap_options = c("striped", "hover") ) |>
+  add_header_above( objNames, bold = T ) #|>
+  # add_header_above( typeNames, bold = T ) 
+
+```
+
+
+```{r, captions, include = FALSE, echo = FALSE}
+multiGridTulipCap <- "Simulation envelopes of spawning biomass depletion (top row), catch (middle row) 
+and effective harvest rate (bottom row). Each column shows a single MP, labeled in the
+top margin. Median values are shown by the thick black lines, the grey 
+shaded region shows the central 95% of each envelope, and three randomly selected
+individual replicate traces are shown as thin black lines."
+
+```
+
+```{r simEnv, echo = FALSE, fig.cap = multiGridTulipCap}
+plotGridTulipBtCtUt(mpBlobList,
+                    labels = mps2,
+                    yLimC = c(0,20),
+                    yLimHR = c(0,0.4))
+```
+
+# Exceptional Circumstances
+
+Fishery monitoring data collected since the adoption of the current SOG
+herring MP does is within expectations. In formal language, there is no
+indication of exceptional circumstances (Figure \@ref(fig:ECfig)),
+measured by catch and spawn index values within the expected range of
+previous closed loop simulations.
+
+
+```{r ECfig, echo = FALSE, fig.cap = ECfigCap }
+ECfigCap <- "A graphical test for exceptional circumstances, showing the central 95\\% of projected spawn index values (top) and catch values (bottom) using the 2019 SOG operating model, with realised data in the history (black points) and projection (red points) overlaid."
+filepath <- "figure/ExceptionalCircumstances.png"
+knitr::include_graphics(filepath)
+
+```
+
+
+
