@@ -90,6 +90,9 @@ Spawning biomass in 2024 is forecast to be
 below the LRP of $0.3\SB_0$ (41,547 t) with a 8.0% probability,
 in the absence of fishing (Table XX and Figure XX).
 
+<!-- TODO: define three generations == 15-years -->
+
+
 ### Ecosystem and Climate Change Considerations {-}
 
 [Mandatory.

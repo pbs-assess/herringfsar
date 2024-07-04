@@ -151,15 +151,13 @@ from `r yr_range[1]` to `r yr_range[2]` $\overline{\SB}$
 <!-- A table may be used in lieu of bullets for this section.]  -->
 
 A core set of fisheries management objectives [@dfo2019c]
-were introduced for Pacific Herring in 2019, as part of the MSE process.
-This includes implementation of the LRP ($0.3SB_0$) within a 
-conservation objective (Obj 1).
+were introduced to the Pacific Herring MSE process in 2019.
+The first of these is a conservation objective, which is centered 
+on the LRP ($0.3SB_0$).
 
-<!-- TODO: define one generation -->
 1. Maintain spawning biomass at or above the LRP with
 at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$),
-
 
 1. Maintain spawning biomass at or above the USR
 with at least 50% probability over three Pacific Herring generations
@@ -170,8 +168,9 @@ below 25% over three Pacific Herring generations
 (i.e., minimize catch variability; $\text{AAV} < 0.25$), and
 
 1. Maximize average annual catch
-over three Pacific Herring generations
-(i.e., maximize average catch).
+over three Pacific Herring generations (i.e., maximize average catch).
+
+<!-- TODO: stopped here -->
 
 However, a fully specified set of objectives has not yet been developed
 for each SAR.
@@ -190,23 +189,14 @@ A table may be used in lieu of bullets for this section.]  -->
 
 ### Stock Status {-}
 
-OM status relative to suite of reference points...
-(Table X).
+As this is a MSE, stock status reflects the OM status...
+<!-- short description only, no data-->
 
 ### Harvest Decision Rule {-}
 
 [Optional (otherwise, do not include).
 Maximum length 100 words.]
 
-### Enhancement Plan {-}
-
-[Optional (otherwise, do not include).
-Maximum length 100 words.]
-
-### Habitat Restoration Plan {-}
-
-[Optional (otherwise, do not include).
-Maximum length 100 words.]
 
 ### Data {-}
 
