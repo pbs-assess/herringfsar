@@ -32,12 +32,10 @@ period (2024-2038); only MPs that meet the established conservation
 objective [@dfo2022a] are presented.
 
 #### Year Assessment Approach was Approved {-}
-
 <!-- [Mandatory; year and reference] -->
 2023 [@dfo2023a, @johnson2024].
 
 #### Assessment Type {-}
-
 <!-- [Mandatory. -->
 <!-- Select one of the following: -->
 Full Assessment and MSE process.
@@ -69,18 +67,18 @@ Single stock operating model ensemble (full MSE process).
 <!-- [Select one or as many as apply: -->
 <!-- No data, -->
 <!-- Index-based (fishery-dependent indices only), -->
-index-based,
+Index-based,
 <!-- (including fishery-dependent and fishery-independent indices), -->
 <!-- Delay difference, -->
 <!-- Biomass dynamics, -->
 <!-- Virtual population analysis, -->
 <!-- Statistical catch-at-length, -->
-statistical catch-at-age, 
+statistical catch-at-age model, 
 density dependent time varying natural mortality, and
 <!-- State-Space, -->
 <!-- Sequential Population Analysis, -->
 <!-- Surplus Production, -->
-stock-recruitment relationship.
+Beverton-Holt stock-recruitment relationship.
 <!-- Potential Biological Removal, -->
 <!-- Other (please explain)] -->
 
@@ -106,16 +104,15 @@ Data collection and assessment focuses on the core spawn timing associated with
 the main migratory stock. Adult herring are reported in various areas of the 
 Salish Sea during the summer months indicating some level of non-migratory life
 history, with the largest component of the stock migrating to the west coast to
-share summer/ fall feeding grounds with the west coast Vancouver Island Herring
-stock.
+share summer/ fall feeding grounds with the West Coast Vancouver Island herring.
 
 ### Reference Points {-}
 
 A suite of biological and fishery reference points are included for SoG Herring.
 These are:
-1. fractions of unfished biomass, ${SB_0}$
-2. ${MSY}$
-3. fractions of $\U_{MSY}$
+1.    Fractions of unfished biomass, ${SB_0}$
+1.    ${MSY}$
+1.    Fractions of $U_{MSY}$
 
 In 2018, a biological limit reference point (LRP) was defined for Pacific Herring major stocks as 
 $0.3SB_0$ in 2018, where ${SB_0}$ is the long-term average estimated 
@@ -123,7 +120,6 @@ unfished spawning biomass [@kronlund2017].
 
 Candidate USRs were first introduced in @cleary2018 and a formal analysis of 
 USR options was undertaken in 2022 with results presented in @dfo2022a.
-
 In 2023, DFO Resource Management selected and implemented a provisional 
 USR of $\overline{\SB}$, implemented as a performance metric within 
 2022/23 IFMP process.
@@ -132,17 +128,13 @@ USR of $\overline{\SB}$, implemented as a performance metric within
 <!-- A table may be used in lieu of bullets for this section. -->
 <!-- Refer to the Guidance Document for further instructions.] -->
 
-- Limit Reference Point (LRP): $0.3SB_0$ [@kronlund2017],
-where $\SB_0$ is estimated unfished spawning biomass.
-
-- Upper Stock Reference (USR): average spawning biomass
-from `r yr_range[1]` to `r yr_range[2]` $\overline{\SB}$
-(provisional; IFMP).
-
+TODO: Insert TABLE here that will include:
+-
+- Limit Reference Point (LRP)
+- Upper Stock Reference (USR)
 - Removal Reference (RR): not yet determined
-
 - Target (TRP): not yet determined (USR=TRP)
-
+- Habitat or Ecosystem Reference Points: included indirectly via DDM (state how)
 
 
 #### Fishery management objectives {-}
@@ -153,7 +145,7 @@ from `r yr_range[1]` to `r yr_range[2]` $\overline{\SB}$
 A core set of fisheries management objectives [@dfo2019c]
 were introduced to the Pacific Herring MSE process in 2019.
 The first of these is a conservation objective, which is centered 
-on the LRP ($0.3SB_0$).
+on the LRP.
 
 1. Maintain spawning biomass at or above the LRP with
 at least 75% probability over three Pacific Herring generations
@@ -170,26 +162,18 @@ below 25% over three Pacific Herring generations
 1. Maximize average annual catch
 over three Pacific Herring generations (i.e., maximize average catch).
 
-<!-- TODO: stopped here -->
 
-However, a fully specified set of objectives has not yet been developed
-for each SAR.
+Operating model development began for Herring MSE in 2015, 
+however a fully specified set of objectives has not yet been developed for each SAR.
 DFO will continue to collaborate with coastal First Nations to
-develop area-specific objectives specific to
-FSC fisheries as well as SOK fisheries.
-In addition, DFO will continue to engage with
-the herring industry, government, and non-government organizations
-to describe broader objectives related to conservation, economics, and access.
-
-
-<!-- #### Habitat or Ecosystem Reference Points {-}
-
-[If applicable (otherwise, do not include).
-A table may be used in lieu of bullets for this section.]  -->
+develop area-specific objectives FSC fisheries as well as SOK fisheries (where applicable).
+In addition, DFO will continue to engage with the herring industry and government 
+and non-government organizations to describe broader objectives related to 
+conservation, economics, and access.
 
 ### Stock Status {-}
 
-As this is a MSE, stock status reflects the OM status...
+SoG stock status is defined using the OM status. 
 <!-- short description only, no data-->
 
 ### Harvest Decision Rule {-}
