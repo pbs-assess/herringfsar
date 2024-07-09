@@ -8,6 +8,7 @@ rmd_files: ["index.Rmd",
             "english/06_other.Rmd",
             "english/07_uncertainty.Rmd",
             "english/08_participants.Rmd",
-            "english/09_sources.Rmd"
+            "english/09_sources.Rmd",
+            "english/10_appendixA.Rmd"
             ]
 delete_merged_file: true

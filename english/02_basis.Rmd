@@ -20,12 +20,14 @@ mortality (DDM), integrated surface and dive survey data in the index,
 commercial fishery timing, and a likelihood function with correlated 
 age-compositions.
 
-A weighted operating model ensemble is used for the management procedure 
-evaluation, whereby the ensemble represents a range of productivity 
+A weighted operating model is used for the management procedure 
+evaluation, whereby the weighted model represents a range of productivity 
 characterized by the stock recruitment steepness ($h$) and the lower 
 limit on natural mortality ($M_b$). This approach better represents the 
 uncertainty in stock productivity rather than using a single estimated
 value of $h$.
+
+Details of operating model development are described in Appendix A.
 
 Management procedures (MPs) were simulation tested using a 15-year projection 
 period (2024-2038); only MPs that meet the established conservation 

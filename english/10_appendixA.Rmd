@@ -1,0 +1,11 @@
+\clearpage
+ 
+
+`r if(knitr:::is_latex_output()) '\\Appendices'`
+ 
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
+ 
+# APPENDIX A {#app:a}
+
+this is the operating model description...
+
