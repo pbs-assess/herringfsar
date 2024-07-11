@@ -188,13 +188,14 @@ management procedure is often called a Management Strategy Evaluation (MSE).
 
 This document summarises closed loop simulations evaluating candidate
 management procedures for the Strait of Georgia (SOG) herring fishery. SOG herring
-is the first BC herring fishery to use the new herring operating model framework, 
+is the first BC herring fishery to use the new herringoperating model framework, 
 named the Spatially Integrated Statistical Catch-at-Age Herring Operating Model 
 (SISCAH-OM). Although there are several differences between SISCAH and the 
 previous herring assessment and operating models, the main novelty in SISCAH-OM
-is a depensatory density-dependent mortality (DDM) model, where natural mortality 
-is higher when biomass is lower. The SISCAH-OM, with the use of appropriate
-mortality hypothesis, was accepted as an operating model for all 5 major herring 
+is a depensatory density-dependent mortality (DDM) model, which creates a
+negative (downward sloping) link between herring natural mortality and biomass,
+forcing mortality higher when biomass is lower. The SISCAH-OM, including the 
+DDM hypothesis, was accepted as an operating model for all 5 major herring 
 stock assessment regions by Fisheries and Oceans, Canada (DFO) via a 
 regional peer review review process in 2023.
 
@@ -225,8 +226,7 @@ with a steepness of $h = 0.7$ (Figure \@ref(fig:LPfig)). The grids for each
 individual parameter are intersected at their central value, giving a total of 
 five OMs. We are unable to choose a grid of $h$ values via a likelihood profile, 
 as there is limited information in SOG data supporting a single 'most likely' 
-steepness value. Information on steepness is gathered when stock biomass is low
-which has not occurred in SOG's history.
+steepness value.
 
 OM weighting favours the central OM (called OM1, $M_b=0.562$ and $h = 0.7$)
 with a weight of 0.34. OM1's weight is the average of the weights of each axis in the
@@ -313,14 +313,15 @@ knitr::include_graphics(filepath)
 ## Management Procedures
 
 Management procedures are a combination of data, biomass estimation method (EM), 
-and a harvest control rule (HCR). 
+and a havest control rule (HCR). 
 
 All MPs tested here use the same data, namely the blended spawn index, commercial
 fishery catch, and commercial fishery catch-at-age data. The EM, which is fit to 
-those data, is a SISCAH model with a density dependent $M$ (DDM) hypothesis. 
-A DDM hypothesis is supported by figure <insert figure> which shows that and 
-biomass declines natural mortality increases.The EM provides annual estimates of 
-unfished biomass and a 1-year ahead 
+those data, is a SISCAH model with a density independent $M$ (DIM) hypothesis, 
+which uses a simple random walk to estimate time-varying $M$. The DIM hypothesis 
+is similar to the previous model used for herring assessments and setting TACs, 
+which used a spline instead of a simple random walk for estimating time-varying
+$M$. The EM provides annual estimates of unfished biomass and a 1-year ahead 
 forecast of spawning biomass.
 
 TACs are derived from EM estimates via the harvest control rule. For
@@ -404,7 +405,7 @@ apply the following:
       for stock assessment;
       ii)  Determine 1-year ahead forecast of spawning biomass depletion 
       level from a Density Independent $M$ SISCAH estimation model;
-      iii) Apply the HS 30-60 harvest control rule to generate a
+      iii) Apply the HS 30-60 harvest control rule wuth to generate a
       catch limit according to the maximum target harvest rate;
       iv)  Update the operating model population given the catch 
            limits for each fishery and new recruitment;

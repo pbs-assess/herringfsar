@@ -1,0 +1,11 @@
+## Info file for ms3R simulation
+## Written 1719260632
+# scenario
+SOG_wtd
+# mp
+Ugrid_0.16
+# path
+Outputs/SOG_finalGrid/sim_SOG_wtd_Ugrid_0.16
+# simLabel
+SOG_wtd_Ugrid_0.16
+## End File

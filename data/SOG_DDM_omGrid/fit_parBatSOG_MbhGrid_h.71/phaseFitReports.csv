@@ -1,0 +1,10 @@
+"","phase","objFun","maxGrad","nPar","convCode","convMsg","time","pdHess"
+"1","1",541.274416245167,0.00013027228301254,13,0,"relative convergence (4)",0.331,FALSE
+"2","2",-19.6328657104629,1.49664672469663e-05,16,0,"relative convergence (4)",0.238,FALSE
+"3","3",-43.3257125897931,0.000467022250445634,17,0,"relative convergence (4)",0.219,FALSE
+"4","4",-75.4273946497687,0.00120449057018147,20,0,"relative convergence (4)",0.258,FALSE
+"5","5",-306.240458158616,0.00247914989126964,92,0,"relative convergence (4)",0.327,FALSE
+"6","6",-473.117216267817,0.0032846495615985,162,0,"relative convergence (4)",1.307,FALSE
+"7","7",-615.316862168958,0.00321045146917605,165,0,"relative convergence (4)",1.567,FALSE
+"8","8",-613.451899308246,0.000453830785424826,164,0,"relative convergence (4)",1.769,FALSE
+"9","HMC",NA,NA,NA,NA,NA,1363.235,NA

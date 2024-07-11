@@ -9,3 +9,67 @@
 
 this is the operating model description...
 
+# Background
+
+Pacific Herring (*Clupea pallasii*) fisheries in British Columbia (BC), Canada, 
+have been managed via a management procedure approach since 2017. Management
+procedures are formal, repeatable rules for deriving harvest advice (usually
+total allowable catches; TACs) from fishery monitoring data, and are tested
+against quantitative fishery management objectives in closed loop simulations.
+Simulation results are often tested against multiple uncertainties by
+defining multiple simulation scenarios, representing alternative hypotheses
+about the state of nature. The process of designing, testing, and choosing a 
+management procedure is often called a Management Strategy Evaluation (MSE).
+
+This document summarises closed loop simulations evaluating candidate
+management procedures for the Strait of Georgia (SOG) herring fishery. SOG herring
+is the first BC herring fishery to use the new herring operating model framework, 
+named the Spatially Integrated Statistical Catch-at-Age Herring Operating Model 
+(SISCAH-OM). Although there are several differences between SISCAH and the 
+previous herring assessment and operating models, the main difference in SISCAH-OM
+is the ability to model depensatory density-dependent mortality (DDM), where 
+natural mortality 
+is higher when biomass is lower. The SISCAH-OM, with the use of appropriate
+mortality hypothesis, was accepted as an operating model for all 5 major herring 
+stock assessment regions by Fisheries and Oceans, Canada (DFO) via a 
+regional peer review review process in 2023.
+
+This document summarises simulation tests for a group of candidate SOG 
+management procedures. All candidate MPs are tested against a suite of five 
+SISCAH operating models, which incorporate uncertainty in future productivity 
+at both low and high stock sizes. We first summarise the simulation approach,
+and then present results averaged (with a weighting) over the five operating 
+models, with some brief discussion of the management implications.  
+
+# Simulation approach
+
+
+## Operating models
+
+We define five SOG Herring operating models that test against
+uncertainty in productivity at high and low stock sizes. Productivity
+at high stock sizes is heavily influenced by the $M_b$ parameter, which 
+represents the average mortality rate at very high biomass (generally above 
+unfished levels). At low stock size, productivity is more influenced by the 
+stock-recruit relationship's steepness parameter $h$, which is the ratio of 
+recruitment at 20\% of unfished to the unfished recruitment $R_0$.
+
+We tested three values of each parameter in a cross design (Table 
+\@ref(tab:parRefPtsTable)). Steepness $h$ values were taken across a uniform 
+grid of 0.65, 0.7, and 0.75, while $M_b$ was chosen via a Likelihood Profile approach 
+with a steepness of $h = 0.7$ (Figure \@ref(fig:LPfig)). The grids for each 
+individual parameter are intersected at their central value, giving a total of 
+five OMs. We are unable to choose a grid of $h$ values via a likelihood profile, 
+as there is limited information in SOG data supporting a single 'most likely' 
+steepness value. Information on steepness is gathered when stock biomass is low
+which has not occurred in SOG's history.
+
+OM weighting favours the central OM (called OM1, $M_b=0.562$ and $h = 0.7$)
+with a weight of 0.34. OM1's weight is the average of the weights of each axis in the
+cross desgn, with $h$ being uniform (i.e., 0.33) and the $M_b$ value's weight based 
+on the relative data likelihood function value (i.e, around 0.35). The remaining
+operating models are weighted equally across the remaining  with a weight of 
+0.165.
+
+For all operating models, we report leading OM parameters, current biomass and 
+stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
