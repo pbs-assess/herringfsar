@@ -73,3 +73,157 @@ operating models are weighted equally across the remaining  with a weight of
 
 For all operating models, we report leading OM parameters, current biomass and 
 stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
+
+```{r LPfig, echo = FALSE, fig.cap = LPfigCap }
+LPfigCap <- "Fishery monitoring data likelihood function profiles relative to a range of natural mortality asymptotic lower limit ($M_b$) parameter values. The red point shows the most likely value, while the two vertical dashed lines show two values with equal likelihood chosen to bound the central OM1. All SISCAH model fits here have a steepness value of $h = 0.7$"
+filepath <- "figure/LP_chooseMb.png"
+knitr::include_graphics(filepath)
+
+```
+
+## Management Procedures
+
+Management procedures are a combination of data, biomass estimation method (EM), 
+and a havest control rule (HCR). 
+
+All MPs tested here use the same data, namely the blended spawn index, commercial
+fishery catch, and commercial fishery catch-at-age data. The EM, which is fit to 
+those data, is a SISCAH model with a density independent $M$ (DIM) hypothesis, 
+which uses a simple random walk to estimate time-varying $M$. The DIM hypothesis 
+is similar to the previous model used for herring assessments and setting TACs, 
+which used a spline instead of a simple random walk for estimating time-varying
+$M$. The EM provides annual estimates of unfished biomass and a 1-year ahead 
+forecast of spawning biomass.
+
+TACs are derived from EM estimates via the harvest control rule. For
+SOG herring, we use the status quo HS 30-60 rule, a "hockey-stick" shaped 
+function with control points at 30\% and 60\% of unfished biomass. When spawning
+biomass is estimated to be below the lower control point, the rule sets harvest
+rates to zero; when biomass estimates are above the upper control point, the rule
+sets harvest rates to the maximum target harvest rate, called $maxTHR$. We show
+results for maximum target harvest rates of 6\% and 14\% (Figure \@ref(fig:hcrPlot)).
+
+
+
+```{r hcrPlot, echo = FALSE, fig.cap = HCRcap}
+HCRcap <- "Two harvest control rules tested for candidate SOG herring MPs, showing maximum target harvest rates $maxTHR$ of 6\\% and 14\\%."
+
+plotHCRex(maxSeq = c(0.06,0.14))
+```
+
+
+## Performance metrics
+
+MPs are evaluated against two quantitative management objectives, listed below.
+
+1. $P(B_t > 0.3 B_0) \geq 0.75$, or **avoid the limit reference point (LRP) with high 
+probability over three herring generations.**
+
+2. $P(B_t > USR) \geq 0.5$, or **target the upper stock reference (USR) with neutral
+probability**.
+
+Objective 1, also known as the conservation objective, must be passed by
+all herring management procedures. Objective 2 is a target objective related 
+to a recently described provisional $USR$.
+
+To help fishery managers understand trade-offs among biomass and yield, 
+additional quantitative performance metrics are estimated. These metrics 
+do not have a minimum or target value like objectives, but give greater 
+detail on biomass and yield outcomes of each MP over the
+15 year simulation.
+
+
+1. $P(B_t > B_{MSY})$: The probability that biomass is above $B_{MSY}$.
+
+2. $P(U_t > U_{MSY})$: The probability that the effective harvest rate
+is above $U_{MSY}$. 
+
+3. $P(C_t > 650 t)$: The probability of a viable fishery where catch is
+greater than 650 tonnes.
+
+4. $C_{5pc}$: Catch risk, measured as the fifth percentile of catch over all years and replicates.
+
+5. $\overline{C}$: Median (over replicates) of the average (over years) total
+landings.
+
+6. $AAV$: Average annual variation in catch, or the mean percentage difference
+in catch from year-to-year.
+
+7. $C_{2024}$: The MP's TAC in 2024.
+
+8. $\overline{B_{t}/B_0}$: Average biomass depletion from 2024 - 2038.
+
+9. ${B_{2038}/B_0}$: Median biomass depletion in 2038.
+
+10. $B_{2038}$: Median biomass in 2038.
+
+
+<!-- Add average depletion -->
+Performance metrics are estimated via closed loop feedback simulations
+with the following simulation algorithm: 
+
+1. For each Operating Model, initialize a pre-conditioned 
+simulation model for the period 1951 – 2023 based on a random
+draw from the operating model posterior distribution;
+
+2.  Project the operating model population and fishery 
+into the future one time-step at a time. At each step, 
+apply the following:
+      i)   Generate the catch and spawn survey data available 
+      for stock assessment;
+      ii)  Determine 1-year ahead forecast of spawning biomass depletion 
+      level from a Density Independent $M$ SISCAH estimation model;
+      iii) Apply the HS 30-60 harvest control rule wuth to generate a
+      catch limit according to the maximum target harvest rate;
+      iv)  Update the operating model population given the catch 
+           limits for each fishery and new recruitment;
+      v)   Repeat steps 2.i - 2.iv until the projection period ends (2038).
+
+3.  Repeat steps 1. and 2. 99 more times;
+
+4.  Calculate quantitative performance statistics above across all 
+    100 replicates.
+
+
+# MP performance and discussion
+
+A fishery that meets Objective 1 could target a 13\% harvest rate with an 
+average yield in the 10 - 11 kt range (Table \@ref(tab:statTable). If management
+procedures are also targeting the USR (Objective 2), then harvest rates need
+to drop to around 7\% (as predicted by the reference point estimates, Table 
+\@ref(tab:parRefPtsTable)), and average catches would be closer to the 6 - 7 kt 
+range. Any harvest rate above 13\%, including $U_{MSY}$ estimates for every
+OM, do not meet either fishery objective. As such, meeting both fishery objectives
+requires accepting that TACs will need to be lower in the future, in contrast
+to the average of around 20 kt up to 2019. 
+
+Harvest rates need to be much lower than $U_{MSY}$ to avoid the LRP with high 
+probability (75\% or more). This is because the LRP is quite high relative to 
+$B_{MSY}$ (Table \@ref(tab:parRefPtsTable), Figure \@ref(fig:simEnv)), 
+roughly around 70\% of $B_{MSY \vert OM1}$ for OM1. For comparison, the default
+limit reference point in Canadian fisheries policy is 40\% of $B_{MSY}$
+or some proxy, although this is largely applied to longer lived groundfish
+species with less variable recruitment and lower predation pressures.
+
+The EM based on the Density Independent $M$ model appears to overestimate 
+biomass in the 1-year ahead forecast. So called positive assessment errors are 
+reflected in the higher than neutral probability the effective harvest rates exceed
+the maximum target harvest rate (Table \@ref(tab:statTable), $P(U_t > U_{ref})$,
+Figure \@ref(fig:simEnv), bottom row). As such, MPs should aim for slightly 
+lower maximum harvest rates than the biomass target implies. For example,
+reference points imply a harvest rate of around 8\% (weighted over OMs) to
+achieve the USR target in the long term, but positive assessment errors mean
+that MPs should target closer to 7\%.
+
+The metrics for the probability of a viable fishery and the 5th percentile of 
+simulated TACs are closely related (Table \@ref(tab:statTable), $C_t > 650 t$
+and $C_{5pc}$). Each shows that increasing harvest rates generally means accepting 
+a higher proportion of years with low catch. Additionally, both metrics appear to 
+show an optimal range of 4\% - 6\% harvest rates where the risk of poor fishing 
+is lowest. The $C_{5pc}$ column is more informative, however, as it uses absolute 
+landings estimates that have a broader range than the more intangible probability 
+of viable fishing.
+
+
+
+
