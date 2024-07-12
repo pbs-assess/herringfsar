@@ -28,8 +28,8 @@ named the Spatially Integrated Statistical Catch-at-Age Herring Operating Model
 (SISCAH-OM). Although there are several differences between SISCAH and the 
 previous herring assessment and operating models, the main difference in SISCAH-OM
 is the ability to model depensatory density-dependent mortality (DDM), where 
-natural mortality 
-is higher when biomass is lower. The SISCAH-OM, with the use of appropriate
+natural mortality is higher when biomass is lower. 
+The SISCAH-OM, with the use of appropriate
 mortality hypothesis, was accepted as an operating model for all 5 major herring 
 stock assessment regions by Fisheries and Oceans, Canada (DFO) via a 
 regional peer review review process in 2023.
@@ -52,7 +52,17 @@ at high stock sizes is heavily influenced by the $M_b$ parameter, which
 represents the average mortality rate at very high biomass (generally above 
 unfished levels). At low stock size, productivity is more influenced by the 
 stock-recruit relationship's steepness parameter $h$, which is the ratio of 
-recruitment at 20\% of unfished to the unfished recruitment $R_0$.
+recruitment at 20\% of unfished to the unfished recruitment $R_0$. This $h$ 
+parameter is also better estimated when there has been low stock sizes, which 
+hasn't been the case for SOG. To capture some of the uncertainty around both
+$M_b$ and $h$ we considered different values for those parameters.
+Originally we used a established value of $h=0.70$ [TODO: add ref] 
+for our model and run a suite of $M_b$ values to 
+determine that $M_b=0.562$ produced the lowest negative-log-likelihood,with that 
+$h$value. 
+Then executed models with $h$ values of 0.65, 0.07, and 0.75, 
+while keeping $M_b=0.562$.
+To round it out we considered models where $h=0.70$ and $M_b$
 
 We tested three values of each parameter in a cross design (Table 
 \@ref(tab:parRefPtsTable)). Steepness $h$ values were taken across a uniform 
@@ -66,13 +76,76 @@ which has not occurred in SOG's history.
 
 OM weighting favours the central OM (called OM1, $M_b=0.562$ and $h = 0.7$)
 with a weight of 0.34. OM1's weight is the average of the weights of each axis in the
-cross desgn, with $h$ being uniform (i.e., 0.33) and the $M_b$ value's weight based 
+cross design, with $h$ being uniform (i.e., 0.33) and the $M_b$ value's weight based 
 on the relative data likelihood function value (i.e, around 0.35). The remaining
 operating models are weighted equally across the remaining  with a weight of 
 0.165.
 
 For all operating models, we report leading OM parameters, current biomass and 
 stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
+
+```{r parRefPtsTable, echo = FALSE, warnings = FALSE}
+#This produces HTML output TODO: FIX to table format for word?
+postParTable <- read.csv("data/omGrid_postPars.csv")
+refPtsTable <- read.csv("data/SOG_allScenRefPts.csv")
+
+postParTable$X <- NULL
+refPtsTable$X <- NULL
+
+allEstTable <- postParTable |> 
+                left_join(refPtsTable, by = "Scenario") 
+# reorder
+allEstTable <- allEstTable[c(3,2,4,1,5),] |>
+                dplyr::select(  h,
+                                Mb,
+                                B0, 
+                                R0, 
+                                M0,
+                                m1,
+                                Mbar,
+                                qs,
+                                BT,
+                                DT = DT.x,
+                                PBTGtLRP,
+                                Bmsy,
+                                Umsy,
+                                MSY,
+                                USR,
+                                Uusr,
+                                Yusr,
+                                Ucrash) |>
+                t()
+
+colnames(allEstTable) <- c("OM1","OM2","OM3","OM4","OM5")
+
+rownames(allEstTable) <- c( "$h$",
+                            "$M_b$",
+                            "$SB_0$",
+                            "$R_0$",
+                            "$M_0$",
+                            "$m_1$",
+                            "$\\overline{M}$",
+                            "$q_s$",
+                            "$SB_{2023}$",
+                            "$SB_{2023}/SB_0$",
+                            "$P(SB_{2023} > 0.3 SB_0)$",
+                            "$SB_{MSY}$",
+                            "$U_{MSY}$",
+                            "$MSY$",
+                            "$USR$",
+                            "$U_{USR}$",
+                            "$Y_{USR}$",
+                            "$U_{Crash}$")
+
+allEstTabCap <- "SISCAH-OM life-history and management parameter values for stock-recruit steepness ($h$), asymptotic lower limit on depensatory $M$ ($M_b$, /yr), unfished biomass ($SB_0$, kt), unfished recruitment ($R_0$, 1e6), unfished mortality ($M_0$, /yr), mortality depensation rate ($m_1$), time-averaged mortality ($\\overline{M}$, /yr), surface survey design catchability ($q_s$), spawning biomass in 2023 ($SB_{2023}/SB_0$), stock status ($P(SB_{2023} > 0.3 SB_0)$), spawning biomass at maximum sustainable yield ($SB_{MSY}$, kt), harvest rate targeting maximum sustainable yield ($U_{MSY}$), maximum sustainable yield ($MSY$), upper stock reference ($USR$, kt), harvest rate targeting the upper stock reference ($U_{USR}$), equilibrium yield at the upper stock reference ($Y_{USR}$), harvest rate associated with negative production and higher risk of extirpation ($U_{Crash}$). Uncertainty is shown as the 95\\% credible interval where estimates could be drawn from posterior samples (indicated by two parenthetical values), or half the interquartile range where estimates were drawn from 200 year simulations (one parenthetical value)."
+
+kable(  allEstTable, escape = FALSE, 
+        caption = allEstTabCap, booktabs = T,
+        align = rep("r",5)) %>%
+  kable_styling( latex_options = c("striped", "scale_down","hold_position"),
+                 bootstrap_options = c("striped", "hover") )
+
+```
 
 ```{r LPfig, echo = FALSE, fig.cap = LPfigCap }
 LPfigCap <- "Fishery monitoring data likelihood function profiles relative to a range of natural mortality asymptotic lower limit ($M_b$) parameter values. The red point shows the most likely value, while the two vertical dashed lines show two values with equal likelihood chosen to bound the central OM1. All SISCAH model fits here have a steepness value of $h = 0.7$"
@@ -159,6 +232,7 @@ in catch from year-to-year.
 
 
 <!-- Add average depletion -->
+
 Performance metrics are estimated via closed loop feedback simulations
 with the following simulation algorithm: 
 
@@ -223,6 +297,129 @@ show an optimal range of 4\% - 6\% harvest rates where the risk of poor fishing
 is lowest. The $C_{5pc}$ column is more informative, however, as it uses absolute 
 landings estimates that have a broader range than the more intangible probability 
 of viable fishing.
+
+
+
+
+```{r, statTable, echo = FALSE }
+#This produces HTML output TODO: FIX to table format for word?
+wtdPerfTable <- read.csv("data/wtdTable.csv")
+
+statTable <- wtdPerfTable |>
+              filter( mp %in% mps2 ) |>
+              mutate_if(is.numeric, round, 2) |>
+              dplyr::select(  mp,
+                              pBtGt.3B0,
+                              pBtGtBmsy,
+                              pBtGtUSR,
+                              pUtGtUmsy,
+                              pCtGt650t,
+                              C5pc,
+                              avgCatch_t,
+                              catchAAV,
+                              CtMP,
+                              aveDep, 
+                              DnT,
+                              BnT ) |>
+              mutate( avgCatch_t = round(avgCatch_t/1e3,2),
+                      pBtGt.3B0 = sapply(X = pBtGt.3B0, FUN = passObj, target = .75),
+                      pBtGtUSR  = sapply(X = pBtGtUSR, FUN = passObj, target = .5) )
+
+colnames(statTable) <- c( "MP",
+                          "$B_t \\geq 0.3 B_0$",
+                          "$B_t \\geq B_{MSY}$",
+                          "$B_t \\geq USR$",
+                          "$U_t \\geq U_{MSY}$", # Replace with Umsy
+                          "$C_t \\geq 650 t$",
+                          "$C_{5pc}$",
+                          "$\\overline{C}$",
+                          "$AAV$",
+                          "$C_{2024}$",
+                          "$\\overline{B_{t}/B_0}$", 
+                          "$B_{2038}/B_0$",
+                          "$B_{2038}$"
+                          )
+
+statTabCap <- "Performance statistics for the selected harvest rates. Objectives that are passed by an MP are indicated by a bullet. Conservation, Biomass, Overfishing, and Viable Fishery metrics are all in probability units. Catch at Risk 5\\%, Average Catch, 2024 Catch and Final Biomass are all in biomass units (kt), and Stock Status is biomass depletion relative to unfished (proportion)."
+
+# criteria <- c( " " = 1,
+#                "P > .75" = 1,
+#                "Obs < Acc" = 1,
+#                "P > .5" = 1,
+#                "min" = 1,
+#                "max" = 1,
+#                " " = nOtherCols)
+
+# typeNames <- c( " " = 1,
+                
+#                 "Catch metrics" = 5,
+
+
+objNames <- c(  " " = 1,
+                "Conservation" = 1,
+                "Biomass" = 2,
+                "Overfishing" = 1,
+                "Viable Fishery" = 1,
+                "Catch at Risk 5\\% " = 1,
+                "Average Catch" = 1,
+                "Catch Variability" = 1,
+                "2024 Catch" = 1,
+                "Stock Status" = 2,
+                "Final Biomass" = 1)
+
+
+
+# objNames <- c(" " = 1,
+#               "Objective 1" = 1,
+#               "Objective 2" = 1,
+#               "Objective 3" = 1,
+#               "Objective 4" = 1,
+#               "Objective 5" = 1,
+#               "Other Important Quantities" = nOtherCols )
+
+
+kable(  statTable, escape = FALSE, 
+        caption = statTabCap, booktabs = T,
+        align = c(rep("c",ncol(statTable)))) %>%
+  kable_styling( latex_options = c("striped", "scale_down","hold_position"),
+                 bootstrap_options = c("striped", "hover") ) |>
+  add_header_above( objNames, bold = T ) #|>
+  # add_header_above( typeNames, bold = T ) 
+
+```
+
+
+```{r, captions, include = FALSE, echo = FALSE}
+multiGridTulipCap <- "Simulation envelopes of spawning biomass depletion (top row), catch (middle row) 
+and effective harvest rate (bottom row). Each column shows a single MP, labeled in the
+top margin. Median values are shown by the thick black lines, the grey 
+shaded region shows the central 95% of each envelope, and three randomly selected
+individual replicate traces are shown as thin black lines."
+
+```
+
+```{r simEnv, echo = FALSE, fig.cap = multiGridTulipCap}
+plotGridTulipBtCtUt(mpBlobList,
+                    labels = mps2,
+                    yLimC = c(0,20),
+                    yLimHR = c(0,0.4))
+```
+# Exceptional Circumstances
+
+Fishery monitoring data collected since the adoption of the current SOG
+herring MP does is within expectations. In formal language, there is no
+indication of exceptional circumstances (Figure \@ref(fig:ECfig)),
+measured by catch and spawn index values within the expected range of
+previous closed loop simulations.
+
+
+```{r ECfig, echo = FALSE, fig.cap = ECfigCap }
+ECfigCap <- "A graphical test for exceptional circumstances, showing the central 95\\% of projected spawn index values (top) and catch values (bottom) using the 2019 SOG operating model, with realised data in the history (black points) and projection (red points) overlaid."
+filepath <- "figure/ExceptionalCircumstances.png"
+knitr::include_graphics(filepath)
+
+```
+
 
 
 

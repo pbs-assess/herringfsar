@@ -460,6 +460,7 @@ of viable fishing.
 
 
 ```{r, statTable, echo = FALSE }
+#This produces html output
 wtdPerfTable <- read.csv("data/wtdTable.csv")
 
 statTable <- wtdPerfTable |>

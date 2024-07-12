@@ -36,6 +36,7 @@ title: ""
 knit: (function(input, ...) {
        csasdown::render_sar()
       })
+always_allow_html: true
 ---
 
 ```{r libraries, echo = FALSE, message = FALSE}
