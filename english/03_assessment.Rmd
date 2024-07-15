@@ -95,9 +95,10 @@ in the absence of fishing (Table XX and Figure XX).
 
 ### Ecosystem and Climate Change Considerations {-}
 
-[Mandatory.
-Maximum 300 words.
-May be moved earlier in the Assessment section.]
+Density dependence, where increased mortality is associated with smaller biomass
+models ecosystem effects such as the increased
+percentage of natural mortality in the event of lower bio-masses due to a constant 
+predatory removal. 
 
 ### Harvest Decision Rule Outputs {-}
 
