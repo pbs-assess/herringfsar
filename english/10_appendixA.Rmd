@@ -62,7 +62,9 @@ determine that $M_b=0.562$ produced the lowest negative-log-likelihood,with that
 $h$value. 
 Then executed models with $h$ values of 0.65, 0.07, and 0.75, 
 while keeping $M_b=0.562$.
-To round it out we considered models where $h=0.70$ and $M_b$
+To round it out we considered models where $h=0.70$ and $M_b$ was 0.532 and 0.584
+which correspond to values with equal likelihood values on either side of 
+0.562 (Figure \@ref(fig:LPfig)). 
 
 We tested three values of each parameter in a cross design (Table 
 \@ref(tab:parRefPtsTable)). Steepness $h$ values were taken across a uniform 

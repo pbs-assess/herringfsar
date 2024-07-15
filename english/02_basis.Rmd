@@ -4,10 +4,10 @@
 
 <!-- [Mandatory] -->
 
-Pacific Herring in BC are managed as
+This report presents science advice for the Pacific Herring Strait of Georgia 
+(SoG) stock assessment region (SAR), which is one of the 
 `r number_to_word(length(major_regions_short))` major and
-`r number_to_word(length(minor_regions_short))` minor SARs (Figure XX). 
-This report present science advice for the Strait of Georgia (SoG) major SAR; 
+`r number_to_word(length(minor_regions_short))` minor SARs; 
 the other major and minor SARs are presented in REF(2024SR).
 
 SoG Pacific Herring are assessed using a spatially integrated statistical 
