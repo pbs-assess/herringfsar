@@ -56,32 +56,23 @@ recruitment at 20\% of unfished to the unfished recruitment $R_0$. This $h$
 parameter is better estimated when there has been low stock sizes, which 
 hasn't been the case for SOG. To capture some of the uncertainty around both
 $M_b$ and $h$ we considered different values for those parameters.
-Originally we used a established value of $h=0.70$ [TODO: add ref] 
+Centrally we use an established value of $h=0.70$ [TODO: add ref] 
 for our model and run a suite of $M_b$ values to 
 determine that $M_b=0.562$ produced the lowest negative-log-likelihood,with that 
 $h$value. 
-Then executed models with $h$ values of 0.65, 0.07, and 0.75, 
+We then executed models with $h$ values of 0.65, 0.07, and 0.75, 
 while keeping $M_b=0.562$.
 To round it out we considered models where $h=0.70$ and $M_b$ was 0.532 and 0.584
 which correspond to values with equal likelihood values on either side of 
 0.562 (Figure \@ref(fig:LPfig)). 
 
-We tested three values of each parameter in a cross design (Table 
-\@ref(tab:parRefPtsTable)). Steepness $h$ values were taken across a uniform 
-grid of 0.65, 0.7, and 0.75, while $M_b$ was chosen via a Likelihood Profile approach 
-with a steepness of $h = 0.7$ (Figure \@ref(fig:LPfig)). The grids for each 
-individual parameter are intersected at their central value, giving a total of 
-five OMs. We are unable to choose a grid of $h$ values via a likelihood profile, 
-as there is limited information in SOG data supporting a single 'most likely' 
-steepness value. Information on steepness is gathered when stock biomass is low
-which has not occurred in SOG's history.
-
-OM weighting favours the central OM (called OM1, $M_b=0.562$ and $h = 0.7$)
-with a weight of 0.34. OM1's weight is the average of the weights of each axis in the
-cross design, with $h$ being uniform (i.e., 0.33) and the $M_b$ value's weight based 
-on the relative data likelihood function value (i.e, around 0.35). The remaining
-operating models are weighted equally across the remaining  with a weight of 
-0.165.
+This creates a cross design (Table \@ref(tab:parRefPtsTable)) 
+with a central OM (called OM1, $M_b=0.562$ and $h = 0.7$) which we gave a weight 
+of 0.34. The remaining operating models are weighted equally across the remaining  
+with a weight of 0.165. This creates OM1's weight is the average of the weights 
+of each axis in the cross design, with $h$ being uniform (i.e., 0.33) and the 
+$M_b$ value's weight based on the relative data likelihood function value 
+(i.e, around 0.35).
 
 For all operating models, we report leading OM parameters, current biomass and 
 stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
@@ -159,7 +150,7 @@ knitr::include_graphics(filepath)
 ## Management Procedures
 
 Management procedures are a combination of data, biomass estimation method (EM), 
-and a havest control rule (HCR). 
+and a harvest control rule (HCR). 
 
 All MPs tested here use the same data, namely the blended spawn index, commercial
 fishery catch, and commercial fishery catch-at-age data. The EM, which is fit to 
