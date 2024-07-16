@@ -232,18 +232,21 @@ with the following simulation algorithm:
 simulation model for the period 1951 – 2023 based on a random
 draw from the operating model posterior distribution;
 
-2.  Project the operating model population and fishery 
-into the future one time-step at a time. At each step, 
-apply the following:
-      i)   Generate the catch and spawn survey data available 
-      for stock assessment;
-      ii)  Determine 1-year ahead forecast of spawning biomass depletion 
-      level from a Density Independent $M$ SISCAH estimation model;
-      iii) Apply the HS 30-60 harvest control rule wuth to generate a
-      catch limit according to the maximum target harvest rate;
-      iv)  Update the operating model population given the catch 
-           limits for each fishery and new recruitment;
-      v)   Repeat steps 2.i - 2.iv until the projection period ends (2038).
+2.  Project the SOG Herring DDM operating model into the future one time-step 
+at a time. At each time step t, apply the following:
+      i)   Update the time series of commercial catch, catch-at-age, and blended 
+      spawn survey data up to time-step t for the stock assessment component of the MP;
+      ii)  Using an assessment model (the Density Independent $M$ SISCAH model) 
+      to produce a 1-year ahead forecast of spawning biomass depletion;
+      iii)  Determine the target harvest rate associated with the forecast 
+      depletion using the HS 30-60 harvest control rule;
+      iv)  Calculate the total allowable catch from the 1-year ahead biomass 
+      forecast and the determined target harvest rate;
+      v)  Update the simulated DDM operating model population given the total 
+      allowable catch from the MP and incoming recruitment simulated off the the 
+      DDM operating model's stock-recruit curve with recruitment process errors;
+      vi)   Repeat steps 2.i - 2.v until the projection period ends (2038).
+
 
 3.  Repeat steps 1. and 2. 99 more times;
 
