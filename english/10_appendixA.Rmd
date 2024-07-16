@@ -7,38 +7,19 @@
  
 # APPENDIX A {#app:a}
 
-this is the operating model description...
-
-# Background
-
-Pacific Herring (*Clupea pallasii*) fisheries in British Columbia (BC), Canada, 
-have been managed via a management procedure approach since 2017. Management
-procedures are formal, repeatable rules for deriving harvest advice (usually
-total allowable catches; TACs) from fishery monitoring data, and are tested
-against quantitative fishery management objectives in closed loop simulations.
-Simulation results are often tested against multiple uncertainties by
-defining multiple simulation scenarios, representing alternative hypotheses
-about the state of nature. The process of designing, testing, and choosing a 
-management procedure is often called a Management Strategy Evaluation (MSE).
-
-This document summarises closed loop simulations evaluating candidate
+This appendix summarises closed loop simulations evaluating candidate
 management procedures for the Strait of Georgia (SOG) herring fishery. SOG herring
 is the first BC herring fishery to use the new herring operating model framework, 
 named the Spatially Integrated Statistical Catch-at-Age Herring Operating Model 
 (SISCAH-OM). Although there are several differences between SISCAH and the 
 previous herring assessment and operating models, the main difference in SISCAH-OM
-is the ability to model depensatory density-dependent mortality (DDM), where 
-natural mortality is higher when biomass is lower. 
-The SISCAH-OM, with the use of appropriate
-mortality hypothesis, was accepted as an operating model for all 5 major herring 
-stock assessment regions by Fisheries and Oceans, Canada (DFO) via a 
-regional peer review review process in 2023.
+is the ability to model density dependent mortality (DDM), where 
+natural mortality is higher when biomass is lower [@johnson2024].
 
-This document summarises simulation tests for a group of candidate SOG 
-management procedures. All candidate MPs are tested against a suite of five 
+All candidate MPs are tested against a suite of five 
 SISCAH operating models, which incorporate uncertainty in future productivity 
 at both low and high stock sizes. We first summarise the simulation approach,
-and then present results averaged (with a weighting) over the five operating 
+and then present results weighted over the five operating 
 models, with some brief discussion of the management implications.  
 
 # Simulation approach
@@ -48,29 +29,29 @@ models, with some brief discussion of the management implications.
 
 We define five SOG Herring operating models that test against
 uncertainty in productivity at high and low stock sizes. Productivity
-at high stock sizes is heavily influenced by the $M_b$ parameter, which 
+at high stock sizes is influenced by the $M_b$ parameter, which 
 represents the average mortality rate at very high biomass (generally above 
 unfished levels). At low stock size, productivity is more influenced by the 
 stock-recruit relationship's steepness parameter $h$, which is the ratio of 
-recruitment at 20\% of unfished to the unfished recruitment $R_0$. This $h$ 
-parameter is better estimated when there has been low stock sizes, which 
-hasn't been the case for SOG. To capture some of the uncertainty around both
-$M_b$ and $h$ we considered different values for those parameters.
-Centrally we use an established value of $h=0.70$ [TODO: add ref] 
-for our model and run a suite of $M_b$ values to 
-determine that $M_b=0.562$ produced the lowest negative-log-likelihood,with that 
-$h$value. 
-We then executed models with $h$ values of 0.65, 0.07, and 0.75, 
+recruitment at 20\% of unfished to the unfished recruitment $R_0$. Overall $h$ 
+is better estimated for stocks where the history includes recovery from very low stock 
+sizes. Since this isn't case for SOG, we capture some of the uncertainty around 
+$M_b$ and $h$ by considering operating models with different values for those parameters.
+First we used an established value of $h=0.70$ [@cleary2019] 
+and ran the operating model with a suite of $M_b$ values, examined the likelihood profiles
+and determined that $M_b=0.562$ produced the lowest negative-log-likelihood.
+We then ran operating models with $h$ values of 0.65 and 0.75, 
 while keeping $M_b=0.562$.
-To round it out we considered models where $h=0.70$ and $M_b$ was 0.532 and 0.584
+Finally to round it out we considered models where $h=0.70$ and $M_b$ was 0.532 and 0.584
 which correspond to values with equal likelihood values on either side of 
 0.562 (Figure \@ref(fig:LPfig)). 
 
 This creates a cross design (Table \@ref(tab:parRefPtsTable)) 
 with a central OM (called OM1, $M_b=0.562$ and $h = 0.7$) which we gave a weight 
-of 0.34. The remaining operating models are weighted equally across the remaining  
-with a weight of 0.165. This creates OM1's weight is the average of the weights 
-of each axis in the cross design, with $h$ being uniform (i.e., 0.33) and the 
+of 0.34. The remaining operating models are weighted equally   
+with a weight of 0.165. This creates the situation where OM1's weight 
+is the average of the weights of each axis in the cross design, 
+with $h$ being uniform (i.e., 0.33) and the 
 $M_b$ value's weight based on the relative data likelihood function value 
 (i.e, around 0.35).
 
@@ -200,27 +181,27 @@ detail on biomass and yield outcomes of each MP over the
 
 1. $P(B_t > B_{MSY})$: The probability that biomass is above $B_{MSY}$.
 
-2. $P(U_t > U_{MSY})$: The probability that the effective harvest rate
+1. $P(U_t > U_{MSY})$: The probability that the effective harvest rate
 is above $U_{MSY}$. 
 
-3. $P(C_t > 650 t)$: The probability of a viable fishery where catch is
+1. $P(C_t > 650 t)$: The probability of a viable fishery where catch is
 greater than 650 tonnes.
 
-4. $C_{5pc}$: Catch risk, measured as the fifth percentile of catch over all years and replicates.
+1. $C_{5pc}$: Catch risk, measured as the fifth percentile of catch over all years and replicates.
 
-5. $\overline{C}$: Median (over replicates) of the average (over years) total
+1. $\overline{C}$: Median (over replicates) of the average (over years) total
 landings.
 
-6. $AAV$: Average annual variation in catch, or the mean percentage difference
+1. $AAV$: Average annual variation in catch, or the mean percentage difference
 in catch from year-to-year.
 
-7. $C_{2024}$: The MP's TAC in 2024.
+1. $C_{2024}$: The MP's TAC in 2024.
 
-8. $\overline{B_{t}/B_0}$: Average biomass depletion from 2024 - 2038.
+1. $\overline{B_{t}/B_0}$: Average biomass depletion from 2024 - 2038.
 
-9. ${B_{2038}/B_0}$: Median biomass depletion in 2038.
+1. ${B_{2038}/B_0}$: Median biomass depletion in 2038.
 
-10. $B_{2038}$: Median biomass in 2038.
+1. $B_{2038}$: Median biomass in 2038.
 
 
 <!-- Add average depletion -->
@@ -232,29 +213,30 @@ with the following simulation algorithm:
 simulation model for the period 1951 – 2023 based on a random
 draw from the operating model posterior distribution;
 
-2.  Project the SOG Herring DDM operating model into the future one time-step 
-at a time. At each time step t, apply the following:
+2.  Project the SOG Herring DDM operating model into the future one year 
+at a time. For each year in the projection, apply the following:
       i)   Update the time series of commercial catch, catch-at-age, and blended 
       spawn survey data up to time-step t for the stock assessment component of the MP;
-      ii)  Using an assessment model (the Density Independent $M$ SISCAH model) 
+      ii)  Use an assessment model (the Density Independent $M$ SISCAH model) 
       to produce a 1-year ahead forecast of spawning biomass depletion;
       iii)  Determine the target harvest rate associated with the forecast 
       depletion using the HS 30-60 harvest control rule;
-      iv)  Calculate the total allowable catch from the 1-year ahead biomass 
-      forecast and the determined target harvest rate;
-      v)  Update the simulated DDM operating model population given the total 
-      allowable catch from the MP and incoming recruitment simulated off the the 
-      DDM operating model's stock-recruit curve with recruitment process errors;
+      iv)  Using this target harvest rate calculate the total allowable catch from the 1-year ahead biomass 
+      forecast;
+      v)  Update the simulated DDM operating model herring population in the with 
+      incoming recruitment from the DDM stock-recruit curve with recruitment process errors; 
+      density dependant natural mortality; and fishing mortality corresponding 
+      to the total allowable catch in the previous step. 
       vi)   Repeat steps 2.i - 2.v until the projection period ends (2038).
 
 
 3.  Repeat steps 1. and 2. 99 more times;
 
-4.  Calculate quantitative performance statistics above across all 
+4.  Calculate quantitative performance statistics across all 
     100 replicates.
 
 
-# MP performance and discussion
+# Discussion
 
 A fishery that meets Objective 1 could target a 13\% harvest rate with an 
 average yield in the 10 - 11 kt range (Table \@ref(tab:statTable). If management
