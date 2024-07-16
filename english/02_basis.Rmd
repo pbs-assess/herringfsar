@@ -130,8 +130,8 @@ USR of $\overline{\SB}$, implemented as a performance metric within
 <!-- A table may be used in lieu of bullets for this section. -->
 <!-- Refer to the Guidance Document for further instructions.] -->
 
-TODO: Insert TABLE here that will include:
--
+<!--TODO: Insert TABLE here that will include:-->
+Add table here.
 - Limit Reference Point (LRP)
 - Upper Stock Reference (USR)
 - Removal Reference (RR): not yet determined
@@ -139,7 +139,7 @@ TODO: Insert TABLE here that will include:
 - Habitat or Ecosystem Reference Points: included indirectly via DDM (state how)
 
 
-#### Fishery management objectives {-}
+### Fishery management objectives {-}
 
 <!-- [If applicable (otherwise, do not include). -->
 <!-- A table may be used in lieu of bullets for this section.]  -->
@@ -175,14 +175,14 @@ conservation, economics, and access.
 
 ### Stock Status {-}
 
-SoG stock status is defined using the OM status. 
+SoG stock status is defined from the operating model (Appendix A). 
 <!-- short description only, no data-->
 
 ### Harvest Decision Rule {-}
 
 [Optional (otherwise, do not include).
 Maximum length 100 words.]
-
+This is defined using the MSE MP evaluations ...
 
 ### Data {-}
 
@@ -194,11 +194,12 @@ Maximum length 100 words.]
 
 There are three types of input data used for
 the Pacific Herring stock assessment:
-catch data, biological data, and abundance data.
+catch data, biological data, and a fishery independent survey index.
 <!-- These data are described in the following sections, and -->
 <!-- summarized in Table XX. -->
-Relative to the previous assessment,
-the only change to input data was to extend all the time series
-to include the `r this_season` herring season (July 1 to June 30).
+
+JC: Finish this. 
+
+
 Note that we refer to 'year' instead of 'herring season' in this report;
 therefore `r assess_yr` refers to the `r this_season` Pacific Herring season.
