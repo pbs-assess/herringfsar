@@ -49,11 +49,7 @@ which correspond to values with equal likelihood values on either side of
 This creates a cross design (Table \@ref(tab:parRefPtsTable)) 
 with a central OM (called OM1, $M_b=0.562$ and $h = 0.7$) which we gave a weight 
 of 0.34. The remaining operating models are weighted equally   
-with a weight of 0.165. This creates the situation where OM1's weight 
-is the average of the weights of each axis in the cross design, 
-with $h$ being uniform (i.e., 0.33) and the 
-$M_b$ value's weight based on the relative data likelihood function value 
-(i.e, around 0.35).
+with a weight of 0.165.
 
 For all operating models, we report leading OM parameters, current biomass and 
 stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
@@ -134,7 +130,8 @@ Management procedures are a combination of data, biomass estimation method (EM),
 and a harvest control rule (HCR). 
 
 All MPs tested here use the same data. The EM, which is fit to 
-those data, is a SISCAH model with a density independent $M$ (DIM) hypothesis, 
+those data, is a SISCAH model with a density independent $M$ (DIM) hypothesis 
+[@ref], 
 which uses a simple random walk to estimate time-varying $M$. The DIM hypothesis 
 is similar to the previous model used for herring assessments and setting TACs, 
 which used a spline instead of a simple random walk for estimating time-varying
