@@ -78,63 +78,80 @@ For all operating models, we report leading OM parameters, current biomass and
 stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
 
 ```{r parRefPtsTable, echo = FALSE, warnings = FALSE}
-#This produces HTML output TODO: FIX to table format for word?
-postParTable <- read.csv("data/omGrid_postPars.csv")
-refPtsTable <- read.csv("data/SOG_allScenRefPts.csv")
 
-postParTable$X <- NULL
+postParTable <- read.csv("data/omGrid_postPars.csv")
+ensParTable <- read.csv("data/ensOM_meanPars.csv") |>
+                mutate_if(is.numeric,round,2) |>
+                mutate( PBTGtLRP = 0.99 )
+
+parTable <- rbind(postParTable,ensParTable)
+parTable$X <- NULL
+
+scenRefPtsTable <- read.csv("data/SOG_allScenRefPts.csv")
+ensRefPtsTable <- read.csv("data/SOG_ensRefPts.csv") |>
+                  mutate_if(is.numeric, round, 2)
+
+refPtsTable <- rbind(scenRefPtsTable,ensRefPtsTable)
 refPtsTable$X <- NULL
 
-allEstTable <- postParTable |> 
-                left_join(refPtsTable, by = "Scenario") 
-# reorder
-allEstTable <- allEstTable[c(3,2,4,1,5),] |>
+
+
+allEstTable <- parTable |> 
+                left_join(refPtsTable, by = "Scenario") |>
                 dplyr::select(  h,
                                 Mb,
-                                B0, 
-                                R0, 
                                 M0,
                                 m1,
                                 Mbar,
                                 qs,
+                                qd,
+                                qb,
+                                R0, 
+                                B0,                                 
                                 BT,
                                 DT = DT.x,
                                 PBTGtLRP,
                                 Bmsy,
                                 Umsy,
                                 MSY,
-                                USR,
                                 Uusr,
+                                USR,
                                 Yusr,
                                 Ucrash) |>
                 t()
 
-colnames(allEstTable) <- c("OM1","OM2","OM3","OM4","OM5")
+colnames(allEstTable) <- c("OM 1","OM 2","OM 3","OM 4","OM 5","Ensemble")
+
 
 rownames(allEstTable) <- c( "$h$",
                             "$M_b$",
-                            "$SB_0$",
-                            "$R_0$",
                             "$M_0$",
                             "$m_1$",
                             "$\\overline{M}$",
                             "$q_s$",
-                            "$SB_{2023}$",
-                            "$SB_{2023}/SB_0$",
-                            "$P(SB_{2023} > 0.3 SB_0)$",
-                            "$SB_{MSY}$",
+                            "$q_d$",
+                            "$q_{blend}$",
+                            "$R_0$",
+                            "$B_0$",
+                            "$B_{2023}$",
+                            "$B_{2023}/B_0$",
+                            "$P(B_{2023} > 0.3 B_0)$",
+                            "$B_{MSY}$",
                             "$U_{MSY}$",
                             "$MSY$",
-                            "$USR$",
                             "$U_{USR}$",
+                            "$USR$",
                             "$Y_{USR}$",
                             "$U_{Crash}$")
 
+
 allEstTabCap <- "SISCAH-OM life-history and management parameter values for stock-recruit steepness ($h$), asymptotic lower limit on depensatory $M$ ($M_b$, /yr), unfished biomass ($SB_0$, kt), unfished recruitment ($R_0$, 1e6), unfished mortality ($M_0$, /yr), mortality depensation rate ($m_1$), time-averaged mortality ($\\overline{M}$, /yr), surface survey design catchability ($q_s$), spawning biomass in 2023 ($SB_{2023}/SB_0$), stock status ($P(SB_{2023} > 0.3 SB_0)$), spawning biomass at maximum sustainable yield ($SB_{MSY}$, kt), harvest rate targeting maximum sustainable yield ($U_{MSY}$), maximum sustainable yield ($MSY$), upper stock reference ($USR$, kt), harvest rate targeting the upper stock reference ($U_{USR}$), equilibrium yield at the upper stock reference ($Y_{USR}$), harvest rate associated with negative production and higher risk of extirpation ($U_{Crash}$). Uncertainty is shown as the 95\\% credible interval where estimates could be drawn from posterior samples (indicated by two parenthetical values), or half the interquartile range where estimates were drawn from 200 year simulations (one parenthetical value)."
 
-kable(  allEstTable, escape = FALSE, 
-        caption = allEstTabCap, booktabs = T,
-        align = rep("r",5)) %>%
+kable( allEstTable, escape = FALSE, 
+                      caption = allEstTabCap, booktabs = T,
+                      align = rep("r",5),
+                      format = kable_format,
+                      linesep = "\\addlinespace")  %>%
   kable_styling( latex_options = c("striped", "scale_down","hold_position"),
                  bootstrap_options = c("striped", "hover") )
 
@@ -142,7 +159,7 @@ kable(  allEstTable, escape = FALSE,
 
 ```{r LPfig, echo = FALSE, fig.cap = LPfigCap }
 LPfigCap <- "Fishery monitoring data likelihood function profiles relative to a range of natural mortality asymptotic lower limit ($M_b$) parameter values. The red point shows the most likely value, while the two vertical dashed lines show two values with equal likelihood chosen to bound the central OM1. All SISCAH model fits here have a steepness value of $h = 0.7$"
-filepath <- "figure/LP_chooseMb.png"
+filepath <- "data/LP_chooseMb.png"
 knitr::include_graphics(filepath)
 
 ```
@@ -304,6 +321,7 @@ statTable <- wtdPerfTable |>
               dplyr::select(  mp,
                               pBtGt.3B0,
                               pBtGtBmsy,
+                              pBtGt.6B0,
                               pBtGtUSR,
                               pUtGtUmsy,
                               pCtGt650t,
@@ -321,10 +339,9 @@ statTable <- wtdPerfTable |>
 colnames(statTable) <- c( "MP",
                           "$B_t \\geq 0.3 B_0$",
                           "$B_t \\geq B_{MSY}$",
+                          "$B_t \\geq 0.6 B_0$",
                           "$B_t \\geq USR$",
                           "$U_t \\geq U_{MSY}$", # Replace with Umsy
-                          "$C_t \\geq 650 t$",
-                          "$C_{5pc}$",
                           "$\\overline{C}$",
                           "$AAV$",
                           "$C_{2024}$",
@@ -335,49 +352,26 @@ colnames(statTable) <- c( "MP",
 
 statTabCap <- "Performance statistics for the selected harvest rates. Objectives that are passed by an MP are indicated by a bullet. Conservation, Biomass, Overfishing, and Viable Fishery metrics are all in probability units. Catch at Risk 5\\%, Average Catch, 2024 Catch and Final Biomass are all in biomass units (kt), and Stock Status is biomass depletion relative to unfished (proportion)."
 
-# criteria <- c( " " = 1,
-#                "P > .75" = 1,
-#                "Obs < Acc" = 1,
-#                "P > .5" = 1,
-#                "min" = 1,
-#                "max" = 1,
-#                " " = nOtherCols)
-
-# typeNames <- c( " " = 1,
-                
-#                 "Catch metrics" = 5,
-
 
 objNames <- c(  " " = 1,
                 "Conservation" = 1,
                 "Biomass" = 2,
-                "Overfishing" = 1,
-                "Viable Fishery" = 1,
-                "Catch at Risk 5\\% " = 1,
+                "Max Removal Reference" = 1,
                 "Average Catch" = 1,
                 "Catch Variability" = 1,
-                "2024 Catch" = 1,
+                "Estimated 2024 Catch" = 1,
                 "Stock Status" = 2,
                 "Final Biomass" = 1)
 
 
-
-# objNames <- c(" " = 1,
-#               "Objective 1" = 1,
-#               "Objective 2" = 1,
-#               "Objective 3" = 1,
-#               "Objective 4" = 1,
-#               "Objective 5" = 1,
-#               "Other Important Quantities" = nOtherCols )
-
-
-kable(  statTable, escape = FALSE, 
-        caption = statTabCap, booktabs = T,
-        align = c(rep("c",ncol(statTable)))) %>%
+kable( statTable, escape = FALSE, 
+                      caption = statTabCap, booktabs = T,
+                      align = c(rep("c",ncol(statTable))),
+                      format = kable_format,
+                      linesep = "\\addlinespace")  %>%
   kable_styling( latex_options = c("striped", "scale_down","hold_position"),
                  bootstrap_options = c("striped", "hover") ) |>
-  add_header_above( objNames, bold = T ) #|>
-  # add_header_above( typeNames, bold = T ) 
+  add_header_above( objNames, bold = T ) 
 
 ```
 
@@ -408,7 +402,7 @@ previous closed loop simulations.
 
 ```{r ECfig, echo = FALSE, fig.cap = ECfigCap }
 ECfigCap <- "A graphical test for exceptional circumstances, showing the central 95\\% of projected spawn index values (top) and catch values (bottom) using the 2019 SOG operating model, with realised data in the history (black points) and projection (red points) overlaid."
-filepath <- "figure/ExceptionalCircumstances.png"
+filepath <- "data/ExceptionalCircumstances.png"
 knitr::include_graphics(filepath)
 
 ```

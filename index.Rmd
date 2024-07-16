@@ -150,14 +150,14 @@ passObj <- function( X, target = .95, comp = "gt" )
     if( comp == "gt")
     {
       if( round(X,2) >= tar )
-        out[l] <- paste("$\\bullet$")
+        out[l] <- paste("$\\checkmark$")
       else out[l] <- paste(X,sep = "")
     }
 
     if( comp == "lt")
     {
       if( round(X,2) <= tar )
-        out[l] <- paste("$\\bullet$")
+        out[l] <- paste("$\\checkmark$")
       else out[l] <- paste("$",X,">",target,"$",sep = "")
     }    
 
@@ -169,6 +169,18 @@ passObj <- function( X, target = .95, comp = "gt" )
 
 ```{r setup, echo = FALSE}
 # Set knitr options
+if (is_latex_output()) {
+  knitr_figs_dir <- "knitr-figs-pdf/"
+  knitr_cache_dir <- "knitr-cache-pdf/"
+  fig_out_type <- "png"
+  kable_format <- "latex"
+} else {
+  knitr_figs_dir <- "knitr-figs-docx/"
+  knitr_cache_dir <- "knitr-cache-docx/"
+  fig_out_type <- "png"
+  kable_format <- "pandoc"
+}
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
