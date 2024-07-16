@@ -152,8 +152,7 @@ knitr::include_graphics(filepath)
 Management procedures are a combination of data, biomass estimation method (EM), 
 and a harvest control rule (HCR). 
 
-All MPs tested here use the same data, namely the blended spawn index, commercial
-fishery catch, and commercial fishery catch-at-age data. The EM, which is fit to 
+All MPs tested here use the same data. The EM, which is fit to 
 those data, is a SISCAH model with a density independent $M$ (DIM) hypothesis, 
 which uses a simple random walk to estimate time-varying $M$. The DIM hypothesis 
 is similar to the previous model used for herring assessments and setting TACs, 
@@ -162,7 +161,7 @@ $M$. The EM provides annual estimates of unfished biomass and a 1-year ahead
 forecast of spawning biomass.
 
 TACs are derived from EM estimates via the harvest control rule. For
-SOG herring, we use the status quo HS 30-60 rule, a "hockey-stick" shaped 
+SOG herring, we use a "hockey-stick" shaped 
 function with control points at 30\% and 60\% of unfished biomass. When spawning
 biomass is estimated to be below the lower control point, the rule sets harvest
 rates to zero; when biomass estimates are above the upper control point, the rule
