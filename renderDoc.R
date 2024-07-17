@@ -4,8 +4,14 @@
 
 library(bookdown)
 
-# Render html
-bookdown::render_book( 	input = "SOG_MPevalReport.Rmd",
+
+bookdown::render_book(  input = "index.rmd",
                         clean = TRUE,
+                        config_file = "_bookdown.yml",
+                        output_format = "csasdown::fsar_word" )
+
+bookdown::render_book(  input = "index.rmd",
+                        clean = TRUE,
+                        config_file = "_bookdown.yml",
                         output_format = "bookdown::html_document2" )
 
