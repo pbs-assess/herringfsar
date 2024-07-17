@@ -146,14 +146,14 @@ knitr::include_graphics(filepath)
 Management procedures are a combination of data, biomass estimation method (EM), 
 and a harvest control rule (HCR). 
 
-All MPs tested here use the same data. The EM, which is fit to 
-those data, is a SISCAH model with a density independent $M$ (DIM) hypothesis 
-[@ref], 
-which uses a simple random walk to estimate time-varying $M$. The DIM hypothesis 
-is similar to the previous model used for herring assessments and setting TACs, 
-which used a spline instead of a simple random walk for estimating time-varying
-$M$. The EM provides annual estimates of unfished biomass and a 1-year ahead 
-forecast of spawning biomass.
+All MPs tested here use the same data. The EM that is fit to those data is a 
+SISCAH model with a density independent $M$ (DIM) hypothesis 
+[@dfo2023application], which uses a simple random walk to estimate 
+time-varying $M$. The DIM hypothesis is similar to the previous model used for 
+herring assessments and setting TACs, except that the previous model used
+a spline with 16 nodes instead of a simple random walk to estimate 
+time-varying $M$. The EM provides annual estimates of unfished biomass and 
+a 1-year ahead forecast of spawning biomass.
 
 TACs are derived from EM estimates via the harvest control rule. For
 SOG herring, we use a "hockey-stick" shaped 
@@ -305,8 +305,6 @@ statTable <- wtdPerfTable |>
                               pBtGt.6B0,
                               pBtGtUSR,
                               pUtGtUmsy,
-                              pCtGt650t,
-                              C5pc,
                               avgCatch_t,
                               catchAAV,
                               CtMP,
@@ -331,7 +329,7 @@ colnames(statTable) <- c( "MP",
                           "$B_{2038}$"
                           )
 
-statTabCap <- "Performance statistics for the selected harvest rates. Objectives that are passed by an MP are indicated by a bullet. Conservation, Biomass, Overfishing, and Viable Fishery metrics are all in probability units. Catch at Risk 5\\%, Average Catch, 2024 Catch and Final Biomass are all in biomass units (kt), and Stock Status is biomass depletion relative to unfished (proportion)."
+statTabCap <- "Performance statistics for the selected harvest rates. Objectives that are passed by an MP are indicated by a bullet. Conservation, Biomass, and Maximum Removal Reference Rate metrics are all in probability units. Average Catch, 2024 Catch and Final Biomass are all in biomass units (kt), and Stock Status is biomass depletion relative to unfished (proportion)."
 
 
 objNames <- c(  " " = 1,
@@ -345,11 +343,11 @@ objNames <- c(  " " = 1,
                 "Final Biomass" = 1)
 
 
-kable( statTable, escape = FALSE, 
-                      caption = statTabCap, booktabs = T,
-                      align = c(rep("c",ncol(statTable))),
-                      format = kable_format,
-                      linesep = "\\addlinespace")  %>%
+kable(  statTable, escape = FALSE, 
+        caption = statTabCap, booktabs = T,
+        align = c(rep("c",ncol(statTable))),
+        format = kable_format,
+        linesep = "\\addlinespace")  %>%
   kable_styling( latex_options = c("striped", "scale_down","hold_position"),
                  bootstrap_options = c("striped", "hover") ) |>
   add_header_above( objNames, bold = T ) 
