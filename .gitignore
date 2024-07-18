@@ -25,6 +25,9 @@ HerringFSAR.pdf
 HerringFSAR.knit.md
 HerringFSAR.utf8.md
 
+fsar.html
+fsar.tex
+
 # General file types
 *.zip
 *.docx
