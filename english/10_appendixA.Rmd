@@ -251,13 +251,14 @@ at a time. For each year in the projection, apply the following:
 4.  Calculate quantitative performance statistics across all 
     100 replicates.
 
-## Management between Management Strategy Evlauation years. 
+# Management between management strategy evalauation years. 
 
 Once a harvest control rule is chosen through the management strategy evaluation 
 process that harvest control rule stays in place until the next round of MSE
 occurs. For Pacific herring in B.C. that is 3 years or more. 
-In the intervening years an estimate of biomass is obtained. In our case it is 
+In the intervening years an estimate of biomass is obtained via
 the less computationally instensive DIM SISCAH model. 
+
 
 # Discussion
 
