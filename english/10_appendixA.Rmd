@@ -44,7 +44,7 @@ We then ran operating models with $h$ values of 0.65 and 0.75,
 while keeping $M_b=0.562$.
 Finally to round it out we considered models where $h=0.70$ and $M_b$ was 0.532 and 0.584
 which correspond to values with equal likelihood values on either side of 
-0.562 (Figure \@ref(fig:LPfig)). 
+0.562 (Figure \@ref(fig:LPfig)).
 
 This creates a cross design (Table \@ref(tab:parRefPtsTable)) 
 with a central OM (called OM1, $M_b=0.562$ and $h = 0.7$) which we gave a weight 
@@ -122,7 +122,7 @@ rownames(allEstTable) <- c( "$h$",
                             "$U_{Crash}$")
 
 
-allEstTabCap <- "SISCAH-OM life-history and management parameter values for stock-recruit steepness ($h$), asymptotic lower limit on depensatory $M$ ($M_b$, /yr), unfished biomass ($SB_0$, kt), unfished recruitment ($R_0$, 1e6), unfished mortality ($M_0$, /yr), mortality depensation rate ($m_1$), time-averaged mortality ($\\overline{M}$, /yr), surface survey design catchability ($q_s$), spawning biomass in 2023 ($SB_{2023}/SB_0$), stock status ($P(SB_{2023} > 0.3 SB_0)$), spawning biomass at maximum sustainable yield ($SB_{MSY}$, kt), harvest rate targeting maximum sustainable yield ($U_{MSY}$), maximum sustainable yield ($MSY$), upper stock reference ($USR$, kt), harvest rate targeting the upper stock reference ($U_{USR}$), equilibrium yield at the upper stock reference ($Y_{USR}$), harvest rate associated with negative production and higher risk of extirpation ($U_{Crash}$). Uncertainty is shown as the 95\\% credible interval where estimates could be drawn from posterior samples (indicated by two parenthetical values), or half the interquartile range where estimates were drawn from 200 year simulations (one parenthetical value)."
+allEstTabCap <- "SISCAH-OM life-history and management parameter values from the 5 operating models (OMs 1 - 5) for stock-recruit steepness ($h$), asymptotic lower limit on depensatory $M$ ($M_b$, /yr), unfished biomass ($SB_0$, kt), unfished recruitment ($R_0$, 1e6), unfished mortality ($M_0$, /yr), mortality depensation rate ($m_1$), time-averaged mortality ($\\overline{M}$, /yr), surface survey design catchability ($q_s$), spawning biomass in 2023 ($SB_{2023}/SB_0$), stock status ($P(SB_{2023} > 0.3 SB_0)$), spawning biomass at maximum sustainable yield ($SB_{MSY}$, kt), harvest rate targeting maximum sustainable yield ($U_{MSY}$), maximum sustainable yield ($MSY$), upper stock reference ($USR$, kt), harvest rate targeting the upper stock reference ($U_{USR}$), equilibrium yield at the upper stock reference ($Y_{USR}$), harvest rate associated with negative production and higher risk of extirpation ($U_{Crash}$). Uncertainty is shown as the 95\\% credible interval where estimates could be drawn from posterior samples (indicated by two parenthetical values), or half the interquartile range where estimates were drawn from 200 year simulations (one parenthetical value)."
 
 kable( allEstTable, escape = FALSE, 
                       caption = allEstTabCap, booktabs = T,
@@ -147,7 +147,7 @@ Management procedures are a combination of data, biomass estimation method (EM),
 and a harvest control rule (HCR). 
 
 All MPs tested here use the same data. The EM that is fit to those data is a 
-SISCAH model with a density independent $M$ (DIM) hypothesis 
+statistical catch-at-age model with a density independent $M$ (DIM) hypothesis 
 [@dfo2023application], which uses a simple random walk to estimate 
 time-varying $M$. The DIM hypothesis is similar to the previous model used for 
 herring assessments and setting TACs, except that the previous model used
@@ -302,12 +302,14 @@ statTable <- wtdPerfTable |>
               dplyr::select(  mp,
                               pBtGt.3B0,
                               pBtGtBmsy,
+                              pBtGt.4B0,
+                              pBtGt.5B0,
                               pBtGt.6B0,
                               pBtGtUSR,
+                              pBtGthistAve,
                               pUtGtUmsy,
                               avgCatch_t,
                               catchAAV,
-                              CtMP,
                               aveDep, 
                               DnT,
                               BnT ) |>
@@ -318,12 +320,14 @@ statTable <- wtdPerfTable |>
 colnames(statTable) <- c( "MP",
                           "$B_t \\geq 0.3 B_0$",
                           "$B_t \\geq B_{MSY}$",
+                          "$B_t \\geq 0.4 B_0$",
+                          "$B_t \\geq 0.5 B_0$",
                           "$B_t \\geq 0.6 B_0$",
                           "$B_t \\geq USR$",
+                          "$B_t \\geq \\overline{B}_{1950:2023}$",
                           "$U_t \\geq U_{MSY}$", # Replace with Umsy
                           "$\\overline{C}$",
                           "$AAV$",
-                          "$C_{2024}$",
                           "$\\overline{B_{t}/B_0}$", 
                           "$B_{2038}/B_0$",
                           "$B_{2038}$"
