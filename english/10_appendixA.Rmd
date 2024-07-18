@@ -49,9 +49,11 @@ which correspond to values with equal likelihood values on either side of
 This creates a cross design (Table \@ref(tab:parRefPtsTable)) 
 with a central OM (called OM1, $M_b=0.562$ and $h = 0.7$) which we gave a weight 
 of 0.34. The remaining operating models are weighted equally   
-with a weight of 0.165.
+with a weight of 0.165. These weights are used to calculated a weighted average 
+for the MP metrics. 
 
-For all operating models, we report leading OM parameters, current biomass and 
+For all operating models, we report leading OM parameters, 
+current biomass and 
 stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
 
 ```{r parRefPtsTable, echo = FALSE, warnings = FALSE}
@@ -157,9 +159,11 @@ a 1-year ahead forecast of spawning biomass.
 
 TACs are derived from EM estimates via the harvest control rule. For
 SOG herring, we use a "hockey-stick" shaped 
-function with control points at 30\% and 60\% of unfished biomass. When spawning
-biomass is estimated to be below the lower control point, the rule sets harvest
-rates to zero; when biomass estimates are above the upper control point, the rule
+function with control points at 30\% and 60\% of unfished biomass, also
+known as biomass depletion. When biomass depletion is estimated to be below the
+lower control point, the rule sets the harvest
+rate to zero; between the control points the harvest rate is a ramp from zero to 
+the maximum harvest rate. Above the upper control point, the rule
 sets harvest rates to the maximum target harvest rate, called $maxTHR$. We show
 results for maximum target harvest rates of 6\% and 14\% (Figure \@ref(fig:hcrPlot)).
 
@@ -247,6 +251,13 @@ at a time. For each year in the projection, apply the following:
 4.  Calculate quantitative performance statistics across all 
     100 replicates.
 
+## Management between Management Strategy Evlauation years. 
+
+Once a harvest control rule is chosen through the management strategy evaluation 
+process that harvest control rule stays in place until the next round of MSE
+occurs. For Pacific herring in B.C. that is 3 years or more. 
+In the intervening years an estimate of biomass is obtained. In our case it is 
+the less computationally instensive DIM SISCAH model. 
 
 # Discussion
 
@@ -277,18 +288,6 @@ lower maximum harvest rates than the biomass target implies. For example,
 reference points imply a harvest rate of around 8\% (weighted over OMs) to
 achieve the USR target in the long term, but positive assessment errors mean
 that MPs should target closer to 7\%.
-
-The metrics for the probability of a viable fishery and the 5th percentile of 
-simulated TACs are closely related (Table \@ref(tab:statTable), $C_t > 650 t$
-and $C_{5pc}$). Each shows that increasing harvest rates generally means accepting 
-a higher proportion of years with low catch. Additionally, both metrics appear to 
-show an optimal range of 4\% - 6\% harvest rates where the risk of poor fishing 
-is lowest. The $C_{5pc}$ column is more informative, however, as it uses absolute 
-landings estimates that have a broader range than the more intangible probability 
-of viable fishing.
-
-
-
 
 ```{r, statTable, echo = FALSE }
 #This produces HTML output TODO: FIX to table format for word?
