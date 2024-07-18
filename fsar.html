@@ -817,8 +817,10 @@ which correspond to values with equal likelihood values on either side of
 <p>This creates a cross design (Table <a href="#tab:parRefPtsTable">B.1</a>)
 with a central OM (called OM1, <span class="math inline">\(M_b=0.562\)</span> and <span class="math inline">\(h = 0.7\)</span>) which we gave a weight
 of 0.34. The remaining operating models are weighted equally<br />
-with a weight of 0.165.</p>
-<p>For all operating models, we report leading OM parameters, current biomass and
+with a weight of 0.165. These weights are used to calculated a weighted average
+for the MP metrics.</p>
+<p>For all operating models, we report leading OM parameters,
+current biomass and
 stock status, and <span class="math inline">\(MSY\)</span> based reference points (Table <a href="#tab:parRefPtsTable">B.1</a>).</p>
 <table>
 <caption><span id="tab:parRefPtsTable">Table B.1: </span>SISCAH-OM life-history and management parameter values for stock-recruit steepness (<span class="math inline">\(h\)</span>), asymptotic lower limit on depensatory <span class="math inline">\(M\)</span> (<span class="math inline">\(M_b\)</span>, /yr), unfished biomass (<span class="math inline">\(SB_0\)</span>, kt), unfished recruitment (<span class="math inline">\(R_0\)</span>, 1e6), unfished mortality (<span class="math inline">\(M_0\)</span>, /yr), mortality depensation rate (<span class="math inline">\(m_1\)</span>), time-averaged mortality (<span class="math inline">\(\overline{M}\)</span>, /yr), surface survey design catchability (<span class="math inline">\(q_s\)</span>), spawning biomass in 2023 (<span class="math inline">\(SB_{2023}/SB_0\)</span>), stock status (<span class="math inline">\(P(SB_{2023} &gt; 0.3 SB_0)\)</span>), spawning biomass at maximum sustainable yield (<span class="math inline">\(SB_{MSY}\)</span>, kt), harvest rate targeting maximum sustainable yield (<span class="math inline">\(U_{MSY}\)</span>), maximum sustainable yield (<span class="math inline">\(MSY\)</span>), upper stock reference (<span class="math inline">\(USR\)</span>, kt), harvest rate targeting the upper stock reference (<span class="math inline">\(U_{USR}\)</span>), equilibrium yield at the upper stock reference (<span class="math inline">\(Y_{USR}\)</span>), harvest rate associated with negative production and higher risk of extirpation (<span class="math inline">\(U_{Crash}\)</span>). Uncertainty is shown as the 95% credible interval where estimates could be drawn from posterior samples (indicated by two parenthetical values), or half the interquartile range where estimates were drawn from 200 year simulations (one parenthetical value).</caption>
@@ -1037,9 +1039,11 @@ time-varying <span class="math inline">\(M\)</span>. The EM provides annual esti
 a 1-year ahead forecast of spawning biomass.</p>
 <p>TACs are derived from EM estimates via the harvest control rule. For
 SOG herring, we use a “hockey-stick” shaped
-function with control points at 30% and 60% of unfished biomass. When spawning
-biomass is estimated to be below the lower control point, the rule sets harvest
-rates to zero; when biomass estimates are above the upper control point, the rule
+function with control points at 30% and 60% of unfished biomass, also
+known as biomass depletion. When biomass depletion is estimated to be below the
+lower control point, the rule sets the harvest
+rate to zero; between the control points the harvest rate is a ramp from zero to
+the maximum harvest rate. Above the upper control point, the rule
 sets harvest rates to the maximum target harvest rate, called <span class="math inline">\(maxTHR\)</span>. We show
 results for maximum target harvest rates of 6% and 14% (Figure <a href="#fig:hcrPlot">B.2</a>).</p>
 <div class="figure"><span style="display:block;" id="fig:hcrPlot"></span>
@@ -1051,16 +1055,19 @@ Figure B.2: Two harvest control rules tested for candidate SOG herring MPs, show
 </div>
 <div id="performance-metrics" class="section level2" number="2.3">
 <h2><span class="header-section-number">B.3</span> Performance metrics</h2>
-<p>MPs are evaluated against two quantitative management objectives, listed below.</p>
+<p>First, MPs are quantitatively evaluated against the conservation objective (the primary management objective):</p>
 <ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(P(B_t &gt; 0.3 B_0) \geq 0.75\)</span>, or <strong>avoid the limit reference point (LRP) with high
-probability over three herring generations.</strong></p></li>
-<li><p><span class="math inline">\(P(B_t &gt; USR) \geq 0.5\)</span>, or <strong>target the upper stock reference (USR) with neutral
-probability</strong>.</p></li>
+<li><span class="math inline">\(P(B_t &gt; 0.3 B_0) \geq 0.75\)</span>, or <strong>avoid the limit reference point (LRP) with high
+probability over three herring generations.</strong></li>
+</ol>
+<p>and next against secondary biomass objective:</p>
+<ol start="2" style="list-style-type: decimal">
+<li><span class="math inline">\(P(B_t &gt; USR) \geq 0.5\)</span>, or <strong>provisional upper stock reference (USR) with neutral
+probability</strong>.</li>
 </ol>
 <p>Objective 1, also known as the conservation objective, must be passed by
-all herring management procedures. Objective 2 is a target objective related
-to a recently described provisional <span class="math inline">\(USR\)</span>.</p>
+all Herring management procedures. Objective 2 is a target biomass objective that
+includes the recently described provisional <span class="math inline">\(USR\)</span>.</p>
 <p>To help fishery managers understand trade-offs among biomass and yield,
 additional quantitative performance metrics are estimated. These metrics
 do not have a minimum or target value like objectives, but give greater
@@ -1068,33 +1075,30 @@ detail on biomass and yield outcomes of each MP over the
 15 year simulation.</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(P(B_t &gt; B_{MSY})\)</span>: The probability that biomass is above <span class="math inline">\(B_{MSY}\)</span>.</p></li>
+<li><p><span class="math inline">\(P(B_t &gt; 0.6 B_0)\)</span>: The probability that biomass is above <span class="math inline">\((0.6 B_0)\)</span></p></li>
+<li><p><span class="math inline">\(P(B_t &gt; USR)\)</span>: The probability that biomass is above the provisional <span class="math inline">\(USR\)</span>.</p></li>
 <li><p><span class="math inline">\(P(U_t &gt; U_{MSY})\)</span>: The probability that the effective harvest rate
 is above <span class="math inline">\(U_{MSY}\)</span>.</p></li>
-<li><p><span class="math inline">\(P(C_t &gt; 650 t)\)</span>: The probability of a viable fishery where catch is
-greater than 650 tonnes.</p></li>
-<li><p><span class="math inline">\(C_{5pc}\)</span>: Catch risk, measured as the fifth percentile of catch over all years and replicates.</p></li>
 <li><p><span class="math inline">\(\overline{C}\)</span>: Median (over replicates) of the average (over years) total
 landings.</p></li>
 <li><p><span class="math inline">\(AAV\)</span>: Average annual variation in catch, or the mean percentage difference
 in catch from year-to-year.</p></li>
-<li><p><span class="math inline">\(C_{2024}\)</span>: The MP’s TAC in 2024.</p></li>
 <li><p><span class="math inline">\(\overline{B_{t}/B_0}\)</span>: Average biomass depletion from 2024 - 2038.</p></li>
 <li><p><span class="math inline">\({B_{2038}/B_0}\)</span>: Median biomass depletion in 2038.</p></li>
 <li><p><span class="math inline">\(B_{2038}\)</span>: Median biomass in 2038.</p></li>
 </ol>
-<!-- Add average depletion -->
 <p>Performance metrics are estimated via closed loop feedback simulations
 with the following simulation algorithm:</p>
 <ol style="list-style-type: decimal">
 <li><p>For each Operating Model, initialize a pre-conditioned
 simulation model for the period 1951 – 2023 based on a random
 draw from the operating model posterior distribution;</p></li>
-<li><p>Project the SOG Herring DDM operating model into the future one year
+<li><p>Project the SoG Herring DDM operating model into the future one year
 at a time. For each year in the projection, apply the following:</p>
 <ol style="list-style-type: lower-roman">
 <li>Update the time series of commercial catch, catch-at-age, and blended
 spawn survey data up to time-step t for the stock assessment component of the MP;</li>
-<li>Use an assessment model (the Density Independent <span class="math inline">\(M\)</span> SISCAH model)
+<li>Use an estimation model (a statistical catch age model with density independent <span class="math inline">\(M\)</span>)
 to produce a 1-year ahead forecast of spawning biomass depletion;</li>
 <li>Determine the target harvest rate associated with the forecast
 depletion using the HS 30-60 harvest control rule;</li>
@@ -1102,7 +1106,7 @@ depletion using the HS 30-60 harvest control rule;</li>
 forecast;</li>
 <li>Update the simulated DDM operating model herring population in the with
 incoming recruitment from the DDM stock-recruit curve with recruitment process errors;
-density dependant natural mortality; and fishing mortality corresponding
+density dependent natural mortality; and fishing mortality corresponding
 to the total allowable catch in the previous step.</li>
 <li>Repeat steps 2.i - 2.v until the projection period ends (2038).</li>
 </ol></li>
@@ -1110,6 +1114,14 @@ to the total allowable catch in the previous step.</li>
 <li><p>Calculate quantitative performance statistics across all
 100 replicates.</p></li>
 </ol>
+</div>
+<div id="management-between-management-strategy-evlauation-years." class="section level2" number="2.4">
+<h2><span class="header-section-number">B.4</span> Management between Management Strategy Evlauation years.</h2>
+<p>Once a harvest control rule is chosen through the management strategy evaluation
+process that harvest control rule stays in place until the next round of MSE
+occurs. For Pacific herring in B.C. that is 3 years or more.
+In the intervening years an estimate of biomass is obtained. In our case it is
+the less computationally instensive DIM SISCAH model.</p>
 </div>
 </div>
 <div id="discussion" class="section level1" number="3">
@@ -1139,14 +1151,6 @@ lower maximum harvest rates than the biomass target implies. For example,
 reference points imply a harvest rate of around 8% (weighted over OMs) to
 achieve the USR target in the long term, but positive assessment errors mean
 that MPs should target closer to 7%.</p>
-<p>The metrics for the probability of a viable fishery and the 5th percentile of
-simulated TACs are closely related (Table <a href="#tab:statTable">C.1</a>, <span class="math inline">\(C_t &gt; 650 t\)</span>
-and <span class="math inline">\(C_{5pc}\)</span>). Each shows that increasing harvest rates generally means accepting
-a higher proportion of years with low catch. Additionally, both metrics appear to
-show an optimal range of 4% - 6% harvest rates where the risk of poor fishing
-is lowest. The <span class="math inline">\(C_{5pc}\)</span> column is more informative, however, as it uses absolute
-landings estimates that have a broader range than the more intangible probability
-of viable fishing.</p>
 <table>
 <caption><span id="tab:statTable">Table C.1: </span>Performance statistics for the selected harvest rates. Objectives that are passed by an MP are indicated by a bullet. Conservation, Biomass, and Maximum Removal Reference Rate metrics are all in probability units. Average Catch, 2024 Catch and Final Biomass are all in biomass units (kt), and Stock Status is biomass depletion relative to unfished (proportion).</caption>
 <thead>

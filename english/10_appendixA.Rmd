@@ -370,9 +370,10 @@ plotGridTulipBtCtUt(mpBlobList,
 # Exceptional Circumstances
 
 Fishery monitoring data collected since the adoption of the current SOG
-herring MP does is within expectations. In formal language, there is no
+herring MP indicate that the spawning biomass is within expectations.
+In formal language there is no
 indication of exceptional circumstances (Figure \@ref(fig:ECfig)),
-measured by catch and spawn index values within the expected range of
+measured by catch and spawn index values within the 95% confidence interval of
 previous closed loop simulations.
 
 
