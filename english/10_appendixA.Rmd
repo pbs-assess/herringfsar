@@ -25,8 +25,8 @@ and then present results with some brief discussion of the management implicatio
 
 ## Operating models
 
-The five SOG Herring operating models where chosen to take into account
-uncertainty in productivity at high and low stock sizes. Productivity
+To take into account uncertainty in productivity at high and low stock sizes 
+five SOG Herring operating models where chosen. Productivity
 at high stock sizes is influenced by the $M_b$ parameter, which 
 represents the average mortality rate at very high biomass (generally above 
 unfished levels). At low stock size, productivity is more influenced by the 
