@@ -16,11 +16,10 @@ previous herring assessment and operating models, the main difference in SISCAH-
 is the ability to model density dependent mortality (DDM), where 
 natural mortality is higher when biomass is lower [@johnson2024].
 
-All candidate MPs are tested against a suite of five 
-SISCAH operating models, which incorporate uncertainty in future productivity 
-at both low and high stock sizes. We first summarise the simulation approach,
-and then present results weighted over the five operating 
-models, with some brief discussion of the management implications.  
+Results from and ensemble of 5 SISCAH-OMs were weighted to incorporate 
+uncertainty in future productivity while evaluating candidate MPs. 
+We first summarise the simulation approach,
+and then present results with some brief discussion of the management implications.  
 
 # Simulation approach
 
