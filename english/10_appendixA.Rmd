@@ -16,17 +16,16 @@ previous herring assessment and operating models, the main difference in SISCAH-
 is the ability to model density dependent mortality (DDM), where 
 natural mortality is higher when biomass is lower [@johnson2024].
 
-Results from and ensemble of 5 SISCAH-OMs were weighted to incorporate 
+Results from and ensemble of five SISCAH-OMs were weighted to incorporate 
 uncertainty in future productivity while evaluating candidate MPs. 
 We first summarise the simulation approach,
 and then present results with some brief discussion of the management implications.  
 
 # Simulation approach
 
-
 ## Operating models
 
-We define five SOG Herring operating models that test against
+The five SOG Herring operating models where chosen to take into account
 uncertainty in productivity at high and low stock sizes. Productivity
 at high stock sizes is influenced by the $M_b$ parameter, which 
 represents the average mortality rate at very high biomass (generally above 
@@ -53,7 +52,7 @@ for the MP metrics. For example the weighted average would be
 
 $0.34(OM_1)+ 0.165(OM_2+ ... + OM_5)$
 
-Where $OM_1$ is the value of the metric from operating model 1.
+Where $OM_n$ is the value of the metric from operating model number n between 1 and 5.
 
 For all operating models, we report leading OM parameters, 
 current biomass and 
