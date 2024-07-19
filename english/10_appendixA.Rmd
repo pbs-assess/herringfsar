@@ -50,7 +50,11 @@ This creates a cross design (Table \@ref(tab:parRefPtsTable))
 with a central OM (called OM1, $M_b=0.562$ and $h = 0.7$) which we gave a weight 
 of 0.34. The remaining operating models are weighted equally   
 with a weight of 0.165. These weights are used to calculated a weighted average 
-for the MP metrics. 
+for the MP metrics. For example the weighted average would be
+
+$0.34(OM_1)+ 0.165(OM_2+ ... + OM_5)$
+
+Where $OM_1$ is the value of the metric from operating model 1.
 
 For all operating models, we report leading OM parameters, 
 current biomass and 
