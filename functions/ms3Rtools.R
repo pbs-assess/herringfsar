@@ -10,6 +10,51 @@
 #
 # <><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
+makeModelHistTable <- function( obj,
+                                fYear = 1951,
+                                lYear = 2023,
+                                B0 = 90.23,
+                                USR = 67.31 )
+{
+  yrs <- fYear:lYear
+  goodReps <- which(obj$goodReps)
+
+  tIdx <- 1:length(yrs)
+  
+  SB_qt   <- apply(obj$om$SB_ispt[goodReps,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+  C_qt    <- apply(obj$om$C_ispt[goodReps,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+
+  U_ispt  <- obj$om$C_ispt/(obj$om$C_ispt + obj$om$SB_ispt)
+  U_qt    <- apply(U_ispt[goodReps,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+
+  R_qt    <- apply(obj$om$R_ispt[goodReps,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+
+  M_qt    <- apply(obj$om$M_iaxspt[goodReps,2,1,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+
+  out.df <- data.frame( Year    = yrs, 
+                        Catch   = C_qt[2,],
+                        TAC     = mean(C_qt[2,]),
+                        SSB_med = SB_qt[2,],
+                        SSB_min = SB_qt[1,],
+                        SSB_max = SB_qt[3,],
+                        LRP     = 0.3*B0,
+                        USR     = USR,
+                        F_med   = U_qt[2,],
+                        F_min   = U_qt[1,],
+                        F_max   = U_qt[3,],
+                        F_lim   = 0.1,
+                        M_med   = M_qt[2,],
+                        M_max   = M_qt[3,],
+                        M_min   = M_qt[1,],
+                        R_med   = R_qt[2,],
+                        R_max   = R_qt[3,],
+                        R_min   = R_qt[1,]
+                      )
+
+  out.df
+}
+
+
 
 # makeEmpYieldSims()
 # Function to plot median simuated yield 

@@ -52,6 +52,8 @@ sim_dat <- sim_fsar_data("wide") %>%
     R_med = `R-E06`, R_min = `Rlow-E06`, R_max = `Rhigh-E06`
   )
 
+true_dat <- makeModelHistTable(mpBlobList[[1]])
+
 # Years and seasons
 last_assess_yr <- assess_yr - 1
 this_season <- paste(last_assess_yr, assess_yr, sep = "/")

@@ -11,6 +11,237 @@
 # <><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
 
+
+
+
+
+plotSimDataEnvelopes <- function( obj = blob,
+                                  sIdx = 1, pIdx =1, fIdx = 5,
+                                  Cdata = NULL,
+                                  Idata = NULL,
+                                  fYear = 1951 )
+{
+  nT        <- obj$om$nT
+  tMP       <- obj$om$tMP
+  goodReps  <- obj$goodReps
+  B_it      <- obj$om$SB_ispt[goodReps,sIdx,pIdx,]
+  C_it      <- obj$om$C_ispt[goodReps,sIdx,pIdx,]
+  I_it      <- obj$mp$data$I_ispft[goodReps,sIdx,pIdx,fIdx,] 
+
+  yrs <- seq(from = fYear, by = 1, length.out = nT)
+
+  B_qt <- apply(X = B_it, FUN = quantile, MARGIN = 2, probs = c(0.025, 0.5, 0.975), na.rm = TRUE)
+  C_qt <- apply(X = C_it, FUN = quantile, MARGIN = 2, probs = c(0.025, 0.5, 0.975), na.rm = TRUE)
+  I_qt <- apply(X = I_it, FUN = quantile, MARGIN = 2, probs = c(0.025, 0.5, 0.975), na.rm = TRUE)
+
+  par(mfrow = c(2,1), oma = c(4,4,2,1), mar = c(.5,.5,.5,.5))
+
+  plot(x = range(yrs), y = c(0,max(B_qt,I_qt)), las = 1,
+        type = "n", axes = FALSE)
+    axis(side = 2, las = 1)
+    grid()
+    box()
+    mtext(side = 2, text = "Spawning Biomass (kt)", line = 3)
+    
+    polygon(x = c(yrs,rev(yrs)), y = c(B_qt[1,],rev(B_qt[3,])),
+            border = NA, col = "grey75" )
+    lines(x = yrs, y = B_qt[2,], lwd = 3 )
+
+    polygon(x = c(yrs,rev(yrs)), y = c(I_qt[1,],rev(I_qt[3,])),
+            border = NA, col = scales::alpha("steelblue",0.5) )
+
+    if(!is.null(Idata))
+    {
+      nDat <- length(Idata)
+      datCols <- rep("black",nDat)
+      datCols[tMP:nDat] <- "salmon"
+      
+      points(x = yrs[1:nDat], y = Idata, col = datCols, pch = 16)
+
+      legend( x = "topleft", bty = "n",
+              legend = c( "Spawning Biomass",
+                          paste0("Simulated SI range"),
+                          paste0("Observed SI post ",yrs[tMP-1]),
+                          paste0("Observed SI up to ",yrs[tMP-1])),
+              pch   = c(22,22,21,21),
+              pt.bg = c("grey75","steelblue","black","salmon"),
+              pt.lwd = 0,
+              pt.cex = 1.5,
+              col = c("black","black","black","salmon"),
+              lwd   = c(3,NA,NA,NA) )
+    }
+
+    plot(x = range(yrs), y = c(0,max(C_qt)), las = 1,
+        type = "n", axes = FALSE)
+    axis(side = 2, las = 1)
+    axis(side = 1 )
+    grid()
+    box()
+    mtext(side = 2, text = "Catch (kt)", line = 3)
+    polygon(x = c(yrs,rev(yrs)), y = c(C_qt[1,],rev(C_qt[3,])),
+            border = NA, col = "grey75" )
+    lines(x = yrs, y = C_qt[2,], lwd = 3 )
+
+    if(!is.null(Cdata))
+    {
+      nDat <- length(Cdata)
+      datCols <- rep("black",nDat)
+      datCols[tMP:nDat] <- "salmon"
+      
+      points(x = yrs[1:nDat], y = Cdata, col = datCols, pch = 16)
+
+      legend( x = "topright", bty = "n",
+              legend = c( "Historical and simulated catch",
+                          paste0("Observed catch post ",yrs[tMP-1]),
+                          paste0("Observed catch up to ",yrs[tMP-1])),
+              pch   = c(22,21,21),
+              pt.bg = c("grey75","black","salmon"),
+              pt.lwd = 0,
+              pt.cex = 1.5,
+              col = c("black","black","salmon"),
+              lwd   = c(3,NA,NA) )
+
+    }
+
+  mtext(side = 1, text = "Year", outer = TRUE, line = 2)
+}
+
+# plotStockRecruitEnvelope()
+# Beverton-Holt stock recruitment curve for an individual
+# replicate with input ref pts picked out and 
+# historical/projected recruitments shown. 
+# inputs:
+#   obj   = simulation object (blob)
+#   iRep  = simulation replicate
+# outputs:
+#   no output object, but draws figure on plotting device
+plotStockRecruitEnvelope <- function( obj = blob,
+                                      SRvals = NULL,
+                                      inputBmsy = 39.127,
+                                      inputUSR = 66.97,
+                                      inputB0 = 90.23 )
+{
+  goodReps  <- which(obj$goodReps)
+  nReps     <- length(goodReps)
+  nT        <- obj$om$nT
+  tMP       <- obj$om$tMP
+  
+  B0_i  <- R0_i <- h_i <- rec.a_i <- rec.b_i <- array(0,nReps)
+
+  for(i in 1:length(goodReps))
+  {
+    iIdx <- goodReps[i]
+    
+    B0_i[i]     <- obj$rp[[iIdx]]$B0_sp[,1,1]
+    R0_i[i]     <- obj$rp[[iIdx]]$R0_sp[1,1]
+    h_i[i]      <- obj$rp[[iIdx]]$h_sp[1,1]
+    rec.a_i[i]  <- obj$rp[[iIdx]]$rec.a_sp[1,1]
+    rec.b_i[i]  <- obj$rp[[iIdx]]$rec.b_sp[1,1]
+
+  }
+
+  if(!is.null(SRvals))
+  {
+    # SRvals is a dataframe with R0, B0, and h
+    SRvals <- SRvals |>
+                mutate( rec.a  = 4.*h*R0/(B0*(1.-h)),
+                        rec.b  = (5.*h-1.)/(B0*(1.-h)))
+  }
+
+  SB_it  <- obj$om$SB_ispt[goodReps,1,1,]
+  R_it   <- obj$om$R_ispt[goodReps,1,1,]
+
+  randRep <- sample(1:nReps, 1)
+
+  SB_qt <- apply(X = SB_it, FUN = quantile, MARGIN = 2, probs = c(0.025, 0.5, 0.975))
+  R_qt  <- apply(X = R_it, FUN = quantile, MARGIN = 2, probs = c(0.025, 0.5, 0.975))
+
+  # First, make the curve
+  Bseq_k  <- seq(from =0, to = max(SB_qt), length.out = 100)
+  Rseq_ik <- array(0, dim = c(nReps,100))
+  
+  for(i in 1:nReps)
+    Rseq_ik[i,] <- rec.a_i[i] * Bseq_k/(1 + rec.b_i[i]*Bseq_k)
+
+  Rseq_qk <- apply(X = Rseq_ik, FUN = quantile, MARGIN = 2, probs = c(0.025, 0.5, 0.975))
+
+  Rspline <- splinefun(x = Bseq_k, y = Rseq_qk[2,])
+
+  if(!is.null(inputBmsy))
+    inputRmsy <- Rspline(inputBmsy)
+
+  if(!is.null(inputUSR))
+    inputRusr <- Rspline(inputUSR)
+
+  if(!is.null(inputB0))
+    inputR0 <- Rspline(inputB0)
+
+
+  plot( x = c(0,max(1.4*SB_qt[2,])), y = c(0,1.2*max(Rseq_qk, 1.2*R_qt[2,])), type = "n", las =1,
+        xaxs = "i", yaxs = "i",
+        xlab = "Spawning Biomass (kt)", ylab = "Age-1 Recruitment (1e6)" )
+    polygon(  x = c(Bseq_k,rev(Bseq_k)), y = c(Rseq_qk[1,],rev(Rseq_qk[3,])), 
+              border = NA, col = "grey75" )
+    
+
+    if(!is.null(SRvals))
+    {
+      modCols <- RColorBrewer::brewer.pal(nrow(SRvals),"Dark2")
+      for(k in 1:nrow(SRvals))
+      {
+        rec.a <- SRvals[k,"rec.a"]
+        rec.b <- SRvals[k,"rec.b"]
+        lines(  x = Bseq_k, y = rec.a * Bseq_k/(1 + rec.b * Bseq_k), 
+                lwd = 2, col = modCols[k] )
+      }
+
+      legend( x = "topleft", bty = "n",
+              legend = SRvals$Scenario, col = modCols, lwd = 2 )
+    }
+
+    lines( x = Bseq_k, y = Rseq_qk[2,], lwd = 3)
+    segments( x0 = SB_qt[2,1:(tMP-2)], 
+              y0 = R_qt[1,2:(tMP-1)],
+              y1 = R_qt[3,2:(tMP-1)], lwd = 2, col = "grey30" )
+
+    points( x = SB_qt[2,1:(tMP-2)], 
+            y = R_qt[2,2:(tMP-1)], 
+            pch = 16, col = "grey30" )
+    points( x = SB_it[randRep,(tMP-1):(nT-1)], 
+            y = R_it[randRep,tMP:nT], 
+            pch = 16, col = "salmon" )
+
+    
+    if(!is.null(inputBmsy) & !is.null(inputB0) & !is.null(inputUSR))
+    {
+      segments( x0 = c(inputB0,inputBmsy,inputUSR),
+                y0 = 0, 
+                y1 = c(inputR0,inputRmsy,inputRusr), lty = 2, col = c("grey40","darkgreen","steelblue"), lwd = 2)
+      segments( x0 = 0,
+                x1 = c(inputB0,inputBmsy,inputUSR), 
+                y0 = c(inputR0,inputRmsy,inputRusr), lty = 2, col = c("grey40","darkgreen","steelblue"), lwd = 2)
+    }
+
+
+
+
+
+    legend( x = "topright", bty = "n",
+            legend = c( "Stock-Recruit Relationship",
+                        "Unfished equilibrium",
+                        "Provisional Upper Stock Reference",
+                        "MSY equilibrium",
+                        "Historical period recruitments",
+                        "Projection period recruitments"),
+            lty   = c(1,2,2,2,1,NA),
+            lwd   = c(3,2,2,2,2,NA),
+            pch   = c(22,NA,NA,NA,16,16),
+            pt.bg = c("grey75",NA,NA,NA,NA,NA),
+            pt.lwd = 0,
+            pt.cex = 2, 
+            col   = c("black","grey40","steelblue","darkgreen","grey30","salmon"))
+}
+
 # plotStockRecruitRep()
 # Beverton-Holt stock recruitment curve for an individual
 # replicate with input ref pts picked out and 
@@ -4766,6 +4997,77 @@ plotBatchPerf_sp <- function( batchFolder = "fourthBatch",
 
 
 }
+
+# plotHCRules()
+# Plots a generic hockey-stick
+# harvest control rule, with given
+# lower, upper control points, and
+# low/high Fs. Stock status is calculated
+# as a proportion of Bmsy, and fishing
+# mortality rate as a proportion of
+# Fmsy.
+plotHCRules <- function(  LCP_i = c(.3,.3,.172),
+                          UCP_i = c(.6,.6,.342),
+                          lowF = .0,
+                          highF = 1,
+                          U_i = c(.14,.20,.187) ,
+                          language = "English")
+{
+  x <- seq(0,1.3, length.out = 100 )
+  y <- rep(lowF, length(x))
+
+
+  par( mar = c(4,5,1,1), oma = c(2,2,1,1) )
+
+  lineCols <- RColorBrewer::brewer.pal(3,"Dark2")
+
+  plot( x = range(x), y = c(0,1.2*max(U_i)), type = "n",
+        las = 1,
+        xlab = "",
+        ylab = "",
+        cex.lab = 1.5,
+        cex.axis = 1.5,
+        axes = FALSE)
+  if(language=="English"){
+    mtext(side = 2, text = "Target Harvest Rate", line = 4, cex = 1.5 )
+    mtext(side = 1, text = expression(B/B[0]), line = 4, cex = 1.5 )
+    box()
+    axis(side=1, at=seq(0.0, max(x), by=0.2), labels = sprintf("%.1f", seq(0.0, max(x), by=0.2)))
+    axis(side=2, at=seq(0.0, 0.2, by=0.02), labels = sprintf("%.2f", seq(0.0, 0.2, by=0.02)), las=1)
+    # axis(side=4, at=seq(0.0, 0.2, by=0.02), labels = sprintf("%.2f", seq(0.0, 0.2, by=0.02)), las=1)
+  }else{ #French
+    mtext(side = 2, text = "Taux de récolte cible", line = 4, cex = 1.5 )
+    mtext(side = 1, text = expression(B/B[0]), line = 4, cex = 1.5 )
+    box()
+    axis(side=1, at=seq(0.0, max(x), by=0.2), labels = chartr(".", ",", sprintf("%.1f", seq(0.0, max(x), by=0.2))))
+    axis(side=2, at=seq(0.0, 0.2, by=0.02), labels = chartr(".", ",", sprintf("%.2f", seq(0.0, 0.2, by=0.02))), las=1)
+  }
+    for(i in 1:length(LCP_i))
+    {
+      segments( x0 = 0, x1 = LCP_i[i],
+                y0 = lowF, y1 = lowF,
+                col = "grey50", lwd = 1.5 )
+      
+      segments( x0 = LCP_i[i], x1 = UCP_i[i],
+                y0 = lowF, y1 = highF*U_i[i],
+                col = lineCols[i], lwd = 2 )
+      segments( x0 = UCP_i[i], x1 = max(x),
+                y0 = highF*U_i[i], y1 = highF*U_i[i],
+                col = lineCols[i], lwd = 2 )
+    }
+    # abline( v = c(0.3, 0.73),
+    #         col = c("red","darkgreen"),
+    #         lty = 2, lwd = 2 )
+    # abline( h = highF*maxSeq[1], lty = 2, col = "grey70" )
+
+    legend( x = "topleft", bty = "n", col = lineCols,
+            lwd = 2,
+            legend = c( "30-60B0_maxTHR.14",
+                        "30-60B0_maxTHR.20",
+                        "40-80Bmsy_maxTHRUmsy"))
+
+} # END plotHCRules()
+
 
 # plotHCRex()
 # Plots a generic hockey-stick

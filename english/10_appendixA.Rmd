@@ -34,27 +34,44 @@ represents the average mortality rate at very high biomass (generally above
 unfished levels). At low stock size, productivity is more influenced by the 
 stock-recruit relationship's steepness parameter $h$, which is the ratio of 
 recruitment at 20\% of unfished to the unfished recruitment $R_0$. Overall $h$ 
-is better estimated for stocks where the history includes recovery from very low stock 
-sizes. Since this isn't case for SOG, we capture some of the uncertainty around 
-$M_b$ and $h$ by considering operating models with different values for those parameters.
-First we used an established value of $h=0.70$ [@cleary2019] 
-and ran the operating model with a suite of $M_b$ values, examined the likelihood profiles
-and determined that $M_b=0.562$ produced the lowest negative-log-likelihood.
-We then ran operating models with $h$ values of 0.65 and 0.75, 
-while keeping $M_b=0.562$.
-Finally to round it out we considered models where $h=0.70$ and $M_b$ was 0.532 and 0.584
-which correspond to values with equal likelihood values on either side of 
-0.562 (Figure \@ref(fig:LPfig)).
+is better estimated for stocks where the history includes recovery from very 
+low stock sizes. Since this isn't case for SOG, we capture some of the 
+uncertainty around $M_b$ and $h$ by considering operating models with 
+different values for those parameters. First we used an established 
+value of $h=0.70$ [@cleary2018] and used a likelihood profile approach,
+estimating operating model parameters across a grid of a $M_b$ values.
+A likelihood profile is obtained by plotting negative log likelihood 
+values estimated by SISCAH at each grid point, which shows the minimum
+value (i.e., the value most in agreement with the data) occurs when
+$M_b=0.562$ (Figure \@ref(fig:LPfig)). The same likelihood profile
+is used to choose the outer range of $M_b = 0.532$ and $M_b = 0.584$, 
+which have equal likelihood values and bound the minimum of $M_b = 0.562$
+(Figure \@ref(fig:LPfig)). Finally, two additional operating models
+are obtained using the optimal $M_b = 0.562$ value and varying
+stock-recruit steepness to a lower level of $h = 0.65$ and an upper
+level of $h = 0.75$, based on ranges observed in forage fishes
+[@myers2001stock;@hsu2024probable].
 
-This creates a cross design (Table \@ref(tab:parRefPtsTable)) 
-with a central OM (called OM1, $M_b=0.562$ and $h = 0.7$) which we gave a weight 
-of 0.34. The remaining operating models are weighted equally   
-with a weight of 0.165. These weights are used to calculated a weighted average 
-for the MP metrics. 
 
-For all operating models, we report leading OM parameters, 
-current biomass and 
+```{r LPfig, echo = FALSE, fig.cap = LPfigCap }
+LPfigCap <- "Fishery monitoring data likelihood function profiles relative to a range of natural mortality asymptotic lower limit ($M_b$) parameter values. The red point shows the most likely value, while the two vertical dashed lines show two values with equal likelihood chosen to bound the central OM1. All SISCAH model fits here have a steepness value of $h = 0.7$"
+filepath <- "data/LP_chooseMb.png"
+knitr::include_graphics(filepath)
+
+```
+
+The above process creates a cross design (Table \@ref(tab:parRefPtsTable)) of 
+operating models. The so called ensemble of operating models is then combined 
+via weighted averaging to give estimates biomass, fishery reference points, and current stock 
+status relative to those reference points. The central OM (called OM1, 
+$M_b=0.562$ and $h = 0.7$) is given the highest weighting of of 0.34. The 
+remaining operating models (OM2 - OM5) equally split the remaining weight of 0.66,
+giving a weight of 0.165 for the remaining models.
+
+For all operating models, we report leading OM parameters, current biomass and 
 stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
+The final column also gives the weighted ensemble value of the posterior mean
+values from each OM.
 
 ```{r parRefPtsTable, echo = FALSE, warnings = FALSE}
 
@@ -136,12 +153,22 @@ kable( allEstTable, escape = FALSE,
 
 ```
 
-```{r LPfig, echo = FALSE, fig.cap = LPfigCap }
-LPfigCap <- "Fishery monitoring data likelihood function profiles relative to a range of natural mortality asymptotic lower limit ($M_b$) parameter values. The red point shows the most likely value, while the two vertical dashed lines show two values with equal likelihood chosen to bound the central OM1. All SISCAH model fits here have a steepness value of $h = 0.7$"
-filepath <- "data/LP_chooseMb.png"
-knitr::include_graphics(filepath)
+The effect of alternative operating models on the stock-recruitment 
+relationship is somewhat subtle. 
 
+```{r SRfig, echo = FALSE, fig.cap = SRmodelCap, fig.asp = 1.1}
+SRmodelCap <- "Stock-recruitment relationships and age-1 recruitment for the ensemble of operating models. Relationships are shown for the weighted ensemble model with uncertainty (black curve and grey shaded region) and the posterior median relationships for individual operating models (coloured lines). Annual age-1 recruitments are also shown with uncertainty for the historical 1951 - 2023 period (grey points with vertical segments) and for a single possible future in the 2024 - 2038 projection period (pink points). Finally, dashed lines show ensemble weighted average biomassa and recruitment levels for fishery reference points including unfished biomass (grey), the provisional upper stock reference (blue), and biomass at maximum sustainable yield (MSY, green)."
+
+SRpars <- read.csv("data/omGrid_SRpars.csv")
+
+plotStockRecruitEnvelope( obj = mpBlobList[[1]],
+                          SRvals = SRpars,
+                          inputBmsy = 39.127,
+                          inputUSR = 66.97,
+                          inputB0 = 90.23 )
 ```
+
+
 
 ## Management Procedures
 
@@ -150,7 +177,7 @@ and a harvest control rule (HCR).
 
 All MPs tested here use the same data. The EM that is fit to those data is a 
 statistical catch-at-age model with a density independent $M$ (DIM) hypothesis 
-[@dfo2023application], which uses a simple random walk to estimate 
+[@dfo2023management], which uses a simple random walk to estimate 
 time-varying $M$. The DIM hypothesis is similar to the previous model used for 
 herring assessments and setting TACs, except that the previous model used
 a spline with 16 nodes instead of a simple random walk to estimate 
@@ -158,14 +185,16 @@ time-varying $M$. The EM provides annual estimates of unfished biomass and
 a 1-year ahead forecast of spawning biomass.
 
 TACs are derived from EM estimates via the harvest control rule. For
-SOG herring, we use a "hockey-stick" shaped 
-function with control points at 30\% and 60\% of unfished biomass, also
-known as biomass depletion. When biomass depletion is estimated to be below the
-lower control point, the rule sets the harvest
-rate to zero; between the control points the harvest rate is a ramp from zero to 
-the maximum harvest rate. Above the upper control point, the rule
-sets harvest rates to the maximum target harvest rate, called $maxTHR$. We show
-results for maximum target harvest rates of 6\% and 14\% (Figure \@ref(fig:hcrPlot)).
+SOG herring, we use a "hockey-stick" shaped function defined
+by lower and upper control points, and a maximum target harvest rate
+[@cox2013roles]. The SOG herring rules have lower and upper control points 
+at 30\% and 60\% of unfished biomass, respectively. When biomass 
+is estimated to be below the lower control point the rule sets the harvest
+rate to zero. Between control points, the harvest rate is a linear ramp 
+from zero to the maximum harvest rate, and above the upper control point the 
+rule sets harvest rates to the maximum target harvest rate, called $maxTHR$. 
+This report shows results for maximum target harvest rates of 6\% 
+and 14\% (Figure \@ref(fig:hcrPlot)).
 
 
 
@@ -375,17 +404,24 @@ plotGridTulipBtCtUt(mpBlobList,
 # Exceptional Circumstances
 
 Fishery monitoring data collected since the adoption of the current SOG
-herring MP indicate that the spawning biomass is within expectations.
-In formal language there is no
-indication of exceptional circumstances (Figure \@ref(fig:ECfig)),
-measured by catch and spawn index values within the 95% confidence interval of
-previous closed loop simulations.
+herring MP indicate that the population is behaving within operating 
+model expectations. In formal language there is no indication of operating
+model mis-specification (Figure \@ref(fig:ECfig)), also know as exceptional
+circumstances. Mis-specification is checked visually by comparing catch and 
+spawn index values within the central 95% of 2023 ensemble operating 
+model simulations.
 
 
-```{r ECfig, echo = FALSE, fig.cap = ECfigCap }
-ECfigCap <- "A graphical test for exceptional circumstances, showing the central 95\\% of projected spawn index values (top) and catch values (bottom) using the 2019 SOG operating model, with realised data in the history (black points) and projection (red points) overlaid."
-filepath <- "data/ExceptionalCircumstances.png"
-knitr::include_graphics(filepath)
+```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
+ECfigCap <- "A graphical test for exceptional circumstances indicating operating model mis-specification. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SOG operating model. Realised data are overlaid as points for the history (black) and projection years (red)."
+
+SOGdata <- read.csv("data/SOGIdxCatData.csv")
+
+plotSimDataEnvelopes( obj = mpBlobList[[1]],
+                      sIdx = 1, pIdx =1, fIdx = 5,
+                      Cdata = SOGdata$Catch,
+                      Idata = SOGdata$totSpawn,
+                      fYear = 1951 )
 
 ```
 

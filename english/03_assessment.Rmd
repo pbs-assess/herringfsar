@@ -10,7 +10,7 @@ Refer to the Guidance Document for options and further instructions.]
 
 ```{r indicators, fig.cap = "(ref:indicators-cap)"}
 # Four-panel indicator plot
-plot_indicators(dat = sim_dat)
+plot_indicators(dat = true_dat)
 ```
 
 [Optional. Add an additional optional panel of 4 indicators
