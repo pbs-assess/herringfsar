@@ -16,19 +16,17 @@ previous herring assessment and operating models, the main difference in SISCAH-
 is the ability to model density dependent mortality (DDM), where 
 natural mortality is higher when biomass is lower [@johnson2024].
 
-All candidate MPs are tested against a suite of five 
-SISCAH operating models, which incorporate uncertainty in future productivity 
-at both low and high stock sizes. We first summarise the simulation approach,
-and then present results weighted over the five operating 
-models, with some brief discussion of the management implications.  
+Results from and ensemble of five SISCAH-OMs were weighted to incorporate 
+uncertainty in future productivity while evaluating candidate MPs. 
+We first summarise the simulation approach,
+and then present results with some brief discussion of the management implications.  
 
 # Simulation approach
 
-
 ## Operating models
 
-We define five SOG Herring operating models that test against
-uncertainty in productivity at high and low stock sizes. Productivity
+To take into account uncertainty in productivity at high and low stock sizes 
+five SOG Herring operating models where chosen. Productivity
 at high stock sizes is influenced by the $M_b$ parameter, which 
 represents the average mortality rate at very high biomass (generally above 
 unfished levels). At low stock size, productivity is more influenced by the 
@@ -52,7 +50,6 @@ stock-recruit steepness to a lower level of $h = 0.65$ and an upper
 level of $h = 0.75$, based on ranges observed in forage fishes
 [@myers2001stock;@hsu2024probable].
 
-
 ```{r LPfig, echo = FALSE, fig.cap = LPfigCap }
 LPfigCap <- "Fishery monitoring data likelihood function profiles relative to a range of natural mortality asymptotic lower limit ($M_b$) parameter values. The red point shows the most likely value, while the two vertical dashed lines show two values with equal likelihood chosen to bound the central OM1. All SISCAH model fits here have a steepness value of $h = 0.7$"
 filepath <- "data/LP_chooseMb.png"
@@ -62,11 +59,20 @@ knitr::include_graphics(filepath)
 
 The above process creates a cross design (Table \@ref(tab:parRefPtsTable)) of 
 operating models. The so called ensemble of operating models is then combined 
-via weighted averaging to give estimates biomass, fishery reference points, and current stock 
-status relative to those reference points. The central OM (called OM1, 
-$M_b=0.562$ and $h = 0.7$) is given the highest weighting of of 0.34. The 
-remaining operating models (OM2 - OM5) equally split the remaining weight of 0.66,
-giving a weight of 0.165 for the remaining models.
+via weighted averaging to give estimates biomass, fishery reference points, and 
+current stock status relative to those reference points. The central OM (called OM1, 
+$M_b=0.562$ and $h = 0.7$) is given the highest weighting of of 0.34, and the 
+remaining weight of 0.66 is equally split among the other operating models 
+(OM2 - OM5) giving a weight of 0.165 for the remaining models. Then, model
+parameters $\theta$ and derived quantites are found via a weighted average,
+e.g.,
+
+\begin{equation}
+\theta_{ens} = 0.34 \cdot \theta_{OM_1}+ 0.165 \cdot \sum_{k = 2}^5 \theta_{OM_k},
+\end{equation}
+
+where $\theta_{ens}$ is the ensemble weighted average of the parameter values
+$\theta_{OM_k}$ from operating model $k = 1,...,5$.
 
 For all operating models, we report leading OM parameters, current biomass and 
 stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
