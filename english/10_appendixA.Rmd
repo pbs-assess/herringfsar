@@ -167,7 +167,7 @@ SRmodelCap <- "Stock-recruitment relationships and age-1 recruitment for the ens
 
 SRpars <- read.csv("data/omGrid_SRpars.csv")
 
-plotStockRecruitEnvelope( obj = mpBlobList[[1]],
+plotStockRecruitEnvelope( obj = mpBlobList[[2]],
                           SRvals = SRpars,
                           inputBmsy = 39.127,
                           inputUSR = 66.97,
@@ -359,14 +359,14 @@ colnames(statTable) <- c( "MP",
                           "$B_t \\geq USR$",
                           "$B_t \\geq \\overline{B}_{1950:2023}$",
                           "$U_t \\geq U_{MSY}$", # Replace with Umsy
-                          "$\\overline{C}$",
+                          "$\\overline{C_t}$",
                           "$AAV$",
                           "$\\overline{B_{t}/B_0}$", 
                           "$B_{2038}/B_0$",
                           "$B_{2038}$"
                           )
 
-statTabCap <- "Performance statistics for the selected harvest rates. Objectives that are passed by an MP are indicated by a bullet. Conservation, Biomass, and Maximum Removal Reference Rate metrics are all in probability units. Average Catch, 2024 Catch and Final Biomass are all in biomass units (kt), and Stock Status is biomass depletion relative to unfished (proportion)."
+statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates. Objectives that are met by an MP are indicated by a checkmark. For all columns, the subscript $t$ indicates the yeras 2024 - 2038. Biomass $B_t$ and Harvest Rate $U_t$ metrics are in probability units. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished."
 
 
 objNames <- c(  " " = 1,
@@ -401,7 +401,7 @@ individual replicate traces are shown as thin black lines."
 
 ```
 
-```{r simEnv, echo = FALSE, fig.cap = multiGridTulipCap}
+```{r simEnv, echo = FALSE, fig.cap = multiGridTulipCap, fig.asp = 1.1}
 plotGridTulipBtCtUt(mpBlobList,
                     labels = mps2,
                     yLimC = c(0,20),
@@ -419,11 +419,11 @@ model simulations.
 
 
 ```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
-ECfigCap <- "A graphical test for exceptional circumstances indicating operating model mis-specification. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SOG operating model. Realised data are overlaid as points for the history (black) and projection years (red)."
+ECfigCap <- "A graphical test for exceptional circumstances indicating operating model mis-specification. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SOG operating model, projected forward in time under the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
 
 SOGdata <- read.csv("data/SOGIdxCatData.csv")
 
-plotSimDataEnvelopes( obj = mpBlobList[[1]],
+plotSimDataEnvelopes( obj = mpBlobList[[2]],
                       sIdx = 1, pIdx =1, fIdx = 5,
                       Cdata = SOGdata$Catch,
                       Idata = SOGdata$totSpawn,
