@@ -409,29 +409,3 @@ plotGridTulipBtCtUt(mpBlobList,
 ```
 # Exceptional Circumstances
 
-Fishery monitoring data collected since the adoption of the current SOG
-herring MP indicate that the population is behaving within operating 
-model expectations. In formal language there is no indication of operating
-model mis-specification (Figure \@ref(fig:ECfig)), also know as exceptional
-circumstances. Mis-specification is checked visually by comparing catch and 
-spawn index values within the central 95% of 2023 ensemble operating 
-model simulations.
-
-
-```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
-ECfigCap <- "A graphical test for exceptional circumstances indicating operating model mis-specification. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SOG operating model, projected forward in time under the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
-
-SOGdata <- read.csv("data/SOGIdxCatData.csv")
-
-plotSimDataEnvelopes( obj = mpBlobList[[2]],
-                      sIdx = 1, pIdx =1, fIdx = 5,
-                      Cdata = SOGdata$Catch,
-                      Idata = SOGdata$totSpawn,
-                      fYear = 1951 )
-
-```
-
-
-
-
-

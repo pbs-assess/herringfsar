@@ -1,12 +1,18 @@
 ## ASSESSMENT {-}
 
+```{r calcTACchunk, echo = FALSE, include = FALSE}
+TAC.df <- calcTAC(fit_maxTHR0.14)
+
+```
+
+
 - Example cross-reference:
 Stock status in relation to four indicators (see Figure \@ref(fig:indicators)).
 
 [Mandatory panel of images comes first – example shown.
 Refer to the Guidance Document for options and further instructions.]
 
-(ref:indicators-cap) Stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`. (A) Catch (line) and total allowable catch (TAC; dashed line). (B) Spawning stock biomass (SSB) in relation to the limit reference point (LRP; dashed red line) and upper stock reference (USR; dotted green line). (C) Fishing mortality (F; black line), removal reference (RR; dashed red line), and natural mortality (M; dotted line). (D) Recruitment of age-`r age_recruit` fish. Legend: lines indicate median values, grey shading indicates `r ci_pct`% confidence intervals, mortality is per year (yr), biomass is in tonnes (t), and recruitment is number of fish.
+(ref:indicators-cap) Stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`. (A) Catch (line) and total allowable catch (TAC; dashed line). (B) Spawning stock biomass (SSB) in relation to the limit reference point (LRP; dashed red line) and upper stock reference (USR; dotted green line). (C) Fishing mortality (F; black line), removal reference (RR; dashed red line), and natural mortality (M; dotted line). (D) Recruitment of age-`r age_recruit` fish. Legend: lines indicate median values, grey shading indicates `r ci_pct`\% credibility intervals, mortality is per year (yr), biomass is in tonnes (t), and recruitment is number of fish.
 
 ```{r indicators, fig.cap = "(ref:indicators-cap)"}
 # Four-panel indicator plot
@@ -28,7 +34,9 @@ Must be first section in Assessment section.]
 [Report trends in relevant indicator(s), one per paragraph,
 in the following format:]
 
-Insert `stock_status_text()` function to automate text:
+`r stock_status_text()` 
+
+<!-- function to automate text:
 
 - Estimated unfished spawning biomass $\SB_0$ is 138,491 t, and
 the LRP of $0.3\SB_0$ is 41,547 t (posterior medians).
@@ -36,7 +44,7 @@ Compared to last year, estimated spawning biomass in 2023 $\SB_{2023}$
 decreased from 75,523 to 72,782 t (posterior median), and
 is equivalent to 52.1% of $\SB_0$ (Tables XX & XX).
 Spawning biomass in 2023 is estimated to be
-above the LRP with a 94.3% probability (Table XX).
+above the LRP with a 94.3% probability (Table XX). -->
 
 #### [Indicator 1] [specify name, e.g., Abundance]: {-}
 
@@ -81,7 +89,9 @@ Final approval scheduled for fall 2023.]
 Title can vary.
 Tables or figures can be used as necessary to support decision-making.]
 
-Insert `proj_biomass_text()` function to automate text:
+`r proj_biomass_text()`
+
+<!-- Insert `proj_biomass_text()` function to automate text:
 
 - In the absence of fishing,
 spawning biomass in 2024 $\SB_{2024}$ is forecast
@@ -89,21 +99,92 @@ to be 73,375 t (posterior median; Table XX).
 Spawning biomass in 2024 is forecast to be
 below the LRP of $0.3\SB_0$ (41,547 t) with a 8.0% probability,
 in the absence of fishing (Table XX and Figure XX).
-
+ -->
 <!-- TODO: define three generations == 15-years -->
 
 
 ### Ecosystem and Climate Change Considerations {-}
 
 Density dependence, where increased mortality is associated with smaller biomass
-models ecosystem effects such as the increased
-percentage of natural mortality in the event of lower bio-masses due to a constant 
-predatory removal. 
+models ecosystem effects such as the increased percentage of natural mortality 
+in the event of lower biomass, consistent with predator consumption. 
 
 ### Harvest Decision Rule Outputs {-}
 
-[If applicable (otherwise, do not include).] 
+
+
+```{r, TACtable, include = FALSE, echo = FALSE}
+
+TACtabCap <- "Harvest decision rule outputs when the SoG herring SAR MP is applied to data up to 2024"
+
+kable( TAC.df, escape = FALSE, 
+        caption = TACtabCap, booktabs = T,
+        align = c("l","c"),
+        format = kable_format,
+        linesep = "\\addlinespace")
+
+
+```
+
+
+
+```{r, MPcaptions, include = FALSE, echo = FALSE}
+
+stockLabs <- fit_maxTHR0.14$stock
+species   <- fit_maxTHR0.14$ctlList$ctrl$speciesName
+stock     <- fit_maxTHR0.14$ctlList$ctrl$stockNames
+
+SBtRtMtFtCaption <- paste("Time series of spawning biomass with scaled spawn 
+indices (top),recruitments (second row), natural mortality (third row), and
+harvest rates (bottom row) for substocks of ", species, ". Stocks are, from 
+left to right,", paste(stockLabs, collapse = ", "),".", sep = "")
+
+
+hcrCaption <- paste0(stock," Herring management procedure harvest control rule 
+(line) and TAC advice (annotation).")
+
+
+```
+
+
+
+
+```{r, AtAGlance, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption , fig.asp = 1.1}
+plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
+```
+
+```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 1.1}
+plotRule(repList = fit_maxTHR0.14)
+```
+
+
 
 ### Evaluation of Exceptional Circumstances/Assessment Triggers {-}
 
-[If applicable (otherwise, do not include).] 
+Fishery monitoring data collected since the adoption of the current SOG
+herring MP indicate that the population is behaving within operating 
+model expectations. In formal language there is no indication of operating
+model mis-specification (Figure \@ref(fig:ECfig)), also know as exceptional
+circumstances. Mis-specification is checked visually by comparing catch and 
+spawn index values within the central 95% of 2023 ensemble operating 
+model simulations.
+
+
+```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
+ECfigCap <- "A graphical test for exceptional circumstances indicating operating model mis-specification. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SOG operating model, projected forward in time under the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
+
+SOGdata <- read.csv("data/SOGIdxCatData.csv")
+
+plotSimDataEnvelopes( obj = mpBlobList[[2]],
+                      sIdx = 1, pIdx =1, fIdx = 5,
+                      Cdata = SOGdata$Catch,
+                      Idata = SOGdata$totSpawn,
+                      fYear = 1951 )
+
+```
+
+
+
+
+
+

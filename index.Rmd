@@ -44,6 +44,7 @@ always_allow_html: true
 library(knitr)
 library(rmarkdown)
 library(tidyverse)
+library(RColorBrewer)
 library(rosettafish)
 library(csasdown)
 library(here)
@@ -52,118 +53,7 @@ library(scales)
 library(gfutilities)
 library(kableExtra)
 
-# library(gfiscamutils)
-# library(herringutils)
-source(("functions/ms3Rplots.R"))
-source(("functions/ms3Rtools.R"))
-source(("functions/ms3RrefPts.R"))
-source(("functions/ms3Rstats.R"))
 
-# first, load model histories
-# projFolder is in "Outputs"
-histFolder <- file.path("data","SOG_DDM_omGrid")
-
-fitFolders <- c(  "fit_parBatSOG_MbhGrid_h.71",
-                  "fit_parBatSOG_OMgrid_h.70_2",
-                  "fit_parBatSOG_OMgrid_h.70_3",
-                  "fit_parBatSOG_OMgrid_h.70_4",
-                  "fit_parBatSOG_OMgrid_h.70_5")
-
-fitPaths <- file.path(histFolder,fitFolders,paste0(fitFolders,".rds"))
-
-histRpts <- lapply(X = fitPaths, FUN = readRDS)
-
-scenarios <- c( "SOG_Mb0.532_h0.70",
-                "SOG_Mb0.562_h0.65",
-                "SOG_Mb0.562_h0.70",
-                "SOG_Mb0.562_h0.75",
-                "SOG_Mb0.584_h0.70")
-
-names(histRpts) <- scenarios
-
-# order hist reports
-histRpts <- histRpts[c(3,2,4,1,5)]
-
-
-simFolder <- file.path("data","SOG_wtdPerf_Ugrid")
-# Now read the infoFile in each sim folder
-dirList   <- list.dirs(simFolder, recursive = FALSE)
-dirList   <- dirList[grepl(x = dirList, pattern = "sim_")]
-
-infoList  <- file.path(dirList,"infoFile.txt")
-infoList  <- lapply(X = infoList, FUN = lisread)
-infoList  <- lapply(X = infoList, FUN = as.data.frame)
-info.df   <- do.call(rbind, infoList)
-
-mps   <- c("Ugrid_0.06","Ugrid_0.14")
-mps2  <- c("maxTHR_0.06","maxTHR_0.14")
-
-# Filter info.df
-info.df <- info.df |> filter( mp %in% mps )
-mpBlobList <- list()
-
-for(k in 1:nrow(info.df))
-{
-  simLabel <- paste0("sim_",info.df$simLabel[k])
-  path <- file.path(simFolder,simLabel,paste0(simLabel,".RData"))
-  # Load blob
-  load(path)
-
-  # Save to mpBlobList
-  mpBlobList[[k]] <- blob
-
-}
-names(mpBlobList) <- info.df$simLabel
-
-
-fYear   <- blob$ctlList$opMod$fYear
-nS      <- blob$om$nS
-nP      <- blob$om$nP
-nT      <- blob$om$nT
-tMP     <- blob$om$tMP
-pT      <- blob$ctlList$opMod$pT
-
-isProj <- pT > 1
-
-species <- blob$om$speciesNames
-stock   <- blob$om$stockNames
-
-goodRepIdx <- which(blob$goodRep)
-
-# Draw a random replicate for plotting
-set.seed(101)
-randReplicate <- sample(goodRepIdx, size = 1)
-randTraces    <- sample(goodRepIdx, size = 3)
-usePosts      <- blob$ctlList$opMod$posteriorSamples
-
-# Replace passed objectives with a filled circle dot 
-# (use unicode??)
-passObj <- function( X, target = .95, comp = "gt" )
-{
-  out <- character(length = length(X))
-  for( l in 1:length(X))
-  { 
-    if( length(target) > 1 )
-      tar <- target[l]
-    else tar <- target
-
-    if( comp == "gt")
-    {
-      if( round(X,2) >= tar )
-        out[l] <- paste("$\\checkmark$")
-      else out[l] <- paste(X,sep = "")
-    }
-
-    if( comp == "lt")
-    {
-      if( round(X,2) <= tar )
-        out[l] <- paste("$\\checkmark$")
-      else out[l] <- paste("$",X,">",target,"$",sep = "")
-    }    
-
-  }
-  return(out)
-}
 
 ```
 
@@ -212,6 +102,7 @@ source(here("R", "models.R"))
 source(here("R", "variables.R"))
 source(here("R", "figures.R"))
 source(here("R", "themes.R"))
+source(here("R", "functions.R"))
 # Theme for figures
 theme_set(theme_herring())
 ```

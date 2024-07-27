@@ -20,7 +20,7 @@ mortality (DDM), integrated surface and dive survey data in the index,
 commercial fishery timing, and a likelihood function with correlated 
 age-compositions.
 
-A weighted operating model is used for the management procedure 
+A weighted operating model is used for management procedure 
 evaluation, whereby the weighted model represents a range of productivity 
 characterized by the stock recruitment steepness ($h$) and the lower 
 limit on natural mortality ($M_b$). This approach better represents the 
@@ -65,7 +65,7 @@ Single stock operating model ensemble (full MSE process).
 <!-- multiple approaches, -->
 <!-- other (specify)] -->
 
-1.	Specific category:
+2.	Specific category:
 <!-- [Select one or as many as apply: -->
 <!-- No data, -->
 <!-- Index-based (fishery-dependent indices only), -->
@@ -75,9 +75,9 @@ Index-based,
 <!-- Biomass dynamics, -->
 <!-- Virtual population analysis, -->
 <!-- Statistical catch-at-length, -->
+State-Space,
 statistical catch-at-age model, 
-density dependent time varying natural mortality, and
-<!-- State-Space, -->
+density dependent time varying natural mortality, 
 <!-- Sequential Population Analysis, -->
 <!-- Surplus Production, -->
 Beverton-Holt stock-recruitment relationship.
@@ -85,6 +85,7 @@ Beverton-Holt stock-recruitment relationship.
 <!-- Other (please explain)] -->
 
 <!-- [Optional short summary of stock assessment methodology. -->
+
 <!-- Include the method of considering ecosystem variables. -->
 <!-- Include a reference to a Research Document or other publication, -->
 <!-- and/or footnote to the working paper. -->
@@ -113,18 +114,18 @@ share summer/ fall feeding grounds with the West Coast Vancouver Island herring.
 A suite of biological and fishery reference points are included for SoG Herring.
 These are:
 1.    Fractions of unfished biomass, ${SB_0}$
-1.    ${MSY}$
-1.    Fractions of $U_{MSY}$
+2.    ${MSY}$
+3.    Fractions of $U_{MSY}$
 
-In 2018, a biological limit reference point (LRP) was defined for Pacific Herring major stocks as 
-$0.3SB_0$ in 2018, where ${SB_0}$ is the long-term average estimated 
-unfished spawning biomass [@kronlund2017].
+In 2018, a biological limit reference point (LRP) was defined for Pacific
+Herring major stocks as $0.3SB_0$ in 2018, where ${SB_0}$ is the long-term
+average estimated unfished spawning biomass [@kronlund2017].
 
 Candidate USRs were first introduced in @cleary2018 and a formal analysis of 
 USR options was undertaken in 2022 with results presented in @dfo2022a.
 In 2023, DFO Resource Management selected and implemented a provisional 
-USR of $\overline{\SB}$, implemented as a performance metric within 
-2022/23 IFMP process.
+USR of $0.8 \overline{\SB}_{1998:2007}$, implemented as a performance metric 
+within 2022/23 IFMP process.
 
 <!-- [Mandatory. -->
 <!-- A table may be used in lieu of bullets for this section. -->
@@ -153,36 +154,48 @@ on the LRP.
 at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$),
 
-1. Maintain spawning biomass at or above the USR
-with at least 50% probability over three Pacific Herring generations
-(i.e., achieve a target biomass; $P(\SB_t \geq \SB_{targ}) \geq 0.50$),
+2. Maintain spawning biomass at or above the USR with at least 50% 
+probability over three Pacific Herring generations (i.e., achieve a 
+target biomass; $P(\SB_t \geq \SB_{targ}) \geq 0.50$),
 
-1. Maintain average annual variability (AAV) in catch
-below 25% over three Pacific Herring generations
-(i.e., minimize catch variability; $\text{AAV} < 0.25$), and
+3. Maintain average annual variability (AAV) in catch below 25% over three
+Pacific Herring generations (i.e., minimize catch variability; 
+$\text{AAV} < 0.25$), and
 
-1. Maximize average annual catch
-over three Pacific Herring generations (i.e., maximize average catch).
+4. Maximize average annual catch over three Pacific Herring 
+generations (i.e., maximize average catch).
 
 
-Operating model development began for Herring MSE in 2015, 
-however a fully specified set of objectives has not yet been developed for each SAR.
-DFO will continue to collaborate with coastal First Nations to
-develop area-specific objectives FSC fisheries as well as SOK fisheries (where applicable).
-In addition, DFO will continue to engage with the herring industry and government 
-and non-government organizations to describe broader objectives related to 
-conservation, economics, and access.
+Operating model development began for Herring MSE in 2015, however a fully 
+specified set of objectives has not yet been developed for each SAR. DFO will 
+continue to collaborate with coastal First Nations to develop area-specific 
+objectives FSC fisheries as well as SOK fisheries (where applicable).
+In addition, DFO will continue to engage with the herring industry and 
+government and non-government organizations to describe broader objectives 
+related to conservation, economics, and access.
 
 ### Stock Status {-}
 
-SoG stock status is defined from the operating model (Appendix A). 
+SoG stock status is derived from the operating model ensemble (Appendix A). 
 <!-- short description only, no data-->
 
 ### Harvest Decision Rule {-}
 
 [Optional (otherwise, do not include).
 Maximum length 100 words.]
-This is defined using the MSE MP evaluations ...
+
+TACs are derived from biomass estimates via a harvest decision rule. For
+SOG herring, we use a "hockey-stick" shaped function defined
+by lower and upper control points, and a maximum target harvest rate
+[@cox2013roles]. The SOG herring rules have lower and upper control points 
+at 30\% and 60\% of unfished biomass, respectively. When biomass 
+is estimated to be below the lower control point the rule sets the harvest
+rate to zero. Between control points, the harvest rate is a linear ramp 
+from zero to the maximum harvest rate, and above the upper control point the 
+rule sets harvest rates to the maximum target harvest rate, called $maxTHR$. 
+This report shows results for maximum target harvest rates of 6\% 
+and 14\% (Figure \@ref(fig:hcrPlot)).
+
 
 ### Data {-}
 
