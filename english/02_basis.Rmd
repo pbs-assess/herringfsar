@@ -20,14 +20,17 @@ mortality (DDM), integrated surface and dive survey data in the index,
 commercial fishery timing, and a likelihood function with correlated 
 age-compositions.
 
-A weighted operating model is used for management procedure 
-evaluation, whereby the weighted model represents a range of productivity 
-characterized by the stock recruitment steepness ($h$) and the lower 
-limit on natural mortality ($M_b$). This approach better represents the 
-uncertainty in stock productivity rather than using a single estimated
-value of $h$.
+A weighted ensemble operating model is used for management procedure 
+evaluation, whereby the ensemble contains models that represent a range 
+of productivity levels, characterized by stock recruitment steepness 
+($h$), which affects productivity at low stock sizes, and the lower 
+limit on natural mortality ($M_b$), which herring survival at high
+stock sizes. This approach represents uncertainty in stock 
+productivity better than using a single value of stock-recruit steepness,
+which is difficult to estimate and often reliant on prior information.
 
-Details of operating model development are described in Appendix A.
+
+Details of the operating model ensemble are described in Appendix A.
 
 Management procedures (MPs) were simulation tested using a 15-year projection 
 period (2024-2038); only MPs that meet the established conservation 
@@ -85,6 +88,8 @@ Beverton-Holt stock-recruitment relationship.
 <!-- Other (please explain)] -->
 
 <!-- [Optional short summary of stock assessment methodology. -->
+
+
 
 <!-- Include the method of considering ecosystem variables. -->
 <!-- Include a reference to a Research Document or other publication, -->

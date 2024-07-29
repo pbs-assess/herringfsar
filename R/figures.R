@@ -26,10 +26,12 @@ plot_indicators <- function(dat) {
     theme(axis.text.x = element_blank())
   # F and M (panel C)
   p_mortality <- ggplot(data = dat, mapping = aes(x = Year, y = F_med)) +
+    geom_ribbon(mapping = aes(ymin = M_min, ymax = M_max), fill = "salmon", alpha.f = 0.5) +
+    geom_line(mapping = aes(y = M_med), colour = "red") +
     geom_ribbon(mapping = aes(ymin = F_min, ymax = F_max), fill = "grey") +
     geom_line() +
     geom_hline(yintercept = dat$F_lim, linetype = "dashed", colour = "red") +
-    geom_hline(yintercept = dat$M_med, linetype = "dotted") +
+    
     labs(y = "Mortality (/yr)") +
     expand_limits(y = 0) +
     annotate(

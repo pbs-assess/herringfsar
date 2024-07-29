@@ -115,12 +115,11 @@ in the event of lower biomass, consistent with predator consumption.
 
 ```{r, TACtable, include = FALSE, echo = FALSE}
 
-TACtabCap <- "Harvest decision rule outputs when the SoG herring SAR MP is applied to data up to 2024"
+TACtabCap <- "Harvest decision rule outputs when the SoG herring SAR MP is applied to data up to 2024."
 
 kable( TAC.df, escape = FALSE, 
-        caption = TACtabCap, booktabs = T,
+        caption = TACtabCap, booktabs = TRUE,
         align = c("l","c"),
-        format = kable_format,
         linesep = "\\addlinespace")
 
 

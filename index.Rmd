@@ -98,11 +98,12 @@ major_stock_dir <- list("SoG")
 ```
 
 ```{r scripts}
+source(here("R", "functions.R"))
 source(here("R", "models.R"))
 source(here("R", "variables.R"))
 source(here("R", "figures.R"))
 source(here("R", "themes.R"))
-source(here("R", "functions.R"))
+
 # Theme for figures
 theme_set(theme_herring())
 ```
