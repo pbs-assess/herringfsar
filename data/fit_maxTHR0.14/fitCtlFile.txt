@@ -1,0 +1,16 @@
+# fitCtlFile.txt, written to 20240726185857 on 2024-07-26
+parameter value
+ctrl$dataScenarioName 'SOG'
+ctrl$modelHypName 'DIM_2024'
+ctrl$stockNames "SOG"
+ctrl$speciesName "SOGHerring"
+data$fYearData 1951
+data$lYearData 2024
+data$fYearAssess 1951
+data$lYearAssess 2024
+data$dataFolder "SOG2024"
+data$fleetWtAge FALSE
+mp$LCP 0.3
+mp$UCP 0.6
+mp$maxTHR 0.14
+# <End File>
