@@ -40,7 +40,7 @@ always_allow_html: true
 ---
 
 ```{r libraries, echo = FALSE, message = FALSE}
-# Add packages here
+# External packages
 library(knitr)
 library(rmarkdown)
 library(tidyverse)
@@ -52,9 +52,6 @@ library(patchwork)
 library(scales)
 library(gfutilities)
 library(kableExtra)
-
-
-
 ```
 
 ```{r setup, echo = FALSE}
@@ -70,7 +67,7 @@ if (is_latex_output()) {
   fig_out_type <- "png"
   kable_format <- "pandoc"
 }
-
+# Set knitr chunk options
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
@@ -98,12 +95,12 @@ major_stock_dir <- list("SoG")
 ```
 
 ```{r scripts}
+# Files
 source(here("R", "functions.R"))
 source(here("R", "models.R"))
 source(here("R", "variables.R"))
 source(here("R", "figures.R"))
 source(here("R", "themes.R"))
-
 # Theme for figures
 theme_set(theme_herring())
 ```

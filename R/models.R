@@ -1,38 +1,34 @@
 # This is where we will load model output from SISCAH
 
-# library(gfiscamutils)
-# library(herringutils)
-
 # Load MS3 libraries
-source(("functions/ms3Rplots.R"))
-source(("functions/ms3Rtools.R"))
-source(("functions/ms3RrefPts.R"))
-source(("functions/ms3Rstats.R"))
+source(here("functions", "ms3Rplots.R"))
+source(here("functions", "ms3Rtools.R"))
+source(here("functions", "ms3RrefPts.R"))
+source(here("functions", "ms3Rstats.R"))
 
 # Load SISCAH libraries
-source(("functions/SISCAplots.R"))
-source(("functions/SISCAtools.R"))
-source(("functions/SISCAfuns.R"))
-
+source(here("functions", "SISCAplots.R"))
+source(here("functions", "SISCAtools.R"))
+source(here("functions", "SISCAfuns.R"))
 
 # first, load model histories
 histFolder <- file.path("data","SOG_DDM_omGrid")
 
-fitFolders <- c(  "fit_parBatSOG_MbhGrid_h.71",
-                  "fit_parBatSOG_OMgrid_h.70_2",
-                  "fit_parBatSOG_OMgrid_h.70_3",
-                  "fit_parBatSOG_OMgrid_h.70_4",
-                  "fit_parBatSOG_OMgrid_h.70_5")
+fitFolders <- c("fit_parBatSOG_MbhGrid_h.71",
+                "fit_parBatSOG_OMgrid_h.70_2",
+                "fit_parBatSOG_OMgrid_h.70_3",
+                "fit_parBatSOG_OMgrid_h.70_4",
+                "fit_parBatSOG_OMgrid_h.70_5")
 
-fitPaths <- file.path(histFolder,fitFolders,paste0(fitFolders,".rds"))
+fitPaths <- here(histFolder, fitFolders, paste0(fitFolders, ".rds"))
 
 histRpts <- lapply(X = fitPaths, FUN = readRDS)
 
-scenarios <- c( "SOG_Mb0.532_h0.70",
-                "SOG_Mb0.562_h0.65",
-                "SOG_Mb0.562_h0.70",
-                "SOG_Mb0.562_h0.75",
-                "SOG_Mb0.584_h0.70")
+scenarios <- c("SOG_Mb0.532_h0.70",
+               "SOG_Mb0.562_h0.65",
+               "SOG_Mb0.562_h0.70",
+               "SOG_Mb0.562_h0.75",
+               "SOG_Mb0.584_h0.70")
 
 names(histRpts) <- scenarios
 
@@ -41,6 +37,7 @@ histRpts <- histRpts[c(3,2,4,1,5)]
 
 # Now weighted ensemble OMs
 simFolder <- file.path("data","SOG_wtdPerf_Ugrid")
+
 # Now read the infoFile in each sim folder
 dirList   <- list.dirs(simFolder, recursive = FALSE)
 dirList   <- dirList[grepl(x = dirList, pattern = "sim_")]
@@ -96,11 +93,7 @@ fit_maxTHR0.14 <- readRDS("data/fit_maxTHR0.14/fit_maxTHR0.14.rds")
 
 # Load ref pts and ensemble parameters
 ensRefPtsTable <- read.csv("data/SOG_ensRefPts.csv") |>
-                  mutate_if(is.numeric, round, 2)
+  mutate_if(is.numeric, round, 2)
 ensParTable <- read.csv("data/ensOM_meanPars.csv") |>
-                mutate_if(is.numeric,round,2) |>
-                mutate( PBTGtLRP = 0.99 )
-
-
-
-
+  mutate_if(is.numeric,round,2) |>
+  mutate( PBTGtLRP = 0.99 )
