@@ -16,7 +16,7 @@ plot_indicators <- function(dat) {
     geom_ribbon(mapping = aes(ymin = SSB_min, ymax = SSB_max), fill = "grey") +
     geom_line() +
     geom_hline(yintercept = dat$LRP, linetype = "dashed", colour = "red") +
-    geom_hline(yintercept = dat$USR, linetype = "dotted", colour = "green") +
+    geom_hline(yintercept = dat$USR, lty = 3,  lwd = 1.5, colour = "darkgreen") +
     scale_y_continuous(labels = comma) +
     labs(x = NULL, y = "Biomass (1,000 t)") +
     expand_limits(y = 0) +
@@ -31,7 +31,7 @@ plot_indicators <- function(dat) {
     geom_ribbon(mapping = aes(ymin = F_min, ymax = F_max), fill = "grey") +
     geom_line() +
     geom_hline(yintercept = dat$F_lim, linetype = "dashed", colour = "red") +
-    
+
     labs(y = "Mortality (/yr)") +
     expand_limits(y = 0) +
     annotate(
