@@ -17,7 +17,7 @@ plot_indicators <- function(dat) {
     geom_line() +
     geom_hline(yintercept = dat$LRP, linetype = "dashed", colour = "red") +
     geom_hline(yintercept = dat$USR, linetype = "dotted", lwd=1.0, colour = "darkgreen") +
-    geom_hline(yintercept = dat$Bo, linetype = "dashed", colour = "black") +
+    geom_hline(yintercept = dat$B0, linetype = "dashed", colour = "black") +
     scale_y_continuous(labels = comma) +
     labs(x = NULL, y = "Biomass (1,000 t)") +
     expand_limits(y = 0) +

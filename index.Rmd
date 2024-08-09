@@ -88,6 +88,7 @@ assess_yr <- 2024
 # meta_out <- metadata$output
 # french <- meta_out$`csasdown::fsar_word`$french
 french <- FALSE
+# TODO: [SAM] add a list of any variables needed to change. i.e. Region, USR, BO, [see functions.R/makeModelHistTable[arguments]] 
 ```
 
 ```{r models}
