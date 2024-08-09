@@ -38,7 +38,8 @@ objective [@dfo2022a] are presented.
 
 #### Year Assessment Approach was Approved {-}
 <!-- [Mandatory; year and reference] -->
-2023 [@dfo2023a, @johnson2024].
+The SISCAH operating model framework implemented here for SoG Herring was 
+reviewed and approved by CSAS in June 2023 (@dfo2023a, @johnson2024).
 
 #### Assessment Type {-}
 <!-- [Mandatory. -->
