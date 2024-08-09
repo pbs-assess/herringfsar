@@ -145,10 +145,7 @@ hcrCaption <- paste0(stock," Herring management procedure harvest control rule
 
 ```
 
-
-
-
-```{r, AtAGlance, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption , fig.asp = 1.1}
+```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption , fig.asp = 1.1}
 plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
 ```
 
