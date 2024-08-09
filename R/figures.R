@@ -16,7 +16,8 @@ plot_indicators <- function(dat) {
     geom_ribbon(mapping = aes(ymin = SSB_min, ymax = SSB_max), fill = "grey") +
     geom_line() +
     geom_hline(yintercept = dat$LRP, linetype = "dashed", colour = "red") +
-    geom_hline(yintercept = dat$USR, lty = 3,  lwd = 1.5, colour = "darkgreen") +
+    geom_hline(yintercept = dat$USR, linetype = "dotted", lwd=1.0, colour = "darkgreen") +
+    geom_hline(yintercept = dat$Bo, linetype = "dashed", colour = "black") +
     scale_y_continuous(labels = comma) +
     labs(x = NULL, y = "Biomass (1,000 t)") +
     expand_limits(y = 0) +
