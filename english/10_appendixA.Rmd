@@ -202,8 +202,6 @@ rule sets harvest rates to the maximum target harvest rate, called $maxTHR$.
 This report shows results for maximum target harvest rates of 6\% 
 and 14\% (Figure \@ref(fig:hcrPlot)).
 
-
-
 ```{r hcrPlot, echo = FALSE, fig.cap = HCRcap}
 HCRcap <- "Two harvest control rules tested for candidate SOG herring MPs, showing maximum target harvest rates $maxTHR$ of 6\\% and 14\\%."
 
@@ -346,19 +344,20 @@ statTable <- wtdPerfTable |>
                               aveDep, 
                               DnT,
                               BnT ) |>
-              mutate( avgCatch_t = round(avgCatch_t/1e3,2),
+              mutate( mp = gsub("maxTHR_", "", mp),
+                      avgCatch_t = round(avgCatch_t/1e3,2),
                       pBtGt.3B0 = sapply(X = pBtGt.3B0, FUN = passObj, target = .75),
                       pBtGtUSR  = sapply(X = pBtGtUSR, FUN = passObj, target = .5) )
 
 colnames(statTable) <- c( "MP",
-                          "$B_t \\geq 0.3 B_0$",
-                          "$B_t \\geq B_{MSY}$",
-                          "$B_t \\geq 0.4 B_0$",
-                          "$B_t \\geq 0.5 B_0$",
-                          "$B_t \\geq 0.6 B_0$",
-                          "$B_t \\geq USR$",
-                          "$B_t \\geq \\overline{B}_{1950:2023}$",
-                          "$U_t \\geq U_{MSY}$", # Replace with Umsy
+                          "$0.3 B_0$",
+                          "$B_{MSY}$",
+                          "$0.4 B_0$",
+                          "$0.5 B_0$",
+                          "$0.6 B_0$",
+                          "$USR$",
+                          "$\\overline{B}$",
+                          "$U_{MSY}$", # Replace with Umsy
                           "$\\overline{C_t}$",
                           "$AAV$",
                           "$\\overline{B_{t}/B_0}$", 
@@ -366,7 +365,7 @@ colnames(statTable) <- c( "MP",
                           "$B_{2038}$"
                           )
 
-statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates. Objectives that are met by an MP are indicated by a checkmark. For all columns, the subscript $t$ indicates the yeras 2024 - 2038. Biomass $B_t$ and Harvest Rate $U_t$ metrics are in probability units. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished."
+statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by a checkmark. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass."
 
 
 objNames <- c(  " " = 1,
