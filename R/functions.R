@@ -88,8 +88,8 @@ calcTAC <- function( repList = reports )
   out.df <- array("", dim = c(6,2))
   out.df <- as.data.frame(out.df)
   colnames(out.df) <- c("Variable","Estimate")
-  out.df[,1] <- c("$\\hat{B}_{2024}",
-                  "$\\hat{B}_{0}",
+  out.df[,1] <- c("$\\hat{B}_{2024}$",
+                  "$\\hat{B}_{0}$",
                   "LCP",
                   "OCP",
                   "THR",
@@ -180,6 +180,7 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
 #   out.df  = Table of catch, biomass, fishing/natural
 #             mortality, and recruitment for plotting.
 makeModelHistTable <- function( obj,
+                                wtPosts = wtPosts,
                                 fYear = 1951,
                                 lYear = 2023,
                                 B0 = 90.23,
@@ -191,21 +192,50 @@ makeModelHistTable <- function( obj,
   # Pull good replicates
   goodReps  <- which(obj$goodReps)
 
+  tMP <- obj$om$tMP
+
+
   # Years
   yrs       <- fYear:lYear
   tIdx      <- 1:length(yrs)
+
+  # get assessment SB
+  aSB_it <- wtPosts$SB_ipt[,1,1:(tMP-1)]
+  aSB_qt <- apply(aSB_it, FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
 
   # Catch
   C_qt      <- apply(obj$om$C_ispt[goodReps,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
   # Biomass
   SB_qt     <- apply(obj$om$SB_ispt[goodReps,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+
+  # Overwrite weighted blob history with weighted posterior
+  SB_qt[,1:(tMP-1)] <- aSB_qt
+
   # Harvest rates
   U_ispt    <- obj$om$C_ispt/(obj$om$C_ispt + obj$om$SB_ispt)
   U_qt      <- apply(U_ispt[goodReps,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
   # Recruitment
-  R_qt      <- apply(obj$om$R_ispt[goodReps,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+  R_qt              <- apply(obj$om$R_ispt[goodReps,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+  R_qt[,1:(tMP-1)]  <- apply(wtPosts$R_ipt[,1,1:(tMP-1)], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
   # Natural mortality
-  M_qt      <- apply(obj$om$M_iaxspt[goodReps,2,1,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+  M_qt              <- apply(obj$om$M_iaxspt[goodReps,2,1,1,1,tIdx], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+  M_qt[,1:(tMP-3)]  <- apply(wtPosts$M_iapt[,2,1,1:(tMP-3)], FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+
+
+
+  # Make surplus production
+  SB_it     <- obj$om$SB_ispt[goodReps,1,1,tIdx]
+  C_it      <- obj$om$C_ispt[goodReps,1,1,tIdx]
+
+  # Calculate surplus production
+  SP_it     <- array(NA, dim = dim(SB_it))
+
+  for( t in 1:(length(yrs)-1) )
+    SP_it[,t] <- SB_it[,t+1] - SB_it[,t] + C_it[,t]
+
+  SP_qt <- apply(X = SP_it, FUN = quantile, probs = c(0.025,0.5,.975),MARGIN = 2, na.rm = TRUE)
+
+
 
   # Data.frame of data for plotting.
   out.df    <- data.frame(  Year    = yrs,
@@ -217,16 +247,19 @@ makeModelHistTable <- function( obj,
                             LRP     = 0.3*B0,
                             USR     = USR,
                             B0      = B0,
-                            F_med   = U_qt[2,],
-                            F_min   = U_qt[1,],
-                            F_max   = U_qt[3,],
-                            F_lim   = Uref,
-                            M_med   = 1 - exp(-M_qt[2,]),
-                            M_max   = 1 - exp(-M_qt[3,]),
-                            M_min   = 1 - exp(-M_qt[1,]),
+                            U_med   = U_qt[2,],
+                            U_min   = U_qt[1,],
+                            U_max   = U_qt[3,],
+                            Uref    = Uref,
+                            M_med   = M_qt[2,],
+                            M_max   = M_qt[3,],
+                            M_min   = M_qt[1,],
                             R_med   = R_qt[2,],
                             R_max   = R_qt[3,],
-                            R_min   = R_qt[1,]
+                            R_min   = R_qt[1,],
+                            SP_med  = SP_qt[2,],
+                            SP_max  = SP_qt[3,],
+                            SP_min  = SP_qt[1,]
                           )
 
   out.df

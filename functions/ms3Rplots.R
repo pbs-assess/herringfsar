@@ -13,8 +13,18 @@
 
 
 
-
-
+# plotSimDataEnvelopes()
+# Simulated and real catch and index data envelopes,
+# meant to help diagnose exceptional circumstances.
+# Inputs:
+#     obj = MS3 simulation object
+#     sIdx = species index for MS3 obj
+#     pIdx = area index for MS3 obj
+#     fIdx = fleet index for index data
+#     Cdata = input real catch data series
+#     Idata = input real idx data series
+#     fYear = first year of the x-axis
+# Returns: Nothing, but plots to active graphics device
 plotSimDataEnvelopes <- function( obj = blob,
                                   sIdx = 1, pIdx =1, fIdx = 5,
                                   Cdata = NULL,
@@ -104,7 +114,9 @@ plotSimDataEnvelopes <- function( obj = blob,
     }
 
   mtext(side = 1, text = "Year", outer = TRUE, line = 2)
-}
+} # END plotSimDataEnvelopes()
+
+
 
 # plotStockRecruitEnvelope()
 # Beverton-Holt stock recruitment curve for an individual

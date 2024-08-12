@@ -52,7 +52,7 @@ sim_dat <- sim_fsar_data("wide") %>%
     R_med = `R-E06`, R_min = `Rlow-E06`, R_max = `Rhigh-E06`
   )
 
-true_dat <- makeModelHistTable(mpBlobList[[2]], lYear = 2024)
+true_dat <- makeModelHistTable(mpBlobList[[2]], wtPosts = wtPosts, lYear = 2024)
 
 # Years and seasons
 last_assess_yr <- assess_yr - 1
@@ -69,8 +69,8 @@ major_start_yr <- yr_range[1]
 minor_start_yr <- yr_range[1]
 
 # Recruitment age
-age_recruit <- 2
+age_recruit <- 1
 
 # Confidence interval
-ci_values <- c(0.05, 0.95)
+ci_values <- c(0.025, 0.975)
 ci_pct <- (ci_values[2] - ci_values[1]) * 100

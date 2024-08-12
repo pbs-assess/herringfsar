@@ -12,11 +12,11 @@ Stock status in relation to four indicators (see Figure \@ref(fig:indicators)).
 [Mandatory panel of images comes first – example shown.
 Refer to the Guidance Document for options and further instructions.]
 
-(ref:indicators-cap) Stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`. (A) Catch (line) and total allowable catch (TAC; dashed line). (B) Spawning stock biomass (SSB) in relation to the limit reference point (LRP; dashed red line), upper stock reference (USR; dotted green line), and unfished spawning biomass ($B_0$; dashed black line). (C) Fishing mortality (F; black line), removal reference (RR; dashed red line), and natural mortality (M; dotted line). (D) Recruitment of age-`r age_recruit` fish. Legend: lines indicate median values, grey shading indicates `r ci_pct`\% credibility intervals, mortality is per year (yr), biomass is in tonnes (t), and recruitment is number of fish.
+(ref:indicators-cap) Stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`. (A) Catch (black solid line) and the 2024 MP's total allowable catch advice (TAC; dashed horizontal line). (B) Spawning stock biomass (SSB), limit reference point (LRP; dashed red line), upper stock reference (USR; dashed green line), and unfished spawning biomass ($B_0$; dashed black line). (C) Natural mortality rate (M; red line). (D) Harvest rate (U, black solid line) and maximum target harvest rate (maxTHR, dashed horizontal line). (E) Recruitment of age-`r age_recruit` fish. (F) Surplus production (vertical axis) vs spawning stock biomass (horizontal axis), with the LRP (red dashed line), USR (green dashed line), and unfished biomass (black dashed line). Legend: lines indicate weighted ensemble posterior median values, and where applicable shading indicates `r ci_pct`\% credibility intervals.
 
-```{r indicators, fig.cap = "(ref:indicators-cap)"}
+```{r indicators, fig.cap = "(ref:indicators-cap)", fig.asp = 1.1}
 # Four-panel indicator plot
-plot_indicators(dat = true_dat)
+baseplot_indicators(dat = true_dat)
 ```
 
 [Optional. Add an additional optional panel of 4 indicators
@@ -113,7 +113,7 @@ in the event of lower biomass, consistent with predator consumption.
 
 
 
-```{r, TACtable, include = FALSE, echo = FALSE}
+```{r, TACtable, echo = FALSE, warnings = FALSE}
 
 TACtabCap <- "Harvest decision rule outputs when the SoG herring SAR MP is applied to data up to 2024."
 

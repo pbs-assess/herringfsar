@@ -1,7 +1,7 @@
 # This is where we will load model output from SISCAH
 
 # Load MS3 libraries
-source(here("functions", "ms3Rplots.R"))
+# source(here("functions", "ms3Rplots.R"))
 source(here("functions", "ms3Rtools.R"))
 source(here("functions", "ms3RrefPts.R"))
 source(here("functions", "ms3Rstats.R"))
@@ -29,6 +29,9 @@ scenarios <- c("SOG_Mb0.532_h0.70",
                "SOG_Mb0.562_h0.70",
                "SOG_Mb0.562_h0.75",
                "SOG_Mb0.584_h0.70")
+
+
+wtPosts <- readRDS("data/wtPosts.rds")
 
 names(histRpts) <- scenarios
 

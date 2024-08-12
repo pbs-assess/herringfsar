@@ -74,10 +74,8 @@ e.g.,
 where $\theta_{ens}$ is the ensemble weighted average of the parameter values
 $\theta_{OM_k}$ from operating model $k = 1,...,5$.
 
-For all operating models, we report leading OM parameters, current biomass and 
-stock status, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
-The final column also gives the weighted ensemble value of the posterior mean
-values from each OM.
+For all operating models, we report leading OM parameters, current biomass,
+current stock status relative to unfished biomass, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)). The final column also gives the weighted ensemble value of the posterior mean values from each OM.
 
 ```{r parRefPtsTable, echo = FALSE, warnings = FALSE}
 
@@ -202,10 +200,15 @@ rule sets harvest rates to the maximum target harvest rate, called $maxTHR$.
 This report shows results for maximum target harvest rates of 6\% 
 and 14\% (Figure \@ref(fig:hcrPlot)).
 
-```{r hcrPlot, echo = FALSE, fig.cap = HCRcap}
-HCRcap <- "Two harvest control rules tested for candidate SOG herring MPs, showing maximum target harvest rates $maxTHR$ of 6\\% and 14\\%."
+```{r hcrPlot, echo = FALSE, fig.cap = HCRcap, fig.asp = 0.9}
+HCRcap <- "Shape of harvest control rule components of management procedures (MP). The green line represents the MP which meets the conservation objective over the 15-year projection period for the ensemble operating model (with density dependent natural mortality). The red line denotes shape of the previously used 20\\% rule and the purple line shows the DFO default harvest control rule with maximum target harvest rate set at $U_{MSY}$ and control points at $0.4 \\cdot B_{MSY}$ and $0.8 \\cdot B_{MSY}$."
 
-plotHCRex(maxSeq = c(0.06,0.14))
+plotHCRules(  LCP_i = c(.3,.3,.172),
+              UCP_i = c(.6,.6,.342),
+              lowF = .0,
+              highF = 1,
+              U_i = c(.14,.20,.187) ,
+              language = "English")
 ```
 
 
@@ -328,7 +331,7 @@ that MPs should target closer to 7\%.
 wtdPerfTable <- read.csv("data/wtdTable.csv")
 
 statTable <- wtdPerfTable |>
-              filter( mp %in% mps2 ) |>
+              filter( mp %in% mps2[2] ) |>
               mutate_if(is.numeric, round, 2) |>
               dplyr::select(  mp,
                               pBtGt.3B0,
@@ -348,16 +351,25 @@ statTable <- wtdPerfTable |>
                       avgCatch_t = round(avgCatch_t/1e3,2),
                       pBtGt.3B0 = sapply(X = pBtGt.3B0, FUN = passObj, target = .75),
                       pBtGtUSR  = sapply(X = pBtGtUSR, FUN = passObj, target = .5) )
+statTable <- do.call(rbind,list(statTable,statTable,statTable))
+
+statTable[1,"mp"] <- "maxTHR_0.14"
+statTable[2,"mp"] <- "maxTHR_Umsy"
+statTable[3,"mp"] <- "maxTHR_0.20"
+
+statTable[2,-1] <- NA
+statTable[3,-1] <- NA
+
 
 colnames(statTable) <- c( "MP",
-                          "$0.3 B_0$",
-                          "$B_{MSY}$",
-                          "$0.4 B_0$",
-                          "$0.5 B_0$",
-                          "$0.6 B_0$",
-                          "$USR$",
-                          "$\\overline{B}$",
-                          "$U_{MSY}$", # Replace with Umsy
+                          "$B_t \\geq 0.3 B_0$",
+                          "$B_t \\geq B_{MSY}$",
+                          "$B_t \\geq 0.4 B_0$",
+                          "$B_t \\geq 0.5 B_0$",
+                          "$B_t \\geq 0.6 B_0$",
+                          "$B_t \\geq USR$",
+                          "$B_t \\geq \\overline{B_{1951:2023}}$",
+                          "$U_t \\geq U_{MSY}$", # Replace with Umsy
                           "$\\overline{C_t}$",
                           "$AAV$",
                           "$\\overline{B_{t}/B_0}$", 
@@ -392,19 +404,15 @@ kable(  statTable, escape = FALSE,
 
 
 ```{r, captions, include = FALSE, echo = FALSE}
-multiGridTulipCap <- "Simulation envelopes of spawning biomass depletion (top row), catch (middle row) 
-and effective harvest rate (bottom row). Each column shows a single MP, labeled in the
-top margin. Median values are shown by the thick black lines, the grey 
-shaded region shows the central 95% of each envelope, and three randomly selected
-individual replicate traces are shown as thin black lines."
+multiGridTulipCap <- "Simulated time series of projected spawning biomass (top), catch (middle), and harvest rate (bottom) for the MP tuned to the conservation objective (HS30-60_HR 0.14). Median values are shown by the thick black lines, the grey shaded region shows the central 95% of each simulation envelope, and three randomly selected individual replicate traces are shown as thin black lines."
 
 ```
 
 ```{r simEnv, echo = FALSE, fig.cap = multiGridTulipCap, fig.asp = 1.1}
-plotGridTulipBtCtUt(mpBlobList,
-                    labels = mps2,
-                    yLimC = c(0,20),
-                    yLimHR = c(0,0.4))
+plotGridTulipBtCtUt(mpBlobList[2],
+                    labels = mps2[2],
+                    yLimB = c(0,2.5),
+                    yLimC = c(0,25),
+                    yLimHR = c(0,0.5))
 ```
-# Exceptional Circumstances
 
