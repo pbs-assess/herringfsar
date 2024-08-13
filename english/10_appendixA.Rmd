@@ -362,14 +362,14 @@ statTable[3,-1] <- NA
 
 
 colnames(statTable) <- c( "MP",
-                          "$B_t \\geq 0.3 B_0$",
-                          "$B_t \\geq B_{MSY}$",
-                          "$B_t \\geq 0.4 B_0$",
-                          "$B_t \\geq 0.5 B_0$",
-                          "$B_t \\geq 0.6 B_0$",
-                          "$B_t \\geq USR$",
-                          "$B_t \\geq \\overline{B_{1951:2023}}$",
-                          "$U_t \\geq U_{MSY}$", # Replace with Umsy
+                           "$0.3 B_0$",
+                          "$B_{MSY}$",
+                          "$0.4 B_0$",
+                          "$0.5 B_0$",
+                          "$0.6 B_0$",
+                          "$USR$",
+                          "$\\overline{B}$",
+                          "$U_{MSY}$", # Replace with Umsy
                           "$\\overline{C_t}$",
                           "$AAV$",
                           "$\\overline{B_{t}/B_0}$", 
