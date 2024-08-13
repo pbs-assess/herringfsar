@@ -353,16 +353,18 @@ statTable <- wtdPerfTable |>
                       pBtGtUSR  = sapply(X = pBtGtUSR, FUN = passObj, target = .5) )
 statTable <- do.call(rbind,list(statTable,statTable,statTable))
 
-statTable[1,"mp"] <- "maxTHR_0.14"
-statTable[2,"mp"] <- "maxTHR_Umsy"
-statTable[3,"mp"] <- "maxTHR_0.20"
+statTable[1,"mp"] <- "0.14"
+statTable[2,"mp"] <- "Umsy"
+statTable[3,"mp"] <- "0.20"
 
-statTable[2,-1] <- NA
-statTable[3,-1] <- NA
+statTable[2,-(1:2)] <- NA
+statTable[3,-(1:2)] <- NA
+
+statTable[2:3,2] <- "$X$"
 
 
-colnames(statTable) <- c( "MP",
-                           "$0.3 B_0$",
+colnames(statTable) <- c( "Max HR",
+                          "$0.3 B_0$",
                           "$B_{MSY}$",
                           "$0.4 B_0$",
                           "$0.5 B_0$",

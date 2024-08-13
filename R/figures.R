@@ -98,7 +98,6 @@ baseplot_indicators <- function(dat)
     mtext(side = 1, text = "Year", line = 3)
     legend(x = "topright", bty = "n", legend = "(A)")
     lines(x = yrs, y = dat$Catch )
-    abline(h = dat$TAC[1], lty = 2, lwd = 2)
 
   # SSB (B)
   plot(x = range(yrs), y = c(0,max(dat$SSB_max)),
@@ -115,7 +114,7 @@ baseplot_indicators <- function(dat)
             col = "grey65", border = NA)
     lines(x = yrs, y = dat$SSB_med )
     abline(h = dat$B0[1], lty = 2, lwd = 2)
-    abline(h = dat$USR[1], lty = 2, lwd = 2, col = "darkgreen")
+    abline(h = dat$USR[1], lty = 2, lwd = 4, col = "darkgreen")
     abline(h = dat$LRP[1], lty = 2, lwd = 2, col = "red")
 
   # Mortality (C)
@@ -147,7 +146,7 @@ baseplot_indicators <- function(dat)
     polygon(x = c(yrs,rev(yrs)), y = c(dat$U_min,rev(dat$U_max)),
             col = scales::alpha("black",0.5), border = NA)
     lines(x = yrs, y = dat$U_med, col = "black" )
-    abline(h = dat$Uref[1], lty = 2, lwd = 2 )
+    segments(x0 = 1983, x1 = 2022, y0 = 0.2, lty = 2, lwd = 2)
 
 
   # Recruitment (E)
@@ -166,7 +165,11 @@ baseplot_indicators <- function(dat)
     lines(x = yrs, y = dat$R_med, col = "black" )
 
   # Surplus Production (D)
-  plot( x = c(0,max(dat$SSB_med)), y = range(dat$SP_med, na.rm = T),
+  yrIdx <- which(yrs >= 1987 & yrs < max(yrs))
+  colfunc <- colorRampPalette(c("black", "grey75"))
+  colVec <- colfunc(length(yrIdx))
+  ptTypeVec <- c(17,rep(16,length(yrIdx)-2),15)
+  plot( x = c(0,max(dat$SSB_med[yrIdx])), y = range(dat$SP_med[yrIdx], na.rm = T),
         type = "n", xlab = "", ylab = "", axes = FALSE )
     mfg <- par("mfg")
     grid()
@@ -176,9 +179,13 @@ baseplot_indicators <- function(dat)
     mtext(side = 4, text = "Surplus Production\n(1,000 t)", line = 4.5)
     mtext(side = 1, text = "Spawning Biomass (1,000 t)", line = 3)
     legend(x = "topright", bty = "n", legend = "(F)")
-    lines(x = dat$SSB_med, y = dat$SP_med, col = "grey70", lwd = 1 )
-    points(x = dat$SSB_med, y = dat$SP_med, pch = 16, col = "black")
-    abline(v = dat$USR[1], lty = 2, lwd = 2, col = "darkgreen" )
+    legend( x = "topleft", 
+            bty = "n", legend = c("1988",max(yrs)),
+            pch = c(17,15), col = colVec[c(1,length(yrIdx))]  )
+    lines(x = dat$SSB_med[yrIdx], y = dat$SP_med[yrIdx], col = "grey70", lwd = 1 )
+    points( x = dat$SSB_med[yrIdx], y = dat$SP_med[yrIdx], 
+            pch = ptTypeVec, col = colVec )
+    abline(v = dat$USR[1], lty = 4, lwd = 2, col = "darkgreen" )
     abline(v = dat$LRP[1], lty = 2, lwd = 2, col = "red" )
     abline(v = dat$B0[1], lty = 2, lwd = 2, col = "black" )
 

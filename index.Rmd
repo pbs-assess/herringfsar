@@ -38,6 +38,11 @@ knit: (function(input, ...) {
        csasdown::render_sar()
       })
 always_allow_html: true
+
+
+header-includes:
+  - \usepackage{pifont}% http://ctan.org/pkg/pifont
+  - \newcommand{\xmark}{\ding{55}}%
 ---
 
 ```{r libraries, echo = FALSE, message = FALSE}
@@ -85,11 +90,14 @@ knitr::opts_chunk$set(
 ```{r metadata}
 # assess_yr <- metadata$assess_yr
 assess_yr <- 2024
+MSE_yr    <- 2023
 # meta_out <- metadata$output
 # french <- meta_out$`csasdown::fsar_word`$french
-french <- FALSE
+french    <- FALSE
 include_extras <- FALSE 
-# TODO: [SAM] add a list of any variables needed to change. i.e. Region, USR, BO, [see functions.R/makeModelHistTable[arguments]] 
+
+# TODO: [SAM] add a list of any variables needed to
+# change. i.e. Region, USR, BO, [see functions.R/makeModelHistTable[arguments]] 
 ```
 
 ```{r models}
