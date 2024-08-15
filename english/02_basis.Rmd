@@ -147,7 +147,7 @@ This LRP is more conservative than the default LRP identified in
 Candidate USRs were first introduced in @cleary2018 and a formal analysis of 
 USR options was undertaken in 2022 [@dfo2022a].
 Following consultations, DFO Resource Management then selected and implemented 
-$0.8 \overline{\B}_{1998:2007}$ as a "provisional USR" for 2022/23 IFMP 
+${0.8B}_{1998:2007}$ as a "provisional USR" for 2022/23 IFMP 
 process where the USR was included as a performance metric in the MP evaluations.
 Because consultations are ongoing for SoG Herring USRs we include all 
 four candidate USRs as performance metrics in this document.

@@ -379,7 +379,7 @@ colnames(statTable) <- c( "Max HR",
                           "$B_{2038}$"
                           )
 
-statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by a checkmark. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass."
+statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by a checkmark. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass. For SoG, the USR is calculated as 80% of the average spawning biomass during the productive period, ${0.8B}_{1998:2007}$"
 
 
 objNames <- c(  " " = 1,
