@@ -168,20 +168,22 @@ implements harvest rates more conservative than $U_{MSY}$.
 
 #### Habitat or Ecosystem Reference Points {-}
 <!-- TODO (JC): describe how this is included via DDM parameterization-->
-
+Incomplete
 
 ### Fishery management objectives {-}
 
 A core set of fisheries management objectives [@dfo2019c]
 was introduced to the Pacific Herring MSE process in 2019.
-The first of these is a conservation objective, which is centered 
-on the LRP.
+The first of these is a conservation objective which operationalizes
+the LRP.
 
 1. Maintain spawning biomass at or above the LRP with
 at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$),
 
-<!-- STOPPED HERE -->
+Three additional objectives have been proposed for BC Herring stocks, 
+however at this time these are presented as performance metrics
+for MP evaluation. These are:
 
 2. Maintain spawning biomass at or above the USR with at least 50% 
 probability over three Pacific Herring generations (i.e., achieve a 
@@ -194,12 +196,11 @@ $\text{AAV} < 0.25$), and
 4. Maximize average annual catch over three Pacific Herring 
 generations (i.e., maximize average catch).
 
-
+<!-- TODO (JC): update based on Bryan's feedback-->
 Operating model development began for Herring MSE in 2015, however a fully 
 specified set of objectives has not yet been developed for each SAR. DFO  
 continues to collaborate with coastal First Nations to develop area-specific 
 objectives for FSC fisheries as well as SOK fisheries (where applicable).
-<!-- TODO (JC): check with Bryan about using stronger wording than FSC-->
 In addition, DFO will continue to engage with the herring industry and 
 government and non-government organizations to describe broader objectives 
 related to conservation, economics, and access.
@@ -207,9 +208,10 @@ related to conservation, economics, and access.
 ### Operating Model Stock Status {-}
 
 SoG stock status is derived from the operating model ensemble (Appendix A). 
-<!-- short description only, no data-->
+<!-- TODO (SP): add 2-4 sentences here a short description only. Needs to state this is "2023" OM status-->
 
 ### Harvest Decision Rule {-}
+<!-- STOPPED HERE -->
 
 [Optional (otherwise, do not include).
 Maximum length 100 words.]
@@ -241,8 +243,9 @@ catch data, biological data, and a fishery independent survey index.
 <!-- These data are described in the following sections, and -->
 <!-- summarized in Table XX. -->
 
-JC: Finish this. 
-
-
 Note that we refer to 'year' instead of 'herring season' in this report;
 therefore `r assess_yr` refers to the `r this_season` Pacific Herring season.
+
+Incomplete
+<!-- TODO (SP): can you pls add 2-4 sentences here (copy from herringsr) - short description only. Mention blended index as new-->
+
