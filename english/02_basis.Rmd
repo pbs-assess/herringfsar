@@ -24,7 +24,7 @@ Density dependent natural mortality was added to represent potential ecosystem
 impacts (e.g., depensatory predation) on Pacific Herring stocks and is an 
 effective mechanism for advancing DFO's EAFM (ecosystem approaches to fisheries 
 management) commitment for SoG Herring.
-<!-- TODO (SP): check this last statement --> 
+<!-- TODO (SP): pls review this last statement -->
 
 A weighted ensemble operating model is used for management procedure 
 evaluation, whereby the ensemble contains five different models each 
@@ -44,7 +44,7 @@ compliant with both the “DFO Sustainable Fisheries Framework” policy and
 “A fishery decision-making framework incorporating the Precautionary Approach” policy
 (as per the Terms of Reference: 
 https://www.dfo-mpo.gc.ca/csas-sccs/Schedule-Horraire/2024/09_23-eng.html).
-<!-- TODO (MG): can we have html like this?--> 
+<!-- TODO (MG): can we have html like this for CSAS doc?--> 
 
 
 #### Year Assessment Approach was Approved {-}
@@ -114,7 +114,6 @@ with associated quota calculations for the SoG Herring for the 2024/25 season.
 <!--[reference to a Research Document or other publication, and/or footnote to the working paper] -->
 <!--[Mandatory. Maximum length 150 words.]-->
 
-Stock overview information:
 SoG Herring is one of five major Pacific Herring stocks managed in British Columbia. 
 The other major and minor stocks are described in [@dfo2024].
 Since 1951, annual scientific surveys, data collection and stock assessment focus on the 
@@ -131,9 +130,9 @@ spawning areas which may provide more insight on sub-stock structure in the Sali
 <!-- [Mandatory. -->
 <!-- A table may be used in lieu of bullets for this section. -->
 <!-- Refer to the Guidance Document for further instructions.] -->
-For Pacific Herring MSE we present
-a suite of biological and fishery reference points as performance metrics
-for the MP evaluations. These are derived as fractions of ${B_0}$ (unfished spawning biomass), 
+For Pacific Herring MSE we present a suite of biological and fishery reference 
+points as performance metrics for the MP evaluations. 
+These are derived as fractions of ${B_0}$ (unfished spawning biomass), 
 ${MSY}$ (maximum sustainable yield), and $U_{MSY}$ (the harvest rate at ${MSY}$).
 
 #### Limit Reference Point (LRP) {-}
@@ -196,37 +195,55 @@ $\text{AAV} < 0.25$), and
 4. Maximize average annual catch over three Pacific Herring 
 generations (i.e., maximize average catch).
 
-<!-- TODO (JC): update based on Bryan's feedback-->
 Operating model development began for Herring MSE in 2015, however a fully 
-specified set of objectives has not yet been developed for each SAR. DFO  
-continues to collaborate with coastal First Nations to develop area-specific 
-objectives for FSC fisheries as well as SOK fisheries (where applicable).
-In addition, DFO will continue to engage with the herring industry and 
-government and non-government organizations to describe broader objectives 
-related to conservation, economics, and access.
+specified set of objectives has not yet been developed for each SAR as these 
+consultations are still in process. DFO continues to collaborate with coastal 
+First Nations to develop area-specific objectives for Indigenous fisheries and 
+engages with the herring industry and government and non-government 
+organizations to describe broader objectives related to conservation, 
+economics, and access.
 
 ### Operating Model Stock Status {-}
 
-SoG stock status is derived from the operating model ensemble (Appendix A). 
-<!-- TODO (SP): add 2-4 sentences here a short description only. Needs to state this is "2023" OM status-->
+Stock status for the SoG aggregate stock is derived from the operating model 
+ensemble which represents weighting across five different models each 
+representing a range of productivity levels (details in Appendix A).
+<!-- TODO (MG): pls add hyperlink to AppendixA.Rmd)-->
+
+Section X reports the ensemble model stock status for 2023.
+<!-- TODO (MG): pls add hyperlink to 03_assessment.Rmd)-->
+
+Operating models for SoG Herring will be updated every three years.
+In 2026 the SISCAH model will be fit to new SoG survey and fishery data (extending
+the historical time series) and MPs will be re-evaluated against fishery management
+objectives. At this time new objectives and performance metrics may
+also be added to the MSE process.
+
+In the interim years, operating model status remains constant, only the
+MP is updated annually (next section).
+
+<!-- TODO (SP): anything missing for this section?-->
 
 ### Harvest Decision Rule {-}
-<!-- STOPPED HERE -->
 
-[Optional (otherwise, do not include).
-Maximum length 100 words.]
+This MSE report presents sustainable harvest advice for SoG Herring using 
+simulation tested MPs in which we identify the maximum target harvest rate for 
+a MP tuned to the established conservation objective using a 15-year projection
+period. 
+We also report simulated performance against a suite of other biological and 
+fishery reference points, with details described in Section X.
+<!-- TODO (MG): pls add hyperlink to ### Projections in 03_assessment.Rmd)-->
 
-TACs are derived from biomass estimates via a harvest decision rule. For
-SOG herring, we use a "hockey-stick" shaped function defined
-by lower and upper control points, and a maximum target harvest rate
-[@cox2013roles]. The SOG herring rules have lower and upper control points 
-at 30\% and 60\% of unfished biomass, respectively. When biomass 
-is estimated to be below the lower control point the rule sets the harvest
-rate to zero. Between control points, the harvest rate is a linear ramp 
-from zero to the maximum harvest rate, and above the upper control point the 
-rule sets harvest rates to the maximum target harvest rate, called $maxTHR$. 
-This report shows results for maximum target harvest rates of 6\% 
-and 14\% (Figure \@ref(fig:hcrPlot)).
+The harvest control rule component of each simulation-test MP is a "hockey-stick" 
+shaped function defined by lower and upper control points, and a maximum 
+target harvest rate [@cox2013roles]. 
+We explored two hockey-stick shapes which differed in their lower and upper
+control points, and three 3 maximum target harvest rates (Figure \@ref(fig:hcrPlot)).
+
+Sustainable harvest advice for SoG Herring for 2024/25 is presented using 
+a MP tuned to the conservation objective. This MP has lower and upper control 
+points at 30\% and 60\% of unfished spawning biomass, a maximum target harvest 
+($maxTHR$) of 14\%.
 
 
 ### Data {-}
