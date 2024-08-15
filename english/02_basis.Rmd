@@ -138,7 +138,7 @@ ${MSY}$ (maximum sustainable yield), and $U_{MSY}$ (the harvest rate at ${MSY}$)
 #### Limit Reference Point (LRP) {-}
 In 2018, a biological limit reference point (LRP) was defined for Pacific
 Herring major stocks as $0.3B_0$ in 2018, where ${B_0}$ is the long-term
-average estimated unfished spawning biomass [@kronlund2017, @forrest2023].
+average estimated unfished spawning biomass (@kronlund2017, @forrest2023).
 This LRP is more conservative than the default LRP identified in 
 “DFO Sustainable Fisheries Framework” policy.
 
@@ -242,8 +242,23 @@ control points, and three 3 maximum target harvest rates (Figure \@ref(fig:hcrPl
 
 Sustainable harvest advice for SoG Herring for 2024/25 is presented using 
 a MP tuned to the conservation objective. This MP has lower and upper control 
-points at 30\% and 60\% of unfished spawning biomass, a maximum target harvest 
-($maxTHR$) of 14\%.
+points at 30\% and 60\% of unfished spawning biomass and a maximum target harvest 
+($maxTHR$) of 14\% (green solid line, Figure \@ref(fig:hcrPlot)).
+
+<!-- TODO (JC): get fig:hcrPlot to show in this section-->
+
+### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
+
+For each interim year, years in which the MP is updated with new data but we do not
+refit the operating model, we also compare the newly collected  
+fishery monitoring data to the operating model expectations. 
+
+This is done by visually comparing catch and spawn index values for the new year
+with the central 95\% of the ensemble operating model simulations.
+Any unusual deviations from the ensemble model projections, for example, 
+if the realized catch far exceeds TAC prescribed by the MP or if the survey
+index is far below the projected index, would be investigated in detail and 
+consideration given to refitting operating models.
 
 
 ### Data {-}
@@ -264,5 +279,7 @@ Note that we refer to 'year' instead of 'herring season' in this report;
 therefore `r assess_yr` refers to the `r this_season` Pacific Herring season.
 
 Incomplete
-<!-- TODO (SP): can you pls add 2-4 sentences here (copy from herringsr) - short description only. Mention blended index as new-->
+<!-- TODO (SP): can you pls add 2-4 sentences here (copy from herringsr). Mention blended index as new. 
+Also, this section feels awkward to me at the end.  
+(eg, after Stock Structure Assumption)?-->
 
