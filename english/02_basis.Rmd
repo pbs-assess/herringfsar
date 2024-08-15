@@ -5,10 +5,10 @@
 <!-- [Mandatory] -->
 
 This report presents science advice for the Pacific Herring Strait of Georgia 
-(SoG) stock assessment region (SAR), which is one of the 
-`r number_to_word(length(major_regions_short))` major and
-`r number_to_word(length(minor_regions_short))` minor SARs; 
-the other major and minor SARs are presented in REF(2024SR).
+(SoG) stock assessment region, which is one of the 
+`r number_to_word(length(major_regions_short))` major stock areas; the other 
+major and the `r number_to_word(length(minor_regions_short))` minor stock
+areas are presented in REF(2024SR).
 
 SoG Pacific Herring are assessed with a management 
 strategy evaluation (MSE) process, which implements a spatially integrated statistical 
@@ -19,7 +19,7 @@ biological and fishery age composition data, and commercial fishery catches.
 The SISCAH operating model represents SoG Herring historical biomass time series 
 from 1951-2003 with these features: density dependent mortality (DDM), integrated surface 
 and dive survey data in the index, commercial fishery timing, and a 
-likelihood function with correlated age-compositions.
+likelihood function with correlated age-compositions. The inclusion of DDM 
 
 A weighted ensemble operating model is used for management procedure 
 evaluation, whereby the ensemble contains five different models each 
@@ -33,7 +33,7 @@ Details of the operating model ensemble are described in Appendix A.
 
 The weighted ensemble OM was used to simulate management procedures (MPs) over a 
 15-year projection period (2024-2038) and present a MP tuned to meet 
-the conservation objective (#refSecThisDoc,[@dfo2022a]) and that is
+the conservation objective (#refSecThisDoc) and that is
 compliant with both the “DFO Sustainable Fisheries Framework” policy and 
 “A fishery decision-making framework incorporating the Precautionary Approach” policy
 (as per the Terms of Reference (#refLinkCSASTOR)).
@@ -42,19 +42,19 @@ compliant with both the “DFO Sustainable Fisheries Framework” policy and
 #### Year Assessment Approach was Approved {-}
 <!-- [Mandatory; year and reference] -->
 The SISCAH operating model framework implemented here for SoG Herring was 
-reviewed and approved by CSAS in June 2023 (@dfo2023a, @johnson2024).
+reviewed and approved by CSAS in June 2023 [@dfo2023a].
 
 #### Assessment Type {-}
 <!-- [Mandatory. -->
 <!-- Select one of the following: -->
-Full Assessment and MSE process.
+Full assessment and MSE process.
 <!-- Interim Year Update, or -->
 <!-- Harvest Decision Rule (HDR) Update. -->
 <!-- See the Guidance Document for definitions.]  -->
 
 #### Most Recent Assessment Date {-}
 
-1.	Last Full Assessment: 2024 (this document).
+Last Full Assessment: this document.
 
 <!-- 1.	Last Interim Year Update: [date and reference] -->
 
@@ -66,75 +66,82 @@ Full Assessment and MSE process.
 <!-- index-based (trends in empirical indices only), -->
 <!-- single stock assessment model, -->
 <!-- model ensemble, -->
-Single stock operating model ensemble (full MSE process).
 <!-- or MSE-lite), -->
 <!-- Wild Salmon Policy Integrated Assessment, -->
 <!-- multiple approaches, -->
 <!-- other (specify)] -->
+Full MSE process using a single stock operating model ensemble.
 
 2.	Specific category:
 <!-- [Select one or as many as apply: -->
 <!-- No data, -->
 <!-- Index-based (fishery-dependent indices only), -->
-Index-based,
 <!-- (including fishery-dependent and fishery-independent indices), -->
 <!-- Delay difference, -->
 <!-- Biomass dynamics, -->
 <!-- Virtual population analysis, -->
 <!-- Statistical catch-at-length, -->
-State-Space,
-statistical catch-at-age model, 
-density dependent time varying natural mortality, 
 <!-- Sequential Population Analysis, -->
 <!-- Surplus Production, -->
-Beverton-Holt stock-recruitment relationship.
 <!-- Potential Biological Removal, -->
 <!-- Other (please explain)] -->
+Index-based,
+state-space,
+statistical catch-at-age model, 
+with a Beverton-Holt stock-recruitment relationship and
+density dependent time varying natural mortality.
 
 <!-- [Optional short summary of stock assessment methodology. -->
-
-
-
 <!-- Include the method of considering ecosystem variables. -->
 <!-- Include a reference to a Research Document or other publication, -->
 <!-- and/or footnote to the working paper. -->
 <!-- Maximum length 100 words.] -->
 
 <!-- Mandatory -->
-This `r assess_yr` SISCAH modelling framework [@johnson2024] includes stock 
-status and MP for SoG Herring.
+This SISCAH modelling framework [@johnson2024] provides stock status and MPs 
+with associated quota calculations for the SoG Herring for the 2024/25 season.
 
 ### Stock Structure Assumption {-}
-
 <!--Stock overview information: -->
 <!--[reference to a Research Document or other publication, and/or footnote to the working paper] -->
 <!--[Mandatory. Maximum length 150 words.]-->
 
 Stock overview information:
-SoG Herring is one of five major stocks managed in British Columbia. 
-Data collection and assessment focuses on the core spawn timing associated with 
-the main migratory stock. Adult herring are reported in various areas of the 
-Salish Sea during the summer months indicating some level of non-migratory life
-history, with the largest component of the stock migrating to the west coast to
-share summer/ fall feeding grounds with the West Coast Vancouver Island herring.
+SoG Herring is one of five major Pacific Herring stocks managed in British Columbia. 
+The other major and minor stocks are described in [@dfo2024].
+Since 1951, annual scientific surveys, data collection and stock assessment focus on the 
+core spawn timing associated with the main migratory stock. Post spawning, mature SoG Herring
+migrate to the west coast Vancouver Island (WCVI) to share share summer/ fall 
+feeding grounds with WCVI Herring.
+
+Additionally, unknown biomass's of adult herring are also reported in various areas of the 
+Salish Sea throughout the summer months indicating some level of non-migratory life
+history. New genetic methods are currently being used to update baseline data for SoG
+spawning areas which may provide more insight on sub-stock structure in the Salish Sea.
+
 
 ### Reference Points {-}
 
-A suite of biological and fishery reference points are included for SoG Herring.
+A suite of biological and fishery reference points are included in the MP evaluations
+for SoG Herring. 
 These are:
-1.    Fractions of unfished biomass, ${SB_0}$,
-2.    ${MSY}$,
-3.    Fractions of $U_{MSY}$
+
+1.	Fractions of unfished spawning biomass, ${B_0}$,
+
+2.	${MSY}$, and
+
+3.	Fractions of $U_{MSY}$.
 
 In 2018, a biological limit reference point (LRP) was defined for Pacific
-Herring major stocks as $0.3SB_0$ in 2018, where ${SB_0}$ is the long-term
+Herring major stocks as $0.3B_0$ in 2018, where ${B_0}$ is the long-term
 average estimated unfished spawning biomass [@kronlund2017].
 
 Candidate USRs were first introduced in @cleary2018 and a formal analysis of 
 USR options was undertaken in 2022 with results presented in @dfo2022a.
-In 2023, DFO Resource Management selected and implemented a provisional 
-USR of $0.8 \overline{\SB}_{1998:2007}$, implemented as a performance metric 
-within 2022/23 IFMP process.
+In 2023, DFO Resource Management selected and implemented 
+$0.8 \overline{\B}_{1998:2007}$ as a "provisional USR" within 2022/23 IFMP 
+process where the USR was included as a performance metric in the MP evaluations.
+
 
 <!-- [Mandatory. -->
 <!-- A table may be used in lieu of bullets for this section. -->
