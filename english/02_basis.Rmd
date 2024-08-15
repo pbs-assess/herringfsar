@@ -1,4 +1,4 @@
-## BASIS FOR ASSESSMENT {-}
+## BASIS FOR ASSESSMENT ADVICE{-}
 
 ### Assessment Details {-}
 
@@ -10,31 +10,34 @@ This report presents science advice for the Pacific Herring Strait of Georgia
 `r number_to_word(length(minor_regions_short))` minor SARs; 
 the other major and minor SARs are presented in REF(2024SR).
 
-SoG Pacific Herring are assessed using a spatially integrated statistical 
-catch at age herring (SISCAH) modelling framework within a management 
-strategy evaluation (MSE) process [@dfo2023a], fitted using
-spawn survey indices, fishery age composition data, and commercial catches.
+SoG Pacific Herring are assessed with a management 
+strategy evaluation (MSE) process, which implements a spatially integrated statistical 
+catch at age herring (SISCAH) modelling framework [@dfo2023a]. 
+The modelling framework is fitted to historical time series of spawn survey indices, 
+biological and fishery age composition data, and commercial fishery catches.
 
-For SoG Herring, the SISCAH operating model includes: density dependent
-mortality (DDM), integrated surface and dive survey data in the index,
-commercial fishery timing, and a likelihood function with correlated 
-age-compositions.
+The SISCAH operating model represents SoG Herring historical biomass time series 
+from 1951-2003 with these features: density dependent mortality (DDM), integrated surface 
+and dive survey data in the index, commercial fishery timing, and a 
+likelihood function with correlated age-compositions.
 
 A weighted ensemble operating model is used for management procedure 
-evaluation, whereby the ensemble contains models that represent a range 
-of productivity levels, characterized by stock recruitment steepness 
+evaluation, whereby the ensemble contains five different models each 
+representing a range of productivity levels, characterized by stock recruitment steepness 
 ($h$), which affects productivity at low stock sizes, and the lower 
-limit on natural mortality ($M_b$), which herring survival at high
-stock sizes. This approach represents uncertainty in stock 
+limit on natural mortality ($M_b$), which represents the average mortality rate 
+at high stock sizes. This chosen approach represents uncertainty in stock 
 productivity better than using a single value of stock-recruit steepness,
 which is difficult to estimate and often reliant on prior information.
-
-
 Details of the operating model ensemble are described in Appendix A.
 
-Management procedures (MPs) were simulation tested using a 15-year projection 
-period (2024-2038); only MPs that meet the established conservation 
-objective [@dfo2022a] are presented.
+The weighted ensemble OM was used to simulate management procedures (MPs) over a 
+15-year projection period (2024-2038) and present a MP tuned to meet 
+the conservation objective (#refSecThisDoc,[@dfo2022a]) and that is
+compliant with both the “DFO Sustainable Fisheries Framework” policy and 
+“A fishery decision-making framework incorporating the Precautionary Approach” policy
+(as per the Terms of Reference (#refLinkCSASTOR)).
+ 
 
 #### Year Assessment Approach was Approved {-}
 <!-- [Mandatory; year and reference] -->
@@ -119,8 +122,8 @@ share summer/ fall feeding grounds with the West Coast Vancouver Island herring.
 
 A suite of biological and fishery reference points are included for SoG Herring.
 These are:
-1.    Fractions of unfished biomass, ${SB_0}$
-2.    ${MSY}$
+1.    Fractions of unfished biomass, ${SB_0}$,
+2.    ${MSY}$,
 3.    Fractions of $U_{MSY}$
 
 In 2018, a biological limit reference point (LRP) was defined for Pacific
@@ -180,7 +183,7 @@ In addition, DFO will continue to engage with the herring industry and
 government and non-government organizations to describe broader objectives 
 related to conservation, economics, and access.
 
-### Stock Status {-}
+### Operating Model Stock Status {-}
 
 SoG stock status is derived from the operating model ensemble (Appendix A). 
 <!-- short description only, no data-->

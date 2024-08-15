@@ -26,14 +26,14 @@ and then present results with some brief discussion of the management implicatio
 ## Operating models
 
 To take into account uncertainty in productivity at high and low stock sizes 
-five SOG Herring operating models where chosen. Productivity
+five SoG Herring operating models where chosen. Productivity
 at high stock sizes is influenced by the $M_b$ parameter, which 
 represents the average mortality rate at very high biomass (generally above 
 unfished levels). At low stock size, productivity is more influenced by the 
 stock-recruit relationship's steepness parameter $h$, which is the ratio of 
 recruitment at 20\% of unfished to the unfished recruitment $R_0$. Overall $h$ 
 is better estimated for stocks where the history includes recovery from very 
-low stock sizes. Since this isn't case for SOG, we capture some of the 
+low stock sizes. Since this isn't case for SoG, we capture some of the 
 uncertainty around $M_b$ and $h$ by considering operating models with 
 different values for those parameters. First we used an established 
 value of $h=0.70$ [@cleary2018] and used a likelihood profile approach,

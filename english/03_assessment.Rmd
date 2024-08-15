@@ -1,4 +1,4 @@
-## ASSESSMENT {-}
+## ASSESSMENT UNDER MSE {-}
 
 ```{r calcTACchunk, echo = FALSE, include = FALSE}
 TAC.df <- calcTAC(fit_maxTHR0.14)
@@ -84,6 +84,13 @@ Final approval scheduled for fall 2023.]
 <!-- [If applicable (otherwise, do not include).] -->
 
 ### Projections [optional titles: Simulations, Future Scenarios] {-}
+
+We simulation tested three MPs with hockey-stick shaped harvest control rules (#refSecThisDoc)
+and present performance indicators for the MP tuned to meet the conservation objective and
+that is compliant with both the “DFO Sustainable Fisheries Framework” policy and 
+“A fishery decision-making framework incorporating the Precautionary Approach” policy
+(as per the Terms of Reference (#refLinkCSASTOR)).
+  
 
 [Mandatory.
 Title can vary.
