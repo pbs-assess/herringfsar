@@ -243,6 +243,11 @@ points at 30\% and 60\% of unfished spawning biomass and a maximum target harves
 ($maxTHR$) of 14\% (green solid line, Figure \@ref(fig:hcrPlot)).
 
 <!-- TODO (JC): get fig:hcrPlot to show in this section-->
+```{r hcrPlot0614, echo = FALSE, fig.cap = HCRcap}
+HCRcap <- "Two harvest control rules tested for candidate SOG herring MPs, showing maximum target harvest rates $maxTHR$ of 6\\% and 14\\%."
+
+plotHCRex(maxSeq = c(0.06,0.14))
+```
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
