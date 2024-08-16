@@ -273,8 +273,7 @@ and dive. Combining the surveys to give the blended index is a feature
 of the new SISCAH model. Note `r assess_yr` refers to the `r this_season`
 Pacific Herring season.
 
-Incomplete
 <!-- TODO (SP): can you pls add 2-4 sentences here (copy from herringsr). Mention blended index as new. 
-Also, this section feels awkward to me at the end.  
+Also, this section feels awkward to me at the end.  Done. -SP
 (eg, after Stock Structure Assumption)?-->
 
