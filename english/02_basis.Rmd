@@ -17,17 +17,17 @@ The modelling framework is fitted to historical time series of spawn survey indi
 biological and fishery age composition data, and commercial fishery catches.
 
 The SISCAH operating model represents SoG Herring historical biomass time series 
-from 1951-2003 with these features: density dependent mortality (DDM), integrated surface 
-and dive survey data in the index, commercial fishery timing, and a 
+from 1951-2003 with these features: density dependent mortality (DDM), an integrated surface 
+and dive survey index, commercial fishery timing, and a 
 likelihood function with correlated age-compositions.
 Density dependent natural mortality was added to represent potential ecosystem 
 impacts (e.g., depensatory predation) on Pacific Herring stocks in line with
 DFO's EAFM (ecosystem approaches to fisheries management).
-<!-- TODO (SP): pls review this last statement  Done.-->
 
 A weighted ensemble operating model is used for management procedure 
-evaluation, whereby the ensemble contains five different models each 
-representing a range of productivity levels, characterized by stock recruitment steepness 
+evaluation, containing five different models 
+representing a range of productivity levels. Productivity is characterized
+by stock recruitment steepness 
 ($h$), which affects productivity at low stock sizes, and the lower 
 limit on natural mortality ($M_b$), which represents the average mortality rate 
 at high stock sizes. This chosen approach represents uncertainty in stock 
@@ -115,7 +115,7 @@ with associated quota calculations for the SoG Herring for the 2024/25 season.
 
 SoG Herring is one of five major Pacific Herring stocks managed in British Columbia. 
 The other major and minor stocks are described in [@dfo2024].
-The stock spawns in the SoG area sometimes multiple locations and timing. 
+The stock spawns in the SoG area sometimes with multiple locations and timing. 
 Post spawning, mature SoG Herring
 migrate to the west coast Vancouver Island (WCVI) to share share summer/ fall 
 feeding grounds with WCVI Herring. However adult herring are also reported in the 
@@ -163,22 +163,23 @@ simulations to select a MP tuned directly to the conservation objective (which
 implements harvest rates more conservative than $U_{MSY}$.
 
 #### Habitat or Ecosystem Reference Points {-}
-<!-- TODO (JC): describe how this is included via DDM parameterization-->
-Incomplete
+<!-- TODO (JC): edit and fill in. -->
+Ecosystem reference points are incorporated into the Limit Reference Point
+both via an LRP above what may be deemed necessary by ____ and by incorporating
+density dependant mortality. This is done especially to take into account
+that herring are in the middle of the food chain. 
+
 
 ### Fishery management objectives {-}
 
-A core set of fisheries management objectives [@dfo2019c]
-was introduced to the Pacific Herring MSE process in 2019.
-The first of these is a conservation objective which operationalizes
-the LRP.
+Our primary objective is a conservation objective supporting
+the LRP.[@dfo2019c]
 
 1. Maintain spawning biomass at or above the LRP with
 at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$),
 
-Three additional objectives have been proposed for BC Herring stocks, 
-however at this time these are presented as performance metrics
+Three additional proposed objectives are used as performance metrics
 for MP evaluation. These are:
 
 2. Maintain spawning biomass at or above the USR with at least 50% 
@@ -245,11 +246,10 @@ points at 30\% and 60\% of unfished spawning biomass and a maximum target harves
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
-For each interim year, years in which the MP is updated with new data but we do not
-refit the operating model, we also compare the newly collected  
-fishery monitoring data to the operating model expectations. 
-
-This is done by visually comparing catch and spawn index values for the new year
+For each interim year we do not refit the operating model. Instead a new biomass 
+estimate is applied to the MP to calculate the TAC and compared to exceptional
+circumstances. Exceptional circumstances are determined by visually comparing 
+catch and spawn index estimates for the new year
 with the central 95\% of the ensemble operating model simulations.
 Any unusual deviations from the ensemble model projections, for example, 
 if the realized catch far exceeds TAC prescribed by the MP or if the survey
