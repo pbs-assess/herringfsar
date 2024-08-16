@@ -115,12 +115,10 @@ with associated quota calculations for the SoG Herring for the 2024/25 season.
 
 SoG Herring is one of five major Pacific Herring stocks managed in British Columbia. 
 The other major and minor stocks are described in [@dfo2024].
-Since 1951, annual scientific surveys, data collection and stock assessment focus on the 
-core spawn timing associated with the main migratory stock. Post spawning, mature SoG Herring
+The stock spawns in the SoG area sometimes multiple locations and timing. 
+Post spawning, mature SoG Herring
 migrate to the west coast Vancouver Island (WCVI) to share share summer/ fall 
-feeding grounds with WCVI Herring.
-
-Additionally, unknown biomass's of adult herring are also reported in various areas of the 
+feeding grounds with WCVI Herring. However adult herring are also reported in the 
 Salish Sea throughout the summer months indicating some level of non-migratory life
 history. New genetic methods are currently being used to update baseline data for SoG
 spawning areas which may provide more insight on sub-stock structure in the Salish Sea.
@@ -194,11 +192,9 @@ $\text{AAV} < 0.25$), and
 4. Maximize average annual catch over three Pacific Herring 
 generations (i.e., maximize average catch).
 
-Operating model development began for Herring MSE in 2015, however a fully 
-specified set of objectives has not yet been developed for each SAR as these 
-consultations are still in process. DFO continues to collaborate with coastal 
-First Nations to develop area-specific objectives for Indigenous fisheries and 
-engages with the herring industry and government and non-government 
+DFO continues to collaborate with coastal First Nations to develop 
+area-specific objectives for Indigenous fisheries and 
+engage with the herring industry, government and non-government 
 organizations to describe broader objectives related to conservation, 
 economics, and access.
 
