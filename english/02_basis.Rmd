@@ -250,10 +250,6 @@ a MP tuned to the conservation objective. This MP has lower and upper control
 points at 30\% and 60\% of unfished spawning biomass and a maximum target harvest 
 ($maxTHR$) of 14\% (green solid line, Figure \@ref(fig:hcrPlot)).
 
-Instead current 
-spawning biomass and a one-year forecasts are estimated by the 
-estimation model component of the MP and fed to the harvest control rule to 
-calculate the TAC.
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
