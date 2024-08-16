@@ -18,7 +18,7 @@ biological and fishery age composition data, and commercial fishery catches.
 
 The SISCAH operating model represents SoG Herring historical biomass time series 
 from 1951-2003 with these features: density dependent mortality (DDM), an integrated surface 
-and dive survey index, commercial fishery timing, and a 
+and dive survey index, gear-specific commercial fishery timing, and a 
 likelihood function with correlated age-compositions.
 Density dependent natural mortality was added to represent potential ecosystem 
 impacts (e.g., depensatory predation) on Pacific Herring stocks in line with
@@ -115,7 +115,10 @@ with associated quota calculations for the SoG Herring for the 2024/25 season.
 
 SoG Herring is one of five major Pacific Herring stocks managed in British Columbia. 
 The other major and minor stocks are described in [@dfo2024].
-The stock spawns in the SoG area sometimes with multiple locations and timing. 
+The SoG stock spawns in the SoG primarily in March, over with multiple locations 
+and variable timing.
+Details of spawn timing and locations are described in the 2024 SoG Data Summary.
+<!-- TODO (MG): please add link for Data Summary--> 
 Post spawning, mature SoG Herring
 migrate to the west coast Vancouver Island (WCVI) to share share summer/ fall 
 feeding grounds with WCVI Herring. However adult herring are also reported in the 
@@ -163,17 +166,22 @@ simulations to select a MP tuned directly to the conservation objective (which
 implements harvest rates more conservative than $U_{MSY}$.
 
 #### Habitat or Ecosystem Reference Points {-}
-<!-- TODO (JC): edit and fill in. -->
-Ecosystem reference points are incorporated into the Limit Reference Point
-both via an LRP above what may be deemed necessary by ____ and by incorporating
-density dependant mortality. This is done especially to take into account
-that herring are in the middle of the food chain. 
+Ecosystem reference points are incorporated into the conservation objective for Herring
+through:
+
+1. Implementing a LRP using an analysis of stock productivity [@kronlund2017] and 
+which is well-above the default LRP of 0.4$B_{MSY}$ [@dfo2009]. 
+The LRP of 0.3${B_0}$ for the ensemble operating model is approximately 0.7$B_{MSY}$ (Appendix A).
+2. Incorporating density dependent mortality to account for predation mortality
+and full represent trophic level of Herring as a forage species. 
 
 
 ### Fishery management objectives {-}
 
-Our primary objective is a conservation objective supporting
-the LRP.[@dfo2019c]
+A core set of fisheries management objectives [@dfo2019c]
+was introduced to the Pacific Herring MSE process in 2019.
+The first of these is a conservation objective which is centered on
+the LRP.
 
 1. Maintain spawning biomass at or above the LRP with
 at least 75% probability over three Pacific Herring generations
@@ -242,26 +250,28 @@ a MP tuned to the conservation objective. This MP has lower and upper control
 points at 30\% and 60\% of unfished spawning biomass and a maximum target harvest 
 ($maxTHR$) of 14\% (green solid line, Figure \@ref(fig:hcrPlot)).
 
-<!-- TODO (JC): get fig:hcrPlot to show in this section-->
+Instead current 
+spawning biomass and a one-year forecasts are estimated by the 
+estimation model component of the MP and fed to the harvest control rule to 
+calculate the TAC.
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
-For each interim year we do not refit the operating model. Instead a new biomass 
-estimate is applied to the MP to calculate the TAC and compared to exceptional
-circumstances. Exceptional circumstances are determined by visually comparing 
-catch and spawn index estimates for the new year
+For each interim year we do not refit the operating model, however stock status 
+is estimated using the estimation model (a component of the MP) and this plus
+the survey index and realized catch are compared to the simulation 
+envelopes from the ensemble model. Exceptional circumstances are determined 
+by visually comparing catch and spawn index estimates for the new year
 with the central 95\% of the ensemble operating model simulations.
-Any unusual deviations from the ensemble model projections, for example, 
-if the previous year's realized catch far exceeds TAC prescribed by the MP or if 
-the survey index is far below the projected index, would be investigated in detail and 
-consideration given to refitting operating models.
+Any unusual deviations from the ensemble model projections would be 
+investigated in detail and consideration given to refitting operating models.
+For example, if the previous year's realized catch far exceeds the TAC 
+prescribed by the MP or if the survey index is far below the projected index.
 
 
 ### Data {-}
-
 <!-- [Mandatory. -->
 <!-- Maximum length 300 words.]  -->
-
 <!-- Data changes: -->
 <!-- [Optional (otherwise, do not include).] -->
 
@@ -269,11 +279,8 @@ There are three types of input data used for
 the Pacific Herring stock assessment:
 catch data, biological data, and a fishery independent survey index.
 The fishery survey index is made up of two classes of surveys, surface
-and dive. Combining the surveys to give the blended index is a feature 
+and dive. Combining the surveys into a blended index properly accounts for 
+years in which these survey types co-occur and is a feature 
 of the new SISCAH model. Note `r assess_yr` refers to the `r this_season`
 Pacific Herring season.
-
-<!-- TODO (SP): can you pls add 2-4 sentences here (copy from herringsr). Mention blended index as new. 
-Also, this section feels awkward to me at the end.  Done. -SP
-(eg, after Stock Structure Assumption)?-->
 
