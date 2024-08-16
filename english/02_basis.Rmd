@@ -21,10 +21,9 @@ from 1951-2003 with these features: density dependent mortality (DDM), integrate
 and dive survey data in the index, commercial fishery timing, and a 
 likelihood function with correlated age-compositions.
 Density dependent natural mortality was added to represent potential ecosystem 
-impacts (e.g., depensatory predation) on Pacific Herring stocks and is an 
-effective mechanism for advancing DFO's EAFM (ecosystem approaches to fisheries 
-management) commitment for SoG Herring.
-<!-- TODO (SP): pls review this last statement -->
+impacts (e.g., depensatory predation) on Pacific Herring stocks in line with
+DFO's EAFM (ecosystem approaches to fisheries management).
+<!-- TODO (SP): pls review this last statement  Done.-->
 
 A weighted ensemble operating model is used for management procedure 
 evaluation, whereby the ensemble contains five different models each 
@@ -220,7 +219,8 @@ objectives. At this time new objectives and performance metrics may
 also be added to the MSE process.
 
 In the interim years, operating model status remains constant, only the
-MP is updated annually (next section).
+a biomass estimate is updated annually and applied to the management 
+procedure (next section).
 
 <!-- TODO (SP): anything missing for this section?-->
 
@@ -272,11 +272,10 @@ consideration given to refitting operating models.
 There are three types of input data used for
 the Pacific Herring stock assessment:
 catch data, biological data, and a fishery independent survey index.
-<!-- These data are described in the following sections, and -->
-<!-- summarized in Table XX. -->
-
-Note that we refer to 'year' instead of 'herring season' in this report;
-therefore `r assess_yr` refers to the `r this_season` Pacific Herring season.
+The fishery survey index is made up of two classes of surveys, surface
+and dive. Combining the surveys to give the blended index is a feature 
+of the new SISCAH model. Note `r assess_yr` refers to the `r this_season`
+Pacific Herring season.
 
 Incomplete
 <!-- TODO (SP): can you pls add 2-4 sentences here (copy from herringsr). Mention blended index as new. 
