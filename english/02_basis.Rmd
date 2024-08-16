@@ -252,8 +252,8 @@ circumstances. Exceptional circumstances are determined by visually comparing
 catch and spawn index estimates for the new year
 with the central 95\% of the ensemble operating model simulations.
 Any unusual deviations from the ensemble model projections, for example, 
-if the realized catch far exceeds TAC prescribed by the MP or if the survey
-index is far below the projected index, would be investigated in detail and 
+if the previous year's realized catch far exceeds TAC prescribed by the MP or if 
+the survey index is far below the projected index, would be investigated in detail and 
 consideration given to refitting operating models.
 
 
