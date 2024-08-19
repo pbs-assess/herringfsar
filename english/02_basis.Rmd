@@ -146,10 +146,11 @@ This LRP is more conservative than the default LRP identified in
 Candidate USRs were first introduced in @cleary2018 and a formal analysis of 
 USR options was undertaken in 2022 [@dfo2022a].
 Following consultations, DFO Resource Management then selected and implemented 
-${0.8B}_{1998:2007}$ as a "provisional USR" for 2022/23 IFMP 
-process where the USR was included as a performance metric in the MP evaluations.
-Because consultations are ongoing for SoG Herring USRs we include all 
-four candidate USRs as performance metrics in this document.
+${0.8B}_{1998:2007}$ as a "provisional USR" for the 2022/23 IFMP 
+where the USR was included as a performance metric in the MP evaluations.
+Because consultations are ongoing for SoG Herring USRs, we include 
+5 USR performance metrics in this analysis: 
+0.8$U_{MSY}$ and all four candidate USRs ($B_{MSY}$ proxies from @dfo2022a).
 
 #### Target Reference Point (TRP) {-}
 A biomass target objective centered on the USR has been suggested Within the 
@@ -185,7 +186,8 @@ the LRP.
 
 1. Maintain spawning biomass at or above the LRP with
 at least 75% probability over three Pacific Herring generations
-(i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$),
+(i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$).
+
 
 Three additional proposed objectives are used as performance metrics
 for MP evaluation. These are:
@@ -243,13 +245,23 @@ The harvest control rule component of each simulation-test MP is a "hockey-stick
 shaped function defined by lower and upper control points, and a maximum 
 target harvest rate [@cox2013roles]. 
 We explored two hockey-stick shapes which differed in their lower and upper
-control points, and three 3 maximum target harvest rates (Figure \@ref(fig:hcrPlot)).
+control points, and three 3 maximum target harvest rates (Figure \@ref(fig:plotHCRules)).
+
+```{r plotHCRules, echo = FALSE, fig.cap = HCRcap, fig.asp = 0.9}
+HCRcap <- "Shape of harvest control rule components of management procedures (MP). The green line represents the MP tuned to meet the conservation objective over the 15-year projection period for the ensemble operating model (with density dependent natural mortality) and maximum target harvest rate, $maxTHR$, of 20\\%. The red line denotes an additional hockey-stick shaped rule with the previously used 20\\% ma and the purple line shows the DFO default harvest control rule with maximum target harvest rate set at $U_{MSY}$ and control points at $0.4 \\cdot B_{MSY}$ and $0.8 \\cdot B_{MSY}$."
+
+plotHCRules(  LCP_i = c(.3,.3,.172),
+              UCP_i = c(.6,.6,.342),
+              lowF = .0,
+              highF = 1,
+              U_i = c(.14,.20,.187) ,
+              language = "English")
+```
 
 Sustainable harvest advice for SoG Herring for 2024/25 is presented using 
 a MP tuned to the conservation objective. This MP has lower and upper control 
 points at 30\% and 60\% of unfished spawning biomass and a maximum target harvest 
 ($maxTHR$) of 14\% (green solid line, Figure \@ref(fig:hcrPlot)).
-
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
