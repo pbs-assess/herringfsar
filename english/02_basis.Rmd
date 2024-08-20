@@ -1,7 +1,9 @@
 ## BASIS FOR SCIENCE ADVICE {-}
+
 <!-- TODO (JC): check if I changed the title -->
 
 ### Assessment Details {-}
+
 <!-- [Mandatory] -->
 
 This report presents science advice for the Pacific Herring Strait of Georgia 
@@ -45,11 +47,13 @@ policy as per the
 [Terms of Reference](https://www.dfo-mpo.gc.ca/csas-sccs/Schedule-Horraire/2024/09_23-eng.html).
 
 #### Year Assessment Approach was Approved {-}
+
 <!-- [Mandatory; year and reference] -->
 The SISCAH operating model framework implemented here for SoG Herring was 
 reviewed and approved by CSAS in June 2023 [@dfo2023a].
 
 #### Assessment Type {-}
+
 <!-- [Mandatory. -->
 <!-- Select one of the following: -->
 Full assessment and MSE process.
@@ -107,6 +111,7 @@ This SISCAH modelling framework [@johnson2024] provides stock status and MPs
 with associated quota calculations for the SoG Herring for the 2024/25 season.
 
 ### Stock Structure Assumption {-}
+
 <!--Stock overview information: -->
 <!--[reference to a Research Document or other publication, and/or footnote to the working paper] -->
 <!--[Mandatory. Maximum length 150 words.]-->
@@ -125,6 +130,7 @@ history. New genetic methods are currently being used to update baseline data fo
 spawning areas which may provide more insight on sub-stock structure in the Salish Sea.
 
 ### Reference Points {-}
+
 <!-- [Mandatory. -->
 <!-- A table may be used in lieu of bullets for this section. -->
 <!-- Refer to the Guidance Document for further instructions.] -->
@@ -134,6 +140,7 @@ These are derived as fractions of ${B_0}$ (unfished spawning biomass),
 ${MSY}$ (maximum sustainable yield), and $U_{MSY}$ (the harvest rate at ${MSY}$).
 
 #### Limit Reference Point (LRP) {-}
+
 In 2018, a biological limit reference point (LRP) was defined for Pacific
 Herring major stocks as $0.3B_0$ in 2018, where ${B_0}$ is the long-term
 average estimated unfished spawning biomass (@kronlund2017, @forrest2023).
@@ -141,6 +148,7 @@ This LRP is more conservative than the default LRP identified in
 “DFO Sustainable Fisheries Framework” policy.
 
 #### Upper Stock Reference (USR) {-}
+
 Candidate USRs were first introduced in @cleary2018 and a formal analysis of 
 USR options was undertaken in 2022 [@dfo2022a].
 Following consultations, DFO Resource Management then selected and implemented 
@@ -151,29 +159,34 @@ Because consultations are ongoing for SoG Herring USRs, we include
 0.8$U_{MSY}$ and all four candidate USRs ($B_{MSY}$ proxies from @dfo2022a).
 
 #### Target Reference Point (TRP) {-}
+
 A biomass target objective centered on the USR has been suggested Within the 
 Herring MSE process, however selection of a USR for SoG Herring requires 
 additional consultations and thus a TRP is not yet definable.
 
 #### Removal Reference (RR) {-}
-The default maximum RR for commercially harvested fish stocks is $F_{MSY}$ [@dfo2009, @dfo2013].
+
+The default maximum RR for commercially harvested fish stocks is
+$F_{MSY}$ [@dfo2009, @dfo2013].
 All MPs presented for Pacific Herring stocks that are shown in simulation to 
-avoid the LRP with high probability, and thus meet the conservation objective, include 
-maximum target harvest rates below $U_{MSY}$.
+avoid the LRP with high probability, and thus meet the conservation objective,
+include maximum target harvest rates below $U_{MSY}$.
 We do not specify an additional RR for SoG Herring because with MSE we use
-simulations to select a MP tuned directly to the conservation objective (which 
-implements harvest rates more conservative than $U_{MSY}$.
+simulations to select a MP tuned directly to the conservation objective
+(which implements harvest rates more conservative than $U_{MSY}$).
 
 #### Habitat or Ecosystem Reference Points {-}
-Ecosystem reference points are incorporated into the conservation objective for Herring
-through:
 
-1. Implementing a LRP using an analysis of stock productivity [@kronlund2017] and 
-which is well-above the default LRP of 0.4$B_{MSY}$ [@dfo2009]. 
-The LRP of 0.3${B_0}$ for the ensemble operating model is approximately 0.7$B_{MSY}$ (Appendix A).
+Ecosystem reference points are incorporated into
+the conservation objective for Herring through:
+
+1. Implementing a LRP using an analysis of stock productivity [@kronlund2017]
+and which is well-above the default LRP of 0.4$B_{MSY}$ [@dfo2009]. 
+The LRP of 0.3${B_0}$ for the ensemble operating model is
+approximately 0.7$B_{MSY}$ (Appendix A).
+
 2. Incorporating density dependent mortality to account for predation mortality
 and full represent trophic level of Herring as a forage species. 
-
 
 ### Fishery management objectives {-#sec:fish-mgmt-objs}
 
@@ -187,7 +200,8 @@ at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$).
 
 Three additional proposed objectives are used as performance metrics
-for MP evaluation. These are:
+for MP evaluation.
+These are:
 
 2. Maintain spawning biomass at or above the USR with at least 50% 
 probability over three Pacific Herring generations (i.e., achieve a 
@@ -237,11 +251,12 @@ We also report simulated performance against a suite of other biological and
 fishery reference points, with details described in
 Section "[Projections](#sec:projections)".
 
-The harvest control rule component of each simulation-test MP is a "hockey-stick" 
-shaped function defined by lower and upper control points, and a maximum 
-target harvest rate [@cox2013roles]. 
+The harvest control rule component of each simulation-test MP is
+a "hockey-stick" shaped function defined by lower and upper control points, and
+a maximum target harvest rate [@cox2013roles]. 
 We explored two hockey-stick shapes which differed in their lower and upper
-control points, and three 3 maximum target harvest rates (Figure \@ref(fig:plotHCRules)).
+control points, and three 3 maximum target harvest rates
+(Figure \@ref(fig:plotHCRules)).
 
 ```{r plotHCRules, echo = FALSE, fig.cap = HCRcap, fig.asp = 0.9}
 HCRcap <- "Shape of harvest control rule components of management procedures (MP). The green line represents the MP tuned to meet the conservation objective over the 15-year projection period for the ensemble operating model (with density dependent natural mortality) and maximum target harvest rate, $maxTHR$, of 20\\%. The red line denotes an additional hockey-stick shaped rule with the previously used 20\\% ma and the purple line shows the DFO default harvest control rule with maximum target harvest rate set at $U_{MSY}$ and control points at $0.4 \\cdot B_{MSY}$ and $0.8 \\cdot B_{MSY}$."
@@ -256,8 +271,8 @@ plotHCRules(  LCP_i = c(.3,.3,.172),
 
 Sustainable harvest advice for SoG Herring for 2024/25 is presented using 
 a MP tuned to the conservation objective. This MP has lower and upper control 
-points at 30\% and 60\% of unfished spawning biomass and a maximum target harvest 
-($maxTHR$) of 14\% (green solid line, Figure \@ref(fig:hcrPlot)).
+points at 30\% and 60\% of unfished spawning biomass and a maximum target
+harvest ($maxTHR$) of 14\% (green solid line, Figure \@ref(fig:hcrPlot)).
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
@@ -271,7 +286,6 @@ Any unusual deviations from the ensemble model projections would be
 investigated in detail and consideration given to refitting operating models.
 For example, if the previous year's realized catch far exceeds the TAC 
 prescribed by the MP or if the survey index is far below the projected index.
-
 
 ### Data {-}
 <!-- [Mandatory. -->
@@ -287,4 +301,3 @@ and dive. Combining the surveys into a blended index properly accounts for
 years in which these survey types co-occur and is a feature 
 of the new SISCAH model. Note `r assess_yr` refers to the `r this_season`
 Pacific Herring season.
-
