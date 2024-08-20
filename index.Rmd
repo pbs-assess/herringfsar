@@ -38,8 +38,6 @@ knit: (function(input, ...) {
        csasdown::render_sar()
       })
 always_allow_html: true
-
-
 header-includes:
   - \usepackage{pifont}% http://ctan.org/pkg/pifont
   - \newcommand{\xmark}{\ding{55}}%
@@ -131,4 +129,3 @@ theme_set(theme_herring())
 
 <!-- Compile the document on the command line: -->
 <!-- bookdown::render_book("index.Rmd") -->
-

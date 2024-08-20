@@ -5,4 +5,4 @@ process, that harvest control rule stays in place until the next round of MSE
 occurs. For Pacific herring in B.C. that is 3 years or more. 
 In the intervening years an estimate of biomass and biomass depletion is obtained
 to use with the harvest control rule. In our case it is 
-the less computationally intensive DIM SISCAH model. 
+the less computationally intensive DIM SISCAH model.

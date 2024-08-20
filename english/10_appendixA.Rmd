@@ -5,7 +5,7 @@
  
 `r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'`
  
-# APPENDIX A {#app:a}
+# APPENDIX A {-#sec:app-a}
 
 This appendix summarises closed loop simulations evaluating candidate
 management procedures for the Strait of Georgia (SOG) herring fishery. SOG herring
@@ -21,9 +21,9 @@ uncertainty in future productivity while evaluating candidate MPs.
 We first summarise the simulation approach,
 and then present results with some brief discussion of the management implications.  
 
-# Simulation approach
+# Simulation approach {-}
 
-## Operating models
+## Operating models {-}
 
 To take into account uncertainty in productivity at high and low stock sizes 
 five SoG Herring operating models where chosen. Productivity
@@ -172,9 +172,7 @@ plotStockRecruitEnvelope( obj = mpBlobList[[2]],
                           inputB0 = 90.23 )
 ```
 
-
-
-## Management Procedures
+## Management Procedures {-}
 
 Management procedures are a combination of data, biomass estimation method (EM), 
 and a harvest control rule (HCR). 
@@ -211,8 +209,7 @@ plotHCRules(  LCP_i = c(.3,.3,.172),
               language = "English")
 ```
 
-
-## Performance metrics
+## Performance metrics {-}
 
 First, MPs are quantitatively evaluated against the conservation objective (the primary management objective):
 
@@ -287,16 +284,15 @@ at a time. For each year in the projection, apply the following:
 4.  Calculate quantitative performance statistics across all 
     100 replicates.
 
-# Management between management strategy evalauation years. 
+# Management between management strategy evalauation years {-}
 
 Once a harvest control rule is chosen through the management strategy evaluation 
 process that harvest control rule stays in place until the next round of MSE
 occurs. For Pacific herring in B.C. that is 3 years or more. 
 In the intervening years an estimate of biomass is obtained via
-the less computationally instensive DIM SISCAH model. 
+the less computationally instensive DIM SISCAH model.
 
-
-# Discussion
+# Discussion {-}
 
 A fishery that meets Objective 1 could target a 13\% harvest rate with an 
 average yield in the 10 - 11 kt range (Table \@ref(tab:statTable). If management

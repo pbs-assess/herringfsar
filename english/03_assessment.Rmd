@@ -1,10 +1,9 @@
-## ASSESSMENT UNDER MSE {-}
+## ASSESSMENT UNDER MSE {-#sec:assessment}
 
 ```{r calcTACchunk, echo = FALSE, include = FALSE}
 TAC.df <- calcTAC(fit_maxTHR0.14)
 
 ```
-
 
 - Example cross-reference:
 Stock status in relation to four indicators (see Figure \@ref(fig:indicators)).
@@ -83,7 +82,7 @@ Final approval scheduled for fall 2023.]
 
 <!-- [If applicable (otherwise, do not include).] -->
 
-### Projections [optional titles: Simulations, Future Scenarios] {-}
+### Projections {-#sec:projections}
 
 We simulation tested three MPs with hockey-stick shaped harvest control rules (#refSecThisDoc)
 and present performance indicators for the MP tuned to meet the conservation objective and
@@ -109,7 +108,6 @@ in the absence of fishing (Table XX and Figure XX).
  -->
 <!-- TODO: define three generations == 15-years -->
 
-
 ### Ecosystem and Climate Change Considerations {-}
 
 Density dependence, where increased mortality is associated with smaller biomass
@@ -117,8 +115,6 @@ models ecosystem effects such as the increased percentage of natural mortality
 in the event of lower biomass, consistent with predator consumption. 
 
 ### Harvest Decision Rule Outputs {-}
-
-
 
 ```{r, TACtable, echo = FALSE, warnings = FALSE}
 
@@ -131,8 +127,6 @@ kable( TAC.df, escape = FALSE,
 
 
 ```
-
-
 
 ```{r, MPcaptions, include = FALSE, echo = FALSE}
 
@@ -160,8 +154,6 @@ plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
 plotRule(repList = fit_maxTHR0.14)
 ```
 
-
-
 ### Evaluation of Exceptional Circumstances/Assessment Triggers {-}
 
 Fishery monitoring data collected since the adoption of the current SOG
@@ -171,7 +163,6 @@ model mis-specification (Figure \@ref(fig:ECfig)), also know as exceptional
 circumstances. Mis-specification is checked visually by comparing catch and 
 spawn index values within the central 95% of 2023 ensemble operating 
 model simulations.
-
 
 ```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
 ECfigCap <- "A graphical test for exceptional circumstances indicating operating model mis-specification. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SOG operating model, projected forward in time under the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
@@ -185,9 +176,3 @@ plotSimDataEnvelopes( obj = mpBlobList[[2]],
                       fYear = 1951 )
 
 ```
-
-
-
-
-
-

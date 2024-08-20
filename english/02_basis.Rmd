@@ -37,14 +37,12 @@ Details of the operating model ensemble are described in Appendix A.
 
 The weighted ensemble OM was used to simulate management procedures (MPs) over a 
 15-year projection period (2024-2038) and present a MP tuned to meet 
-the conservation objective (#addhyperlink) and that is
-<!-- TODO (MG): #addhyperlink - add hyperlink to Section: "Fishery management objectives" (this .Rmd)-->
+the conservation objective
+(Section "[Fishery management objectives](#sec:fish-mgmt-objs)") and that is
 compliant with both the “DFO Sustainable Fisheries Framework” policy and 
-“A fishery decision-making framework incorporating the Precautionary Approach” policy
-(as per the Terms of Reference: 
-https://www.dfo-mpo.gc.ca/csas-sccs/Schedule-Horraire/2024/09_23-eng.html).
-<!-- TODO (MG): can we have html like this for CSAS doc?--> 
-
+“A fishery decision-making framework incorporating the Precautionary Approach”
+policy as per the 
+[Terms of Reference](https://www.dfo-mpo.gc.ca/csas-sccs/Schedule-Horraire/2024/09_23-eng.html).
 
 #### Year Assessment Approach was Approved {-}
 <!-- [Mandatory; year and reference] -->
@@ -117,8 +115,8 @@ SoG Herring is one of five major Pacific Herring stocks managed in British Colum
 The other major and minor stocks are described in [@dfo2024].
 The SoG stock spawns in the SoG primarily in March, over with multiple locations 
 and variable timing.
-Details of spawn timing and locations are described in the 2024 SoG Data Summary.
-<!-- TODO (MG): please add link for Data Summary--> 
+Details of spawn timing and locations are described in the
+[2024 SoG data summary report](https://github.com/grinnellm/Reports/blob/master/Summaries/2024/DataSummary.SoG.2024.pdf).
 Post spawning, mature SoG Herring
 migrate to the west coast Vancouver Island (WCVI) to share share summer/ fall 
 feeding grounds with WCVI Herring. However adult herring are also reported in the 
@@ -177,7 +175,7 @@ The LRP of 0.3${B_0}$ for the ensemble operating model is approximately 0.7$B_{M
 and full represent trophic level of Herring as a forage species. 
 
 
-### Fishery management objectives {-}
+### Fishery management objectives {-#sec:fish-mgmt-objs}
 
 A core set of fisheries management objectives [@dfo2019c]
 was introduced to the Pacific Herring MSE process in 2019.
@@ -187,7 +185,6 @@ the LRP.
 1. Maintain spawning biomass at or above the LRP with
 at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$).
-
 
 Three additional proposed objectives are used as performance metrics
 for MP evaluation. These are:
@@ -213,11 +210,10 @@ economics, and access.
 
 Stock status for the SoG aggregate stock is derived from the operating model 
 ensemble which represents weighting across five different models each 
-representing a range of productivity levels (details in Appendix A).
-<!-- TODO (MG): pls add hyperlink to AppendixA.Rmd)-->
+representing a range of productivity levels (Appendix [A](#sec:app-a)).
 
-Section X reports the ensemble model stock status for 2023.
-<!-- TODO (MG): pls add hyperlink to 03_assessment.Rmd)-->
+Section "[Assessment under MSE](#sec:assessment)"
+reports the ensemble model stock status for 2023.
 
 Operating models for SoG Herring will be updated every three years.
 In 2026 the SISCAH model will be fit to new SoG survey and fishery data (extending
@@ -238,8 +234,8 @@ simulation tested MPs in which we identify the maximum target harvest rate for
 a MP tuned to the established conservation objective using a 15-year projection
 period. 
 We also report simulated performance against a suite of other biological and 
-fishery reference points, with details described in Section X.
-<!-- TODO (MG): pls add hyperlink to ### Projections in 03_assessment.Rmd)-->
+fishery reference points, with details described in
+Section "[Projections](#sec:projections)".
 
 The harvest control rule component of each simulation-test MP is a "hockey-stick" 
 shaped function defined by lower and upper control points, and a maximum 
