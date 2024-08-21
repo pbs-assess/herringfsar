@@ -7,7 +7,7 @@
 # APPENDIX A {-#sec:app-a}
 
 This appendix summarises closed loop simulations evaluating candidate
-management procedures for the Strait of Georgia (SOG) Herring fishery. SOG Herring
+management procedures for the Strait of Georgia (SoG) Herring fishery. SoG Herring
 is the first BC Herring fishery to use the new Herring operating model framework, 
 named the Spatially Integrated Statistical Catch-at-Age Herring Operating Model 
 (SISCAH-OM). Although there are several differences between SISCAH and the 
@@ -186,9 +186,9 @@ time-varying $M$. The EM provides annual estimates of unfished biomass and
 a 1-year ahead forecast of spawning biomass.
 
 TACs are derived from EM estimates via the harvest control rule. For
-SOG Herring, we use a "hockey-stick" shaped function defined
+SoG Herring, we use a "hockey-stick" shaped function defined
 by lower and upper control points, and a maximum target harvest rate
-[@cox2013roles]. The SOG Herring rules have lower and upper control points 
+[@cox2013roles]. The SoG Herring rules have lower and upper control points 
 at 30\% and 60\% of unfished biomass, respectively. When biomass 
 is estimated to be below the lower control point the rule sets the harvest
 rate to zero. Between control points, the harvest rate is a linear ramp 
