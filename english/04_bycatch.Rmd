@@ -3,7 +3,7 @@
 <!-- In order to advance progress towards -->
 <!-- a holistic ecosystem-based management (EBM) approach for Pacific Herring, -->
 <!-- we present information to describe indirect effects -->
-<!-- on herring populations such as incidental mortality.  -->
+<!-- on Herring populations such as incidental mortality.  -->
 Some fisheries and aquaculture activities in BC cause
 incidental mortality to Pacific Herring.
 Similar to SOK harvest as well as FSC and recreational catch,
@@ -29,7 +29,7 @@ and is considered minor relative to commercial harvest.
 
 <!-- 1. Unknown length, weight, age, and sex of fish, and -->
 
-<!-- 1. "Herring-like" fish are assumed to be herring -->
+<!-- 1. "Herring-like" fish are assumed to be Herring -->
 <!-- when decomposition hinders identification. -->
 
 <!-- Note that data from previous years are updated  -->

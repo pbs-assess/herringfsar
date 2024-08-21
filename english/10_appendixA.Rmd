@@ -7,11 +7,11 @@
 # APPENDIX A {-#sec:app-a}
 
 This appendix summarises closed loop simulations evaluating candidate
-management procedures for the Strait of Georgia (SOG) herring fishery. SOG herring
-is the first BC herring fishery to use the new herring operating model framework, 
+management procedures for the Strait of Georgia (SOG) Herring fishery. SOG Herring
+is the first BC Herring fishery to use the new Herring operating model framework, 
 named the Spatially Integrated Statistical Catch-at-Age Herring Operating Model 
 (SISCAH-OM). Although there are several differences between SISCAH and the 
-previous herring assessment and operating models, the main difference in SISCAH-OM
+previous Herring assessment and operating models, the main difference in SISCAH-OM
 is the ability to model density dependent mortality (DDM), where 
 natural mortality is higher when biomass is lower [@johnson2024].
 
@@ -180,15 +180,15 @@ All MPs tested here use the same data. The EM that is fit to those data is a
 statistical catch-at-age model with a density independent $M$ (DIM) hypothesis 
 [@dfo2023management], which uses a simple random walk to estimate 
 time-varying $M$. The DIM hypothesis is similar to the previous model used for 
-herring assessments and setting TACs, except that the previous model used
+Herring assessments and setting TACs, except that the previous model used
 a spline with 16 nodes instead of a simple random walk to estimate 
 time-varying $M$. The EM provides annual estimates of unfished biomass and 
 a 1-year ahead forecast of spawning biomass.
 
 TACs are derived from EM estimates via the harvest control rule. For
-SOG herring, we use a "hockey-stick" shaped function defined
+SOG Herring, we use a "hockey-stick" shaped function defined
 by lower and upper control points, and a maximum target harvest rate
-[@cox2013roles]. The SOG herring rules have lower and upper control points 
+[@cox2013roles]. The SOG Herring rules have lower and upper control points 
 at 30\% and 60\% of unfished biomass, respectively. When biomass 
 is estimated to be below the lower control point the rule sets the harvest
 rate to zero. Between control points, the harvest rate is a linear ramp 
@@ -213,7 +213,7 @@ plotHCRules(  LCP_i = c(.3,.3,.172),
 First, MPs are quantitatively evaluated against the conservation objective (the primary management objective):
 
 1. $P(B_t > 0.3 B_0) \geq 0.75$, or **avoid the limit reference point (LRP) with high 
-probability over three herring generations.**
+probability over three Herring generations.**
 
 and next against secondary biomass objective:
 
@@ -271,7 +271,7 @@ at a time. For each year in the projection, apply the following:
       depletion using the HS 30-60 harvest control rule;
       iv)  Using this target harvest rate calculate the total allowable catch from the 1-year ahead biomass 
       forecast;
-      v)  Update the simulated DDM operating model herring population in the with 
+      v)  Update the simulated DDM operating model Herring population in the with 
       incoming recruitment from the DDM stock-recruit curve with recruitment process errors; 
       density dependent natural mortality; and fishing mortality corresponding 
       to the total allowable catch in the previous step. 
@@ -287,7 +287,7 @@ at a time. For each year in the projection, apply the following:
 
 Once a harvest control rule is chosen through the management strategy evaluation 
 process that harvest control rule stays in place until the next round of MSE
-occurs. For Pacific herring in B.C. that is 3 years or more. 
+occurs. For Pacific Herring in B.C. that is 3 years or more. 
 In the intervening years an estimate of biomass is obtained via
 the less computationally instensive DIM SISCAH model.
 
