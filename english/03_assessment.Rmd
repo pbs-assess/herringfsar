@@ -119,6 +119,10 @@ that is compliant with both the “DFO Sustainable Fisheries Framework” policy
 
 WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP...
 
+
+<!-- TODO: define three generations == 15-years -->
+
+
 #### Interim Year Updates {-}
 
 <!-- TODO (Sam): pls show us where to find these variable names so we can add auto-text
@@ -144,6 +148,8 @@ R/functions.R
 I also already created a proj_biomass_text() function that did this,
 you can edit it in R/functions.
 
+JC: Sam to show us this.
+
 -->
 
 -JC: STATE THE EM STATUS FOR 2024
@@ -162,7 +168,7 @@ Spawning biomass in 2024 is forecast to be
 below the LRP of $0.3\SB_0$ (41,547 t) with a 8.0% probability,
 in the absence of fishing (Table XX and Figure XX).
  -->
-<!-- TODO: define three generations == 15-years -->
+
 
 ### Harvest Decision Rule Outputs {-}
 
@@ -220,14 +226,7 @@ For ECfig:
 uncertainty in the index larger than SB?
 
 SDNJ: Because the noise in the index is the uncertainty in SSB (process error) plus 
-uncertainty in spawn index (observation error) 
-
-2. Data point labels in both legends are reversed- pls change to:
-(top) "Spawning biomass"; Simulated spawn index range"; "Observed index to 2023"; "Observed index post 2023"
-(bottom) "Historical and simulated catch"; "Observed catch to 2023"; "Observed catch post 2023"
-
-SDNJ: Thanks. I had fixed this in prev edits but the function was being read in from another
-source and reverting to original legend. Works now.
+uncertainty in spawn index (observation error)
 
 -->
 
