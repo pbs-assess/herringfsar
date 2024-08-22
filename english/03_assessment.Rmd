@@ -1,4 +1,4 @@
-## ASSESSMENT {-#sec:assessment}
+## ASSESSMENT UNDER MSE {-#sec:assessment}
 
 ```{r calcTACchunk, echo = FALSE, include = FALSE}
 TAC.df <- calcTAC(fit_maxTHR0.14)
@@ -36,6 +36,14 @@ baseplot_indicators(dat = true_dat)
 
 ### Historical and Recent Stock Trajectory and Trends {-}
 
+Estimated unfished spawning biomass $\SB_0$ is 138,491 t, and
+the LRP of $0.3\SB_0$ is 41,547 t (posterior medians).
+Compared to last year, estimated spawning biomass in 2023 $\SB_{2023}$
+decreased from 75,523 to 72,782 t (posterior median), and
+is equivalent to 52.1% of $\SB_0$ (Tables XX & XX).
+Spawning biomass in 2023 is estimated to be
+above the LRP with a 94.3% probability (Table XX). -->
+
 #### Spawning Biomass and Status Relative to Reference Points {-}
 The ensemble model estimates spawning biomass to be above $B_{MSY}$ and
 the USR for the majority of the historical time series 
@@ -65,38 +73,58 @@ biomass remaining fairly constant.
 <!-- #### Fishing Mortality {-} 
 JC: not including because not talking about RR-->
 
+### Ecosystem and Climate Change Considerations {-}
+
+Density dependence, where increased mortality is associated with smaller biomass
+models ecosystem effects such as the increased percentage of natural mortality 
+in the event of lower biomass, consistent with predator consumption. 
+
 ### History of [Management; Landings/Harvest/Effort, TAC \& Catch Advice] {-}
 
 STOPPED HERE
 
-[Mandatory.
-Title can vary.
-Maximum text length one page.] 
+[Mandatory. make this short & ] 
 
-Harvest options for `r assess_yr+1` reflect application of
-simulation-tested MPs for each major SAR,
-derived from the Herring OM [@benson2022]. 
-OM conditioning was updated in 2022 using
-historic stock and fishery data from `r major_start_yr` to 2021;
-no MP updates were conducted for 2023.
+COVER:
+-20% hr IMPLEMENTED SINCE 1983
+-POINT READER TO THE 6 PANEL FIGURE
+-MENTION SIMULATION TESTING OF MPs FOR SoG HAS BEEN ONGOING 
+SINCE 2015 - cite past herringSR
 
 
+### Projections and MP Outputs for 2025 {-#sec:projections}
 
+-JC: explain the process under new MSE
+REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024, 2025,
+AND 2026 ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
+ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
+PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
 
-### Projections {-#sec:projections}
+#### MP {-}
+
+HERRING MPs ARE COMPROSED OF THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
+
+MPS THAT WE CONSIDER DIFFER ONLY BY SHAPE OF HCR (point to Figure \@ref(fig:plotHCRules) )
 
 We simulation tested three MPs with hockey-stick shaped harvest control rules (#refSecThisDoc)
 and present performance indicators for the MP tuned to meet the conservation objective and
 that is compliant with both the “DFO Sustainable Fisheries Framework” policy and 
 “A fishery decision-making framework incorporating the Precautionary Approach” policy
 (as per the Terms of Reference (#refLinkCSASTOR)).
-  
 
-[Mandatory.
-Title can vary.
-Tables or figures can be used as necessary to support decision-making.]
+WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP...
 
-`r proj_biomass_text()`
+#### Interim Year Updates {-}
+
+<!-- TODO (Sam): pls show us where to find these variable names so we can add auto-text
+-->
+
+-JC: STATE THE EM STATUS FOR 2024
+-Bt_2024 
+-Bt_2024/Bo
+-Bt_2025
+-Bt_2025/Bo
+
 
 <!-- Insert `proj_biomass_text()` function to automate text:
 
@@ -108,12 +136,6 @@ below the LRP of $0.3\SB_0$ (41,547 t) with a 8.0% probability,
 in the absence of fishing (Table XX and Figure XX).
  -->
 <!-- TODO: define three generations == 15-years -->
-
-### Ecosystem and Climate Change Considerations {-}
-
-Density dependence, where increased mortality is associated with smaller biomass
-models ecosystem effects such as the increased percentage of natural mortality 
-in the event of lower biomass, consistent with predator consumption. 
 
 ### Harvest Decision Rule Outputs {-}
 
