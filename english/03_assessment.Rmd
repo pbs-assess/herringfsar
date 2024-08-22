@@ -1,4 +1,4 @@
-## ASSESSMENT {-#sec:assessment}
+## ASSESSMENT UNDER MSE {-#sec:assessment}
 
 ```{r calcTACchunk, echo = FALSE, include = FALSE}
 TAC.df <- calcTAC(fit_maxTHR0.14)
@@ -61,27 +61,42 @@ JC: not including because not talking about RR-->
 
 STOPPED HERE
 
-[Mandatory.
-Title can vary.
-Maximum text length one page.] 
+[Mandatory. make this short & ] 
 
-Harvest options for `r assess_yr+1` reflect application of
-simulation-tested MPs for each major SAR,
-derived from the Herring OM [@benson2022]. 
-OM conditioning was updated in 2022 using
-historic stock and fishery data from `r major_start_yr` to 2021;
-no MP updates were conducted for 2023.
+COVER:
+-20% hr IMPLEMENTED SINCE 1983
+-POINT READER TO THE 6 PANEL FIGURE
+-MENTION SIMULATION TESTING OF MPs FOR SoG HAS BEEN ONGOING 
+SINCE 2015 - cite past herringSR
 
 
+### Projections and MP Outputs for 2025 {-#sec:projections}
 
+-explain the process under new MSE
+REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024, 2025,
+AND 2026 ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
+ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
+PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
 
-### Projections {-#sec:projections}
+#### MP {-}
+
+HERRING MPs ARE COMPROSED OF THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
+
+MPS THAT WE CONSIDER DIFFER ONLY BY SHAPE OF HCR (point to Figure \@ref(fig:plotHCRules) )
 
 We simulation tested three MPs with hockey-stick shaped harvest control rules (#refSecThisDoc)
 and present performance indicators for the MP tuned to meet the conservation objective and
 that is compliant with both the “DFO Sustainable Fisheries Framework” policy and 
 “A fishery decision-making framework incorporating the Precautionary Approach” policy
 (as per the Terms of Reference (#refLinkCSASTOR)).
+
+
+WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP
+
+#### Interim Year Updates {-}
+
+STATE THE EM STATUS FOR 2024 
+TODO (Sam): how do we automate this (Bt and Bt/Bo)
   
 
 [Mandatory.
