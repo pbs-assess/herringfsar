@@ -126,7 +126,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
                                 history = mpBlobList[[2]],
                                 fYear = 1951, lYear = 2023  )
 {
-
+  #TODO (SAM); What is 2 mpBlobList[[2]], should it be hard coded?
   yrs <- fYear:lYear
   lastTdx <- length(yrs)
   goodReps <- history$goodReps

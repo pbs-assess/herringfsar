@@ -49,6 +49,13 @@ is equivalent to 52.1% of $\SB_0$ (Tables XX & XX).
 Spawning biomass in 2023 is estimated to be
 above the LRP with a 94.3% probability (Table XX). -->
 
+```{r OM_stock_status, echo = FALSE}
+# 
+stock_status_text(refPtsTab = ensRefPtsTable,
+                                parTab = ensParTable,
+                                fYear = 1951, lYear = 2023 )
+```
+
 #### Spawning Biomass and Status Relative to Reference Points {-}
 The ensemble model estimates spawning biomass to be above $B_{MSY}$ and
 the USR for the majority of the historical time series 
@@ -105,6 +112,14 @@ AND 2026 ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
 ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
 PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
 
+#### Interim Year Update for 2024 {-}
+<!-- TODO (Sam): please create current year statement function using the estimation model for 2024.
+"Estimated spawning biomass $SB_{2024}$ is 90.23 kt in 2024, and is equivalent to 87.2 \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2024 is estimated to be above the LRP with a 99 \\% probability (Table XX)."
+
+```{r, current_year_statement, echo = FALSE, warnings = FALSE}
+# current_biomass_text() 
+```
+
 #### MP {-}
 
 HERRING MPs ARE COMPROSED OF THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
@@ -128,7 +143,6 @@ WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP...
 <!-- TODO (Sam): pls show us where to find these variable names so we can add auto-text
 
 SDNJ: For below variables:
-
 tIdx = 64 for 2024
 tIdx = 65 for 2025
 
@@ -159,6 +173,7 @@ JC: Sam to show us this.
 -Bt_2025/Bo
 
 ```{r, forecast_statement, echo = FALSE, warnings = FALSE}
+# TODO: (SAM) Please make this look pretty.
 proj_biomass_text(fit_maxTHR0.14) 
 ```
 
