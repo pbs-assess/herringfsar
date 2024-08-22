@@ -132,6 +132,15 @@ points as performance metrics for the MP evaluations.
 These are derived as fractions of ${B_0}$ (unfished spawning biomass), 
 ${MSY}$ (maximum sustainable yield), and $U_{MSY}$ (the harvest rate at ${MSY}$).
 
+
+```{r yieldSSBcurve, }
+yieldSSBcap <- "Strait of Georgia herring operating model 1 equilibrium yield curve with respect to spawning stock biomass."
+filepath <- "data/yieldSSB.pdf"
+knitr::include_graphics(filepath)
+
+
+```
+
 <!-- TODO (Sam): I wonder if it would be useful to put the Yield~Spawning biomass
 curve for OM1 in here? (to give reader a sense of relative position of LRP and USR
 
@@ -142,7 +151,7 @@ above, as we don't use any fractions of MSY for MP evaluations. Do we mean $B_{M
 
 In 2018, a biological limit reference point (LRP) was defined for Pacific
 Herring major stocks as $0.3B_0$, where ${B_0}$ is the long-term
-average estimated unfished spawning biomass ([@kronlund2017], [@forrest2023]).
+average estimated unfished spawning biomass ([@kronlund2017,@forrest2023]).
 This LRP is more conservative than the default LRP identified in 
 “DFO Sustainable Fisheries Framework” policy [@dfo2009].
 
