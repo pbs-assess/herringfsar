@@ -86,7 +86,7 @@ SINCE 2015 - cite past herringSR
 
 ### Projections and MP Outputs for 2025 {-#sec:projections}
 
--explain the process under new MSE
+-JC: explain the process under new MSE
 REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024, 2025,
 AND 2026 ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
 ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
@@ -108,8 +108,14 @@ WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP...
 
 #### Interim Year Updates {-}
 
-STATE THE EM STATUS FOR 2024 
-TODO (Sam): how do we automate this (Bt and Bt/Bo)
+<!-- TODO (Sam): pls show us where to find these variable names so we can add auto-text
+-->
+
+-JC: STATE THE EM STATUS FOR 2024
+-Bt_2024 
+-Bt_2024/Bo
+-Bt_2025
+-Bt_2025/Bo
 
 
 <!-- Insert `proj_biomass_text()` function to automate text:
