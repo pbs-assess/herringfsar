@@ -129,14 +129,16 @@ spawning areas which may provide more insight on sub-stock structure in the Sali
 <!-- Refer to the Guidance Document for further instructions.] -->
 For Pacific Herring MSE we present a suite of biological and fishery reference 
 points as performance metrics for the MP evaluations. 
-These are derived as fractions of ${B_0}$ (unfished spawning biomass), 
-${MSY}$ (maximum sustainable yield), and $U_{MSY}$ (the harvest rate at ${MSY}$).
+These are derived as fractions of ${B_0}$ (unfished spawning biomass) and
+$B_{MSY}$ (biomass at maximum sustainable yield).
 
 <!-- TODO (Sam): I wonder if it would be useful to put the Yield~Spawning biomass
 curve for OM1 in here? (to give reader a sense of relative position of LRP and USR
 
 SDNJ: Sure, we can add that here. I wonder if we should remove reference to $MSY$ 
-above, as we don't use any fractions of MSY for MP evaluations. Do we mean $B_{MSY}$?-->
+above, as we don't use any fractions of MSY for MP evaluations. Do we mean $B_{MSY}$?
+
+JC: my error, fixed-->
 
 #### Limit Reference Point (LRP) {-}
 
@@ -151,15 +153,17 @@ This LRP is more conservative than the default LRP identified in
 Candidate USRs were first introduced in @cleary2018 and a formal analysis of 
 USR options was undertaken in 2022 [@dfo2022a].
 Following consultations, DFO Resource Management then selected and implemented 
-$0.8 \cdot B_{1998:2007}$ as a "provisional USR" for the 2022/23 IFMP 
+0.8$B_{1998:2007}$ as a "provisional USR" for the 2022/23 IFMP 
 where the USR was included as a performance metric in the MP evaluations.
 Note that the productive period USR was first developed as a spatial proxy
 for spawn distribution for WCVI Herring [@cleary2018].
 Because consultations are ongoing for SoG Herring USRs, we include 
-5 USR performance metrics in this analysis: $0.8 \cdot U_{MSY}$ and 
-all four candidate USRs ($B_{MSY}$ proxies from @dfo2022a).
+5 USR performance metrics in this analysis: 0.8$B_{MSY}$ (new this year) and 
+all four candidate USRs presented as $B_{MSY}$ proxies [@dfo2022a].
 
-<!-- Is the above correct for the 5 metrics? Do we use 0.8 Umsy? -->
+<!-- Is the above correct for the 5 metrics? Do we use 0.8 Umsy? 
+
+JC: sorry, typo- fixed-->
 
 
 #### Target Reference Point (TRP) {-}
