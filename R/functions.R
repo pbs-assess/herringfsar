@@ -43,7 +43,8 @@ passObj <- function( X, target = .95, comp = "gt" )
 #                 package
 # Outputs: data.frame of harvest advice and management pars
 # Author: Sean Cox, SDNJ, LFR
-calcTAC <- function( repList = reports )
+calcTAC <- function(  repList = reports,
+                      assessyear = 2024 )
 {
   ctlList <- repList$ctlList
   repObj  <- repList$repOpt
@@ -88,12 +89,12 @@ calcTAC <- function( repList = reports )
   out.df <- array("", dim = c(6,2))
   out.df <- as.data.frame(out.df)
   colnames(out.df) <- c("Variable","Estimate")
-  out.df[,1] <- c("$\\hat{B}_{2025}$",
-                  "$\\hat{B}_{0}$",
-                  "LCP",
-                  "OCP",
-                  "THR",
-                  "TAC" )
+  out.df[,1] <- c(paste0( "$\\hat{B}_{",assessyear + 1,"}$"),
+                          "$\\hat{B}_{0}$",
+                          "LCP",
+                          "OCP",
+                          "THR",
+                          "TAC" )
 
   out.df[,2] <- round(c(Bhat, estB0, 0.3*estB0, 0.6*estB0, targU, Q),3)
 

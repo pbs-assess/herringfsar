@@ -117,6 +117,24 @@ WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP...
 #### Interim Year Updates {-}
 
 <!-- TODO (Sam): pls show us where to find these variable names so we can add auto-text
+
+SDNJ: For below variables:
+
+tIdx = 64 for 2024
+tIdx = 65 for 2025
+
+B_2024 = fit_maxTHR0.14$repOpt$SB_pt[1,64]
+B_2025 = fit_maxTHR0.14$repOpt$SB_pt[1,65]
+
+B0 = fit_maxTHR0.14$repOpt$B0_p[1]
+
+If you look want to find more stuff, follow the calcTAC() function in 
+R/functions.R
+
+I also already created a proj_biomass_text() function that did this,
+you can edit it in R/functions
+
+
 -->
 
 -JC: STATE THE EM STATUS FOR 2024
@@ -200,7 +218,7 @@ uncertainty in spawn index (observation error)
 (bottom) "Historical and simulated catch"; "Observed catch to 2023"; "Observed catch post 2023"
 
 SDNJ: Thanks. I had fixed this in prev edits but the function was being read in from another
-source and reverting to original legend.
+source and reverting to original legend. Works now.
 
 -->
 
