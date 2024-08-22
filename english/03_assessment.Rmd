@@ -58,7 +58,7 @@ well-above the LRP in all years since 1970.
 
 #### Recruitment and Natural Mortality {-}
 Most of the fluctuations in estimated spawning biomass have been attributed 
-to estimated recruitment, with lower than average recruitment in the 1970s, 
+to estimated recruitment, with lower than average age-1 recruitment in the 1970s, 
 1980s, and in 2007 and 2009, all of which mirror dips in spawning biomass. 
 Above average recruitment occurred in the intervening times corresponding to
 biomass peaks (Figure \@ref(fig:indicators)E). 
