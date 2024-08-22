@@ -92,7 +92,9 @@ MSE_yr    <- 2023
 # meta_out <- metadata$output
 # french <- meta_out$`csasdown::fsar_word`$french
 french    <- FALSE
-include_extras <- FALSE 
+include_extras <- TRUE 
+
+MPname <- "maxTHR_0.14"
 
 # TODO: [SAM] add a list of any variables needed to
 # change. i.e. Region, USR, BO, [see functions.R/makeModelHistTable[arguments]] 
@@ -113,6 +115,8 @@ source(here("R", "themes.R"))
 
 # Theme for figures
 theme_set(theme_herring())
+
+
 ```
 
 <!-- Math expressions -->

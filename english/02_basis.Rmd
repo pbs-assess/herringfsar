@@ -197,12 +197,12 @@ simulations to select a MP tuned directly to the conservation objective
 Ecosystem reference points are incorporated into
 the conservation objective for Herring through:
 
-1. A LRP of 0.3${B_0}$ based on an analysis of stock productivity [@kronlund2017]
+1. A LRP of $0.3\cdot {B_0}$ based on an analysis of stock productivity [@kronlund2017]
 which is well-above the default LRP of 0.4$B_{MSY}$ [@dfo2009] and 
 which is also above the soft-limit of 0.5$B_{MSY}$ implemented in 
 New Zealand fisheries [@shelton2008].
-The LRP of 0.3${B_0}$ for the ensemble operating model is
-approximately 0.7$B_{MSY}$ (Appendix A).
+The LRP of $0.3\cdot {B_0}$ for the ensemble operating model is
+approximately $0.7 \cdot B_{MSY}$ (Appendix A).
 
 2. Incorporating density dependent mortality to account for predation mortality
 to fully represent the trophic level of Herring as a forage species.

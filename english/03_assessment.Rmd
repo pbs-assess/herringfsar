@@ -41,7 +41,7 @@ baseplot_indicators(dat = true_dat)
 
 ### Historical and Recent Stock Trajectory and Trends {-}
 
-Estimated unfished spawning biomass $\SB_0$ is 138,491 t, and
+<!-- Estimated unfished spawning biomass $\SB_0$ is 138,491 t, and
 the LRP of $0.3\SB_0$ is 41,547 t (posterior medians).
 Compared to last year, estimated spawning biomass in 2023 $\SB_{2023}$
 decreased from 75,523 to 72,782 t (posterior median), and
@@ -49,11 +49,11 @@ is equivalent to 52.1% of $\SB_0$ (Tables XX & XX).
 Spawning biomass in 2023 is estimated to be
 above the LRP with a 94.3% probability (Table XX). -->
 
-```{r OM_stock_status, echo = FALSE}
-# 
-stock_status_text(refPtsTab = ensRefPtsTable,
-                                parTab = ensParTable,
-                                fYear = 1951, lYear = 2023 )
+```{r OM_stock_status, echo = FALSE, results = "asis"}
+stock_status_text(  refPtsTab = ensRefPtsTable,
+                    parTab = ensParTable,
+                    history = mpBlobList[[MPname]],
+                    fYear = 1951, lYear = MSE_yr )
 ```
 
 #### Spawning Biomass and Status Relative to Reference Points {-}
@@ -114,15 +114,18 @@ PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
 
 #### Interim Year Update for 2024 {-}
 <!-- TODO (Sam): please create current year statement function using the estimation model for 2024.
-"Estimated spawning biomass $SB_{2024}$ is 90.23 kt in 2024, and is equivalent to 87.2 \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2024 is estimated to be above the LRP with a 99 \\% probability (Table XX)."
+"Estimated spawning biomass $SB_{2024}$ is 90.23 kt in 2024, and is equivalent to 87.2 \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2024 is estimated to be above the LRP with a 99 \\% probability (Table XX)." -->
 
-```{r, current_year_statement, echo = FALSE, warnings = FALSE}
-# current_biomass_text() 
+```{r, current_year_statement, echo = FALSE, warnings = FALSE, results = "asis" }
+curr_biomass_text(  mpFit   = fit_maxTHR0.14,
+                    fYear   = 1951, 
+                    thisYr  = assess_yr,
+                    B0 = NULL  )
 ```
 
 #### MP {-}
 
-HERRING MPs ARE COMPROSED OF THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
+HERRING MPs COMPRISE THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
 
 MPS THAT WE CONSIDER DIFFER ONLY BY SHAPE OF HCR (point to Figure \@ref(fig:plotHCRules) )
 
@@ -135,7 +138,7 @@ that is compliant with both the “DFO Sustainable Fisheries Framework” policy
 WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP...
 
 
-<!-- TODO: define three generations == 15-years -->
+<!-- TODO: define three generations == 15-years
 
 
 #### Interim Year Updates {-}
@@ -172,9 +175,13 @@ JC: Sam to show us this.
 -Bt_2025
 -Bt_2025/Bo
 
-```{r, forecast_statement, echo = FALSE, warnings = FALSE}
+```{r, forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
 # TODO: (SAM) Please make this look pretty.
-proj_biomass_text(fit_maxTHR0.14) 
+# DONE!
+proj_biomass_text(  mpFit = fit_maxTHR0.14,
+                    fYear = 1951, 
+                    assessYr = assess_yr,
+                    B0 = NULL  )
 ```
 
 ### Harvest Decision Rule Outputs {-}
@@ -209,12 +216,10 @@ hcrCaption <- paste0(stock," Herring management procedure harvest control rule
 
 ```
 
-```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption , fig.asp = 1.1}
-plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
-```
-
 ```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 1.1}
+
 plotRule(repList = fit_maxTHR0.14)
+
 ```
 
 ### Evaluation of Exceptional Circumstances/Assessment Triggers {-}
@@ -242,7 +247,7 @@ ECfigCap <- "Evaluation of exceptional circumstances and operating model mis-spe
 
 SOGdata <- read.csv("data/SOGIdxCatData.csv")
 
-plotSimDataEnvelopes( obj = mpBlobList[[2]],
+plotSimDataEnvelopes( obj = mpBlobList[[MPname]],
                       sIdx = 1, pIdx =1, fIdx = 5,
                       Cdata = SOGdata$Catch,
                       Idata = SOGdata$totSpawn,

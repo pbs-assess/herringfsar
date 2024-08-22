@@ -164,7 +164,7 @@ SRmodelCap <- "Stock-recruitment relationships and age-1 recruitment for the ens
 
 SRpars <- read.csv("data/omGrid_SRpars.csv")
 
-plotStockRecruitEnvelope( obj = mpBlobList[[2]],
+plotStockRecruitEnvelope( obj = mpBlobList[[MPname]],
                           SRvals = SRpars,
                           inputBmsy = 39.127,
                           inputUSR = 66.97,
@@ -326,7 +326,7 @@ that MPs should target closer to 7\%.
 wtdPerfTable <- read.csv("data/wtdTable.csv")
 
 statTable <- wtdPerfTable |>
-              filter( mp %in% mps2[2] ) |>
+              filter( mp == MPname ) |>
               mutate_if(is.numeric, round, 2) |>
               dplyr::select(  mp,
                               pBtGt.3B0,
@@ -406,10 +406,17 @@ multiGridTulipCap <- "Simulated time series of projected spawning biomass (top),
 ```
 
 ```{r simEnv, echo = FALSE, fig.cap = multiGridTulipCap, fig.asp = 1.1}
-plotGridTulipBtCtUt(mpBlobList[2],
-                    labels = mps2[2],
-                    yLimB = c(0,2.5),
-                    yLimC = c(0,25),
-                    yLimHR = c(0,0.5))
+plotGridTulipBtCtUt( mpBlobList[MPname],
+                     labels = MPname,
+                     yLimB = c(0,2.5),
+                     yLimC = c(0,25),
+                     yLimHR = c(0,0.5))
 ```
+
+```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption , fig.asp = 1.1}
+
+plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
+
+```
+
 

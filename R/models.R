@@ -65,7 +65,7 @@ for(k in 1:nrow(info.df))
   mpBlobList[[k]] <- blob
 
 }
-names(mpBlobList) <- info.df$simLabel
+names(mpBlobList) <- mps2
 
 # Pull some model dimensions and year labels
 fYear   <- blob$ctlList$opMod$fYear

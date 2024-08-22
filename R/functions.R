@@ -50,7 +50,9 @@ passObj <- function( X, target = .95, comp = "gt" )
 # Function to calculate TAC from SISCAH model output.
 # Args: repList = SISCAH model reports object from SISCAH-MP
 #                 package
+#       assessyear = final year of the data (last year of assessment)
 # Outputs: data.frame of harvest advice and management pars
+#           for assessyear + 1 (1-year ahead forecast from assessyear)
 # Author: Sean Cox, SDNJ, LFR
 calcTAC <- function(  repList = reports,
                       assessyear = 2024 )
@@ -81,7 +83,7 @@ calcTAC <- function(  repList = reports,
 
   predB <- B_t[length(B_t)]
 
-  targF <- .calcRampedHCR(  B = predB/B0,
+  targU <- .calcRampedHCR(  B = predB/B0,
                             LCP = ctlPts[1],
                             UCP = ctlPts[2],
                             Fref = Fref, lowFmult = lowF )
@@ -92,7 +94,7 @@ calcTAC <- function(  repList = reports,
 
   Bhat    <- round( predB * 1000, digits=0 )
   estB0   <- trunc( B0*1000, digits=0 )
-  targU   <- round( targF,   digits=4 )
+  targU   <- round( targU,   digits=4 )
   Q       <- trunc( Q*1000 )
 
   out.df <- array("", dim = c(6,2))
@@ -123,7 +125,7 @@ calcTAC <- function(  repList = reports,
 #         lYear     = last year of history for stock status
 stock_status_text <- function(  refPtsTab = ensRefPtsTable,
                                 parTab = ensParTable,
-                                history = mpBlobList[[2]],
+                                history = mpBlobList[[MPname]],
                                 fYear = 1951, lYear = 2023  )
 {
   #TODO (SAM); What is 2 mpBlobList[[2]], should it be hard coded?
@@ -138,14 +140,47 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 
   B0 <- round(refPtsTab$B0,3)
 
-  paste0( "Estimated unfished spawning biomass $SB_0$ is ", B0,
-  " kt, and the LRP of $0.3 \\cdot SB_0$ is ", round(0.3 * B0,3) ," kt (posterior medians). Compared to last year, estimated spawning biomass in 2023 $SB_{2023}$ decreased from ",
+  x <- paste0( "Estimated unfished spawning biomass $SB_0$ is ", B0,
+  " kt, and the LRP of $0.3 SB_0$ is ", round(0.3 * B0,3) ," kt (posterior medians). Compared to last year, estimated spawning biomass in 2023 $SB_{2023}$ decreased from ",
   SB_Tm1, " to ", SB_T, " kt (posterior median), and is equivalent to ",
   100 * round(SB_T/B0,3),
   " \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2023 is estimated to be above the LRP with a ",
   100 * PBTGtLRP, " \\% probability (Table XX).")
 
+  cat(x)
 } # END stock_status_text
+
+# curr_biomass_text()
+# Function to automate biomass forecast reporting from MP esitmation model
+# output. Currently works off MLEs.
+# Inputs: MPfit   = biomass history
+#         fYear   = first model year
+#         lYear   = last year of model history
+#         B0      = Input B0 value. If NULL uses MP EM
+curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
+                                fYear   = 1951, 
+                                thisYr  = assess_yr,
+                                B0 = NULL  )
+{
+
+  yrs <- fYear:(thisYr)
+  currTdx <- length(yrs)
+
+  SB_t <- (mpFit$repOpt$SB_pt[1,])
+  SB_T <- round(SB_t[currTdx],3)
+
+  if(is.null(B0))
+    B0 <- mpFit$repOpt$B0_p[1]
+
+  B0 <- round(B0,3)
+
+  x <- paste0( "Spawning biomass in ", thisYr,
+    " $B_{", thisYr,"}$ is estimated to be ", SB_T,
+    " kt (maximum likelihood estimate), and is equivalent to ", 
+    round(100*SB_T/B0, 1)," \\% of $SB_0$, as estimated by the EM (Tables XX and YY). Spawning biomass in 2024 is estimated to be above the LRP (Table XX).")
+
+  cat(x)
+} # END curr_biomass_text
 
 
 # proj_biomass_text()
@@ -156,7 +191,8 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 #         lYear   = last year of model history
 #         B0      = Input B0 value. If NULL uses MP EM
 proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
-                                fYear = 1951, assessYr = assess_yr,
+                                fYear = 1951, 
+                                assessYr = assess_yr,
                                 B0 = NULL  )
 {
 
@@ -174,7 +210,7 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
 
   B0 <- round(B0,3)
 
-  paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
+  x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
     " $B_{", assessYr + 1,"}$ is estimated to be ", SB_forecast,
     " kt (maximum likelihood estimate; Table \\@ref(tab:TACtable)) where the
     stock status ($B_{", assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
@@ -182,6 +218,7 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
     round(0.3*B0), " kt) with a X\\% probability, in the absence of fishing
     (Table XX and Figure XX).")
 
+  cat(x)
 } # END proj_biomass_text
 
 
@@ -306,9 +343,9 @@ makeModelHistTable <- function( obj,
 # Legal sized TAC calculation
 .calcLegalCatch <- function( B, ...)
 {
-  targF <- .calcRampedHCR(B = B, ...)
+  targU <- .calcRampedHCR(B = B, ...)
 
-  legalCatch <- targF * B
+  legalCatch <- targU * B
 
   return(legalCatch)
 } # END .calcLegalCatch
