@@ -15,11 +15,19 @@ Step wise comparisons are found in [@johnson2024].
 <!--TODO (Sam): 
 For ref:indicators-cap:
 1. the autodates need to state 1951-2023. I'm not sure where to change `r yr_range[1]` to `r yr_range[2]` 
+
+SDNJ: Done. Good catch - this was taking years off the dummy table of simulated data
+
 2. please confirm age-`r age_recruit` fish is age-1 (I thought this was age-2 but maybe I'm wrong)
+
+SDNJ: It's age-1, ISCAM used to estimate age-2, but SISCAH estimates age-1.
+
 3. please add average recruitment to (E)
+
+
 4. (F) Can you reverse the heat map to show darkest colour as most recent? -->
 
-(ref:indicators-cap) Estimated stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`, as estimated by the ensemble operating model. All lines indicate weighted ensemble posterior median values, and where applicable, shading indicates `r ci_pct`\% credibility intervals.(A) Catch (black solid line). (B) Estimated spawning stock biomass (x 1,000 t) with limit reference point (LRP; dashed red line), productive period upper stock reference (USR; dashed green line), and unfished spawning biomass ($B_0$; dashed black line). (C) Estimated natural mortality rate ($M$ /yr; red line). (D) Estimated harvest rate ($U_t$, black trend line) with dashed horizontal line at 20\% shown from 1983-2022). (E) Recruitment of age-`r age_recruit` fish. (F) Estimated surplus production (vertical axis) vs. spawning biomass (horizontal axis) with lighter points representing earlier years. vertical dashed lines denote the LRP (red), productive period USR (green), and $B_0$ (black).
+(ref:indicators-cap) Estimated stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`, as estimated by the ensemble operating model. All lines indicate weighted ensemble posterior median values, and where applicable, shading indicates `r ci_pct`\% credibility intervals. (A) Catch (black solid line). (B) Estimated spawning stock biomass (x 1,000 t) with limit reference point (LRP; dashed red line), productive period upper stock reference (USR; dashed green line), and unfished spawning biomass ($B_0$; dashed black line). (C) Estimated natural mortality rate ($M$ /yr; red line). (D) Estimated harvest rate ($U_t$, black trend line) with dashed horizontal line at 20\% shown from 1983-2022). (E) Recruitment of age-`r age_recruit` fish. (F) Estimated surplus production (vertical axis) vs. spawning biomass (horizontal axis) with lighter points representing earlier years. vertical dashed lines denote the LRP (red), productive period USR (green), and $B_0$ (black).
 
 ```{r indicators, fig.cap = "(ref:indicators-cap)", fig.asp = 1.1}
 # Six-panel indicator plot
@@ -161,9 +169,17 @@ model simulations.
 For ECfig:
 1. top - Is the grey envelope (post 2023) spawning biomass and the blue spawn index? Why is the
 uncertainty in the index larger than SB?
+
+SDNJ: Because the noise in the index is the uncertainty in SSB (process error) plus 
+uncertainty in spawn index (observation error) 
+
 2. Data point labels in both legends are reversed- pls change to:
 (top) "Spawning biomass"; Simulated spawn index range"; "Observed index to 2023"; "Observed index post 2023"
 (bottom) "Historical and simulated catch"; "Observed catch to 2023"; "Observed catch post 2023"
+
+SDNJ: Thanks. I had fixed this in prev edits but the function was being read in from another
+source and reverting to original legend.
+
 -->
 
 ```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }

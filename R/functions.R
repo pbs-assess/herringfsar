@@ -88,7 +88,7 @@ calcTAC <- function( repList = reports )
   out.df <- array("", dim = c(6,2))
   out.df <- as.data.frame(out.df)
   colnames(out.df) <- c("Variable","Estimate")
-  out.df[,1] <- c("$\\hat{B}_{2024}$",
+  out.df[,1] <- c("$\\hat{B}_{2025}$",
                   "$\\hat{B}_{0}$",
                   "LCP",
                   "OCP",
