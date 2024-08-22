@@ -48,12 +48,11 @@ Spawning biomass in 2023 is estimated to be
 above the LRP with a 94.3% probability (Table XX). -->
 
 #### Spawning Biomass {-}
+The ensemble model estimates spawning biomass to be above the USR
+for the majority of the historical time series since
+Additionally, spawning biomass is estimated to be above the LRP
+in all years since 1970.
 
-[Provide values and trends for the stock (as applicable).]
-
-The ensemble model estimates spawning biomass for the SoG SAR shows a historical low in the late 1960s,
-driven by high catches, lower than average estimated recruitment, and increasing estimated
-natural mortality
 
 
 ### History of [Management; Landings/Harvest/Effort, TAC \& Catch Advice] {-}
