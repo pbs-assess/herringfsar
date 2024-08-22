@@ -1,11 +1,11 @@
 ############################################################
 # functions.R
-# 
+#
 # Various functions for producing assessment results in the
 # Herring FSAR document.
-# 
+#
 # Last Modified: Aug 22, 2024
-# 
+#
 ############################################################
 
 
@@ -149,7 +149,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 
 
 # proj_biomass_text()
-# Function to automate biomass forecast reporting from MP esitmation model 
+# Function to automate biomass forecast reporting from MP esitmation model
 # output. Currently works off MLEs.
 # Inputs: MPfit   = biomass history
 #         fYear   = first model year
@@ -161,7 +161,7 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
 {
 
   yrs <- fYear:(assessYr + 1)
-  
+
   lastTdx <- length(yrs)-1
   projTdx <- length(yrs)
 
@@ -175,10 +175,12 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
   B0 <- round(B0,3)
 
   paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
-    " $SB_{", assessYr + 1,"}$ is estimated to be ", SB_forecast,
-    " kt (maximum likelihood estimate; Table \\@ref(tab:TACtable)). Spawning biomass in ",
-    assessYr   + 1, " is forecast to be below the LRP of $0.3SB_0$ (",
-    round(0.3*B0), " kt) with a X\\% probability, in the absence of fishing (Table XX and Figure XX).")
+    " $B_{", assessYr + 1,"}$ is estimated to be ", SB_forecast,
+    " kt (maximum likelihood estimate; Table \\@ref(tab:TACtable)) where the
+    stock status ($B_{", assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
+    assessYr   + 1, " is forecast to be below the LRP of $0.3B_0$ (",
+    round(0.3*B0), " kt) with a X\\% probability, in the absence of fishing
+    (Table XX and Figure XX).")
 
 } # END proj_biomass_text
 
@@ -308,7 +310,7 @@ makeModelHistTable <- function( obj,
 
   legalCatch <- targF * B
 
-  return(legalCatch) 
+  return(legalCatch)
 } # END .calcLegalCatch
 
 
@@ -382,7 +384,7 @@ lisread <- function( fname,quiet=TRUE )
   {
     # ARK 12-Jan-06: Patch to read characters because Rashmi asked nicely.
     # This is a largely untested hack, no expressed or implied warrantee.
-    
+
     tmpwarn <- options( "warn" )
     options( warn=-1 )
     tc <- textConnection( x )
@@ -391,11 +393,11 @@ lisread <- function( fname,quiet=TRUE )
     xc <- as.character( xp )
     if ( !all(is.na(as.numeric(xc))) )
       xc <- as.numeric( xc )
-      
+
     options( tmpwarn )
     xc
   }
-  
+
   #------------------------------------------------------------------#
 
   file <- scan( fname, what=character(), sep="\n", quiet=quiet )
@@ -409,7 +411,7 @@ lisread <- function( fname,quiet=TRUE )
   ilab <- grep( "TRUE",as.character(llab) )      # label indices
 
   nvar <- length( vlab )                         # number of variables
-  
+
   # ARK 19-Jan-10 When there is only one varaible in a file, the original
   # code does not work, namely:
   #    nrow <- c( ilab[2:nvar],nf2+1) - ilab - 1
@@ -418,9 +420,9 @@ lisread <- function( fname,quiet=TRUE )
   # Calculate the number of line for each variable.
   if ( nvar == 1 )
     nrow <- (nf2+1) - ilab - 1
-  else  
+  else
     nrow <- c( ilab[2:nvar],nf2+1 ) - ilab - 1
-    
+
   zout <- list( NULL )
 
   for ( i in 1:nvar )
@@ -441,7 +443,7 @@ lisread <- function( fname,quiet=TRUE )
 #      print( zvec )
 #      scan()
     }
-    
+
     zout[[i]] <- zvec
     if ( !quiet )
       cat( "vlab = ", vlab[i], "\n" )
@@ -463,12 +465,12 @@ panLab <- function( x, y, txt, ... )
 {
   # Allows text to be placed in plot panel at 0<x<1, 0<y<1.
   usr <- par( "usr" )
-  
+
   yLog <- par("ylog")
   xLog <- par("xlog")
-  
+
   # Check for log-transformed axes and adjust usr commands as needed
-  # note: when a log scale is in use, 
+  # note: when a log scale is in use,
   #           usr gives limits in the form 10 ^ par("usr")
 
   # Case 1: neither axis is on the log scale
@@ -477,23 +479,23 @@ panLab <- function( x, y, txt, ... )
     par( usr=c(0,1,0,1) )
   }
   # Case 2: only the y-axis is on log scale
-  if (yLog==TRUE & xLog==FALSE) 
+  if (yLog==TRUE & xLog==FALSE)
   {
     usr[3:4]<-10 ^ par("usr")[3:4]
     par( usr=c(0,1,0,1), ylog=FALSE )
-  } 
+  }
   # Case 3: only the x-axis is on log scale
-  if (yLog==FALSE & yLog==TRUE) 
+  if (yLog==FALSE & yLog==TRUE)
   {
     usr[1:2]<-10 ^ par("usr")[1:2]
     par( usr=c(0,1,0,1), xlog=FALSE )
-  } 
+  }
   # Case 4: both axes are on the log scale
-  if (yLog==TRUE & xLog==TRUE) 
+  if (yLog==TRUE & xLog==TRUE)
   {
     usr[1:4]<-10 ^ par("usr")[1:4]
     par( usr=c(0,1,0,1), xlog=FALSE, ylog=FALSE )
-  } 
+  }
   text( x, y, txt, ... )
   par( usr=usr )
   return( NULL )
@@ -525,43 +527,43 @@ panLegend <- function( x, y, legTxt, ... )
   yLog<-par("ylog")
   xLog<-par("xlog")
   # Check for log-transformed axes and adjust usr commands as needed
-    # note: when a log scale is in use, 
+    # note: when a log scale is in use,
     #           usr gives limits in the form 10 ^ par("usr")
   # Case 1: neither axis is on the log scale
   if (yLog==FALSE & xLog==FALSE) {
     par( usr=c(0,1,0,1) )
   }
   # Case 2: only the y-axis is on log scale
-  if (yLog==TRUE & xLog==FALSE) 
+  if (yLog==TRUE & xLog==FALSE)
   {
      usr[3:4]<-10 ^ par("usr")[3:4]
      par( usr=c(0,1,0,1), ylog=FALSE )
-   } 
+   }
   # Case 3: only the x-axis is on log scale
-  if (yLog==FALSE & yLog==TRUE) 
+  if (yLog==FALSE & yLog==TRUE)
   {
      usr[1:2]<-10 ^ par("usr")[1:2]
      par( usr=c(0,1,0,1), xlog=FALSE )
-   } 
+   }
   # Case 4: both axes are on the log scale
-  if (yLog==TRUE & xLog==TRUE) 
+  if (yLog==TRUE & xLog==TRUE)
   {
      usr[1:4]<-10 ^ par("usr")[1:4]
      par( usr=c(0,1,0,1), xlog=FALSE, ylog=FALSE )
-   } 
+   }
   legend( x, y, legend=legTxt, ... )
   par( usr=usr )
 }
 
-.addQuotes <- function( str ) 
+.addQuotes <- function( str )
 {
   # Adds double-quotes to a string.
   return( paste("\"", str, "\"", sep = "") )
 }
 
-.convertSlashes <- function( expr, os = .Platform$OS.type ) 
+.convertSlashes <- function( expr, os = .Platform$OS.type )
 {
-  if ( os == "windows" ) 
+  if ( os == "windows" )
     expr = gsub("/", "\\\\", expr)
   else expr = gsub("\\\\", "/", expr)
   return(expr)
@@ -593,7 +595,7 @@ panLegend <- function( x, y, legTxt, ... )
     # ARK: At one point I had this code, presumably to handle a different
     #      input format convention, perhaps assuming "value" was all character.
     #                   sQuote(obj[i,"value"]),sep="" )
-    
+
     # Evaluate the parse string.
     eval( parse( text=listText ) )
   }
@@ -619,15 +621,15 @@ panLegend <- function( x, y, legTxt, ... )
   names( dframe )    <- colnam
   rownames( dframe ) <- rownam
   sqlSave( channel, dframe, tablename=tablename )
-  
+
   return()
 }
 
-.findFileName <- function( suffix ) 
+.findFileName <- function( suffix )
 {
   # Returns all file names with extension suffix.
   # Modified from PBSadmb .win.findTpl
-  
+
   spat = gsub("\\.", "\\\\\\.", suffix)
   suff = list.files( pattern=paste( spat,"$",sep=""), ignore.case = TRUE )
   pref = substring(suff, 1, nchar(suff) - 4)
@@ -658,7 +660,7 @@ panLegend <- function( x, y, legTxt, ... )
 .getWinName <- function()
 {
   win <- .PBSmod$.activeWin
-  
+
   # This is only required if PBSask is used, leave it for now.
   if(win == "PBSask")
   {
@@ -701,21 +703,21 @@ panLegend <- function( x, y, legTxt, ... )
 # Parameters: obj is the possibly nested list to convert.
 # Returns:    result, the non-nested list.
 # Source:     A.R. Kronlund
-.unEvalList <- function( obj ) 
+.unEvalList <- function( obj )
 {
   # Loop thru a (possibly) nested list, plucking out the name at the lowest
   # level and corresponding value.
-  
+
   result   <- list()
   val      <- unlist( obj )
   valNames <-  names( val )
-  
+
   for ( i in 1:length(val) )
   {
      tokenPos <- max(which(strsplit(valNames[i],'')[[1]]=='.')) + 1
-     
+
      guiName <- substring( valNames[i], tokenPos,nchar(valNames[i]) )
-     
+
      # Check for character or numeric.
      if ( is.character( val[i] ) )
        listText <- paste( "result$",guiName,"=\"",val[i],"\"",sep="" )
@@ -724,30 +726,30 @@ panLegend <- function( x, y, legTxt, ... )
      eval( parse( text=listText ) )
   }
   result
-}      
+}
 
 .updateGUI <- function()
 {
    parentList <- ls( name=parent.frame(n=1) )
-   
+
    win     <- .getWinName()                       # Get the current window name
    guiList <- getWinVal( scope="L", winName=win ) # GUI information local scope
-  
+
    # Check for parent environment variables that match the GUI list.
    isMatch <- is.element( parentList,names(guiList) )
    parentList <- parentList[isMatch]
-  
+
    # Now evaluate the variables into a list.
    nVals <- length( parentList )
    vals  <- as.list( 1:nVals )
    names( vals ) <- parentList
-   
+
    for ( i in 1:length(vals) )
      vals[[i]] <- get( parentList[i], parent.frame(n=1) )
-   
-   setWinVal( vals )  
+
+   setWinVal( vals )
 }
-  
+
 # .viewFile   (view a file saved in the mseRtemp directory)
 # Purpose:    View a file that is stored in the mseR library directory in the
 #             folder named "mseRtemp". This is the folder where copies of the R
@@ -814,15 +816,15 @@ panLegend <- function( x, y, legTxt, ... )
 }
 
 
-.addQuotes <- function( str ) 
+.addQuotes <- function( str )
 {
   # Adds double-quotes to a string.
   return( paste("\"", str, "\"", sep = "") )
 }
 
-.convertSlashes <- function( expr, os = .Platform$OS.type ) 
+.convertSlashes <- function( expr, os = .Platform$OS.type )
 {
-  if ( os == "windows" ) 
+  if ( os == "windows" )
     expr = gsub("/", "\\\\", expr)
   else expr = gsub("\\\\", "/", expr)
   return(expr)
@@ -854,7 +856,7 @@ panLegend <- function( x, y, legTxt, ... )
     # ARK: At one point I had this code, presumably to handle a different
     #      input format convention, perhaps assuming "value" was all character.
     #                   sQuote(obj[i,"value"]),sep="" )
-    
+
     # Evaluate the parse string.
     eval( parse( text=listText ) )
   }

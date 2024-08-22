@@ -158,17 +158,9 @@ JC: Sam to show us this.
 -Bt_2025
 -Bt_2025/Bo
 
-
-<!-- Insert `proj_biomass_text()` function to automate text:
-
-- In the absence of fishing,
-spawning biomass in 2024 $\SB_{2024}$ is forecast
-to be 73,375 t (posterior median; Table XX).
-Spawning biomass in 2024 is forecast to be
-below the LRP of $0.3\SB_0$ (41,547 t) with a 8.0% probability,
-in the absence of fishing (Table XX and Figure XX).
- -->
-
+```{r, forecast_statement, echo = FALSE, warnings = FALSE}
+proj_biomass_text(fit_maxTHR0.14) 
+```
 
 ### Harvest Decision Rule Outputs {-}
 
