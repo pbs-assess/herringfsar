@@ -31,21 +31,9 @@ baseplot_indicators(dat = true_dat)
 [Mandatory.
 Maximum text length one page.
 Must be first section in Assessment section.]
-
 [Report trends in relevant indicator(s), one per paragraph,
 in the following format:]
 
-`r stock_status_text()` 
-
-<!-- function to automate text:
-
-- Estimated unfished spawning biomass $\SB_0$ is 138,491 t, and
-the LRP of $0.3\SB_0$ is 41,547 t (posterior medians).
-Compared to last year, estimated spawning biomass in 2023 $\SB_{2023}$
-decreased from 75,523 to 72,782 t (posterior median), and
-is equivalent to 52.1% of $\SB_0$ (Tables XX & XX).
-Spawning biomass in 2023 is estimated to be
-above the LRP with a 94.3% probability (Table XX). -->
 
 #### Spawning Biomass {-}
 The ensemble model estimates spawning biomass to be above the USR
