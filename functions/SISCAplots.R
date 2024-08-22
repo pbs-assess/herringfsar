@@ -467,7 +467,7 @@ plotSBt <- function(  repList = reports,
     # panLab( x = 0.7, y = 0.7, txt = paste( "M = ",  M, sep = "") )
 } # END plotSBt()
 
-# Plot biomass
+# Plot biomass with spawn indices
 plotSBtIdx <- function( repList = reports,  
                         noPar = FALSE, 
                         pIdx = 1,

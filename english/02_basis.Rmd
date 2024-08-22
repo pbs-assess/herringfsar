@@ -135,7 +135,7 @@ ${MSY}$ (maximum sustainable yield), and $U_{MSY}$ (the harvest rate at ${MSY}$)
 <!-- TODO (Sam): I wonder if it would be useful to put the Yield~Spawning biomass
 curve for OM1 in here? (to give reader a sense of relative position of LRP and USR
 
-SDNJ: Sure, we can add that here. I wonder if we should remove referral to $MSY$ 
+SDNJ: Sure, we can add that here. I wonder if we should remove reference to $MSY$ 
 above, as we don't use any fractions of MSY for MP evaluations. Do we mean $B_{MSY}$?-->
 
 #### Limit Reference Point (LRP) {-}

@@ -1,3 +1,13 @@
+############################################################
+# figures.R
+# 
+# Plotting code for making Herring FSAR figures.
+# 
+# Last Modified: Aug 22, 2024
+# 
+############################################################
+
+
 # Plot stock indicators as four panels
 plot_indicators <- function(dat) {
   # Catch and TAC (panel A)
@@ -114,7 +124,7 @@ baseplot_indicators <- function(dat)
             col = "grey65", border = NA)
     lines(x = yrs, y = dat$SSB_med )
     abline(h = dat$B0[1], lty = 2, lwd = 2)
-    abline(h = dat$USR[1], lty = 2, lwd = 4, col = "darkgreen")
+    abline(h = dat$USR[1], lty = 4, lwd = 2, col = "darkgreen")
     abline(h = dat$LRP[1], lty = 2, lwd = 2, col = "red")
 
   # Mortality (C)
@@ -163,6 +173,7 @@ baseplot_indicators <- function(dat)
     polygon(x = c(yrs,rev(yrs)), y = c(dat$R_min,rev(dat$R_max)),
             col = scales::alpha("black",0.5), border = NA)
     lines(x = yrs, y = dat$R_med, col = "black" )
+    abline(h = mean(dat$R_med), lty = 2, lwd = 2)
 
   # Surplus Production (D)
   yrIdx <- which(yrs >= 1987 & yrs < max(yrs))
@@ -181,10 +192,10 @@ baseplot_indicators <- function(dat)
     legend(x = "topright", bty = "n", legend = "(F)")
     legend( x = "topleft", 
             bty = "n", legend = c("1988",max(yrs)),
-            pch = c(17,15), col = colVec[c(1,length(yrIdx))]  )
+            pch = c(17,15), col = colVec[c(length(yrIdx),1)]  )
     lines(x = dat$SSB_med[yrIdx], y = dat$SP_med[yrIdx], col = "grey70", lwd = 1 )
     points( x = dat$SSB_med[yrIdx], y = dat$SP_med[yrIdx], 
-            pch = ptTypeVec, col = colVec )
+            pch = ptTypeVec, col = rev(colVec) )
     abline(v = dat$USR[1], lty = 4, lwd = 2, col = "darkgreen" )
     abline(v = dat$LRP[1], lty = 2, lwd = 2, col = "red" )
     abline(v = dat$B0[1], lty = 2, lwd = 2, col = "black" )
@@ -803,3 +814,773 @@ plotGridTulipBtCtUt <- function(  blobList = mpBlobList,
   mtext(side = 1, text=  "Year", outer = TRUE, line = 2)
 } # END plotGridTulipBtCtUt()
 
+
+# Plot a custom stack of plots that show model esitmates  of
+# time-series.
+# Inputs:   ts      = vector of plot names to stack
+#           repList = report object output by SISCA
+#           labcex  = axis label cex
+#           heading = character vector of headings to use
+# Outputs:  NULL
+# Side-effects: plots to active graphics device.
+plotMulti <- function(  ts = c("SBtIdx","Rt","Mt","Ftg"),
+                        repList = reports,
+                        labcex = 0.8, heading = "dimLabs" )
+{
+
+  nP <- repList$repOpt$nP
+  par(mfcol = c(length(ts),nP), oma = c(3,4,3,4), mar = c(0.2,3,0.2,2),
+        cex.lab = labcex )
+
+  argList <- list(  repList = repList,  
+                    noPar = TRUE, 
+                    labcex = labcex )
+
+  for( pIdx in 1:nP)  
+  {
+    argList$pIdx = pIdx
+    for( tsName in ts )
+    {
+      if( tsName %in% c("SBt","SBtIdx") )
+        plotArgs <- c(argList, list(heading = heading) )
+      else plotArgs <- argList
+      plotCall <- paste("plot",tsName,sep = "")
+      do.call(  what = eval(plotCall), 
+                args = plotArgs, 
+                envir = .GlobalEnv )
+    }
+  }
+} # END plotMulti()
+
+
+# plotSBtIdx()
+# Time-series of esimated spawning biomass with
+# indices overlaid to show goodness of fit.
+plotSBtIdx <- function( repList = reports,  
+                        noPar = FALSE, 
+                        pIdx = 1,
+                        labcex = .8,
+                        heading = NULL,
+                        plotCt = FALSE )
+{
+  initYear <- repList$fYear
+  report   <- repList$repOpt
+
+  # Pull stuff from report
+  SBt       <- report$SB_pt[pIdx,]
+  Cgt       <- report$totC_pgt[pIdx,,]
+  Igt       <- report$I_pgt[pIdx,,]
+  qg        <- report$qhat_pg[pIdx,]
+  rI_gt     <- repList$data$rI_pgt[pIdx,,]
+  vulnBgt   <- report$vulnB_pgt[pIdx,,]
+  vulnNgt   <- report$vulnN_pgt[pIdx,,]
+  mat_a     <- report$mat_a
+
+  combIdx <- FALSE
+
+  if( any(repList$data$whichCombIdx_g > 0) )
+  {
+    combIdx <- TRUE
+    # Replace q values with qComb_g
+    qg <- report$qComb_pg[pIdx,]
+  }
+  
+  vulnBgt[ vulnBgt == 0 ] <- NA
+  vulnNgt[ vulnNgt == 0 ] <- NA
+
+
+
+  # Pull prob positive idx.
+  probPosIdx_gt <- report$probPosIdx_pgt[pIdx,,]
+
+  # Get survey type and whether
+  # idx is relative or absolute
+  surveyType  <- report$survType_g
+  indexType   <- report$indexType_g
+  calcIndex   <- report$calcIndex_g
+  surveyGears <- which(calcIndex == 1)
+
+  # Get number of time steps/gear types
+  nT    <- report$nT
+  nG    <- report$nG
+  nA    <- report$nA
+
+  B0        <- signif(report$B0_p[pIdx],3)
+  M0        <- signif(report$M0_p[pIdx],3)
+
+  plotCI <- FALSE
+
+  if(!is.null(repList$posts))
+  {
+    plotCI <- TRUE
+    tInitModel_p <- repList$repOpt$tInitModel_p
+    SB_it <- repList$posts$SB_ipt[,pIdx,]
+
+    SB_qt <- apply(X = SB_it, FUN = quantile,
+                    MARGIN = c(2), probs = c(0.025, 0.5, 0.975),
+                    na.rm = TRUE )
+
+    SBt <- apply(X = SB_it, FUN = mean, MARGIN = c(2))
+
+    B0 <- signif(mean(repList$posts$B0_ip[,pIdx]),3)
+    M0 <- signif(mean(repList$posts$M0_ip[,pIdx]),3)
+
+    q_ig  <- repList$posts$q_ipg[,pIdx,]
+    qg   <- apply( X = q_ig, FUN = mean, MARGIN = 2)
+
+  } else {
+    SB_qt <- array(0, dim = c(3,nT+1))
+  }
+
+
+
+  SBt[ SBt == 0 ] <- NA
+  SB_qt[SB_qt == 0] <- NA
+
+  # Sum catch
+  Ct        <- apply(X = Cgt, FUN = sum, MARGIN = 2)
+
+  stockLabs <- dimnames(report$SB_pt)[[1]][pIdx]
+
+  if( !is.null(heading))
+  {
+    if( heading == "dimLabs")
+      stockLabel <- stockLabs
+    else
+      stockLabel <- try(heading[stockLabs])
+
+    if( class(stockLabel) == "try-error" ) 
+      stockLabel <- stockLabs
+  }
+
+  # if( stockLabs == "Aggregate" )
+  # {
+  #   # We need to pull the aggregated stock
+  #   # indices in at this point
+  #   mItg    <- report$mI_tg
+  #   mqg     <- report$qhat_g
+
+  #   mItg[mItg < 0] <- 0
+
+  #   for( g in surveyGears )
+  #   {
+  #     if( all(Itg[,g] < 0) & any(mItg[,g] > 0))
+  #     {
+  #       Itg[,g] <- mItg[,g]
+  #       qg[g]   <- mqg[g]
+  #     }
+  #   }
+  # }
+
+  # browser()
+
+  Igt[Igt<0] <- NA
+
+  scaledIndices <- Igt
+
+  for( g in surveyGears )
+  {
+    posIdx <- which(Igt[g,1:nT] > 0)
+
+    if( surveyType[g] == 1 )
+      vulnTS <- rI_gt[g,1:nT] * vulnNgt[g,1:nT]
+    
+    if( surveyType[g] == 0 )
+      vulnTS <- rI_gt[g,1:nT] * vulnBgt[g,1:nT]
+
+    if( surveyType[g] == 2 )
+    {
+      tmpB_t     <-  SBt
+
+      vulnTS <- rI_gt[g,1:nT] * tmpB_t[1:nT]
+    }
+    
+    # Compute scaled indices
+    scaledIndices[g,posIdx] <- Igt[g,posIdx] / qg[g]  * SBt[posIdx] / vulnTS[posIdx] / probPosIdx_gt[g,posIdx] 
+
+  }
+
+  tInitModel <- report$tInitModel_p[pIdx] + 1
+
+  scaledCombIdx <- repList$data$combI_pt[pIdx,]
+  scaledCombIdx[scaledCombIdx < 0 ] <- NA
+
+  if( combIdx )
+  {
+    
+    probPosCombIdx <- report$probPosCombIdx_pt[pIdx,]
+    qComb_t <- report$qComb_pt[pIdx,]
+
+    vulnB_at <- report$vulnB_apgt[,pIdx,5,1:nT]
+
+    for( a in 1:nA )
+      vulnB_at[a,] <- vulnB_at[a,] * mat_a[a]
+    tmpB_t     <-  apply(X = vulnB_at, FUN = sum, MARGIN = 2)
+    tmpB_t     <-  SBt[1:nT]
+
+
+    scaledCombIdx <- scaledCombIdx / qComb_t / probPosCombIdx * SBt[1:nT] / tmpB_t
+  }
+
+
+  # Create x axis label vector and vertical lines
+  # for easy multipanel plotting
+  years <- seq(from = initYear, length = nT, by = 1)
+  vertLines <- seq(from = 1950, to = max(years), by = 10)
+
+  cols <- brewer.pal(nG,"Dark2")
+
+  depRange  <- range(SBt/B0, na.rm = T)
+  maxDep    <- ceiling(depRange[2])
+
+  depAxis   <- round(seq(0,maxDep, length.out = 5),2)
+
+  # Set up plotting area
+  if(!noPar)
+    par(mfrow = c(1,1), mar = c(.5,3,.5,3), oma = c(3,1,3,1) )
+
+  yMax <- max(SBt,scaledIndices, na.rm =T)
+
+  # Now plot recruitments
+  plot( x = range(years), y = c(0,yMax ),
+        type = "n", xlab = "", ylab = "",
+        las = 1, axes = FALSE )
+    mfg <- par("mfg")
+    # Add SSB axis
+    axis(side = 2, las =1 )
+    # Add depletion axis
+    axis( side = 4, las = 1, labels = depAxis, at = B0 * depAxis )
+
+    if( mfg[1] == mfg[3] )
+      axis(side = 1 )
+
+    box()
+    grid()
+    # Plot data
+    if( combIdx )
+    {
+      posIdx  <- which(scaledCombIdx > 0)
+      zeroIdx <- which(scaledCombIdx == 0)
+      zeroIdx <- zeroIdx[zeroIdx >= tInitModel ]
+      points( x = years[posIdx], y = scaledCombIdx[posIdx],
+              col = "grey50", pch = 16)
+
+      # points( x = years[zeroIdx], y = scaledCombIdx[zeroIdx],
+      #         col = "grey40", pch = 1)
+      axis( side = 3, at = years[zeroIdx], labels = FALSE,
+            col.ticks = "grey40", tck = .02, lwd.ticks = 3 )
+    }
+
+    # Plot Biomass
+    if( plotCI )
+    {
+      polyCol <- scales::alpha("red", .5)
+      polygon(  x = c(years[1:nT],rev(years[1:nT])),
+                y = c(SB_qt[1,1:nT], rev(SB_qt[3,1:nT])),
+                col = polyCol, border = NA )
+    }
+    abline( h = B0, lty = 3, lwd = .8, col = "red" )
+    lines( x = years[1:nT], y = SBt[1:nT], lwd = 2, col = "red" )
+    if(plotCt)
+      rect( xleft = years[1:nT] - .3, xright = years[1:nT] + .3,
+            ybottom = 0, ytop = Ct, border = NA, col = "grey60" )
+    # points(x = years[(nT+1)], y = SBt[(nT+1)], col = "black", bg = "red", pch = 21)
+
+    if( mfg[2] == 1 )
+      mtext(side = 2, text = "Spawning\nBiomass (kt)", line = 3.5, cex = labcex)
+    if( mfg[2] == mfg[4] )
+      mtext(side = 4, text = "Depletion", line = 3, cex = labcex)
+    if( mfg[1] == 1 & !is.null(heading) )
+      mtext(side = 3, text = stockLabel, line = 1, font = 2, cex = labcex )
+
+    for( g in surveyGears )
+    {
+      posIdx  <- which(scaledIndices[g,] > 0)
+      zeroIdx <- which(scaledIndices[g,] == 0)
+      points( x = years[posIdx], y = scaledIndices[g,posIdx],
+            col = alpha(cols[g],.5), pch = 16 )
+      points( x = years[zeroIdx], y = scaledIndices[g,zeroIdx],
+            col = alpha(cols[g],.5), pch = 1 )
+    }
+
+    
+    text( x = years[nT - 7], y = c(.4,.3,.2,.1) * yMax,
+          labels = c( paste( "B0 = ",  B0, sep = ""),
+                      paste( "M0 = ", M0, sep = ""),
+                      paste( "qs = ",  round(qg[4],2), sep = ""),
+                      paste( "qd = ",  round(qg[5],2), sep = "")),
+
+          cex = .9 )
+} # END plotSBtIdx
+
+
+
+# Plot fishing mortality
+plotFtg <- function(  repList = reports,  
+                      noPar = FALSE, 
+                      pIdx = 1,
+                      labcex = 1,
+                      cBrewPal='Dark2' )
+{
+  report    <- repList$repOpt
+  initYear  <- repList$fYear
+
+  # Pull stuff from report
+  Ugt     <- report$U_pgt[pIdx,,,drop = FALSE]
+  gearIDs <- dimnames(report$U_pgt)[[2]]
+  nG      <- report$nG
+  nT      <- report$nT
+
+  # Pull catch
+  C_gt    <- report$totC_pgt[pIdx,,]
+  C_t     <- apply( X = C_gt, FUN = sum, MARGIN = 2)
+
+  SB_t    <- report$SB_pt[pIdx,1:nT]
+
+  # Need to recalculate U based on herring U method
+  U_gt    <- C_gt
+  for(g in 1:nG)
+    U_gt[g,] <- C_gt[g,]/(SB_t + C_t)
+
+  U_t <- C_t/(SB_t + C_t)
+
+  if(length(repList$posts))
+  {
+    tInitModel_p <- repList$repOpt$tInitModel_p
+
+    U_igt <- repList$posts$U_ipgt[,pIdx,,]
+    
+    SB_it <- repList$posts$SB_ipt[,pIdx,1:nT]
+    U_it <- SB_it
+
+    for( i in 1:nrow(SB_it))
+    {
+      
+      for( g in 1:nG )
+      {
+        U_igt[i,g,] <- C_gt[g,]/(SB_it[i,] + C_t)
+      }
+    }
+    U_it <- apply(X = U_igt, FUN = sum, MARGIN = c(1,3))
+
+
+    U_gt   <- apply( X = U_igt, FUN = median,
+                      MARGIN = c(2,3), na.rm = T )
+
+    U_t <- apply( X = U_it, FUN = median,
+                      MARGIN = c(2), na.rm = T )
+
+  } 
+  
+
+
+  commGears <- which(repList$ctlList$data$fleetType[gearIDs] != 0 )
+
+
+  minTime_g <- rep(0,nG)
+  maxTime_g <- rep(nT,nG)
+  for( g in commGears )
+  {
+    minTime_g[g] <- min(which(Ugt[1,g,] > 0),na.rm = T)
+    maxTime_g[g] <- max(which(Ugt[1,g,] > 0),na.rm = T)
+  }
+  minTime_g[!is.finite(minTime_g)] <- 1
+  maxTime_g[!is.finite(maxTime_g)] <- nT
+
+
+  cols    <- brewer.pal( length(commGears), cBrewPal )
+
+  years <- seq(from = initYear, length.out = nT, by = 1)
+  vertLines <- seq(from = 1950, to = max(years), by = 10)
+
+  # Set up plotting area
+  if(!noPar)
+    par(mfrow = c(1,1), mar = c(.5,3,.5,3), oma = c(3,1,3,1) )
+
+  # Now plot F series
+  plot( x = range(years), y = c(0,1 ),
+        type = "n", xlab = "", ylab = "",
+        las = 1, axes = FALSE, yaxs = "i" )
+    mfg <- par("mfg")
+    axis(side = 2, las =1 )
+    if( mfg[1] == mfg[3] )
+      axis(side = 1 )
+
+    # Add catch axis
+    maxC <- max(C_t,na.rm = T)
+    maxCaxis <- round(5 * maxC / 4)
+    CaxisLabs <- round(seq(from = 0, to = maxCaxis, length.out = 6),1)
+    CaxisTicks <- seq(from = 0, to = 1, length.out = 6)
+    axis( side = 4, at = CaxisTicks, labels = rev(CaxisLabs), las = 1 )
+    box()
+    # Plot recruitment
+    grid()
+    # Rescale catch so that it goes from 0 to .8?
+    C_t <- C_t / maxC * 0.8
+    rect( xleft = years - .3,
+          xright = years + .3,
+          ytop = 1, ybottom = 1 - C_t,
+          col = "grey50", border = NA )
+
+    for(gIdx in 1:length(commGears))
+    {
+      g <- commGears[gIdx]
+      gYrs <-  max(minTime_g[g]-1,1):min(maxTime_g[g]+1,nT)
+      lines( x = years[gYrs], y = U_gt[g,gYrs], lwd = 2, col = cols[gIdx] )
+    }
+    lines(x = years, y = U_t, lwd = 2, col = "grey30", lty = 2)
+    
+    if(mfg[2] == 1)
+    {
+      legend( x = "topright", col = c(cols,"grey30"),
+              legend = c(gearIDs[commGears],"Total"), 
+              lwd = 2, lty = c(rep(1,length(commGears)),2), 
+              bty = "n")
+      mtext(side = 2, text = "Harvest\nRate", line = 3.5, cex = labcex )
+    }
+    if( mfg[2] == mfg[4] )
+      mtext( text = "Catch (kt)", side = 4, line = 3, cex = labcex)
+}
+
+
+# Plot natural mortality
+plotMt <- function( repList = reports, 
+                    noPar = FALSE, 
+                    pIdx = 1,
+                    labcex = .8)
+{
+  report    <- repList$repOpt 
+  initYear  <- repList$fYear
+
+  # Pull stuff from report
+  Mat       <- report$M_apt[,pIdx,,drop = FALSE]
+  Mbar      <- report$M
+  M         <- report$M_p[pIdx]
+  M0        <- report$M0_p[pIdx]
+  nT        <- report$nT
+  Mjuve     <- report$Mjuve_p[pIdx]
+  juveMage  <- report$juveMage
+
+  # Pull info on predation mortality
+  Ugt     <- report$U_pgt[pIdx,,,drop = TRUE]
+  gearIDs <- dimnames(report$U_pgt)[[2]]
+  nG      <- report$nG
+  nT      <- report$nT
+
+  predG   <- which(gearIDs %in% c("hakeLt50", "hakeGt50", "HS", "SSL", "HB"))
+
+  Mat[Mat == 0] <- NA
+
+  plotCI <- FALSE
+
+  
+  if(!is.null(repList$posts))
+  {
+    plotCI <- TRUE
+    tInitModel_p  <- repList$repOpt$tInitModel_p
+    M_iapt        <- repList$posts$M_iapt[,,pIdx,,drop = FALSE]
+    Mjuve_i       <- repList$posts$M_iapt[,juveMage,pIdx,tInitModel_p[pIdx]+1]
+
+    M_qapt <- apply(  X = M_iapt, FUN = quantile,
+                      MARGIN = c(2,3,4), probs = c(0.025, 0.5, 0.975),
+                      na.rm = TRUE )
+
+    Mat <- apply(X = M_iapt, FUN = mean, MARGIN = c(2,3,4))
+
+    Mjuve <- mean(Mjuve_i)
+
+
+  } else {
+    M_qapt <- 0
+  }
+
+  # if(addPredM & length(predG)>0 )
+  # {
+
+  #   predM   <- apply(Fgt[predG,], FUN=sum, MAR=c(2))
+  #   basalM  <- Mat[juveMage+1,1,1:nT]
+  #   Mt    <- predM + basalM
+
+  #   YLIM <- c(0,max(Mt, na.rm =T) )      
+  # }  else
+  # YLIM <- c(0,max(Mat,M_qapt, na.rm =T) )
+ 
+
+  years     <- seq(from = initYear, length.out = nT, by = 1)
+  vertLines <- seq(from = 1950, to = max(years), by = 10)
+
+
+
+  # Set up plotting area
+  if(!noPar)
+    par(mfrow = c(1,1), mar = c(.5,3,.5,3), oma = c(3,1,3,1) )
+
+  # Now plot F series
+  plot( x = range(years), y = c(0,max(Mat,M_qapt, na.rm =T) ),
+        type = "n", xlab = "", ylab = "", las = 1, axes = FALSE )
+    mfg <- par("mfg")
+    axis(side = 2, las =1 )
+    if( mfg[1] == mfg[3] )
+      axis(side = 1 )
+    box()
+    grid()
+    # Plot recruitment
+    polyCol <- scales::alpha("salmon", .5)
+    if( plotCI )
+    {
+      polygon(  x = c(years[1:nT],rev(years[1:nT])),
+                y = c(M_qapt[1,juveMage+1,1,1:nT], rev(M_qapt[3,juveMage+1,1,1:nT])),
+                col = polyCol, border = NA )
+    }
+    
+    # abline( h = M, lty = 2, lwd = 2, col = "salmon")
+    abline( h = Mbar, lty = 2, lwd = 2, col = "grey50")
+    abline( h = Mjuve, lty = 4, lwd = 2, col = "salmon" )
+    lines( x = years[1:nT], y = Mat[juveMage+1,1,1:nT], col = "salmon",
+            lwd = 3  )
+    # points( x = years[nT+1], y = Mat[juveMage+1,1,nT+1], col = "black",
+    #         pch = 21, bg = "salmon" )
+
+    # if(addPredM & length(predG)>0 )
+    # {
+    #   lines( x = years[1:nT], y = predM, col = "#1b9e77", lwd = 3  )
+    #   lines( x = years[1:nT], y = Mt, col = "black", lwd = 3  )
+
+    #   legend( x = "top", 
+    #           lwd = c(3,3),
+    #           lty = c(1,1),
+    #           cex = .8,
+    #           col = c("#1b9e77","black"),
+    #           legend = c("Mp","Mp + Mat M"), bty = "n")
+    # }  
+
+    if(mfg[2] == 1)
+    {
+      mtext(side = 2, text = "Natural\nMortality (/yr)", line = 3.5, cex = labcex)
+      legend( x = "topleft", 
+              lwd = c(2,2,2,NA),
+              lty = c(1,4,2,NA),
+              pch = c(22,NA,NA),
+              pt.bg = c(polyCol,NA,NA), 
+              pt.lwd = c(0,NA,NA),
+              pt.cex = c(1.5,NA,NA),
+              cex = .8,
+              col = c("salmon","salmon","grey50"),
+              legend = c("Age-2+ M","M0","Mbar"), bty = "n")
+    }
+}
+
+
+
+
+# recruitments
+plotRt <- function( repList = reports,
+                    noPar = FALSE, 
+                    pIdx = 1, 
+                    labcex = .8,
+                    plotLog = FALSE ,
+                    heading = "dimLabs" )
+{
+  report    <- repList$repOpt 
+  initYear  <- repList$fYear
+
+  # Pull stuff from report
+  Rt      <- report$R_pt[pIdx,]
+  omegaRt <- report$omegaR_pt[pIdx,]
+  sigmaR  <- report$sigmaR
+  R0      <- report$R0_p[pIdx]
+
+  ageData_agt <- repList$data$A_apgt[,pIdx,,]
+
+  colRec_t <- rep("grey40", length(Rt))
+
+  checkPos <- function( x )
+  {
+    if(any(x > 0))
+      return(1)
+    else return(0)
+  }
+
+  posAgeIdx_t <- apply( X = ageData_agt, FUN = checkPos, MARGIN = 3 )
+
+  colRec_t[posAgeIdx_t == 0] <- "white"
+  
+
+
+  plotCI <- FALSE
+
+  if(!is.null(repList$posts))
+  {
+    plotCI <- TRUE
+    tInitModel_p <- repList$repOpt$tInitModel_p
+    R_it <- repList$posts$R_ipt[,pIdx,]
+
+    R_qt <- apply(X = R_it, FUN = quantile,
+                    MARGIN = c(2), probs = c(0.025, 0.5, 0.975),
+                    na.rm = TRUE )
+
+    Rt <- apply(X = R_it, FUN = mean, MARGIN = c(2))
+
+    R0 <- round(mean(repList$posts$R0_ip[,pIdx]),2)
+
+  } else {
+    R_qt <- 0
+  }
+
+  R0lab <- round(R0,2)
+
+  Rt[Rt == 0] <- NA
+  R_qt[R_qt == 0] <- NA
+
+  if(plotLog)
+  {
+    R0 <- log(R0, base = 10)
+    R_qt <- log(R_qt, base = 10)
+    Rt <- log(Rt, base = 10)
+
+  }
+
+  # stock labels
+  stockLabs <- dimnames(report$R_pt)[[1]]
+
+
+  if( !is.null(heading))
+  {
+    if( heading == "dimLabs")
+      stockLabel <- stockLabs
+    else
+      stockLabel <- try(heading[stockLabs])
+
+    if( class(stockLabel) == "try-error" ) 
+      stockLabel <- stockLabs
+  }
+
+  # Get number of time steps
+  nT    <- report$nT
+  years <- seq(from = initYear, length = nT, by = 1)
+
+  vertLines <- seq(from = 1950, to = max(years), by = 10)
+
+  # Set up plotting area
+  if(!noPar)
+    par(mfrow = c(1,1), mar = c(.5,3,.5,3), oma = c(3,1,3,1) )
+
+  # Now plot recruitments
+  plot( x = range(years), y = c(0,max(Rt,R_qt, na.rm =T) ),
+        type = "n", xlab = "", ylab = "",
+        las = 1, axes = FALSE )
+    mfg <- par("mfg")
+    if(plotLog)
+    {
+      maxY <- ceiling(max(Rt,R_qt, na.rm =T))
+      yTicks <- 0:maxY
+      yLabs <- 10^yTicks
+    }
+    if( mfg[1] == mfg[3])
+      axis(side = 1)
+    if(!plotLog)
+      axis(side = 2, las = 1  )
+    if(plotLog)
+      axis(side = 2, las = 1, at = yTicks, labels = yLabs )
+    box()
+    grid()
+    # Plot recruitment
+    # lines( x = years[1:nT], y = Rt[1:nT], lwd = 2, col = "grey40" )
+    abline( h = R0, lty = 2, lwd = 2)
+    if( plotCI )
+      segments( x0 = years[1:nT],
+                y0 = R_qt[1,1:nT],
+                y1 = R_qt[3,1:nT],
+                lwd = 1, col = "grey40" )
+    points( x = years[1:nT], y = Rt[1:nT], lwd = 2, bg = "grey40",
+            pch = 21, col = "grey40" )
+
+    axis( side = 3, at = years[posAgeIdx_t == 0], labels = FALSE,
+          col.ticks = "grey40", tck = .02, lwd.ticks = 3 )
+    
+    panLab( x = 0.8, y = 0.1, txt = paste("R0 = ", R0lab, sep = "") )
+    panLab( x = 0.8, y = 0.2, txt = "|  Miss Ages")
+    if( mfg[1] == mfg[3])
+      mtext( side = 1, text = "Year", line = 2)
+    if( mfg[2] == 1 )
+      mtext(side = 2, text = "Recruits\n(millions)", line = 3.5, cex = labcex)
+    if( mfg[1] == 1 & !is.null(heading) )
+      mtext(side = 3, text = stockLabel[pIdx], line = 1, font = 2, cex = labcex )
+
+}
+
+
+
+# plotRule()
+# Plot of Harvest control rule and recommended
+# TAC based on SSPM estimate of biomass
+# Input: repList = SISCAH reports object
+# Output: NULL
+# Side-effects: plots to active graphics device.
+plotRule <- function( repList = reports )
+{
+  ctlList <- repList$ctlList
+  repObj  <- repList$repOpt
+
+  # Pull estimates
+  C_t   <- repObj$C_pgt[1,1,]
+  B_t   <- repObj$SB_pt[1,]
+  B0    <- repObj$B0_p[1]
+
+  # Control points
+  ctlPts <- c(ctlList$mp$LCP,ctlList$mp$UCP)
+  
+  lowF   <- 0
+  Fref   <- ctlList$mp$maxTHR
+  inputF <- TRUE
+  if( Fref == "est")
+  {
+    inputF <- FALSE
+    Fref <- repObj$Fmsy
+  }
+
+  fYear <- 1951
+  nT    <- repObj$nT
+  year  <- fYear + nT
+
+  Bseq <- seq(from = 0, to = B0, length.out = 100 )
+  Fseq <- sapply( X = Bseq, FUN = .calcRampedHCR, 
+                  LCP = ctlPts[1]*B0,
+                  UCP = ctlPts[2]*B0,
+                  Fref = Fref, lowFmult = lowF )
+
+  predB <- B_t[length(B_t)]
+  
+  targF <- .calcRampedHCR(  B = predB/B0, 
+                            LCP = ctlPts[1],
+                            UCP = ctlPts[2],
+                            Fref = Fref, lowFmult = lowF )
+  Q     <- .calcLegalCatch( B = predB, 
+                            LCP = ctlPts[1],
+                            UCP = ctlPts[2],
+                            Fref = Fref, lowFmult = lowF )
+
+  Bhat    <- round( predB * 1000, digits=0 )
+  estB0   <- trunc( B0*1000, digits=0 )
+  targU   <- round( targF,   digits=4 )
+  Q       <- trunc( Q*1000 )
+
+  units <- " t"
+  
+  
+  plot(x = c(0,B0), y=c(0,1.2*Fref), type = "n",
+        xlab = "Estimated Biomass (kt)", ylab = "Harvest rate", las = 1)
+    lines(x = Bseq, y = Fseq)
+    abline( v = ctlPts * B0, lwd = 1, lty = 2 )
+    points( x = predB, y = targF, pch = 16, col = "grey30" )
+
+    txt <- bquote( hat(italic(B))[.(year)] == .(Bhat) )
+    panLab( 0.75, 0.5, adj=0, cex=1, txt )
+    txt <- bquote( hat(italic(B))[0] == .(estB0) )
+    panLab( 0.75, 0.4, adj=0, cex=1, txt )
+    txt <- bquote( italic(U)[.(year)] == .(targU) )
+    panLab( 0.75, 0.3, adj=0, cex=1, txt )
+    txt <- bquote( italic(Q)[.(year)] == .(Q) )
+    panLab( 0.75, 0.2, adj=0, cex=1, txt )  
+
+} # END plotRule()

@@ -1,7 +1,7 @@
 ## ASSESSMENT UNDER MSE {-#sec:assessment}
 
 ```{r calcTACchunk, echo = FALSE, include = FALSE}
-TAC.df <- calcTAC(fit_maxTHR0.14)
+TAC.df <- calcTAC(fit_maxTHR0.14, assessyear = assess_yr)
 
 ```
 
@@ -24,10 +24,15 @@ SDNJ: It's age-1, ISCAM used to estimate age-2, but SISCAH estimates age-1.
 
 3. please add average recruitment to (E)
 
+SDNJ: Done
 
-4. (F) Can you reverse the heat map to show darkest colour as most recent? -->
+4. (F) Can you reverse the heat map to show darkest colour as most recent? 
 
-(ref:indicators-cap) Estimated stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`, as estimated by the ensemble operating model. All lines indicate weighted ensemble posterior median values, and where applicable, shading indicates `r ci_pct`\% credibility intervals. (A) Catch (black solid line). (B) Estimated spawning stock biomass (x 1,000 t) with limit reference point (LRP; dashed red line), productive period upper stock reference (USR; dashed green line), and unfished spawning biomass ($B_0$; dashed black line). (C) Estimated natural mortality rate ($M$ /yr; red line). (D) Estimated harvest rate ($U_t$, black trend line) with dashed horizontal line at 20\% shown from 1983-2022). (E) Recruitment of age-`r age_recruit` fish. (F) Estimated surplus production (vertical axis) vs. spawning biomass (horizontal axis) with lighter points representing earlier years. vertical dashed lines denote the LRP (red), productive period USR (green), and $B_0$ (black).
+SDNJ: Done.
+-->
+
+
+(ref:indicators-cap) Estimated stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`, as estimated by the ensemble operating model. All lines indicate weighted ensemble posterior median values, and where applicable, shading indicates `r ci_pct`\% credibility intervals. (A) Catch (black solid line). (B) Estimated spawning stock biomass (x 1,000 t) with limit reference point (LRP; dashed red line), productive period upper stock reference (USR; dashed green line), and unfished spawning biomass ($B_0$; dashed black line). (C) Estimated natural mortality rate ($M$ /yr; red line). (D) Estimated harvest rate ($U_t$, black trend line) with dashed horizontal line at 20\% shown from 1983-2022). (E) Recruitment of age-`r age_recruit` fish, with the historical average shown as a black dashed line. (F) Estimated surplus production (vertical axis) vs. spawning biomass (horizontal axis) with lighter points representing earlier years. vertical dashed lines denote the LRP (red), productive period USR (green), and $B_0$ (black).
 
 ```{r indicators, fig.cap = "(ref:indicators-cap)", fig.asp = 1.1}
 # Six-panel indicator plot
@@ -123,6 +128,11 @@ SDNJ: For below variables:
 tIdx = 64 for 2024
 tIdx = 65 for 2025
 
+You could also use
+
+thisYrIdx <- assess_yr - 1951 + 1
+nextYrIdx <- thisYrIdx + 1
+
 B_2024 = fit_maxTHR0.14$repOpt$SB_pt[1,64]
 B_2025 = fit_maxTHR0.14$repOpt$SB_pt[1,65]
 
@@ -132,8 +142,7 @@ If you look want to find more stuff, follow the calcTAC() function in
 R/functions.R
 
 I also already created a proj_biomass_text() function that did this,
-you can edit it in R/functions
-
+you can edit it in R/functions.
 
 -->
 

@@ -1,15 +1,12 @@
-# This is where we will load model output from SISCAH
-
-# Load MS3 libraries
-# source(here("functions", "ms3Rplots.R"))
-source(here("functions", "ms3Rtools.R"))
-source(here("functions", "ms3RrefPts.R"))
-source(here("functions", "ms3Rstats.R"))
-
-# Load SISCAH libraries
-source(here("functions", "SISCAplots.R"))
-source(here("functions", "SISCAtools.R"))
-source(here("functions", "SISCAfuns.R"))
+############################################################
+# models.R
+# 
+# Script to read in SISCAH operating model history and
+# MP estimates.
+# 
+# Last Modified: Aug 22, 2024
+# 
+############################################################
 
 # first, load model histories
 histFolder <- file.path("data","SOG_DDM_omGrid")
