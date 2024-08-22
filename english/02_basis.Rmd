@@ -135,7 +135,7 @@ $B_{MSY}$ (biomass at maximum sustainable yield).
 
 ```{r yieldSSBcurve, }
 yieldSSBcap <- "Strait of Georgia herring operating model 1 equilibrium yield curve with respect to spawning stock biomass."
-filepath <- "data/yieldSSB.pdf"
+filepath <- "data/yieldSSB.png"
 knitr::include_graphics(filepath)
 
 
