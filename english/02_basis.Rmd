@@ -132,6 +132,9 @@ points as performance metrics for the MP evaluations.
 These are derived as fractions of ${B_0}$ (unfished spawning biomass), 
 ${MSY}$ (maximum sustainable yield), and $U_{MSY}$ (the harvest rate at ${MSY}$).
 
+<!-- TODO (Sam): I wonder if it would be useful to put the Yield~Spawning biomass
+curve for OM1 in here? (to give reader a sense of relative position of LRP and USR-->
+
 #### Limit Reference Point (LRP) {-}
 
 In 2018, a biological limit reference point (LRP) was defined for Pacific
@@ -152,6 +155,7 @@ for spawn distribution for WCVI Herring [@cleary2018].
 Because consultations are ongoing for SoG Herring USRs, we include 
 5 USR performance metrics in this analysis: 
 0.8$U_{MSY}$ and all four candidate USRs ($B_{MSY}$ proxies from @dfo2022a).
+
 
 #### Target Reference Point (TRP) {-}
 
