@@ -128,13 +128,13 @@ spawning areas which may provide more insight on sub-stock structure in the Sali
 <!-- A table may be used in lieu of bullets for this section. -->
 <!-- Refer to the Guidance Document for further instructions.] -->
 For Pacific Herring MSE we present a suite of biological and fishery reference 
-points as performance metrics for the MP evaluations. 
-These are derived as fractions of ${B_0}$ (unfished spawning biomass) and
-$B_{MSY}$ (biomass at maximum sustainable yield).
+points as performance metrics for the MP evaluations. Reference points are 
+fractions of $B_0$ (unfished spawning biomass) and $B_{MSY}$ (biomass at 
+maximum sustainable yield).
 
 
-```{r yieldSSBcurve, }
-yieldSSBcap <- "Strait of Georgia herring operating model 1 equilibrium yield curve with respect to spawning stock biomass."
+```{r yieldSSBcurve, echo = FALSE, fig.cap = yieldSSBcap}
+yieldSSBcap <- "Strait of Georgia herring operating model 1 equilibrium yield curve with respect to spawning stock biomass. The horizontal dashed line segment indicates OM1's estimate of maximum sustainable yield ($MSY$), while vertical line segments show biomass reference points inluding, from right to left, unfished biomass ($B_0$), the provisional upper stock reference ($USR$), optimal biomass producing $MSY$ on average ($B_{MSY}$), 80\\% of $B_{MSY}$, the current limit reference point ($LRP = 0.3 B_0$), and the default LRP suggested by DFO policy ($0.4 B_{MSY}$)."
 filepath <- "data/yieldSSB.png"
 knitr::include_graphics(filepath)
 
