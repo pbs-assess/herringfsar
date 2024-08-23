@@ -1,11 +1,11 @@
 ############################################################
 # models.R
-# 
+#
 # Script to read in SISCAH operating model history and
 # MP estimates.
-# 
+#
 # Last Modified: Aug 22, 2024
-# 
+#
 ############################################################
 
 # first, load model histories
@@ -96,4 +96,4 @@ ensRefPtsTable <- read.csv("data/SOG_ensRefPts.csv") |>
   mutate_if(is.numeric, round, 2)
 ensParTable <- read.csv("data/ensOM_meanPars.csv") |>
   mutate_if(is.numeric,round,2) |>
-  mutate( PBTGtLRP = 0.99 )
+  mutate(PBTGtLRP = ifelse(PBTGtLRP > 0.99, 0.99, .)) # if >.99 set = 0.99 else leave alone
