@@ -186,7 +186,7 @@ proj_biomass_text(  mpFit = fit_maxTHR0.14,
 
 ### Harvest Decision Rule Outputs {-}
 
-```{r, TACtable, echo = FALSE, warnings = FALSE}
+```{r, TACtable, echo = FALSE, warnings = FALSE, eval = FALSE}
 
 TACtabCap <- "Harvest decision rule outputs when the SoG Herring SAR MP is applied to data up to 2024."
 
