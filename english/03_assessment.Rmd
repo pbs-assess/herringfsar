@@ -67,7 +67,7 @@ levels of biomass, models ecosystem effects such as the increased percentage of
 natural mortality in the event of lower biomass, consistent with predator consumption. 
 
 <!--### History of Management Decisions,; Landings/Harvest/Effort, TAC \& Catch Advice] {-}-->
-### History of Management
+### History of Management {-}
 [Mandatory. make this short] 
 
 COVER:
@@ -154,7 +154,8 @@ plotRule(repList = fit_maxTHR0.14)
 
 ```
 
-### Evaluation of Exceptional Circumstances/Assessment Triggers {-}
+<!--### Evaluation of Exceptional Circumstances {-}-->
+### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
 Fishery monitoring data collected since the adoption of the current SoG
 Herring MP indicate that the population is behaving within operating 
@@ -164,15 +165,11 @@ circumstances. Mis-specification is checked visually by comparing catch and
 spawn index values within the central 95% of 2023 ensemble operating 
 model simulations.
 
-<!-- TODO (Sam): 
-For ECfig:
-1. top - Is the grey envelope (post 2023) spawning biomass and the blue spawn index? Why is the
-uncertainty in the index larger than SB?
+<!-- For ECfig:
+JC: Why is the uncertainty in the index larger than SB?
 
 SDNJ: Because the noise in the index is the uncertainty in SSB (process error) plus 
-uncertainty in spawn index (observation error)
-
--->
+uncertainty in spawn index (observation error)-->
 
 ```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
 ECfigCap <- "Evaluation of exceptional circumstances and operating model mis-specification: graphical comparison of simulation envelopes from the ensemble model and catch and spawn index data from interim year(s) f. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SoG operating model. Forward projections in time (15-years) represent the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
