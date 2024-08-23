@@ -128,7 +128,6 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
                                 history = mpBlobList[[MPname]],
                                 fYear = 1951, lYear = 2023  )
 {
-  #TODO (SAM); What is 2 mpBlobList[[2]], should it be hard coded?
   yrs <- fYear:lYear
   lastTdx <- length(yrs)
   goodReps <- history$goodReps
@@ -140,12 +139,17 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 
   B0 <- round(refPtsTab$B0,3)
 
-  x <- paste0( "Estimated unfished spawning biomass $SB_0$ is ", B0,
-  " kt, and the LRP of $0.3 SB_0$ is ", round(0.3 * B0,3) ," kt (posterior medians). Compared to last year, estimated spawning biomass in 2023 $SB_{2023}$ decreased from ",
-  SB_Tm1, " to ", SB_T, " kt (posterior median), and is equivalent to ",
-  100 * round(SB_T/B0,3),
-  " \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2023 is estimated to be above the LRP with a ",
-  100 * PBTGtLRP, " \\% probability (Table XX).")
+#Orig from Sam:
+#  x <- paste0( "Estimated unfished spawning biomass $B_0$ is ", B0,
+#  " kt, and the LRP of $0.3 B_0$ is ", round(0.3 * B0,3) ," kt (posterior medians). Compared to last year, estimated spawning biomass in 2023 $B_{2023}$ decreased from ",
+#  SB_Tm1, " to ", SB_T, " kt (posterior median), and is equivalent to ",
+#  100 * round(SB_T/B0,3),
+#  " \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2023 is estimated to be above the LRP with a ",
+#  100 * PBTGtLRP, " \\% probability (Table XX).")
+
+  x <- paste0( "The estimated spawning biomass in 2023 is ", SB_Tm1, " unfished spawning biomass $B_0$ is ", B0,
+      " and the stock status ($B_{2023}$/$B_0$) is ", 100 * round(SB_T/B0,3), " kt (posterior medians).
+      Spawning biomass in 2023 is estimated to be above the LRP with a ", 100 * PBTGtLRP, " \\% probability.")
 
   cat(x)
 } # END stock_status_text
@@ -158,7 +162,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 #         lYear   = last year of model history
 #         B0      = Input B0 value. If NULL uses MP EM
 curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
-                                fYear   = 1951, 
+                                fYear   = 1951,
                                 thisYr  = assess_yr,
                                 B0 = NULL  )
 {
@@ -176,7 +180,7 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
 
   x <- paste0( "Spawning biomass in ", thisYr,
     " $B_{", thisYr,"}$ is estimated to be ", SB_T,
-    " kt (maximum likelihood estimate), and is equivalent to ", 
+    " kt (maximum likelihood estimate), and is equivalent to ",
     round(100*SB_T/B0, 1)," \\% of $SB_0$, as estimated by the EM (Tables XX and YY). Spawning biomass in 2024 is estimated to be above the LRP (Table XX).")
 
   cat(x)
@@ -191,7 +195,7 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
 #         lYear   = last year of model history
 #         B0      = Input B0 value. If NULL uses MP EM
 proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
-                                fYear = 1951, 
+                                fYear = 1951,
                                 assessYr = assess_yr,
                                 B0 = NULL  )
 {
