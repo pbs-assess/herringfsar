@@ -147,7 +147,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 #  " \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2023 is estimated to be above the LRP with a ",
 #  100 * PBTGtLRP, " \\% probability (Table XX).")
 
-  x <- paste0( "The estimated spawning biomass in 2023 is ", SB_Tm1, " unfished spawning biomass $B_0$ is ", B0,
+  x <- paste0( "The estimated spawning biomass in 2023 is ", SB_Tm1, " kt (posterior medians), the unfished spawning biomass $B_0$ is ", B0,
       " and the stock status ($B_{2023}$/$B_0$) is ", 100 * round(SB_T/B0,3), " kt (posterior medians).
       Spawning biomass in 2023 is estimated to be above the LRP with a ", 100 * PBTGtLRP, " \\% probability.")
 

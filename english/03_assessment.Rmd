@@ -6,7 +6,7 @@ TAC.df <- calcTAC(fit_maxTHR0.14, assessyear = assess_yr)
 ```
 
 Stock trends and status for SoG Herring historical time series (1951-2023)
-is represented by the ensemble operating model using 6 indicators 
+is represented by the ensemble operating model, using 6 indicators 
 (Figure \@ref(fig:indicators)).
 Ensemble operating model trends are similar to those presented for SoG Herring 
 in previous stock assessments (e.g., @dfo2024), with  near-identical data 
@@ -23,8 +23,7 @@ baseplot_indicators(dat = true_dat)
 
 ### Historical and Recent Stock Trajectory and Trends {-}
 
-Spawning biomass and stock status from 1951-2023 is derived from the 
-ensemble operating model.
+#### Spawning Biomass and Status Relative to Reference Points {-}
 
 ```{r OM_stock_status, echo = FALSE, results = "asis"}
 stock_status_text(  refPtsTab = ensRefPtsTable,
@@ -33,7 +32,6 @@ stock_status_text(  refPtsTab = ensRefPtsTable,
                     fYear = 1951, lYear = MSE_yr )
 ```
 
-#### Spawning Biomass and Status Relative to Reference Points {-}
 The ensemble model estimates spawning biomass to be above $B_{MSY}$ and
 the USR for the majority of the historical time series 
 (Figure \@ref(fig:indicators)A).
