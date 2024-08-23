@@ -147,7 +147,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 #  " \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2023 is estimated to be above the LRP with a ",
 #  100 * PBTGtLRP, " \\% probability (Table XX).")
 
-  x <- paste0( "The estimated spawning biomass in 2023 is ", SB_Tm1, " kt (posterior medians), the unfished spawning biomass $B_0$ is ", B0,
+  x <- paste0( "The estimated spawning biomass in 2023 is ", round(SB_Tm1,1), " kt (posterior medians), the unfished spawning biomass $B_0$ is ", B0,
       " and the stock status ($B_{2023}$/$B_0$) is ", 100 * round(SB_T/B0,3), " kt (posterior medians).
       Spawning biomass in 2023 is estimated to be above the LRP with a ", 100 * PBTGtLRP, " \\% probability.")
 
@@ -163,6 +163,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 #         B0      = Input B0 value. If NULL uses MP EM
 curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
                                 fYear   = 1951,
+                                ensParTable = ensParTable,
                                 thisYr  = assess_yr,
                                 B0 = NULL  )
 {
@@ -179,14 +180,13 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   B0 <- round(B0,3)
 
   x <- paste0( "Spawning biomass in ", thisYr,
-    " $B_{", thisYr,"}$ is estimated to be ", SB_T,
+    " $B_{", thisYr,"}$ is estimated to be ", round(SB_T, 1),
     " kt (maximum likelihood estimate), and is equivalent to ",
     round(100*SB_T/B0, 1)," \\% of $SB_0$, as estimated by the estimation model.
-    Spawning biomass in 2024 is estimated to be above the LRP with a X% probability.")
+    Spawning biomass in 2024 is estimated to be above the LRP with a ", 100 * ensParTable$PBTGtLRP, " \\% probability.")
 
   cat(x)
 } # END curr_biomass_text
-
 
 # proj_biomass_text()
 # Function to automate biomass forecast reporting from MP esitmation model
@@ -197,6 +197,7 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
 #         B0      = Input B0 value. If NULL uses MP EM
 proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
                                 fYear = 1951,
+                                ensParTable = ensParTable,
                                 assessYr = assess_yr,
                                 B0 = NULL  )
 {
@@ -225,11 +226,12 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
 #    (Table XX and Figure XX).")
 
   x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
-      " $B_{", assessYr + 1,"}$ is estimated to be ", SB_forecast,
+      " $B_{", assessYr + 1,"}$ is estimated to be ", round(SB_forecast, 1),
       " kt (maximum likelihood estimate) with stock status of ($B_{",
       assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
       assessYr + 1, " is forecast to be below the LRP of $0.3B_0$ (",
-               round(0.3*B0), " kt) with a X\\% probability, in the absence of fishing.")
+      round(0.3*B0, 1), " kt) with a ", 100 * (1- ensParTable$PBTGtLRP),
+      " \\% probability in the absence of fishing.")
 
   cat(x)
 } # END proj_biomass_text
