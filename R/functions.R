@@ -163,7 +163,6 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 #         B0      = Input B0 value. If NULL uses MP EM
 curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
                                 fYear   = 1951,
-                                ensParTable = ensParTable,
                                 thisYr  = assess_yr,
                                 B0 = NULL  )
 {
@@ -180,10 +179,10 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   B0 <- round(B0,3)
 
   x <- paste0( "Spawning biomass in ", thisYr,
-    " $B_{", thisYr,"}$ is estimated to be ", round(SB_T, 1),
+    " $B_{2023}$ is estimated to be ", round(SB_T, 1),
     " kt (maximum likelihood estimate), and is equivalent to ",
     round(100*SB_T/B0, 1)," \\% of $SB_0$, as estimated by the estimation model.
-    Spawning biomass in 2024 is estimated to be above the LRP with a ", 100 * ensParTable$PBTGtLRP, " \\% probability.")
+    Spawning biomass in 2024 is estimated to be above the LRP with a ", 100 , " X\\% probability.")
 
   cat(x)
 } # END curr_biomass_text
@@ -197,7 +196,6 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
 #         B0      = Input B0 value. If NULL uses MP EM
 proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
                                 fYear = 1951,
-                                ensParTable = ensParTable,
                                 assessYr = assess_yr,
                                 B0 = NULL  )
 {
@@ -230,8 +228,7 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
       " kt (maximum likelihood estimate) with stock status of ($B_{",
       assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
       assessYr + 1, " is forecast to be below the LRP of $0.3B_0$ (",
-      round(0.3*B0, 1), " kt) with a ", 100 * (1- ensParTable$PBTGtLRP),
-      " \\% probability in the absence of fishing.")
+               round(0.3*B0, 1), " kt) with a ", 100 * (1), " \\% probability in the , in the absence of fishing.")
 
   cat(x)
 } # END proj_biomass_text
