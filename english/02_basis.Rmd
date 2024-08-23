@@ -23,21 +23,21 @@ Density dependent natural mortality was added to represent potential ecosystem
 impacts (e.g., depensatory predation) on Pacific Herring stocks in line with
 DFO's EAFM (ecosystem approaches to fisheries management).
 
-A weighted ensemble operating model is used for management procedure 
+A weighted ensemble of SISCAH operating models is used for management procedure 
 evaluation, containing five different models 
-representing a range of productivity levels. Productivity is characterized
-by stock recruitment steepness 
+representing a range of productivity levels. 
+Productivity is characterized by stock recruitment steepness 
 ($h$), which affects productivity at low stock sizes, and the lower 
 limit on natural mortality ($M_b$), which represents the average mortality rate 
 at high stock sizes. This chosen approach represents uncertainty in stock 
 productivity better than using a single value of stock-recruit steepness,
 which is difficult to estimate and often reliant on prior information.
-Details of the operating model ensemble are described in Appendix A.
+Details of the operating model ensemble are described in Appendix [A](#sec:app-a).
 
-The weighted ensemble OM was used to simulate management procedures (MPs) over a 
+The weighted ensemble was used to simulate management procedures (MPs) over a 
 15-year projection period (2024-2038) and present a MP tuned to meet 
 the conservation objective
-(Section "[Fishery management objectives](#sec:fish-mgmt-objs)") and that is
+(Section "[Fishery management objectives](#sec:fish-mgmt-objs)") that is
 compliant with both the “DFO Sustainable Fisheries Framework” policy and 
 “A fishery decision-making framework incorporating the Precautionary Approach”
 policy as per the 
@@ -101,9 +101,9 @@ density dependent time varying natural mortality.
 <!-- Maximum length 100 words.] -->
 
 <!-- Mandatory -->
-This SISCAH modelling framework [@johnson2024] provides stock status and 
-updated MPs with associated quota calculations for the SoG Herring for the 
-2024/25 season.
+This SISCAH modelling framework [@johnson2024] provides SoG stock status and 
+quota calculations for 2024/25 season using the MP tuned to the conservation 
+objective.
 
 ### Stock Structure Assumption {-}
 <!--Stock overview information: -->
@@ -121,39 +121,34 @@ migrate to the west coast Vancouver Island (WCVI) to share share summer/ fall
 feeding grounds with WCVI Herring. However adult Herring are also reported in the 
 Salish Sea throughout the summer months indicating some level of non-migratory life
 history. New genetic methods are currently being used to update baseline data for SoG
-spawning areas which may provide more insight on sub-stock structure in the Salish Sea.
+spawning areas, this may provide more insight on sub-stock structure in the Salish Sea.
 
 ### Reference Points {-}
 <!-- [Mandatory. -->
 <!-- A table may be used in lieu of bullets for this section. -->
 <!-- Refer to the Guidance Document for further instructions.] -->
-For Pacific Herring MSE we present a suite of biological and fishery reference 
-points as performance metrics for the MP evaluations. Reference points are 
-fractions of $B_0$ (unfished spawning biomass) and $B_{MSY}$ (biomass at 
-maximum sustainable yield).
+For Pacific Herring MSE we present a suite of biological reference 
+points as performance metrics for the MP evaluations. 
+These include fractions of $B_0$ (unfished spawning biomass) and $B_{MSY}$ (biomass at 
+maximum sustainable yield). 
+Figure \@ref(fig:yieldSSBcurve) shows relative position of biological reference
+points for SISCAH operating model 1 (OM 1, Appendix [A](#sec:app-a)),
 
 
 ```{r yieldSSBcurve, echo = FALSE, fig.cap = yieldSSBcap}
-yieldSSBcap <- "Strait of Georgia herring operating model 1 equilibrium yield curve with respect to spawning stock biomass. The horizontal dashed line segment indicates OM1's estimate of maximum sustainable yield ($MSY$), while vertical line segments show biomass reference points inluding, from right to left, unfished biomass ($B_0$), the provisional upper stock reference ($USR$), optimal biomass producing $MSY$ on average ($B_{MSY}$), 80\\% of $B_{MSY}$, the current limit reference point ($LRP = 0.3 B_0$), and the default LRP suggested by DFO policy ($0.4 B_{MSY}$)."
+yieldSSBcap <- "Strait of Georgia Herring operating model 1 (OM 1) equilibrium yield curve with respect to spawning stock biomass. The horizontal dashed line indicates OM1's estimate of maximum sustainable yield ($MSY$), while vertical line segments show biomass reference points including, from right to left, unfished biomass ($B_0$), the provisional upper stock reference (USR= 0.8$B_{1998:2007}$), optimal biomass producing $MSY$ on average ($B_{MSY}$), default USR from the DFO policy (80\\% of $B_{MSY}$), the Herring limit reference point (LRP= 0.3$B_0$), and the default LRP from the DFO policy ($0.4 B_{MSY}$)."
 filepath <- "data/yieldSSB.png"
 knitr::include_graphics(filepath)
 
 
 ```
 
-<!-- TODO (Sam): I wonder if it would be useful to put the Yield~Spawning biomass
-curve for OM1 in here? (to give reader a sense of relative position of LRP and USR
-
-SDNJ: Sure, we can add that here. I wonder if we should remove reference to $MSY$ 
-above, as we don't use any fractions of MSY for MP evaluations. Do we mean $B_{MSY}$?
-
-JC: my error, fixed-->
 
 #### Limit Reference Point (LRP) {-}
 
 In 2018, a biological limit reference point (LRP) was defined for Pacific
 Herring major stocks as $0.3B_0$, where ${B_0}$ is the long-term
-average estimated unfished spawning biomass ([@kronlund2017,@forrest2023]).
+average estimated unfished spawning biomass [@kronlund2017],[@forrest2023].
 This LRP is more conservative than the default LRP identified in 
 “DFO Sustainable Fisheries Framework” policy [@dfo2009].
 
@@ -170,16 +165,11 @@ Because consultations are ongoing for SoG Herring USRs, we include
 5 USR performance metrics in this analysis: 0.8$B_{MSY}$ (new this year) and 
 all four candidate USRs presented as $B_{MSY}$ proxies [@dfo2022a].
 
-<!-- Is the above correct for the 5 metrics? Do we use 0.8 Umsy? 
-
-JC: sorry, typo- fixed-->
-
-
 #### Target Reference Point (TRP) {-}
 
-A biomass target objective centered on the USR has been suggested Within the 
-Herring MSE process, however selection of a USR for SoG Herring requires 
-additional consultations and thus a TRP is not yet definable.
+A biomass target objective centered on the USR has been brought up within the 
+Herring MSE process, however final selection of a USR for SoG Herring requires 
+additional consultations and thus a TRP has not been defined.
 
 #### Removal Reference (RR) {-}
 
@@ -188,26 +178,28 @@ $F_{MSY}$ [@dfo2009, @dfo2013].
 All MPs presented for Pacific Herring stocks that are shown in simulation to 
 avoid the LRP with high probability, and thus meet the conservation objective,
 include maximum target harvest rates below $U_{MSY}$.
-We do not specify an additional RR for SoG Herring because with MSE we use
-simulations to select a MP tuned directly to the conservation objective
+
+Currently we do not specify an additional RR for SoG Herring because with 
+MSE we are using simulations to select a MP tuned directly to the 
+conservation objective
 (which implements harvest rates more conservative than $U_{MSY}$).
 
-#### Habitat or Ecosystem Reference Points {-}
+#### Ecosystem Reference Points {-}
 
 Ecosystem reference points are incorporated into
 the conservation objective for Herring through:
 
-1. A LRP of $0.3\cdot {B_0}$ based on an analysis of stock productivity [@kronlund2017]
+1. A LRP of 0.3${B_0}$ based on an analysis of stock productivity [@kronlund2017]
 which is well-above the default LRP of 0.4$B_{MSY}$ [@dfo2009] and 
 which is also above the soft-limit of 0.5$B_{MSY}$ implemented in 
 New Zealand fisheries [@shelton2008].
-The LRP of $0.3\cdot {B_0}$ for the ensemble operating model is
-approximately $0.7 \cdot B_{MSY}$ (Appendix A).
+The LRP of 0.3${B_0}$ for the ensemble operating model is
+approximately 0.7$B_{MSY}$ (Appendix [A](#sec:app-a)).
 
-2. Incorporating density dependent mortality to account for predation mortality
-to fully represent the trophic level of Herring as a forage species.
+2. Incorporating density dependent mortality to account for predation mortality,
+fully representing the trophic level of Herring as a forage species.
 
-### Fishery management objectives {-#sec:fish-mgmt-objs}
+### Fishery Management Objectives {-#sec:fish-mgmt-objs}
 
 A core set of fisheries management objectives [@dfo2019c]
 was introduced to the Pacific Herring MSE process in 2019.
@@ -247,36 +239,36 @@ representing a range of productivity levels (Appendix [A](#sec:app-a)).
 The ensemble model stock status for 2023 is reported in Section 
 "[Assessment under MSE](#sec:assessment)"
 
-DFO Science, Pacific Region, will update operating models for SoG Herring 
-every three years.
-As such, in 2026 the SISCAH model will be fit to new SoG survey and fishery data 
+DFO Science, Pacific Region, will be updating operating models for SoG Herring 
+every three years, following recommendations of @dfo2023a.
+In 2026 SISCAH will be fit to new SoG survey and fishery data 
 (extending the historical time series) and MPs will be re-evaluated against 
 fishery management objectives. 
 At this time new objectives and performance metrics may
 also be added to the MSE process.
 
 In the interim years (2024 and 2025), operating model status remains constant, 
-and a biomass estimate is updated annually and applied to the management 
-procedure (next section).
+and the MP is updated which estimates spawning biomass and the one-year 
+projection required to calculate a TAC.
 
 ### Harvest Decision Rule {-}
 
-This MSE report presents sustainable harvest advice for SoG Herring using 
-simulation tested MPs in which we identify the maximum target harvest rate for 
-a MP tuned to the established conservation objective using a 15-year projection
-period. 
-We also report simulated performance against a suite of other biological and 
-fishery reference points, with details described in
-Section "[Projections](#sec:projections)".
+Herring MSE presents sustainable harvest advice for SoG Herring using 
+simulation tested MPs which identify the maximum target harvest rate for 
+a MP tuned to the established conservation objective. 
+MPs are evaluated using a 15-year projection period and 
+simulated performance is reported against a suite of biological reference points
+and fishery metrics.
+See Section "[Projections](#sec:projections)" for a full description.
 
 The harvest control rule component of each simulation-test MP is
 a "hockey-stick" shaped function defined by lower and upper control points, and
 a maximum target harvest rate [@cox2013roles]. 
-We explored two hockey-stick shapes which differed in their lower and upper
+We explore two hockey-stick shapes which differ in their lower and upper
 control points, and three 3 maximum target harvest rates
 (Figure \@ref(fig:plotHCRules)).
 Sustainable harvest advice for SoG Herring for 2024/25 is presented using 
-a MP tuned to the conservation objective. This MP has lower and upper control 
+the MP tuned to the conservation objective which has lower and upper control 
 points at 30\% and 60\% of unfished spawning biomass and a maximum target
 harvest ($maxTHR$) of 14\% (green solid line, Figure \@ref(fig:plotHCRules)).
 
@@ -294,12 +286,12 @@ plotHCRules(  LCP_i = c(.3,.3,.172),
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
-For each interim stock status 
-is estimated using the estimation model component of the MP and this, plus
-the survey index and realized catch are compared to the simulation 
-envelopes from the ensemble model.
+For each interim year, stock status 
+is estimated using the estimation model component of the MP. 
+This estimate plus the new data (survey index and realized catch) are 
+compared to the simulation envelopes from the ensemble model.
 Exceptional circumstances are determined 
-by visually comparing catch and spawn index estimates for the new year
+by visually comparing survey index and catch estimates for the new year
 with the central 95\% of the ensemble operating model simulations.
 Any unusual deviations from the ensemble model projections would be 
 investigated in detail and consideration given to refitting operating models.
@@ -315,8 +307,9 @@ prescribed by the MP or if the survey index is far below the projected index.
 There are three types of input data used for
 the Pacific Herring stock assessment:
 catch data, biological data, and a fishery independent survey index.
-The fishery survey index is made up of two classes of surveys, surface
+The survey index is made up of two classes of surveys, surface
 and dive. Combining the surveys into a blended index properly accounts for 
 years in which these survey types co-occur and is a feature 
-of the new SISCAH model. Note `r assess_yr` refers to the `r this_season`
-Pacific Herring season.
+of the new SISCAH model.
+SoG data are described in full in the 2024 SoG data summary report
+(https://github.com/grinnellm/Reports/blob/master/Summaries/2024/DataSummary.SoG.2024.pdf).

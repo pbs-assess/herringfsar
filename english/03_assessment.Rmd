@@ -6,33 +6,15 @@ TAC.df <- calcTAC(fit_maxTHR0.14, assessyear = assess_yr)
 ```
 
 Stock trends and status for SoG Herring historical time series (1951-2023)
-is represented by the ensemble operating model using 6 indicators (Figure \@ref(fig:indicators)).
+is represented by the ensemble operating model, using 6 indicators 
+(Figure \@ref(fig:indicators)).
 Ensemble operating model trends are similar to those presented for SoG Herring 
-in previous stock assessments (e.g., [@dfo2024]), with  
-near-identical data sources and choice of indicators.
-Step wise comparisons are found in [@johnson2024].
-
-<!--TODO (Sam): 
-For ref:indicators-cap:
-1. the autodates need to state 1951-2023. I'm not sure where to change `r yr_range[1]` to `r yr_range[2]` 
-
-SDNJ: Done. Good catch - this was taking years off the dummy table of simulated data
-
-2. please confirm age-`r age_recruit` fish is age-1 (I thought this was age-2 but maybe I'm wrong)
-
-SDNJ: It's age-1, ISCAM used to estimate age-2, but SISCAH estimates age-1.
-
-3. please add average recruitment to (E)
-
-SDNJ: Done
-
-4. (F) Can you reverse the heat map to show darkest colour as most recent? 
-
-SDNJ: Done.
--->
+in previous stock assessments (e.g., @dfo2024), with  near-identical data 
+sources and choice of indicators.
+Step wise comparisons are found in @johnson2024.
 
 
-(ref:indicators-cap) Estimated stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`, as estimated by the ensemble operating model. All lines indicate weighted ensemble posterior median values, and where applicable, shading indicates `r ci_pct`\% credibility intervals. (A) Catch (black solid line). (B) Estimated spawning stock biomass (x 1,000 t) with limit reference point (LRP; dashed red line), productive period upper stock reference (USR; dashed green line), and unfished spawning biomass ($B_0$; dashed black line). (C) Estimated natural mortality rate ($M$ /yr; red line). (D) Estimated harvest rate ($U_t$, black trend line) with dashed horizontal line at 20\% shown from 1983-2022). (E) Recruitment of age-`r age_recruit` fish, with the historical average shown as a black dashed line. (F) Estimated surplus production (vertical axis) vs. spawning biomass (horizontal axis) with lighter points representing earlier years. vertical dashed lines denote the LRP (red), productive period USR (green), and $B_0$ (black).
+(ref:indicators-cap) Estimated stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`, as estimated by the ensemble operating model. All lines indicate weighted ensemble posterior median values, and where applicable, shading indicates `r ci_pct`\% credibility intervals. (A) Catch (x 1,000 t). (B) Estimated spawning stock biomass (x 1,000 t) with limit reference point (LRP; dashed red line), productive period upper stock reference (USR; dashed green line), and unfished spawning biomass ($B_0$; dashed black line). (C) Estimated natural mortality rate ($M$ /yr; red line). (D) Estimated harvest rate ($U_t$, black trend line), with dashed horizontal line at 20\% for 1983-2022. (E) Recruitment of age-`r age_recruit` fish, with historical average shown as a black dashed line. (F) Estimated surplus production (vertical axis) vs. spawning biomass (horizontal axis) for 1988 (triangle) though 2023 (square) with lighter points representing earlier years. Vertical dashed lines (left to right): LRP (red), productive period USR (green), and $B_0$ (black).
 
 ```{r indicators, fig.cap = "(ref:indicators-cap)", fig.asp = 1.1}
 # Six-panel indicator plot
@@ -41,13 +23,7 @@ baseplot_indicators(dat = true_dat)
 
 ### Historical and Recent Stock Trajectory and Trends {-}
 
-<!-- Estimated unfished spawning biomass $\SB_0$ is 138,491 t, and
-the LRP of $0.3\SB_0$ is 41,547 t (posterior medians).
-Compared to last year, estimated spawning biomass in 2023 $\SB_{2023}$
-decreased from 75,523 to 72,782 t (posterior median), and
-is equivalent to 52.1% of $\SB_0$ (Tables XX & XX).
-Spawning biomass in 2023 is estimated to be
-above the LRP with a 94.3% probability (Table XX). -->
+#### Spawning Biomass and Status Relative to Reference Points {-}
 
 ```{r OM_stock_status, echo = FALSE, results = "asis"}
 stock_status_text(  refPtsTab = ensRefPtsTable,
@@ -56,7 +32,6 @@ stock_status_text(  refPtsTab = ensRefPtsTable,
                     fYear = 1951, lYear = MSE_yr )
 ```
 
-#### Spawning Biomass and Status Relative to Reference Points {-}
 The ensemble model estimates spawning biomass to be above $B_{MSY}$ and
 the USR for the majority of the historical time series 
 (Figure \@ref(fig:indicators)A).
@@ -74,9 +49,9 @@ While 2020 is one of the three highest peaks in estimated spawning biomass
 since 2015 has moderated impacts of above average recruitment.
 Finally, opposing fluctuations in estimated recruitment and natural mortality 
 likely contribute to increased uncertainty in spawning biomass and 
-forecast biomass (#FIG).
+forecast biomass.
 
-#### Spawn biomass production {-}
+#### Spawn Biomass Production {-}
 
 Estimated spawning biomass production was high in 2019 and then declined each 
 of the next three year to 2023 (Figure \@ref(fig:indicators)F), despite spawning
@@ -87,15 +62,13 @@ JC: not including because not talking about RR-->
 
 ### Ecosystem and Climate Change Considerations {-}
 
-Density dependence, where increased mortality is associated with smaller biomass
-models ecosystem effects such as the increased percentage of natural mortality 
-in the event of lower biomass, consistent with predator consumption. 
+Density dependence, where increased natural mortality is associated with smaller 
+levels of biomass, models ecosystem effects such as the increased percentage of 
+natural mortality in the event of lower biomass, consistent with predator consumption. 
 
-### History of [Management; Landings/Harvest/Effort, TAC \& Catch Advice] {-}
-
-STOPPED HERE
-
-[Mandatory. make this short & ] 
+<!--### History of Management Decisions,; Landings/Harvest/Effort, TAC \& Catch Advice] {-}-->
+### History of Management {-}
+[Mandatory. make this short] 
 
 COVER:
 -20% hr IMPLEMENTED SINCE 1983
@@ -104,17 +77,15 @@ COVER:
 SINCE 2015 - cite past herringSR
 
 
-### Projections and MP Outputs for 2025 {-#sec:projections}
+### Projections {-#sec:projections}
 
--JC: explain the process under new MSE
-REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024, 2025,
-AND 2026 ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
+-JC: explain the process under full MSE
+REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024 and 2025,
+ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
 ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
 PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
 
 #### Interim Year Update for 2024 {-}
-<!-- TODO (Sam): please create current year statement function using the estimation model for 2024.
-"Estimated spawning biomass $SB_{2024}$ is 90.23 kt in 2024, and is equivalent to 87.2 \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2024 is estimated to be above the LRP with a 99 \\% probability (Table XX)." -->
 
 ```{r, current_year_statement, echo = FALSE, warnings = FALSE, results = "asis" }
 curr_biomass_text(  mpFit   = fit_maxTHR0.14,
@@ -123,9 +94,9 @@ curr_biomass_text(  mpFit   = fit_maxTHR0.14,
                     B0 = NULL  )
 ```
 
-#### MP {-}
+#### Application of MP for 2025 {-}
 
-HERRING MPs COMPRISE THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
+HERRING MPs HAVE THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
 
 MPS THAT WE CONSIDER DIFFER ONLY BY SHAPE OF HCR (point to Figure \@ref(fig:plotHCRules) )
 
@@ -138,46 +109,7 @@ that is compliant with both the “DFO Sustainable Fisheries Framework” policy
 WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP...
 
 
-<!-- TODO: define three generations == 15-years
-
-
-#### Interim Year Updates {-}
-
-<!-- TODO (Sam): pls show us where to find these variable names so we can add auto-text
-
-SDNJ: For below variables:
-tIdx = 64 for 2024
-tIdx = 65 for 2025
-
-You could also use
-
-thisYrIdx <- assess_yr - 1951 + 1
-nextYrIdx <- thisYrIdx + 1
-
-B_2024 = fit_maxTHR0.14$repOpt$SB_pt[1,64]
-B_2025 = fit_maxTHR0.14$repOpt$SB_pt[1,65]
-
-B0 = fit_maxTHR0.14$repOpt$B0_p[1]
-
-If you look want to find more stuff, follow the calcTAC() function in 
-R/functions.R
-
-I also already created a proj_biomass_text() function that did this,
-you can edit it in R/functions.
-
-JC: Sam to show us this.
-
--->
-
--JC: STATE THE EM STATUS FOR 2024
--Bt_2024 
--Bt_2024/Bo
--Bt_2025
--Bt_2025/Bo
-
 ```{r, forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
-# TODO: (SAM) Please make this look pretty.
-# DONE!
 proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     fYear = 1951, 
                     assessYr = assess_yr,
@@ -222,7 +154,8 @@ plotRule(repList = fit_maxTHR0.14)
 
 ```
 
-### Evaluation of Exceptional Circumstances/Assessment Triggers {-}
+<!--### Evaluation of Exceptional Circumstances {-}-->
+### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
 Fishery monitoring data collected since the adoption of the current SoG
 Herring MP indicate that the population is behaving within operating 
@@ -232,15 +165,11 @@ circumstances. Mis-specification is checked visually by comparing catch and
 spawn index values within the central 95% of 2023 ensemble operating 
 model simulations.
 
-<!-- TODO (Sam): 
-For ECfig:
-1. top - Is the grey envelope (post 2023) spawning biomass and the blue spawn index? Why is the
-uncertainty in the index larger than SB?
+<!-- For ECfig:
+JC: Why is the uncertainty in the index larger than SB?
 
 SDNJ: Because the noise in the index is the uncertainty in SSB (process error) plus 
-uncertainty in spawn index (observation error)
-
--->
+uncertainty in spawn index (observation error)-->
 
 ```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
 ECfigCap <- "Evaluation of exceptional circumstances and operating model mis-specification: graphical comparison of simulation envelopes from the ensemble model and catch and spawn index data from interim year(s) f. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SoG operating model. Forward projections in time (15-years) represent the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
