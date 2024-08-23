@@ -139,17 +139,13 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 
   B0 <- round(refPtsTab$B0,3)
 
-#Orig from Sam:
-#  x <- paste0( "Estimated unfished spawning biomass $B_0$ is ", B0,
-#  " kt, and the LRP of $0.3 B_0$ is ", round(0.3 * B0,3) ," kt (posterior medians). Compared to last year, estimated spawning biomass in 2023 $B_{2023}$ decreased from ",
-#  SB_Tm1, " to ", SB_T, " kt (posterior median), and is equivalent to ",
-#  100 * round(SB_T/B0,3),
-#  " \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2023 is estimated to be above the LRP with a ",
-#  100 * PBTGtLRP, " \\% probability (Table XX).")
-
-  x <- paste0( "The estimated spawning biomass in 2023 is ", round(SB_Tm1,1), " kt (posterior medians), the unfished spawning biomass $B_0$ is ", B0,
-      " and the stock status ($B_{2023}$/$B_0$) is ", 100 * round(SB_T/B0,3), " kt (posterior medians).
-      Spawning biomass in 2023 is estimated to be above the LRP with a ", 100 * PBTGtLRP, " \\% probability.")
+  x <- paste0( "The estimated spawning biomass in ", lYear, " is ", round(SB_Tm1,1),
+               " kt (posterior medians), the unfished spawning biomass $B_0$ is ",
+               B0,
+               " and the stock status ($B_{", lYear, "}$/$B_0$) is ",
+               100 * round(SB_T/B0,3), " kt (posterior medians). Spawning
+               biomass in ", lYear, " is estimated to be above the LRP with a ",
+               100 * PBTGtLRP, " \\% probability.")
 
   cat(x)
 } # END stock_status_text
@@ -181,10 +177,11 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   PBTGtLRP <- ifelse(parTab$PBTGtLRP > .99, .99, parTab$PBTGtLRP)
 
   x <- paste0( "Spawning biomass in ", thisYr,
-    " $B_{2023}$ is estimated to be ", round(SB_T, 1),
+    " $B_{", thisYr, "}$ is estimated to be ", round(SB_T, 1),
     " kt (maximum likelihood estimate), and is equivalent to ",
     round(100*SB_T/B0, 1)," \\% of $SB_0$, as estimated by the estimation model.
-    Spawning biomass in 2024 is estimated to be above the LRP with a ", 100*PBTGtLRP , " \\% probability.")
+    Spawning biomass in ", thisYr,
+    " is estimated to be above the LRP with a ", 100*PBTGtLRP , " \\% probability.")
 
   cat(x)
 } # END curr_biomass_text
@@ -217,21 +214,13 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
 
   B0 <- round(B0,3)
   PBTGtLRP <- ifelse(parTab$PBTGtLRP > .99, .99, parTab$PBTGtLRP)
-# orig from Sam
-#  x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
-#    " $B_{", assessYr + 1,"}$ is estimated to be ", SB_forecast,
-#    " kt (maximum likelihood estimate; Table \\@ref(tab:TACtable)) where the
-#    stock status ($B_{", assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
-#    assessYr   + 1, " is forecast to be below the LRP of $0.3B_0$ (",
-#    round(0.3*B0), " kt) with a X\\% probability, in the absence of fishing
-#    (Table XX and Figure XX).")
 
   x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
       " $B_{", assessYr + 1,"}$ is estimated to be ", round(SB_forecast, 1),
       " kt (maximum likelihood estimate) with stock status of ($B_{",
       assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
       assessYr + 1, " is forecast to be below the LRP of $0.3B_0$ (",
-               round(0.3*B0, 1), " kt) with a ", 100 * (PBTGtLRP), " \\% probability in the , in the absence of fishing.")
+               round(0.3*B0, 1), " kt) with a ", 100 * (PBTGtLRP), " \\% probability in the absence of fishing.")
 
   cat(x)
 } # END proj_biomass_text
