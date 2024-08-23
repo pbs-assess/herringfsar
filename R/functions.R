@@ -197,6 +197,7 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
 #         lYear   = last year of model history
 #         B0      = Input B0 value. If NULL uses MP EM
 proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
+                                parTab = ensParTable,
                                 fYear = 1951,
                                 assessYr = assess_yr,
                                 B0 = NULL  )
@@ -215,7 +216,7 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
     B0 <- mpFit$repOpt$B0_p[1]
 
   B0 <- round(B0,3)
-
+  PBTGtLRP <- ifelse(parTab$PBTGtLRP > .99, .99, parTab$PBTGtLRP)
 # orig from Sam
 #  x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
 #    " $B_{", assessYr + 1,"}$ is estimated to be ", SB_forecast,
@@ -230,7 +231,7 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
       " kt (maximum likelihood estimate) with stock status of ($B_{",
       assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
       assessYr + 1, " is forecast to be below the LRP of $0.3B_0$ (",
-               round(0.3*B0, 1), " kt) with a ", 100 * (1), " \\% probability in the , in the absence of fishing.")
+               round(0.3*B0, 1), " kt) with a ", 100 * (PBTGtLRP), " \\% probability in the , in the absence of fishing.")
 
   cat(x)
 } # END proj_biomass_text
