@@ -162,6 +162,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 #         lYear   = last year of model history
 #         B0      = Input B0 value. If NULL uses MP EM
 curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
+                                parTab = ensParTable,
                                 fYear   = 1951,
                                 thisYr  = assess_yr,
                                 B0 = NULL  )
@@ -177,18 +178,19 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
     B0 <- mpFit$repOpt$B0_p[1]
 
   B0 <- round(B0,3)
+  PBTGtLRP <- ifelse(parTab$PBTGtLRP > .99, .99, parTab$PBTGtLRP)
 
   x <- paste0( "Spawning biomass in ", thisYr,
     " $B_{2023}$ is estimated to be ", round(SB_T, 1),
     " kt (maximum likelihood estimate), and is equivalent to ",
     round(100*SB_T/B0, 1)," \\% of $SB_0$, as estimated by the estimation model.
-    Spawning biomass in 2024 is estimated to be above the LRP with a ", 100 , " X\\% probability.")
+    Spawning biomass in 2024 is estimated to be above the LRP with a ", 100*PBTGtLRP , " \\% probability.")
 
   cat(x)
 } # END curr_biomass_text
 
 # proj_biomass_text()
-# Function to automate biomass forecast reporting from MP esitmation model
+# Function to automate biomass forecast reporting from MP estimation model
 # output. Currently works off MLEs.
 # Inputs: MPfit   = biomass history
 #         fYear   = first model year
