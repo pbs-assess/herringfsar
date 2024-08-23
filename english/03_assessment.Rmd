@@ -51,7 +51,7 @@ Finally, opposing fluctuations in estimated recruitment and natural mortality
 likely contribute to increased uncertainty in spawning biomass and 
 forecast biomass.
 
-#### Spawn biomass production {-}
+#### Spawn Biomass Production {-}
 
 Estimated spawning biomass production was high in 2019 and then declined each 
 of the next three year to 2023 (Figure \@ref(fig:indicators)F), despite spawning
@@ -66,11 +66,9 @@ Density dependence, where increased natural mortality is associated with smaller
 levels of biomass, models ecosystem effects such as the increased percentage of 
 natural mortality in the event of lower biomass, consistent with predator consumption. 
 
-### History of [Management; Landings/Harvest/Effort, TAC \& Catch Advice] {-}
-
-STOPPED HERE
-
-[Mandatory. make this short & ] 
+<!--### History of Management Decisions,; Landings/Harvest/Effort, TAC \& Catch Advice] {-}-->
+### History of Management
+[Mandatory. make this short] 
 
 COVER:
 -20% hr IMPLEMENTED SINCE 1983
@@ -79,17 +77,15 @@ COVER:
 SINCE 2015 - cite past herringSR
 
 
-### Projections and MP Outputs for 2025 {-#sec:projections}
+### Projections {-#sec:projections}
 
--JC: explain the process under new MSE
-REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024, 2025,
-AND 2026 ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
+-JC: explain the process under full MSE
+REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024 and 2025,
+ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
 ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
 PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
 
 #### Interim Year Update for 2024 {-}
-<!-- TODO (Sam): please create current year statement function using the estimation model for 2024.
-"Estimated spawning biomass $SB_{2024}$ is 90.23 kt in 2024, and is equivalent to 87.2 \\% of $SB_0$ (Tables XX & XX). Spawning biomass in 2024 is estimated to be above the LRP with a 99 \\% probability (Table XX)." -->
 
 ```{r, current_year_statement, echo = FALSE, warnings = FALSE, results = "asis" }
 curr_biomass_text(  mpFit   = fit_maxTHR0.14,
@@ -98,9 +94,9 @@ curr_biomass_text(  mpFit   = fit_maxTHR0.14,
                     B0 = NULL  )
 ```
 
-#### MP {-}
+#### Application of MP for 2025 {-}
 
-HERRING MPs COMPRISE THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
+HERRING MPs HAVE THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
 
 MPS THAT WE CONSIDER DIFFER ONLY BY SHAPE OF HCR (point to Figure \@ref(fig:plotHCRules) )
 
@@ -113,46 +109,7 @@ that is compliant with both the “DFO Sustainable Fisheries Framework” policy
 WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP...
 
 
-<!-- TODO: define three generations == 15-years
-
-
-#### Interim Year Updates {-}
-
-<!-- TODO (Sam): pls show us where to find these variable names so we can add auto-text
-
-SDNJ: For below variables:
-tIdx = 64 for 2024
-tIdx = 65 for 2025
-
-You could also use
-
-thisYrIdx <- assess_yr - 1951 + 1
-nextYrIdx <- thisYrIdx + 1
-
-B_2024 = fit_maxTHR0.14$repOpt$SB_pt[1,64]
-B_2025 = fit_maxTHR0.14$repOpt$SB_pt[1,65]
-
-B0 = fit_maxTHR0.14$repOpt$B0_p[1]
-
-If you look want to find more stuff, follow the calcTAC() function in 
-R/functions.R
-
-I also already created a proj_biomass_text() function that did this,
-you can edit it in R/functions.
-
-JC: Sam to show us this.
-
--->
-
--JC: STATE THE EM STATUS FOR 2024
--Bt_2024 
--Bt_2024/Bo
--Bt_2025
--Bt_2025/Bo
-
 ```{r, forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
-# TODO: (SAM) Please make this look pretty.
-# DONE!
 proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     fYear = 1951, 
                     assessYr = assess_yr,

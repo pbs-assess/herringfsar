@@ -155,7 +155,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 } # END stock_status_text
 
 # curr_biomass_text()
-# Function to automate biomass forecast reporting from MP esitmation model
+# Function to automate biomass forecast reporting from MP estimation model
 # output. Currently works off MLEs.
 # Inputs: MPfit   = biomass history
 #         fYear   = first model year
@@ -181,7 +181,8 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   x <- paste0( "Spawning biomass in ", thisYr,
     " $B_{", thisYr,"}$ is estimated to be ", SB_T,
     " kt (maximum likelihood estimate), and is equivalent to ",
-    round(100*SB_T/B0, 1)," \\% of $SB_0$, as estimated by the EM (Tables XX and YY). Spawning biomass in 2024 is estimated to be above the LRP (Table XX).")
+    round(100*SB_T/B0, 1)," \\% of $SB_0$, as estimated by the estimation model.
+    Spawning biomass in 2024 is estimated to be above the LRP with a X% probability.")
 
   cat(x)
 } # END curr_biomass_text
@@ -214,13 +215,21 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
 
   B0 <- round(B0,3)
 
+# orig from Sam
+#  x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
+#    " $B_{", assessYr + 1,"}$ is estimated to be ", SB_forecast,
+#    " kt (maximum likelihood estimate; Table \\@ref(tab:TACtable)) where the
+#    stock status ($B_{", assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
+#    assessYr   + 1, " is forecast to be below the LRP of $0.3B_0$ (",
+#    round(0.3*B0), " kt) with a X\\% probability, in the absence of fishing
+#    (Table XX and Figure XX).")
+
   x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
-    " $B_{", assessYr + 1,"}$ is estimated to be ", SB_forecast,
-    " kt (maximum likelihood estimate; Table \\@ref(tab:TACtable)) where the
-    stock status ($B_{", assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
-    assessYr   + 1, " is forecast to be below the LRP of $0.3B_0$ (",
-    round(0.3*B0), " kt) with a X\\% probability, in the absence of fishing
-    (Table XX and Figure XX).")
+      " $B_{", assessYr + 1,"}$ is estimated to be ", SB_forecast,
+      " kt (maximum likelihood estimate) with stock status of ($B_{",
+      assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". Spawning biomass in ",
+      assessYr + 1, " is forecast to be below the LRP of $0.3B_0$ (",
+               round(0.3*B0), " kt) with a X\\% probability, in the absence of fishing.")
 
   cat(x)
 } # END proj_biomass_text

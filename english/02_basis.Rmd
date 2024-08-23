@@ -184,7 +184,7 @@ MSE we are using simulations to select a MP tuned directly to the
 conservation objective
 (which implements harvest rates more conservative than $U_{MSY}$).
 
-#### Habitat or Ecosystem Reference Points {-}
+#### Ecosystem Reference Points {-}
 
 Ecosystem reference points are incorporated into
 the conservation objective for Herring through:
@@ -199,7 +199,7 @@ approximately 0.7$B_{MSY}$ (Appendix [A](#sec:app-a)).
 2. Incorporating density dependent mortality to account for predation mortality,
 fully representing the trophic level of Herring as a forage species.
 
-### Fishery management objectives {-#sec:fish-mgmt-objs}
+### Fishery Management Objectives {-#sec:fish-mgmt-objs}
 
 A core set of fisheries management objectives [@dfo2019c]
 was introduced to the Pacific Herring MSE process in 2019.
@@ -311,5 +311,5 @@ The survey index is made up of two classes of surveys, surface
 and dive. Combining the surveys into a blended index properly accounts for 
 years in which these survey types co-occur and is a feature 
 of the new SISCAH model.
-SoG data are described in full in the [2024 SoG data summary report]
+SoG data are described in full in the 2024 SoG data summary report
 (https://github.com/grinnellm/Reports/blob/master/Summaries/2024/DataSummary.SoG.2024.pdf).
