@@ -277,15 +277,14 @@ plotHCRules(  LCP_i = c(.3,.3,.172),
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
-For each interim year, stock status 
-is estimated using the estimation model component of the MP. 
-This estimate plus the new data (survey index and realized catch) are 
+For each interim year the realized catch, and 
+estimation-model-derived spawning biomass, are 
 compared to the simulation envelopes from the ensemble model.
 Exceptional circumstances are determined 
-by visually comparing survey index and catch estimates for the new year
+by visually comparing these three values for the new year
 with the central 95\% of the ensemble operating model simulations.
 Any unusual deviations from the ensemble model projections would be 
-investigated in detail and consideration given to refitting operating models.
+investigated and consideration given to refitting operating models.
 For example, if the previous year's realized catch far exceeds the TAC 
 prescribed by the MP or if the survey index is far below the projected index.
 
