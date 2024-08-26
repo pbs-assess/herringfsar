@@ -3,8 +3,8 @@
 
 ### Assessment Details {-}
 
-This report presents science advice for the Pacific Herring Strait of Georgia 
-(SoG) stock assessment region, which is one of the 
+The Pacific Herring Strait of Georgia 
+(SoG) stock assessment region, is one of the 
 `r number_to_word(length(major_regions_short))` major stock areas; the other 
 major and the `r number_to_word(length(minor_regions_short))` minor stock
 areas are presented in [@dfo2024bInPrep, In Prep.].
@@ -110,10 +110,8 @@ objective.
 <!--[reference to a Research Document or other publication, and/or footnote to the working paper] -->
 <!--[Mandatory. Maximum length 150 words.]-->
 
-SoG Herring is one of five major Pacific Herring stocks managed in British Columbia. 
-The other major and minor stocks are described in [@dfo2024].
-The SoG stock spawns primarily in March, over multiple locations 
-and with variable timing.
+SoG Herring is one of five major BC Pacific Herring stocks [@dfo2024].
+The SoG stock spawns primarily in March, over multiple locations with variable timing.
 Details of spawn timing and locations are described in the
 [2024 SoG data summary report](https://github.com/grinnellm/Reports/blob/master/Summaries/2024/DataSummary.SoG.2024.pdf).
 Post spawning, mature SoG Herring
@@ -133,7 +131,6 @@ These include fractions of $B_0$ (unfished spawning biomass) and $B_{MSY}$ (biom
 maximum sustainable yield). 
 Figure \@ref(fig:yieldSSBcurve) shows relative position of biological reference
 points for SISCAH operating model 1 (OM 1, Appendix [A](#sec:app-a)),
-
 
 ```{r yieldSSBcurve, echo = FALSE, fig.cap = yieldSSBcap}
 yieldSSBcap <- "Strait of Georgia Herring operating model 1 (OM 1) equilibrium yield curve with respect to spawning stock biomass. The horizontal dashed line indicates OM1's estimate of maximum sustainable yield ($MSY$), while vertical line segments show biomass reference points including, from right to left, unfished biomass ($B_0$), the provisional upper stock reference (USR= 0.8$B_{1998:2007}$), optimal biomass producing $MSY$ on average ($B_{MSY}$), default USR from the DFO policy (80\\% of $B_{MSY}$), the Herring limit reference point (LRP= 0.3$B_0$), and the default LRP from the DFO policy ($0.4 B_{MSY}$)."
