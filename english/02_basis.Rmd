@@ -196,18 +196,14 @@ fully representing the trophic level of Herring as a forage species.
 
 ### Fishery Management Objectives {-#sec:fish-mgmt-objs}
 
-A core set of fisheries management objectives [@dfo2019c]
-was introduced to the Pacific Herring MSE process in 2019.
-The first of these is a conservation objective which is centered on
-the LRP.
+The first and core of the fisheries management objectives [@dfo2019c] i
+s centred on the LRP and labelled the conservation objective:
 
 1. Maintain spawning biomass at or above the LRP with
 at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$).
 
-Three additional proposed objectives are used as performance metrics
-for MP evaluation.
-These are:
+Three additional objectives are used for MP evaluation:
 
 2. Maintain spawning biomass at or above the USR with at least 50% 
 probability over three Pacific Herring generations (i.e., achieve a 
@@ -220,9 +216,9 @@ $\text{AAV} < 0.25$), and
 4. Maximize average annual catch over three Pacific Herring 
 generations (i.e., maximize average catch).
 
-DFO continues to collaborate with coastal First Nations to develop 
+DFO collaborates with coastal First Nations to develop 
 area-specific objectives for Indigenous fisheries and 
-engage with the Herring industry, government and non-government 
+engage with the Herring industry, government, and non-government 
 organizations to describe broader objectives related to conservation, 
 economics, and access.
 
