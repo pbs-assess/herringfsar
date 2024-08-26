@@ -73,7 +73,7 @@ Secondly, while predators, prey and other ecosystem indicators are not directly
 incorporated into models, they are modelled implicitly via time varying natural 
 mortality and recruitment. The new density dependant mortality feature
 deepens the modelling of underpinning ecosystem interactions.
-Thirdly, B.C. Pacific Herring are managed as 5 regional stocks such that stock specific 
+Thirdly, BC Pacific Herring are managed as 5 regional stocks such that stock specific 
 life history, abundance, and pressures are fed into the models. 
 Fourthly, candidate USRs [@dfo2022a] have been introduced to the MSE process and IFMP.
 Ongoing research incorporating spatial, and other ecosystem indicators highlights

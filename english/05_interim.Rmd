@@ -3,7 +3,7 @@
 Once a harvest control rule is chosen through the management strategy evaluation 
 process, that harvest control rule stays in place until the next round of MSE
 occurs.
-For Pacific Herring in B.C. that is 3 years or more. 
+For Pacific Herring in BC that is 3 years or more. 
 In the intervening years an estimate of biomass and biomass depletion
 is obtained to use with the harvest control rule.
 In our case it is the less computationally intensive DIM SISCAH model.
