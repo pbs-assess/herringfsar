@@ -82,14 +82,11 @@ Summary of recent research can be found in [@dfo2024].
 
 <!--### History of Management Decisions,; Landings/Harvest/Effort, TAC \& Catch Advice] {-}-->
 ### History of Management {-}
-[Mandatory. make this short] 
 
-COVER:
--20% hr IMPLEMENTED SINCE 1983
--POINT READER TO THE 6 PANEL FIGURE
--MENTION SIMULATION TESTING OF MPs FOR SoG HAS BEEN ONGOING 
-SINCE 2015 - cite past herringSR
-
+Since 1983 a maximal harvest rate of 20% has been implemented. The estimated 
+harvest rate has mostly hovered below this rate since then with a few dips,
+including those of the past few years (Figure \@ref(fig:indicators), panel D).
+Since 2015 harvest rates have been supported by MP simulation testing.
 
 ### Projections {-#sec:projections}
 
