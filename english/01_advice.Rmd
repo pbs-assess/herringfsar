@@ -14,6 +14,7 @@ See: https://086gc.sharepoint.com/:w:/r/sites/FSARPilotImplementation2023-2024/_
 
 ::: {custom-style="fsar-bullet"}
 The Strait of Georgia (SoG) major stock assessment region (SAR) is healthy.
+
 Biomass above candidate Upper Stock Reference (USR.)
 :::
 
@@ -21,6 +22,7 @@ Biomass above candidate Upper Stock Reference (USR.)
 
 ::: {custom-style="fsar-bullet"}
 Biomass declining from one of the 6th highest peaks since 1950. 
+
 Biomass above candidate USR and established Limit Reference Point (LRP).
 :::
 
@@ -28,7 +30,9 @@ Biomass above candidate USR and established Limit Reference Point (LRP).
 
 ::: {custom-style="fsar-bullet"}
 High LRP = 0.3*(Spawning Biomass)
+
 Time-varying recruitment and density dependant mortality to represent predator, prey, and ecosystem dynamics.
+
 Stocks managed and modelled with regional life-history, and ecosystem pressures.
 :::
 
