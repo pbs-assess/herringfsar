@@ -35,7 +35,9 @@ Stocks managed and modelled with regional life-history, and ecosystem pressures.
 ### Stock Advice {-}
 
 ::: {custom-style="fsar-bullet"}
-Maximum 14% harvest rate with hockey stick ramp recommended. 
+Maximum 14\% target harvest rate ($maxTHR$) with hockey stick ramp with lower and upper control 
+points at 30\% and 60\% of unfished spawning biomass 
+(green solid line, Figure \@ref(fig:plotHCRules)).
 :::
 
 <!--
