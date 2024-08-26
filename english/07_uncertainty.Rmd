@@ -1,8 +1,10 @@
 ## SOURCES OF UNCERTAINTY {-}
+<!--[Mandatory.Maximum length 500 words.] -->
+Sources of uncertainty include those surrounding both the data and the model 
+estimations. That being said models are built on a data rich environment 
+and uncertainty is accounted for in the model.
 
-[Mandatory.
-Maximum length 500 words.]
-
+<!--
 ### Research Recommendations {-}
-
 [Optional (otherwise, do not include).] 
+-->
