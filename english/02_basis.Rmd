@@ -173,16 +173,11 @@ additional consultations and thus a TRP has not been defined.
 
 #### Removal Reference (RR) {-}
 
+Currently we do not specify an additional RR for SoG Herring because we select a MP 
+that meets the conservation objective, avoids the LRP with high probability 
+and whose harvest rate is more conservative than $U_{MSY}$).
 The default maximum RR for commercially harvested fish stocks is
 $F_{MSY}$ [@dfo2009, @dfo2013].
-All MPs presented for Pacific Herring stocks that are shown in simulation to 
-avoid the LRP with high probability, and thus meet the conservation objective,
-include maximum target harvest rates below $U_{MSY}$.
-
-Currently we do not specify an additional RR for SoG Herring because with 
-MSE we are using simulations to select a MP tuned directly to the 
-conservation objective
-(which implements harvest rates more conservative than $U_{MSY}$).
 
 #### Ecosystem Reference Points {-}
 
