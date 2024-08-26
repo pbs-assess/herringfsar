@@ -1,46 +1,47 @@
 ## SCIENCE ADVICE {-}
 
+<!--
 [Mandatory.
 Maximum length 500 words.
 Include summary bullets of the following factors affecting the stock
 that are relevant for decision-making.
 Please refer to the Guidance Document for standardized language and examples,
 and what to avoid in this section.] 
-
-
 See: https://086gc.sharepoint.com/:w:/r/sites/FSARPilotImplementation2023-2024/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B7d2455b6-7b5b-41c7-81eb-07b15e270b97%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724309068814&web=1
-
+-->
 
 ### Status {-}
 
 ::: {custom-style="fsar-bullet"}
-[The Strait of Georgia (SoG) major stock assessment region (SAR) is healthy.]
+The Strait of Georgia (SoG) major stock assessment region (SAR) is healthy.
+Biomass above candidate Upper Stock Reference (USR.)
 :::
-
-TODO: define the term SAR here
 
 ### Trends {-}
 
 ::: {custom-style="fsar-bullet"}
-[Mandatory bullet(s)] 
+Biomass declining from one of the 6th highest peaks since 1950. 
+Biomass above candidate USR and established Limit Reference Point (LRP).
 :::
 
 ### Ecosystem and Climate Change Considerations {-}
 
 ::: {custom-style="fsar-bullet"}
-[Mandatory bullet(s)]
+High LRP = 0.3*(Spawning Biomass)
+Time-varying recruitment and density dependant mortality to represent predator, prey, and ecosystem dynamics.
+Stocks managed and modelled with regional life-history, and ecosystem pressures.
 :::
-
-TODO: include DDM here and mention other (HG) EAFM work
 
 ### Stock Advice {-}
 
 ::: {custom-style="fsar-bullet"}
-[Mandatory bullet(s)] 
+Maximum 14% harvest rate with hockey stick ramp recommended. 
 :::
 
+<!--
 ### Other Management Questions [if applicable, otherwise do not include] {-}
 
 ::: {custom-style="fsar-bullet"}
 [Other bullets if applicable]
 :::
+-->
