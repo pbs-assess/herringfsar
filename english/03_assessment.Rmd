@@ -71,7 +71,7 @@ The higher LRP allows for a certain amount of herring to remain for predators, s
 salmon and whales.
 Secondly, while predators, prey and other ecosystem indicators are not directly 
 incorporated into models, they are modelled implicitly via time varying natural 
-mortality and recruitment. The new density dependant mortality feature
+mortality and recruitment. The new density dependent mortality feature
 deepens the modelling of underpinning ecosystem interactions.
 Thirdly, BC Pacific Herring are managed as 5 regional stocks such that stock specific 
 life history, abundance, and pressures are fed into the models. 
@@ -83,10 +83,11 @@ Summary of recent research can be found in [@dfo2024].
 <!--### History of Management Decisions,; Landings/Harvest/Effort, TAC \& Catch Advice] {-}-->
 ### History of Management {-}
 
-Since 1983 a maximal harvest rate of 20% has been implemented. The estimated 
+Since 1983 a maximal harvest rate of 20% has been implemented. The realized 
 harvest rate has mostly hovered below this rate since then with a few dips,
 including those of the past few years (Figure \@ref(fig:indicators), panel D).
-Since 2015 harvest rates have been supported by MP simulation testing.
+Since 2015 the selection of annual harvest rates has been informed by 
+MP simulation testing.
 
 ### Projections {-#sec:projections}
 
