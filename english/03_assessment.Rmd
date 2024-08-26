@@ -133,7 +133,9 @@ proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     B0 = NULL  )
 ```
 
-### Harvest Decision Rule Outputs {-}
+TODO: This is shown graphically in Figure 4.
+
+<!-- ### Harvest Decision Rule Outputs {-}-->
 
 ```{r, TACtable, echo = FALSE, warnings = FALSE, eval = FALSE}
 
