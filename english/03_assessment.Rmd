@@ -63,24 +63,23 @@ JC: not including because not talking about RR-->
 ### Ecosystem and Climate Change Considerations {-}
 
 Ecosystem considerations are taken into account in the model in a number of ways.
-Firstly, Pacific Herring in BC are managed regionally as 5 major stocks, 
-taking into account
-stock specific life history, abundance, and pressures that feed into the models. 
-Secondly, the biological LRP is set to a higher value compared to those
-recommended in [@dfo2009] and above the recommendation of 0.5$B_{MSY}$ 
+Firstly, and different than most fisheries, the biological LRP is set to a 
+higher value than those in [@dfo2009] and the 0.5$B_{MSY}$ from
 [@shelton2008], due to mid-trophic level (middle-of-the-food-chain) nature of 
 Herring which likely drives observed high variability in Herring productivity.
 This allows for a certain amount of herring to remain for predators, such as
 salmon and whales.
-Thirdly, while these ecosystem indicators, such as predators, prey and other
-environmental pressures are not directly incorporated into the 
-assessment model they are modelled implicitly via time varying natural mortality 
-and recruitment. 
-Fourthly, [@dfo2022a] introduce a process for evaluating five different USR 
-points as candidate biomass target objectives for Pacific Herring and these are
-considered in the MSE process and in development of the IFMP.
+Secondly, while predators, prey and other ecosystem indicators are not directly 
+incorporated into models, they are modelled implicitly via time varying natural 
+mortality and recruitment. The new density dependant mortality feature likely 
+models underpinning ecosystem interactions.
+Thirdly, Pacific Herring in BC are managed regionally as 5 major stocks, 
+taking into account stock specific life history, abundance, 
+and pressures that feed into the models. 
+Fourthly, candidate USR biomass target objectives in [@dfo2022a] have been
+introduced to the MSE process and IFMP.
 Incorporating spatial, and other ecosystem indicators is an area of ongoing 
-research for Pacific Herring.DFO is committed to an ecosystem approach to 
+research for Pacific Herring. DFO is committed to an ecosystem approach to 
 fisheries management and provides further summary of recent research 
 in [@dfo2024].
 
