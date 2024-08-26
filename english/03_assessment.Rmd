@@ -65,23 +65,20 @@ JC: not including because not talking about RR-->
 Ecosystem considerations are taken into account in the model in a number of ways.
 Firstly, and different than most fisheries, the biological LRP is set to a 
 higher value than those in [@dfo2009] and the 0.5$B_{MSY}$ from
-[@shelton2008], due to mid-trophic level (middle-of-the-food-chain) nature of 
+[@shelton2008]. This is due to the middle-of-the-food-chain nature of 
 Herring which likely drives observed high variability in Herring productivity.
-This allows for a certain amount of herring to remain for predators, such as
+The higher LRP allows for a certain amount of herring to remain for predators, such as
 salmon and whales.
 Secondly, while predators, prey and other ecosystem indicators are not directly 
 incorporated into models, they are modelled implicitly via time varying natural 
-mortality and recruitment. The new density dependant mortality feature likely 
-models underpinning ecosystem interactions.
-Thirdly, Pacific Herring in BC are managed regionally as 5 major stocks, 
-taking into account stock specific life history, abundance, 
-and pressures that feed into the models. 
-Fourthly, candidate USR biomass target objectives in [@dfo2022a] have been
-introduced to the MSE process and IFMP.
-Incorporating spatial, and other ecosystem indicators is an area of ongoing 
-research for Pacific Herring. DFO is committed to an ecosystem approach to 
-fisheries management and provides further summary of recent research 
-in [@dfo2024].
+mortality and recruitment. The new density dependant mortality feature
+deepens the modelling of underpinning ecosystem interactions.
+Thirdly, B.C. Pacific Herring are managed as 5 regional stocks such that stock specific 
+life history, abundance, and pressures are fed into the models. 
+Fourthly, candidate USRs [@dfo2022a] have been introduced to the MSE process and IFMP.
+Ongoing research incorporating spatial, and other ecosystem indicators highlights
+DFO's commitment to an ecosystem approach to fisheries management.
+Summary of recent research can be found in [@dfo2024].
 
 <!--### History of Management Decisions,; Landings/Harvest/Effort, TAC \& Catch Advice] {-}-->
 ### History of Management {-}
@@ -113,17 +110,21 @@ curr_biomass_text(  mpFit   = fit_maxTHR0.14,
 
 #### Application of MP for 2025 {-}
 
-HERRING MPs HAVE THREE COMPONENTS: DATA, ESTIMATION MODEL, HARVEST CONTROL RULE
+<!-- Simulation of the management procedures has two components that are held constant:
+the data and the estimation model, and the the third component which we vary: 
+the management procedure (harvest control rule).  
+I think we can do without the above sentence SP -->
 
-MPS THAT WE CONSIDER DIFFER ONLY BY SHAPE OF HCR (point to Figure \@ref(fig:plotHCRules) )
-
-We simulation tested three MPs with hockey-stick shaped harvest control rules (#refSecThisDoc)
-and present performance indicators for the MP tuned to meet the conservation objective and
-that is compliant with both the “DFO Sustainable Fisheries Framework” policy and 
+We simulation tested MPs with hockey-stick shaped harvest control rules 
+(\@ref(fig:plotHCRules)) The MP with a maximum 14% harvest rate 
+meets the conservation objective and
+is compliant with both the “DFO Sustainable Fisheries Framework” policy and 
+the "Precautionary Approach" (#refs, #refLinkCSASTOR). We recommend management keep this in mind
+in their consultations.
+<!--
 “A fishery decision-making framework incorporating the Precautionary Approach” policy
 (as per the Terms of Reference (#refLinkCSASTOR)).
-
-WE USE THE CONSERVATION OBJECTIVE AS THE MIN THRESHOLD FOR ACCEPTABLE MP...
+-->
 
 
 ```{r, forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
