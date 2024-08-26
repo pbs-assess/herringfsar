@@ -4,13 +4,13 @@
 The list is to include the name of each participant and their affiliation.]
 -->
 
-Meeting participants included the DFO staff on the committee: 
-Jaclyn Cleary
-Jessica Finney,
-Sarah Hawkshaw (reviewer),
-Roger Kanno,
-Marisa Keefe,
-Miriam O, 
-Sarah Power,
-Chris Rooper, 
-and Bryan Rusch.  
+Names                       Affiliation
+Jaclyn Cleary               DFO - Science
+Jessica Finney,             DFO
+Sarah Hawkshaw,             DFO - Science
+Roger Kanno,                DFO
+Marisa Keefe,               DFO - Resource Management
+Miriam O,                   DFO
+Sarah Power,                DFO - Science
+Chris Rooper,               DFO - Science 
+Bryan Rusch.                DFO - Resource Management  
