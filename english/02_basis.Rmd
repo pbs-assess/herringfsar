@@ -200,7 +200,7 @@ s centred on the LRP and labelled the conservation objective:
 at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$).
 
-Three additional objectives are used for MP evaluation:
+Three additional objectives are presented for MP evaluation:
 
 2. Maintain spawning biomass at or above the USR with at least 50% 
 probability over three Pacific Herring generations (i.e., achieve a 
@@ -274,7 +274,7 @@ plotHCRules(  LCP_i = c(.3,.3,.172),
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
-For each interim year the realized catch, and 
+For each interim year the realized catch, survey index, and 
 estimation-model-derived spawning biomass, are 
 compared to the simulation envelopes from the ensemble model.
 Exceptional circumstances are determined 
