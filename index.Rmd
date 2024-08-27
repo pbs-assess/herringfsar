@@ -192,7 +192,8 @@ usePosts      <- blob$ctlList$opMod$posteriorSamples
 
 # Load MP application fit report
 fit_maxTHR0.14 <- readRDS("data/fit_maxTHR0.14/fit_maxTHR0.14.rds")
-
+mpFitList <- list(fit_maxTHR0.14)
+names(mpFitList) <- MPname
 
 # Load ref pts and ensemble parameters
 # SOG ref pts, weighted average from 2023 operating model grid
@@ -209,7 +210,7 @@ ensParTable <- read.csv("data/ensOM_meanPars.csv") |>
 
 ```{r scripts}
 # Files
-source(here("R", "functions.R"))
+
 source(here("R", "variables.R"))
 source(here("R", "figures.R"))
 source(here("R", "themes.R"))

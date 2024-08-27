@@ -137,11 +137,11 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
   B0 <- round(refPtsTab$B0,3)
 
   x <- paste0( "The estimated spawning biomass in ", lYear, " is ", round(SB_T,1),
-               " kt (weighted posterior median), the unfished spawning biomass $B_0$ is ",
-               B0, " and the stock status ($B_{", lYear, "}$/$B_0$) is ",
+               " kt, the unfished spawning biomass $B_0$ is ",
+               B0, ", and the stock status $\\left( B_{", lYear, "}/B_0\\right)$ is ",
                round(parTab$DT,3), " (weighted posterior medians). Spawning biomass in ", 
                lYear, " is estimated to be above the LRP with a ",
-               100 * PBTGtLRP, "\\% probability.")
+               100 * PBTGtLRP, "\\% probability in each of the 5 OMs.")
 
   cat(x)
 } # END stock_status_text
@@ -183,7 +183,7 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
 
   x <- paste0( "For ", thisYr,
     " the estimation model estimates spawning biomass $\\hat{B}_{",
-    thisYr,"}$ = ", amSB_T, " kt (maximum likelihood estimate), which is
+    thisYr,"} = ", amSB_T, "$ kt (maximum likelihood estimate), which is
     above the operating model LRP and USR of ", round(0.3*omB0,1)," kt
     and ", omBusr," kt, respectively.")
 
@@ -201,7 +201,9 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
                                 parTab = ensParTable,
                                 fYear = 1951,
                                 assessYr = assess_yr,
-                                B0 = NULL  )
+                                B0 = NULL,
+                                TAC = 11.568,
+                                targHR = 0.14  )
 {
 
   yrs <- fYear:(assessYr + 1)
@@ -219,12 +221,14 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
   PBTGtLRP <- ifelse(parTab$PBTGtLRP > .99, .99, parTab$PBTGtLRP)
 
   x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
-      " , $B_{", assessYr + 1,"}$ is estimated to be ", round(SB_forecast, 1),
-      " kt (maximum likelihood estimate), with a stock status of ($B_{",
-      assessYr + 1,"}$/$B_0$) = ", round(SB_forecast/B0, 2)," , in the absence of fishing.
-      Because the spawning biomass is well above the harvest control rule's upper control point of
-      $0.6 B_0$, the maximum target harvest rate of 14\\% can be applied in MP.
-      This would result in a total allowable catch of       .") #TODO (Sam): add quota
+      " is estimated to be $\\hat{B}_{", assessYr + 1,"} = ", round(SB_forecast, 1),
+      "$ kt (maximum likelihood estimate), with a stock status of $\\left( B_{",
+      assessYr + 1,"}/B_0 \\right) = ", round(SB_forecast/B0, 2),
+      "$. Given that the spawning biomass is above the harvest control rule's ", 
+      "upper control point of $0.6 B_0$, the maximum target harvest rate of ", 
+      100*THR, 
+      "\\% can be applied in MP, resulting in a total allowable catch of ", 
+      round(TAC,2), " kt.") #TODO (Sam): add quota
 
   cat(x)
 } # END proj_biomass_text
