@@ -28,7 +28,6 @@ baseplot_indicators(dat = true_dat)
 ```{r OM_stock_status, echo = FALSE, results = "asis"}
 stock_status_text(  refPtsTab = ensRefPtsTable,
                     parTab = ensParTable,
-                    history = mpBlobList[[MPname]],
                     fYear = 1951, lYear = MSE_yr )
 ```
 

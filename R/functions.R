@@ -125,27 +125,23 @@ calcTAC <- function(  repList = reports,
 #         lYear     = last year of history for stock status
 stock_status_text <- function(  refPtsTab = ensRefPtsTable,
                                 parTab = ensParTable,
-                                history = mpBlobList[[MPname]],
                                 fYear = 1951, lYear = 2023  )
 {
   yrs <- fYear:lYear
   lastTdx <- length(yrs)
-  goodReps <- history$goodReps
-  SB_t <- apply(history$om$SB_ispt[goodReps,1,1,], FUN = median, MARGIN = 2)
-  SB_T <- round(SB_t[lastTdx],3)
-  SB_Tm1 <- round(SB_t[lastTdx-1],3)
+  
+  SB_T <- round(parTab$BT,3)
 
   PBTGtLRP <- parTab$PBTGtLRP
 
   B0 <- round(refPtsTab$B0,3)
 
-  x <- paste0( "The estimated spawning biomass in ", lYear, " is ", round(SB_Tm1,1),
-               " kt (posterior medians), the unfished spawning biomass $B_0$ is ",
-               B0,
-               " and the stock status ($B_{", lYear, "}$/$B_0$) is ",
-               100 * round(SB_T/B0,3), " kt (posterior medians). Spawning
-               biomass in ", lYear, " is estimated to be above the LRP with a ",
-               100 * PBTGtLRP, " \\% probability.")
+  x <- paste0( "The estimated spawning biomass in ", lYear, " is ", round(SB_T,1),
+               " kt (weighted posterior median), the unfished spawning biomass $B_0$ is ",
+               B0, " and the stock status ($B_{", lYear, "}$/$B_0$) is ",
+               round(parTab$DT,3), " (weighted posterior medians). Spawning biomass in ", 
+               lYear, " is estimated to be above the LRP with a ",
+               100 * PBTGtLRP, "\\% probability.")
 
   cat(x)
 } # END stock_status_text
@@ -159,7 +155,6 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 #         B0      = Input B0 value. If NULL uses MP EM
 curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
                                 parTab  = ensParTable,
-                                omHist  = mpBlobList[[MPname]],
                                 fYear   = 1951,
                                 thisYr  = assess_yr,
                                 MSEyr   = 2023,
@@ -167,15 +162,12 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
 {
 
   # Pull good replicates
-  goodReps  <- which(omHist$goodReps)
+  
+  omSB_MSEyr <- round(parTab$BT,1)
 
   yrs <- fYear:(thisYr)
   currTdx <- length(yrs)
-
-  mseTdx <- which(yrs == MSEyr)
-  omSB_t <- apply(omHist$om$SB_ispt[goodReps,1,1,], FUN = median, MARGIN = 2)
-  omSB_lastYear <- round(omSB_t[mseTdx],1)
-
+  
   amSB_t <- (mpFit$repOpt$SB_pt[1,])
   amSB_T <- round(amSB_t[currTdx],1)
 
@@ -188,9 +180,9 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   # The OM ensemble estimates the 2023 biomass to be above the LRP with XX probability and for 2024, the estimation model shows spawning biomass in 2024, B_2024, to be similar to that of 2023 and remains well above the LRP of (xx tonnes).
 
   x <- paste0( "The operating model ensemble estimates ", MSEyr,
-    " spawning biomass $B_{", MSEyr, "}$ to be ", omSB_lastYear, 
-    " kt, which is above the LRP with ", 100*PBTGtLRP , 
-    " \\% probability. For ", thisYr, 
+    " spawning biomass $B_{", MSEyr, "}$ to be ", omSB_MSEyr, 
+    " kt, which is above the LRP with ", 100*PBTGtLRP, 
+    "\\% probability. For ", thisYr, 
     " the estimation model estimates spawning biomass $\\hat{SB}_{", 
     thisYr,"} =", amSB_T, "$ kt (maximum likelihood estimate), which is similar to the operating model estimate of ", 
     MSEyr, " and therefore likely to be well above the LRP of ", round(0.3*B0,1), " kt.")
@@ -218,7 +210,6 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
   projTdx <- length(yrs)
 
   SB_t <- (mpFit$repOpt$SB_pt[1,])
-  SB_T <- round(SB_t[lastTdx],3)
   SB_forecast <- round(SB_t[projTdx],3)
 
   if(is.null(B0))
@@ -549,7 +540,6 @@ panLab <- function( x, y, txt, ... )
   }
   text( x, y, txt, ... )
   par( usr=usr )
-  return( NULL )
 }
 
 #panLab <- function( x, y, txt, ... )

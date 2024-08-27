@@ -1104,13 +1104,13 @@ plotSBtIdx <- function( repList = reports,
     }
 
     
-    text( x = years[nT - 7], y = c(.4,.3,.2,.1) * yMax,
-          labels = c( paste( "B0 = ",  B0, sep = ""),
-                      paste( "M0 = ", M0, sep = ""),
-                      paste( "qs = ",  round(qg[4],2), sep = ""),
-                      paste( "qd = ",  round(qg[5],2), sep = "")),
+    # text( x = years[nT - 7], y = c(.4,.3,.2,.1) * yMax,
+    #       labels = c( paste( "B0 = ",  B0, sep = ""),
+    #                   paste( "M0 = ", M0, sep = ""),
+    #                   paste( "qs = ",  round(qg[4],2), sep = ""),
+    #                   paste( "qd = ",  round(qg[5],2), sep = "")),
 
-          cex = .9 )
+    #       cex = .9 )
 } # END plotSBtIdx
 
 
