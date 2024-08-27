@@ -169,6 +169,7 @@ hcrCaption <- paste0(stock," Herring management procedure harvest control rule
 ```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 1.1}
 
 plotRule(repList = fit_maxTHR0.14)
+#TODO (Sam): pls make this work with MPname 
 
 ```
 
