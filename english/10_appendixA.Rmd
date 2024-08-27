@@ -81,7 +81,7 @@ current stock status relative to unfished biomass, and $MSY$ based reference poi
 postParTable <- read.csv("data/omGrid_postPars.csv")
 ensParTable <- read.csv("data/ensOM_meanPars.csv") |>
                 mutate_if(is.numeric,round,2) |>
-                mutate( PBTGtLRP = 0.99 )
+                mutate( PBTGtLRP = ifelse(PBTGtLRP > 0.99, 0.99, .) )
 
 parTable <- rbind(postParTable,ensParTable)
 parTable$X <- NULL

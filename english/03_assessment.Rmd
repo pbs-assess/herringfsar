@@ -103,6 +103,7 @@ PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
 curr_biomass_text(  mpFit   = fit_maxTHR0.14,
                     fYear   = 1951, 
                     thisYr  = assess_yr,
+                    MSEyr   = MSE_yr,
                     B0 = NULL  )
 ```
 
