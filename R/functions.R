@@ -118,7 +118,7 @@ calcTAC <- function(  repList = reports,
 # a table of ref pts and model output. Currently
 # works off MS3 blob, could be updated to work off
 # the weighted posterior as well.
-# Inputs: refPtsTab = table of ensemble model ref pts
+# Inputs: refPtsTab = table of ensemble model ref pts (subset from refPtsTable)
 #         parTab    = ensemble table of LH and other parameters
 #         history   = posterior biomass history
 #         fYear     = first model year
@@ -142,8 +142,8 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
   x <- paste0( "The estimated spawning biomass in ", lYear, " is ", round(SB_Tm1,1),
                " kt (posterior medians), the unfished spawning biomass $B_0$ is ",
                B0,
-               " and the stock status ($B_{", lYear, "}$/$B_0$) is ",
-               100 * round(SB_T/B0,3), " kt (posterior medians). Spawning
+               " kt (posterior medians), and the stock status ($B_{", lYear, "}$/$B_0$) is ",
+               round(SB_T/B0,1), ". Spawning
                biomass in ", lYear, " is estimated to be above the LRP with a ",
                100 * PBTGtLRP, " \\% probability.")
 
@@ -188,11 +188,11 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   # The OM ensemble estimates the 2023 biomass to be above the LRP with XX probability and for 2024, the estimation model shows spawning biomass in 2024, B_2024, to be similar to that of 2023 and remains well above the LRP of (xx tonnes).
 
   x <- paste0( "The operating model ensemble estimates ", MSEyr,
-    " spawning biomass $B_{", MSEyr, "}$ to be ", omSB_lastYear, 
-    " kt, which is above the LRP with ", 100*PBTGtLRP , 
-    " \\% probability. For ", thisYr, 
-    " the estimation model estimates spawning biomass $\\hat{SB}_{", 
-    thisYr,"} =", amSB_T, "$ kt (maximum likelihood estimate), which is similar to the operating model estimate of ", 
+    " spawning biomass $B_{", MSEyr, "}$ to be ", omSB_lastYear,
+    " kt, which is above the LRP with ", 100*PBTGtLRP ,
+    " \\% probability. For ", thisYr,
+    " the estimation model estimates spawning biomass $\\hat{SB}_{",
+    thisYr,"} =", amSB_T, "$ kt (maximum likelihood estimate), which is similar to the operating model estimate of ",
     MSEyr, " and therefore likely to be well above the LRP of ", round(0.3*B0,1), " kt.")
 
   cat(x)
