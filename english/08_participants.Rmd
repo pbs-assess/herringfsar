@@ -16,7 +16,7 @@ ParticipantTable <- tibble::tribble(
     "Jaclyn Cleary",  "DFO - Science",            "Author",
     "Jessica Finney", "DFO - Science",            "Plus group age-class",
     "Sarah Hawkshaw", "DFO - Science",            "Reviewer",
-    "Samuel Johnson", "Landmark Fishery Research" "Author"
+    "Samuel Johnson", "Landmark Fishery Research", "Author",
     "Roger Kanno",    "DFO - Science",            "Reviewer",
     "Marisa Keefe",   "DFO - Resource Management", "Reviewer",
     "Miriam O",       "DFO - Science",             "Reviewer",
