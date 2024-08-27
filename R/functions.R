@@ -139,11 +139,11 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 
   B0 <- round(refPtsTab$B0,3)
 
-  x <- paste0( "The estimated spawning biomass in ", lYear, " is ", round(SB_Tm1,1),
+  x <- paste0( "The estimated spawning biomass in ", lYear, " is ", round(SB_Tm1,2),
                " kt (posterior medians), the unfished spawning biomass $B_0$ is ",
                B0,
                " kt (posterior medians), and the stock status ($B_{", lYear, "}$/$B_0$) is ",
-               round(SB_T/B0,1), ". Spawning
+               round(SB_T/B0,2), ". Spawning
                biomass in ", lYear, " is estimated to be above the LRP with a ",
                100 * PBTGtLRP, " \\% probability.")
 
@@ -158,6 +158,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 #         lYear   = last year of model history
 #         B0      = Input B0 value. If NULL uses MP EM
 curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
+                                refPtsTab = ensRefPtsTable,
                                 parTab  = ensParTable,
                                 omHist  = mpBlobList[[MPname]],
                                 fYear   = 1951,
@@ -176,24 +177,23 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   omSB_t <- apply(omHist$om$SB_ispt[goodReps,1,1,], FUN = median, MARGIN = 2)
   omSB_lastYear <- round(omSB_t[mseTdx],1)
 
-  amSB_t <- (mpFit$repOpt$SB_pt[1,])
-  amSB_T <- round(amSB_t[currTdx],1)
+  amSB_t <- (mpFit$repOpt$SB_pt[1,])  #estimation model
+  amSB_T <- round(amSB_t[currTdx],2)  #estimation model
 
   if(is.null(B0))
-    B0 <- mpFit$repOpt$B0_p[1]
+    B0 <- mpFit$repOpt$B0_p[1]        #estimation model
 
   B0 <- round(B0,3)
   PBTGtLRP <- ifelse(parTab$PBTGtLRP > .99, .99, parTab$PBTGtLRP)
 
-  # The OM ensemble estimates the 2023 biomass to be above the LRP with XX probability and for 2024, the estimation model shows spawning biomass in 2024, B_2024, to be similar to that of 2023 and remains well above the LRP of (xx tonnes).
+  omB0 <- refPtsTab$B0
+  omBusr <- round(refPtsTab$Busr,2)
 
-  x <- paste0( "The operating model ensemble estimates ", MSEyr,
-    " spawning biomass $B_{", MSEyr, "}$ to be ", omSB_lastYear,
-    " kt, which is above the LRP with ", 100*PBTGtLRP ,
-    " \\% probability. For ", thisYr,
-    " the estimation model estimates spawning biomass $\\hat{SB}_{",
-    thisYr,"} =", amSB_T, "$ kt (maximum likelihood estimate), which is similar to the operating model estimate of ",
-    MSEyr, " and therefore likely to be well above the LRP of ", round(0.3*B0,1), " kt.")
+  x <- paste0( "For ", thisYr,
+    " the estimation model estimates spawning biomass $\\hat{B}_{",
+    thisYr,"}$ = ", amSB_T, " kt (maximum likelihood estimate), which is
+    above the operating model LRP and USR of ", round(0.3*omB0,1)," kt
+    and ", omBusr," kt, respectively.")
 
   cat(x)
 } # END curr_biomass_text
@@ -228,9 +228,12 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
   PBTGtLRP <- ifelse(parTab$PBTGtLRP > .99, .99, parTab$PBTGtLRP)
 
   x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
-      " $B_{", assessYr + 1,"}$ is estimated to be ", round(SB_forecast, 1),
-      " kt (maximum likelihood estimate), or equivalently ($B_{",
-      assessYr + 1,"}$/$B_0$)  is ", round(SB_forecast/B0, 2),". As a result, biomass is well above the harvest control rule's upper control point of $0.6 B_0$, and the maxmium target harvest rate of 14\\% is applied.")
+      " , $B_{", assessYr + 1,"}$ is estimated to be ", round(SB_forecast, 1),
+      " kt (maximum likelihood estimate), with a stock status of ($B_{",
+      assessYr + 1,"}$/$B_0$) = ", round(SB_forecast/B0, 2)," , in the absence of fishing.
+      Because the spawning biomass is well above the harvest control rule's upper control point of
+      $0.6 B_0$, the maximum target harvest rate of 14\\% can be applied in MP.
+      This would result in a total allowable catch of       .") #TODO (Sam): add quota
 
   cat(x)
 } # END proj_biomass_text
