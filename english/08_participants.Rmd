@@ -4,13 +4,38 @@
 The list is to include the name of each participant and their affiliation.]
 -->
 
-Names                       Affiliation
-Jaclyn Cleary               DFO - Science
-Jessica Finney,             DFO
-Sarah Hawkshaw,             DFO - Science
-Roger Kanno,                DFO
-Marisa Keefe,               DFO - Resource Management
-Miriam O,                   DFO
-Sarah Power,                DFO - Science
-Chris Rooper,               DFO - Science 
-Bryan Rusch.                DFO - Resource Management  
+
+```{r Participants, echo = FALSE, message = FALSE, warnings = FALSE}
+
+options(knitr.kable.NA = "")
+
+ParticipantTableCap <- "Participants"
+
+ParticipantTable <- tibble::tribble( 
+    ~Name,            ~Affiliation,                ~Role,
+    "Jaclyn Cleary",  "DFO - Science",            "Authour",
+    "Jessica Finney", "DFO - Science",            "Plus group age-class",
+    "Sarah Hawkshaw", "DFO - Science",            "Reviewer",
+    "Roger Kanno",    "DFO - Science",            "Reviewer",
+    "Marisa Keefe",   "DFO - Resource Management", "Reviewer",
+    "Miriam O",       "DFO - Science",             "Reviewer",
+    "Sarah Power",    "DFO - Science",             "Reviewer",   
+    "Chris Rooper",   "DFO - Science",             "Reviewer",
+    "Bryan Rusch",    "DFO - Resource Management", "Reviewer",
+)
+
+
+csasdown::csas_table( ParticipantTable  , escape = FALSE,
+                      booktabs = TRUE, font_size = 10,
+                      format = kable_format,
+                      show_continued_text = FALSE,
+                      linesep = "\\addlinespace",
+                      caption = ParticipantTableCap,
+                      align = c("l","l","l")) %>%
+  kable_styling(  latex_options = c("hold_position", "scale_down"),
+                  bootstrap_options = c("striped", "hover","scale_down"))
+
+
+```
+
+\clearpage
