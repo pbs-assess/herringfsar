@@ -13,15 +13,16 @@ ParticipantTableCap <- "Participants"
 
 ParticipantTable <- tibble::tribble( 
     ~Name,            ~Affiliation,                ~Role,
-    "Jaclyn Cleary",  "DFO - Science",            "Authour",
-    "Jessica Finney", "DFO - Science",            "Plus group age-class",
-    "Sarah Hawkshaw", "DFO - Science",            "Reviewer",
-    "Roger Kanno",    "DFO - Science",            "Reviewer",
-    "Marisa Keefe",   "DFO - Resource Management", "Reviewer",
-    "Miriam O",       "DFO - Science",             "Reviewer",
-    "Sarah Power",    "DFO - Science",             "Reviewer",   
-    "Chris Rooper",   "DFO - Science",             "Reviewer",
-    "Bryan Rusch",    "DFO - Resource Management", "Reviewer",
+    "Jaclyn Cleary",  "DFO - Science",             "Author",
+    "Jessica Finney", "DFO - Science",             "CSAS science advisor",
+    "Sarah Hawkshaw", "DFO - Science",             "Reviewer",
+    "Samuel Johnson", "Landmark Fishery Research", "Author",
+    "Roger Kanno",    "DFO - Science",             "Subcommittee member",
+    "Marisa Keefe",   "DFO - Resource Management", "Subcommittee member",
+    "Miriam O",       "DFO - Science",             "CSAS science advisor",
+    "Sarah Power",    "DFO - Science",             "Author",   
+    "Chris Rooper",   "DFO - Science",             "Chair",
+    "Bryan Rusch",    "DFO - Resource Management", "Subcommittee member",
 )
 
 
