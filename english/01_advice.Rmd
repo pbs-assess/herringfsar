@@ -15,23 +15,27 @@ See: https://086gc.sharepoint.com/:w:/r/sites/FSARPilotImplementation2023-2024/_
 ::: {custom-style="fsar-bullet"}
 The Strait of Georgia (SoG) major stock assessment region (SAR) is healthy.
 
-Biomass above candidate Upper Stock Reference (USR.)
+Spawning biomass is above all candidate upper stock reference (USRs) points.
 :::
 
 ### Trends {-}
 
 ::: {custom-style="fsar-bullet"}
-Biomass declining from one of the 6th highest peaks since 1950. 
 
-Biomass above candidate USR and established Limit Reference Point (LRP).
+The ensemble model estimates spawning biomass to be above $B_{MSY}$ and the 5 candidate USRs for the majority of the historical time series.
+
+Spawning biomass has fluctuated above and below the unfished spawning biomass ($B_0$) for the last 10-years, since increasing from 2010.
+
 :::
 
 ### Ecosystem and Climate Change Considerations {-}
 
 ::: {custom-style="fsar-bullet"}
+INCOMPLETE (JC...)
+
 High LRP = 0.3*(Spawning Biomass)
 
-Time-varying recruitment and density dependant mortality to represent predator, prey, and ecosystem dynamics.
+Time-varying recruitment and density dependent mortality to represent predator, prey, and ecosystem dynamics.
 
 Stocks managed and modelled with regional life-history, and ecosystem pressures.
 :::
@@ -39,6 +43,8 @@ Stocks managed and modelled with regional life-history, and ecosystem pressures.
 ### Stock Advice {-}
 
 ::: {custom-style="fsar-bullet"}
+INCOMPLETE (JC...)
+
 Maximum 14\% target harvest rate ($maxTHR$) with hockey stick ramp with lower and upper control 
 points at 30\% and 60\% of unfished spawning biomass 
 (green solid line, Figure \@ref(fig:plotHCRules)).

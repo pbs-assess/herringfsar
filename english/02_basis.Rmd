@@ -101,8 +101,8 @@ density dependent time varying natural mortality.
 <!-- Maximum length 100 words.] -->
 
 <!-- Mandatory -->
-This SISCAH modelling framework [@johnson2024] provides SoG stock status and 
-quota calculations for 2024/25 season using the MP tuned to the conservation 
+This SISCAH modelling framework [@johnson2024] estimates SoG Herring stock status 
+and quota calculations for 2024/25 season using the MP tuned to the conservation 
 objective.
 
 ### Stock Structure Assumption {-}
