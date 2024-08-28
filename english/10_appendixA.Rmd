@@ -248,7 +248,7 @@ detail on biomass and yield outcomes of each MP over the
 
 1. $P(B_t > 0.6 B_0)$: The probability that biomass is above $(0.6 B_0)$
 
-1. $P(B_t > USR)$: The probability that biomass is above the provisional $USR$.
+1. $P(B_t > B_{prod})$: The probability that biomass is above the provisional $USR$, that uses the productive period.
 
 1. $P(U_t > U_{MSY})$: The probability that the effective harvest rate
 is above $U_{MSY}$.
@@ -265,12 +265,10 @@ in catch from year-to-year.
 
 1. $B_{2038}$: Median biomass in 2038.
 
+Performance metrics are estimated via the following closed loop feedback 
+simulation algorithm: 
 
-
-Performance metrics are estimated via closed loop feedback simulations
-with the following simulation algorithm: 
-
-1. For each Operating Model, initialize a pre-conditioned 
+1. For each operating model, initialize a pre-conditioned 
 simulation model for the period 1951 – 2023 based on a random
 draw from the operating model posterior distribution;
 
@@ -281,7 +279,7 @@ at a time. For each year in the projection, apply the following:
       ii)  Use an estimation model (a statistical catch age model with density independent $M$) 
       to produce a 1-year ahead forecast of spawning biomass depletion;
       iii)  Determine the target harvest rate associated with the forecast 
-      depletion using the HS 30-60 harvest control rule;
+      depletion using the harvest control rule i.e. HS 30-60 with max total harvest rate;
       iv)  Using this target harvest rate calculate the total allowable catch from the 1-year ahead biomass 
       forecast;
       v)  Update the simulated DDM operating model Herring population in the with 
@@ -289,7 +287,6 @@ at a time. For each year in the projection, apply the following:
       density dependent natural mortality; and fishing mortality corresponding 
       to the total allowable catch in the previous step. 
       vi)   Repeat steps 2.i - 2.v until the projection period ends (2038).
-
 
 3.  Repeat steps 1. and 2. 99 more times;
 
