@@ -228,14 +228,9 @@ First, MPs are quantitatively evaluated against the conservation objective (the 
 1. $P(B_t > 0.3 B_0) \geq 0.75$, or **avoid the limit reference point (LRP) with high 
 probability over three Herring generations.**
 
-and next against secondary biomass objective:
-
-2. $P(B_t > USR) \geq 0.5$, or **provisional upper stock reference (USR) with neutral
-probability**.
-
-Objective 1, also known as the conservation objective, must be passed by
-all Herring management procedures. Objective 2 is a target biomass objective that 
-includes the recently described provisional $USR$.
+Next, MP performance is examined using additional metrics of biomass and yield,
+which reflect three additional objectives described in 
+Section "[Fishery management objectives](#sec:fish-mgmt-objs)".
 
 To help fishery managers understand trade-offs among biomass and yield, 
 additional quantitative performance metrics are estimated. These metrics 
@@ -248,7 +243,7 @@ detail on biomass and yield outcomes of each MP over the
 
 1. $P(B_t > 0.6 B_0)$: The probability that biomass is above $(0.6 B_0)$
 
-1. $P(B_t > B_{prod})$: The probability that biomass is above the provisional $USR$, that uses the productive period.
+1. $P(B_t > \overline{B}_{prod})$: The probability that biomass is above $(\overline{B}_{prod})$, also called the provisional $USR$.
 
 1. $P(U_t > U_{MSY})$: The probability that the effective harvest rate
 is above $U_{MSY}$.
@@ -265,8 +260,10 @@ in catch from year-to-year.
 
 1. $B_{2038}$: Median biomass in 2038.
 
-Performance metrics are estimated via the following closed loop feedback 
-simulation algorithm: 
+
+Performance metrics are estimated via closed loop feedback simulations
+with the following simulation algorithm: 
+
 
 1. For each operating model, initialize a pre-conditioned 
 simulation model for the period 1951 – 2023 based on a random
@@ -275,38 +272,48 @@ draw from the operating model posterior distribution;
 2.  Project the SoG Herring DDM operating model into the future one year 
 at a time. For each year in the projection, apply the following:
       i)   Update the time series of commercial catch, catch-at-age, and blended 
-      spawn survey data up to time-step t for the stock assessment component of the MP;
+      spawn survey data up to time-step $t$ for the stock assessment component of the MP;
       ii)  Use an estimation model (a statistical catch age model with density independent $M$) 
       to produce a 1-year ahead forecast of spawning biomass depletion;
       iii)  Determine the target harvest rate associated with the forecast 
-      depletion using the harvest control rule i.e. HS 30-60 with max total harvest rate;
-      iv)  Using this target harvest rate calculate the total allowable catch from the 1-year ahead biomass 
-      forecast;
+      depletion using a harvest control rule;
+      iv)  Using this target harvest rate calculate the total allowable catch from the 1-year ahead          biomass forecast;
       v)  Update the simulated DDM operating model Herring population in the with 
+      depletion using the harvest control rule;
+      v)  Update the simulated DDM operating model Herring population the with 
       incoming recruitment from the DDM stock-recruit curve with recruitment process errors; 
       density dependent natural mortality; and fishing mortality corresponding 
       to the total allowable catch in the previous step. 
       vi)   Repeat steps 2.i - 2.v until the projection period ends (2038).
 
-3.  Repeat steps 1. and 2. 99 more times;
+3.  Repeat Step-1 and Step-2 99 more times;
 
 4.  Calculate quantitative performance statistics across all 
     100 replicates.
 
-<!-- Described above
-# Management between management strategy evalauation years {-}
 
-Once a harvest control rule is chosen through the management strategy evaluation 
-process that harvest control rule stays in place until the next round of MSE
-occurs. For Pacific Herring in B.C. that is 3 years or more. 
-In the intervening years an estimate of biomass is obtained via
-the less computationally instensive DIM SISCAH model.
--->
+
+Note that quota calculations are only presented for the MP tuned to the 
+conservation objective.
+
+# Management during the interim years {-}
+
+Once a harvest control rule is chosen through the MSE 
+process that harvest control rule defines the maximum target harvest rate 
+until the next full MSE cycle. 
+For Pacific Herring in BC, the recommendation is a minimum 3 year cycle [@dfo2023a]; 
+the MSE will be updated for SoG in 2026.
+In the intervening years an estimate of biomass is obtained using the estimation
+model within the selected MP (i.e., the less computationally intensive DIM SISCAH model).
+
+
 # Discussion {-}
 
-A fishery that meets Objective 1 could target a 13\% harvest rate with an 
-average yield in the 10 - 11 kt range (Table \@ref(tab:statTable)). If management
-procedures are also targeting the USR (Objective 2), then harvest rates need
+A fishery that meets Objective 1 could target a 14\% harvest rate with an 
+average yield in the 10 - 12 kt range (Table \@ref(tab:statTable),
+Figure \@ref(fig:simEnv)).
+
+If management procedures are also targeting the USR (Objective 2), then harvest rates need
 to drop to around 7\% (as predicted by the reference point estimates, Table 
 \@ref(tab:parRefPtsTable)), and average catches would be closer to the 6 - 7 kt 
 range. Any harvest rate above 13\%, including $U_{MSY}$ estimates for every
