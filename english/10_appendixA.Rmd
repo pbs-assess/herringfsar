@@ -261,8 +261,8 @@ in catch from year-to-year.
 1. $B_{2038}$: Median biomass in 2038.
 
 
-Performance metrics are estimated via closed loop feedback simulations
-with the following simulation algorithm: 
+Performance metrics are estimated via the following closed loop feedback 
+simulation algorithm:: 
 
 
 1. For each operating model, initialize a pre-conditioned 
@@ -280,11 +280,11 @@ at a time. For each year in the projection, apply the following:
       iv)  Using this target harvest rate calculate the total allowable catch from the 1-year ahead          biomass forecast;
       v)  Update the simulated DDM operating model Herring population in the with 
       depletion using the harvest control rule;
-      v)  Update the simulated DDM operating model Herring population the with 
+      vi)  Update the simulated DDM operating model Herring population the with 
       incoming recruitment from the DDM stock-recruit curve with recruitment process errors; 
       density dependent natural mortality; and fishing mortality corresponding 
       to the total allowable catch in the previous step. 
-      vi)   Repeat steps 2.i - 2.v until the projection period ends (2038).
+      vii)   Repeat steps 2.i - 2.v until the projection period ends (2038).
 
 3.  Repeat Step-1 and Step-2 99 more times;
 
