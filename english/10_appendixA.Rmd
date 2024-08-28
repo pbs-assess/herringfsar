@@ -293,35 +293,50 @@ at a time. For each year in the projection, apply the following:
 
 # Discussion {-}
 
-A fishery that meets Objective 1 could target a 14\% harvest rate with an 
-average yield in the 10 - 12 kt range (Table \@ref(tab:statTable),
-Figure \@ref(fig:simEnv)).
+Selecting a MP by tuning to the conservation objective leads to a harvest control rule 
+recommendation with a 14\% maximum target harvest rate. If applied annually, the
+average yield, using recent 20-year average allocation among gear types,
+is 10 - 12 kt (Table \@ref(tab:statTable), Figure \@ref(fig:simEnv)).
 
-If management procedures are also targeting the USR (Objective 2), then harvest rates need
-to drop to around 7\% (as predicted by the reference point estimates, Table 
-\@ref(tab:parRefPtsTable)), and average catches would be closer to the 6 - 7 kt 
-range. Any harvest rate above 13\%, including $U_{MSY}$ estimates for every
-OM, do not meet either fishery objective. As such, meeting both fishery objectives
-requires accepting that TACs will need to be lower in the future, in contrast
-to the average of around 20 kt up to 2019. 
+Although additional fishery objectives are presented in 
+Section "[Fishery management objectives](#sec:fish-mgmt-objs)", these are not
+a full suite of objectives for SoG Herring and are not currently used for
+further MP tuning. If this was undertaken, for example, tuning the MP
+to a biomass target of 0.6$B_0$, the maximum target harvest rate and average
+annual catch would be lower.
 
-Harvest rates need to be much lower than $U_{MSY}$ to avoid the LRP with high 
-probability (75\% or more). This is because the LRP is quite high relative to 
+Table \@ref(tab:statTable) includes MPs with maximum target harvest rates
+of 20% and $U_{MSY}$, which reflect previously implemented harvest rate and 
+the reference removal (RR) defined in @dfo2009.  
+
+However, when tested using an operating model that implements a density 
+dependent formulation of time-varying natural mortality, 
+neither of these harvest rates meets the conservation
+objective when included in a ramped harvest control rule and thus
+probabilities and performance statistics do not appear in the 
+Table \@ref(tab:statTable).
+See Figure \@ref(fig:plotHCRules) for shape of these additional simulation tested
+rules.
+
+Simulation-evaluation of MPs show that harvest rates need to be lower 
+than $U_{MSY}$ to avoid the LRP with high probability (75\% or more). 
+This is because the LRP is quite high relative to 
 $B_{MSY}$ (Table \@ref(tab:parRefPtsTable), Figure \@ref(fig:simEnv)), 
-roughly around 70\% of $B_{MSY \vert OM1}$ for OM1. For comparison, the default
-limit reference point in Canadian fisheries policy is 40\% of $B_{MSY}$
-or some proxy, although this is largely applied to longer lived groundfish
-species with less variable recruitment and lower predation pressures.
+and is roughly 70\% of $B_{MSY}$ for the ensemble operating model. 
+For comparison, the default LRP in Canadian fisheries policy (@dfo2009) is 
+40\% of $B_{MSY}$ or some proxy, although this is largely applied to longer 
+lived groundfish species with less variable recruitment and 
+lower predation pressures.
 
-The EM based on the Density Independent $M$ model appears to overestimate 
+The EM implements a density independent $M$ model and appears to overestimate 
 biomass in the 1-year ahead forecast. So called positive assessment errors are 
-reflected in the higher than neutral probability the effective harvest rates exceed
-the maximum target harvest rate (Table \@ref(tab:statTable), $P(U_t > U_{ref})$,
-Figure \@ref(fig:simEnv), bottom row). As such, MPs should aim for slightly 
-lower maximum harvest rates than the biomass target implies. For example,
-reference points imply a harvest rate of around 8\% (weighted over OMs) to
-achieve the USR target in the long term, but positive assessment errors mean
-that MPs should target closer to 7\%.
+reflected in the higher than neutral probability the effective harvest rate exceeds
+the maximum target harvest rate (Figure \@ref(fig:simEnv), bottom row). 
+However because we have included this EM in the simulation-testing process, 
+any positive assessment errors are accounted for in the MP tuning for meeting
+the conservation objective.
+<!-- DELETE: "As such, MPs should aim for slightly lower maximum harvest rates than the biomass target implies.-->
+<!-- TODO (verify explanation)-->
 
 ```{r, statTable, echo = FALSE }
 #This produces HTML output TODO: FIX to table format for word?
