@@ -292,10 +292,6 @@ at a time. For each year in the projection, apply the following:
     100 replicates.
 
 
-
-Note that quota calculations are only presented for the MP tuned to the 
-conservation objective.
-
 # Management during the interim years {-}
 
 Once a harvest control rule is chosen through the MSE 
