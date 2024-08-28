@@ -197,8 +197,9 @@ is estimated to be below the lower control point the rule sets the harvest
 rate to zero. Between control points, the harvest rate is a linear ramp 
 from zero to the maximum harvest rate, and above the upper control point the 
 rule sets harvest rates to the maximum target harvest rate, called $maxTHR$. 
-This report shows results for maximum target harvest rates of 6\% 
-and 14\% (Figure \@ref(fig:hcrPlot)).
+This report shows results for MPs with maximum target harvest rates of 
+currently recommended 14\%, formerly recommended  20\%, and one 
+based on $U_{MSY}$([@dfo2009],Figure \@ref(fig:hcrPlot), Table \@ref(tab:statTable)).
 
 ```{r hcrPlot, echo = FALSE, fig.cap = HCRcap, fig.asp = 0.9}
 HCRcap <- "Shape of harvest control rule components of management procedures (MP). The green line represents the MP which meets the conservation objective over the 15-year projection period for the ensemble operating model (with density dependent natural mortality). The red line denotes shape of the previously used 20\\% rule and the purple line shows the DFO default harvest control rule with maximum target harvest rate set at $U_{MSY}$ and control points at $0.4 \\cdot B_{MSY}$ and $0.8 \\cdot B_{MSY}$."
@@ -297,7 +298,7 @@ the less computationally instensive DIM SISCAH model.
 # Discussion {-}
 
 A fishery that meets Objective 1 could target a 13\% harvest rate with an 
-average yield in the 10 - 11 kt range (Table \@ref(tab:statTable). If management
+average yield in the 10 - 11 kt range (Table \@ref(tab:statTable)). If management
 procedures are also targeting the USR (Objective 2), then harvest rates need
 to drop to around 7\% (as predicted by the reference point estimates, Table 
 \@ref(tab:parRefPtsTable)), and average catches would be closer to the 6 - 7 kt 
@@ -367,7 +368,7 @@ colnames(statTable) <- c( "Max HR",
                           "$0.4 B_0$",
                           "$0.5 B_0$",
                           "$0.6 B_0$",
-                          "$USR$",
+                          "$B_{prod}$",
                           "$\\overline{B}$",
                           "$U_{MSY}$", # Replace with Umsy
                           "$\\overline{C_t}$",
@@ -377,7 +378,7 @@ colnames(statTable) <- c( "Max HR",
                           "$B_{2038}$"
                           )
 
-statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by a checkmark. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass. For SoG, the USR is calculated as 80% of the average spawning biomass during the productive period, ${0.8B}_{1998:2007}$"
+statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by a checkmark. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass. For SoG, $B_{prod}$ is calculated as 80% of the average spawning biomass during the productive period, ${0.8B}_{1998:2007}$"
 
 
 objNames <- c(  " " = 1,
