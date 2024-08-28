@@ -155,6 +155,9 @@ kable( allEstTable, escape = FALSE,
                  bootstrap_options = c("striped", "hover") )
 
 ```
+<!-- Figure removed at this time. If the limits on the axis were changed so
+that spawning biomass < 100 kt and recruitment < 2500 then the relationships 
+could be seen better. 
 
 The effect of alternative operating models on the stock-recruitment 
 relationship is somewhat subtle. 
@@ -170,7 +173,7 @@ plotStockRecruitEnvelope( obj = mpBlobList[[MPname]],
                           inputUSR = 66.97,
                           inputB0 = 90.23 )
 ```
-
+-->
 ## Management Procedures {-}
 
 Management procedures are a combination of data, biomass estimation method (EM), 
