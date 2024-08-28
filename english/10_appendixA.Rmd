@@ -196,7 +196,7 @@ population dynamic complexities in the OM, and then use simpler EMs.
 TACs are derived from EM estimates via the harvest control rule. For
 SoG Herring, we use a "hockey-stick" shaped function defined
 by lower and upper control points, and a maximum target harvest rate
-[@cox2013roles]. The SoG Herring rules have lower and upper control points 
+[@cox2013roles]. The SoG Herring rules often have lower and upper control points 
 at 30\% and 60\% of unfished biomass, respectively. When biomass 
 is estimated to be below the lower control point the rule sets the harvest
 rate to zero. Between control points, the harvest rate is a linear ramp 
@@ -293,6 +293,7 @@ at a time. For each year in the projection, apply the following:
 4.  Calculate quantitative performance statistics across all 
     100 replicates.
 
+<!-- Described above
 # Management between management strategy evalauation years {-}
 
 Once a harvest control rule is chosen through the management strategy evaluation 
@@ -300,7 +301,7 @@ process that harvest control rule stays in place until the next round of MSE
 occurs. For Pacific Herring in B.C. that is 3 years or more. 
 In the intervening years an estimate of biomass is obtained via
 the less computationally instensive DIM SISCAH model.
-
+-->
 # Discussion {-}
 
 A fishery that meets Objective 1 could target a 13\% harvest rate with an 
