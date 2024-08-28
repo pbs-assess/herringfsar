@@ -115,16 +115,12 @@ the data and the estimation model, and the the third component which we vary:
 the management procedure (harvest control rule).  
 I think we can do without the above sentence SP -->
 
-We simulation tested MPs with hockey-stick shaped harvest control rules 
-(\@ref(fig:plotHCRules)). The MP with a maximum 14% harvest rate 
+We simulation tested three MPs, each with hockey-stick shaped harvest control rules 
+(Figure \@ref(fig:plotHCRules)). The MP with a maximum target harvest rate of 14% 
 meets the conservation objective and
 is compliant with both the “DFO Sustainable Fisheries Framework” policy and 
-the "Precautionary Approach" (#refs, #refLinkCSASTOR). We recommend management keep this in mind
-in their consultations.
-<!--
-“A fishery decision-making framework incorporating the Precautionary Approach” policy
-(as per the Terms of Reference (#refLinkCSASTOR)).
--->
+the "Precautionary Approach" (@dfo2009), as per the 
+[Terms of Reference](https://www.dfo-mpo.gc.ca/csas-sccs/Schedule-Horraire/2024/09_23-eng.html). 
 
 
 ```{r, forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
@@ -136,7 +132,7 @@ proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     targHR = THR  )
 ```
 
-TODO: This is shown graphically in Figure 4.
+This is shown graphically in Figure 4.
 
 <!-- ### Harvest Decision Rule Outputs {-}-->
 
@@ -195,7 +191,7 @@ SDNJ: Because the noise in the index is the uncertainty in SSB (process error) p
 uncertainty in spawn index (observation error)-->
 
 ```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
-ECfigCap <- "Evaluation of exceptional circumstances and operating model mis-specification: graphical comparison of simulation envelopes from the ensemble model and catch and spawn index data from interim year(s) f. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SoG operating model. Forward projections in time (15-years) represent the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
+ECfigCap <- "Evaluation of exceptional circumstances and operating model mis-specification: graphical comparison of simulation envelopes from the ensemble model and catch and spawn index data from interim year(s). Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SoG operating model. Forward projections in time (15-years) represent the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
 
 SOGdata <- read.csv("data/SOGIdxCatData.csv")
 
