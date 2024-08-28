@@ -176,17 +176,22 @@ plotStockRecruitEnvelope( obj = mpBlobList[[MPname]],
 -->
 ## Management Procedures {-}
 
-Management procedures are a combination of data, biomass estimation method (EM), 
-and a harvest control rule (HCR). 
+Management procedures are evaluated using three components, data, the 
+DDM operating model(OM), and the particular harvest control rule.
+Fifteen year simulations are used to produce performance metrics which are
+used to evaluate the MP. This procedure occurs only every few years or so. 
 
-All MPs tested here use the same data. The EM that is fit to those data is a 
-statistical catch-at-age model with a density independent $M$ (DIM) hypothesis 
-[@dfo2023management], which uses a simple random walk to estimate 
-time-varying $M$. The DIM hypothesis is similar to the previous model used for 
-Herring assessments and setting TACs, except that the previous model used
+For interim years in order to apply a forecast for the following year to the MP, 
+a simpler estimation model (EM) using a random walk M (DIM) formulation 
+which is blind to the true M~B dynamics is used [@dfo2023management].
+The DIM EM is similar to the previous model used for 
+Herring assessments and setting TACs prior to 2023, 
+except that the previous model used
 a spline with 16 nodes instead of a simple random walk to estimate 
 time-varying $M$. The EM provides annual estimates of unfished biomass and 
 a 1-year ahead forecast of spawning biomass.
+Using a DIM EM is appropriate for setting up the MSE as it allows us to evaluate 
+population dynamic complexities in the OM, and then use simpler EMs.
 
 TACs are derived from EM estimates via the harvest control rule. For
 SoG Herring, we use a "hockey-stick" shaped function defined
@@ -200,6 +205,10 @@ rule sets harvest rates to the maximum target harvest rate, called $maxTHR$.
 This report shows results for MPs with maximum target harvest rates of 
 currently recommended 14\%, formerly recommended  20\%, and one 
 based on $U_{MSY}$([@dfo2009],Figure \@ref(fig:hcrPlot), Table \@ref(tab:statTable)).
+
+Finally, after the three year cycle (eg, in 2026) the operating model is fully 
+updated with new data and comprehensive performance evaluation of MPs is 
+again undertaken.
 
 ```{r hcrPlot, echo = FALSE, fig.cap = HCRcap, fig.asp = 0.9}
 HCRcap <- "Shape of harvest control rule components of management procedures (MP). The green line represents the MP which meets the conservation objective over the 15-year projection period for the ensemble operating model (with density dependent natural mortality). The red line denotes shape of the previously used 20\\% rule and the purple line shows the DFO default harvest control rule with maximum target harvest rate set at $U_{MSY}$ and control points at $0.4 \\cdot B_{MSY}$ and $0.8 \\cdot B_{MSY}$."
