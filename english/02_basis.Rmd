@@ -24,15 +24,15 @@ impacts (e.g., depensatory predation) on Pacific Herring stocks in line with
 DFO's EAFM (ecosystem approaches to fisheries management).
 
 A weighted ensemble of SISCAH operating models is used for management procedure 
-evaluation, containing five different models 
-representing a range of productivity levels. 
-Productivity is characterized by stock recruitment steepness 
+evaluation, containing five different models. 
+This approach was chosen to encompass the uncertainty around the 
+productivity parameters stock recruitment steepness 
 ($h$), which affects productivity at low stock sizes, and the lower 
 limit on natural mortality ($M_b$), which represents the average mortality rate 
-at high stock sizes. This chosen approach represents uncertainty in stock 
-productivity better than using a single value of stock-recruit steepness,
-which is difficult to estimate and often reliant on prior information.
-Details of the operating model ensemble are described in Appendix [A](#sec:app-a).
+at high stock sizes. Uncertainty exists, especially around $h$ since abundance in
+SoG has rarely dipped low enough to give the model a strong indication of what 
+$h$ should be. Details of the operating model ensemble are described in 
+Appendix [A](#sec:app-a).
 
 The weighted ensemble was used to simulate management procedures (MPs) over a 
 15-year projection period (2024-2038) and present a MP tuned to meet 

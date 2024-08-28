@@ -4,7 +4,6 @@
 The list is to include the name of each participant and their affiliation.]
 -->
 
-
 ```{r Participants, echo = FALSE, message = FALSE, warnings = FALSE}
 
 options(knitr.kable.NA = "")
