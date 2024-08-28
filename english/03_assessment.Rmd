@@ -90,6 +90,9 @@ including those of the past few years (Figure \@ref(fig:indicators), panel D).
 Since 2015 the selection of annual harvest rates has been informed by 
 MP simulation testing.
 
+<!-- SP: I think these details are explained under "Management Procedures" in 
+the appendix, except for the years of data used. 
+Suggest that anything necessary for understanding be moved there. 
 ### Projections {-#sec:projections}
 
 -JC: explain the process under full MSE
@@ -97,7 +100,7 @@ REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN
 ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
 ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
 PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
-
+-->
 #### Interim Year Update for 2024 {-}
 
 ```{r, current_year_statement, echo = FALSE, warnings = FALSE, results = "asis" }
