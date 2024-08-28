@@ -3,6 +3,8 @@
 ```{r calcTACchunk, echo = FALSE, include = FALSE}
 TAC.df <- calcTAC(fit_maxTHR0.14, assessyear = assess_yr)
 
+THR <- TAC.df[5,2]
+TAC <- TAC.df[6,2]/1e3
 ```
 
 Stock trends and status for SoG Herring historical time series (1951-2023)
@@ -28,7 +30,6 @@ baseplot_indicators(dat = true_dat)
 ```{r OM_stock_status, echo = FALSE, results = "asis"}
 stock_status_text(  refPtsTab = ensRefPtsTable,
                     parTab = ensParTable,
-                    history = mpBlobList[[MPname]],
                     fYear = 1951, lYear = MSE_yr )
 ```
 
@@ -115,7 +116,7 @@ the management procedure (harvest control rule).
 I think we can do without the above sentence SP -->
 
 We simulation tested MPs with hockey-stick shaped harvest control rules 
-(\@ref(fig:plotHCRules)) The MP with a maximum 14% harvest rate 
+(\@ref(fig:plotHCRules)). The MP with a maximum 14% harvest rate 
 meets the conservation objective and
 is compliant with both the “DFO Sustainable Fisheries Framework” policy and 
 the "Precautionary Approach" (#refs, #refLinkCSASTOR). We recommend management keep this in mind
@@ -130,7 +131,9 @@ in their consultations.
 proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     fYear = 1951, 
                     assessYr = assess_yr,
-                    B0 = NULL  )
+                    B0 = NULL,
+                    TAC = TAC,
+                    targHR = THR  )
 ```
 
 TODO: This is shown graphically in Figure 4.
@@ -169,7 +172,7 @@ hcrCaption <- paste0(stock," Herring management procedure harvest control rule
 
 ```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 1.1}
 
-plotRule(repList = fit_maxTHR0.14)
+plotRule(repList = mpFitList[[MPname]])
 #TODO (Sam): pls make this work with MPname 
 
 ```
