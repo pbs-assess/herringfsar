@@ -301,7 +301,8 @@ For Pacific Herring in BC, the recommendation is a minimum 3 year cycle [@dfo202
 the MSE will be updated for SoG in 2026.
 In the intervening years an estimate of biomass is obtained using the estimation
 model within the selected MP (i.e., the less computationally intensive DIM SISCAH model).
-
+Note that quota calculations are only presented for the MP tuned to the 
+conservation objective.
 
 # Discussion {-}
 
