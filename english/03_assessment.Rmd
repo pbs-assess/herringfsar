@@ -118,13 +118,14 @@ the data and the estimation model, and the the third component which we vary:
 the management procedure (harvest control rule).  
 I think we can do without the above sentence SP -->
 
-We simulation tested three MPs, each with hockey-stick shaped harvest control rules 
-(Figure \@ref(fig:plotHCRules)). The MP with a maximum target harvest rate of 14% 
+We simulation tested three MPs,
+each with hockey-stick shaped harvest control rules
+(Figure \@ref(fig:plotHCRules)).
+The MP with a maximum target harvest rate of 14% 
 meets the conservation objective and
 is compliant with both the “DFO Sustainable Fisheries Framework” policy and 
 the "Precautionary Approach" (@dfo2009), as per the 
 [Terms of Reference](https://www.dfo-mpo.gc.ca/csas-sccs/Schedule-Horraire/2024/09_23-eng.html). 
-
 
 ```{r, forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
 proj_biomass_text(  mpFit = fit_maxTHR0.14,
@@ -156,11 +157,6 @@ kable( TAC.df, escape = FALSE,
 stockLabs <- fit_maxTHR0.14$stock
 species   <- fit_maxTHR0.14$ctlList$ctrl$speciesName
 stock     <- fit_maxTHR0.14$ctlList$ctrl$stockNames
-
-SBtRtMtFtCaption <- paste("Time series of spawning biomass with scaled spawn 
-indices (top),recruitments (second row), natural mortality (third row), and
-harvest rates (bottom row) for substocks of ", species, ". Stocks are, from 
-left to right,", paste(stockLabs, collapse = ", "),".", sep = "")
 ```
 
 ```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 0.67}
@@ -168,12 +164,11 @@ hcrCaption <- paste0(
   "Strait of Georgia (SoG)",
   " Pacific Herring management procedure harvest",
   " control rule (line) and total allowable catch (TAC)",
-  " advice in kilotonnes (kt; annotation).",
+  " advice in ", assess_yr + 1, " $Q_{2025}$",
+  " in kilotonnes (kt; annotation).",
   " Point indicates forecast spawning biomass in ", assess_yr + 1,
   " $\\hat{B}_{2025}$ and",
-  " harvest rate in ", assess_yr + 1, " $U_{2025}$.",
-  " Legend:",
-  " $Q_{2025}$ is TAC in ", assess_yr + 1, "."
+  " harvest rate in ", assess_yr + 1, " $U_{2025}$."
 )
 plotRule(repList = mpFitList[[MPname]])
 #TODO (Sam): pls make this work with MPname 

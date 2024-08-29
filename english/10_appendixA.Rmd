@@ -438,10 +438,15 @@ plotGridTulipBtCtUt( mpBlobList[MPname],
                      yLimHR = c(0,0.5))
 ```
 
-```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption , fig.asp = 1.1}
-
+```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption, fig.asp = 1.1}
+SBtRtMtFtCaption <- paste0(
+  "Time series of spawning biomass with scaled spawn indices,",
+  " recruitments,",
+  " natural mortality, and",
+  " harvest rate for ", species, ".",
+  " Stocks are, from left to right,", paste(stockLabs, collapse = ", "),"."
+)
 plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
-
 ```
 
 
