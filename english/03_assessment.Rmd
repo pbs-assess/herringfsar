@@ -37,7 +37,7 @@ The ensemble model estimates spawning biomass to be above $B_{MSY}$ and
 the USR for the majority of the historical time series 
 (Figure \@ref(fig:indicators)A).
 Additionally, median posterior estimates of spawning biomass have remained
-well-above the LRP in all years since 1970.
+above the LRP in all years since 1970.
 
 #### Recruitment and Natural Mortality {-}
 Most of the fluctuations in estimated spawning biomass have been attributed 

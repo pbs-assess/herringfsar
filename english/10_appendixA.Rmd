@@ -204,12 +204,13 @@ from zero to the maximum harvest rate, and above the upper control point the
 rule sets harvest rates to the maximum target harvest rate, called $maxTHR$. 
 This report shows results for MPs with maximum target harvest rates of 
 currently recommended 14\%, formerly recommended  20\%, and one 
-based on $U_{MSY}$([@dfo2009],Figure \@ref(fig:hcrPlot), Table \@ref(tab:statTable)).
+based on $U_{MSY}$([@dfo2009],Figure \@ref(fig:plotHCRules), Table \@ref(tab:statTable)).
 
 Finally, after the three year cycle (eg, in 2026) the operating model is fully 
 updated with new data and comprehensive performance evaluation of MPs is 
 again undertaken.
 
+<!--
 ```{r hcrPlot, echo = FALSE, fig.cap = HCRcap, fig.asp = 0.9}
 HCRcap <- "Shape of harvest control rule components of management procedures (MP). The green line represents the MP which meets the conservation objective over the 15-year projection period for the ensemble operating model (with density dependent natural mortality). The red line denotes shape of the previously used 20\\% rule and the purple line shows the DFO default harvest control rule with maximum target harvest rate set at $U_{MSY}$ and control points at $0.4 \\cdot B_{MSY}$ and $0.8 \\cdot B_{MSY}$."
 
@@ -220,7 +221,7 @@ plotHCRules(  LCP_i = c(.3,.3,.172),
               U_i = c(.14,.20,.187) ,
               language = "English")
 ```
-
+-->
 ## Performance metrics {-}
 
 First, MPs are quantitatively evaluated against the conservation objective (the primary management objective):
@@ -262,7 +263,7 @@ in catch from year-to-year.
 
 
 Performance metrics are estimated via the following closed loop feedback 
-simulation algorithm:: 
+simulation algorithm:
 
 
 1. For each operating model, initialize a pre-conditioned 
@@ -297,7 +298,7 @@ Selecting a MP by tuning to the conservation objective leads to a harvest contro
 recommendation with a 14\% maximum target harvest rate. If applied annually, the
 average yield, using recent 20-year average allocation among gear types,
 is 10 - 12 kt (Table \@ref(tab:statTable), Figure \@ref(fig:simEnv)). Selecting
-and MP with a lower maximum target harvest rate will also achieve the 
+an MP with a maximum target harvest rate at or below 14\% will achieve the 
 conservation objective.
 
 Although additional fishery objectives are presented in 
@@ -333,18 +334,10 @@ lower predation pressures.
 The EM implements a density independent $M$ model and appears to overestimate 
 biomass in the 1-year ahead forecast. So called positive assessment errors are 
 reflected in the higher than neutral probability the effective harvest rate exceeds
-the maximum total harvest rate (Figure \@ref(fig:simEnv), bottom row). 
-However because we have included this EM in the simulation-testing process, 
-any positive assessment errors are accounted for in the MP tuning for meeting
+the maximum target harvest rate (Figure \@ref(fig:simEnv), bottom row). 
+However the EM is in the simulation-testing process and 
+any positive assessment errors are accounted for in the meeting of 
 the conservation objective.
-<!-- DELETE: "As such, MPs should aim for slightly lower maximum harvest rates than the biomass target implies.-->
-<!-- TODO (verify explanation)Sam would have to verify this,
-I don't think we used the EM in the simulation-testing process, we used the OM.
-Perhaps we could say:
-However because realized harvest if often historically below the target rate,
-the positive assessment errors are should not interfere with meeting
-the conservation objective.
--->
 
 ```{r, statTable, echo = FALSE }
 #This produces HTML output TODO: FIX to table format for word?
@@ -374,7 +367,7 @@ statTable <- wtdPerfTable |>
 statTable <- do.call(rbind,list(statTable,statTable,statTable))
 
 statTable[1,"mp"] <- "0.14"
-statTable[2,"mp"] <- "Umsy"
+statTable[2,"mp"] <- "$U_{MSY}$"
 statTable[3,"mp"] <- "0.20"
 
 statTable[2,-(1:2)] <- NA
@@ -389,9 +382,9 @@ colnames(statTable) <- c( "Max HR",
                           "$0.4 B_0$",
                           "$0.5 B_0$",
                           "$0.6 B_0$",
-                          "$B_{prod}$",
+                          "$\\overline{B}_{prod}$",
                           "$\\overline{B}$",
-                          "$U_{MSY}$", # Replace with Umsy
+                          "$U_{MSY}$", 
                           "$\\overline{C_t}$",
                           "$AAV$",
                           "$\\overline{B_{t}/B_0}$", 
@@ -399,7 +392,7 @@ colnames(statTable) <- c( "Max HR",
                           "$B_{2038}$"
                           )
 
-statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by a checkmark. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass. For SoG, $B_{prod}$ is calculated as 80% of the average spawning biomass during the productive period, ${0.8B}_{1998:2007}$"
+statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by a checkmark. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass. For SoG, $B_{prod}$ is calculated as 80% of the average spawning biomass during the productive period, ${0.8B}_{1998:2007}$."
 
 
 objNames <- c(  " " = 1,

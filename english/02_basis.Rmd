@@ -115,11 +115,14 @@ The SoG stock spawns primarily in March, over multiple locations with variable t
 Details of spawn timing and locations are described in the
 [2024 SoG data summary report](https://github.com/grinnellm/Reports/blob/master/Summaries/2024/DataSummary.SoG.2024.pdf).
 Post spawning, mature SoG Herring
-migrate to the west coast Vancouver Island (WCVI) to share share summer/ fall 
-feeding grounds with WCVI Herring. However adult Herring are also reported in the 
+migrate to the west coast Vancouver Island (WCVI) where they share summer/ fall 
+feeding grounds with herring that spawn on the WCVI. 
+However adult herring are also reported in the 
 Salish Sea throughout the summer months indicating some level of non-migratory life
-history. New genetic methods are currently being used to update baseline data for SoG
-spawning areas, this may provide more insight on sub-stock structure in the Salish Sea.
+history. Previous genetic research has not identified finer-scale stock structure 
+within the SoG management area, however, new genetic methods are currently being 
+used to update baseline data for SoG spawning ares and this may provide new 
+insights.
 
 ### Reference Points {-}
 <!-- [Mandatory. -->
@@ -162,17 +165,19 @@ all four candidate USRs presented as $B_{MSY}$ proxies [@dfo2022a].
 
 #### Target Reference Point (TRP) {-}
 
-A biomass target objective centered on the USR has been brought up within the 
+A biomass target objective centered on the USR has been suggested within the 
 Herring MSE process, however final selection of a USR for SoG Herring requires 
 additional consultations and thus a TRP has not been defined.
 
 #### Removal Reference (RR) {-}
 
-Currently we do not specify an additional RR for SoG Herring because we select a MP 
-that meets the conservation objective, avoids the LRP with high probability 
-and whose harvest rate is more conservative than $U_{MSY}$).
 The default maximum RR for commercially harvested fish stocks is
 $F_{MSY}$ [@dfo2009, @dfo2013].
+We currently do not specify an additional RR for SoG Herring because we 
+use a process that directly selects an MP that meets the 
+conservation objective, avoids the LRP with high probability, 
+and whose harvest rate is more conservative than $U_{MSY}$).
+
 
 #### Ecosystem Reference Points {-}
 
@@ -219,7 +224,7 @@ economics, and access.
 
 ### Operating Model Stock Status {-}
 
-Stock status for the SoG aggregate stock is derived from the operating model 
+Stock status for the SoG major stock is derived from the operating model 
 ensemble which represents weighting across five different models each 
 representing a range of productivity levels (Appendix [A](#sec:app-a)).
 The ensemble model stock status for 2023 is reported in Section 
@@ -250,9 +255,12 @@ See Section "[Projections](#sec:projections)" for a full description.
 The harvest control rule component of each simulation-test MP is
 a "hockey-stick" shaped function defined by lower and upper control points, and
 a maximum target harvest rate [@cox2013roles]. 
-We explore two hockey-stick shapes which differ in their lower and upper
-control points, and three 3 maximum target harvest rates
+We explore three shapes which differ in their 
+control points and maximum target harvest rates
 (Figure \@ref(fig:plotHCRules)).
+These choices build on previous results which showed the harvest rate as
+the most influential component for meeting the conservation objective, and 
+and implement a ramp as per @dfo2009. 
 Sustainable harvest advice for SoG Herring for 2024/25 is presented using 
 the MP tuned to the conservation objective which has lower and upper control 
 points at 30\% and 60\% of unfished spawning biomass and a maximum target
