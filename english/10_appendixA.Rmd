@@ -297,7 +297,7 @@ Selecting a MP by tuning to the conservation objective leads to a harvest contro
 recommendation with a 14\% maximum target harvest rate. If applied annually, the
 average yield, using recent 20-year average allocation among gear types,
 is 10 - 12 kt (Table \@ref(tab:statTable), Figure \@ref(fig:simEnv)). Selecting
-and MP with a lower maximum target harvest rate will also achieve the 
+an MP with a maximum target harvest rate at or below 14\% will achieve the 
 conservation objective.
 
 Although additional fishery objectives are presented in 
@@ -333,18 +333,10 @@ lower predation pressures.
 The EM implements a density independent $M$ model and appears to overestimate 
 biomass in the 1-year ahead forecast. So called positive assessment errors are 
 reflected in the higher than neutral probability the effective harvest rate exceeds
-the maximum total harvest rate (Figure \@ref(fig:simEnv), bottom row). 
-However because we have included this EM in the simulation-testing process, 
-any positive assessment errors are accounted for in the MP tuning for meeting
+the maximum target harvest rate (Figure \@ref(fig:simEnv), bottom row). 
+However the EM is in the simulation-testing process and 
+any positive assessment errors are accounted for in the meeting of 
 the conservation objective.
-<!-- DELETE: "As such, MPs should aim for slightly lower maximum harvest rates than the biomass target implies.-->
-<!-- TODO (verify explanation)Sam would have to verify this,
-I don't think we used the EM in the simulation-testing process, we used the OM.
-Perhaps we could say:
-However because realized harvest if often historically below the target rate,
-the positive assessment errors are should not interfere with meeting
-the conservation objective.
--->
 
 ```{r, statTable, echo = FALSE }
 #This produces HTML output TODO: FIX to table format for word?
