@@ -129,7 +129,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
 {
   yrs <- fYear:lYear
   lastTdx <- length(yrs)
-  
+
   SB_T <- round(parTab$BT,3)
 
   PBTGtLRP <- parTab$PBTGtLRP
@@ -139,7 +139,7 @@ stock_status_text <- function(  refPtsTab = ensRefPtsTable,
   x <- paste0( "The estimated spawning biomass in ", lYear, " is ", round(SB_T,1),
                " kt, the unfished spawning biomass $B_0$ is ",
                B0, ", and the stock status $\\left( B_{", lYear, "}/B_0\\right)$ is ",
-               round(parTab$DT,3), " (weighted posterior medians). Spawning biomass in ", 
+               round(parTab$DT,3), " (weighted posterior medians). Spawning biomass in ",
                lYear, " is estimated to be above the LRP with a ",
                100 * PBTGtLRP, "\\% probability in each of the 5 OMs.")
 
@@ -163,14 +163,14 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
 {
 
   # Pull good replicates
-  
+
   omSB_MSEyr <- round(parTab$BT,1)
 
   yrs <- fYear:(thisYr)
   currTdx <- length(yrs)
-  
+
   amSB_t <- (mpFit$repOpt$SB_pt[1,])
-  amSB_T <- round(amSB_t[currTdx],1)
+  amSB_T <- round(amSB_t[currTdx],2)
 
   if(is.null(B0))
     B0 <- mpFit$repOpt$B0_p[1]        #estimation model
@@ -182,9 +182,9 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   omBusr <- round(refPtsTab$Busr,2)
 
   x <- paste0( "For ", thisYr,
-    " the estimation model estimates spawning biomass $\\hat{B}_{",
-    thisYr,"} = ", amSB_T, "$ kt (maximum likelihood estimate), which is
-    above the operating model LRP and USR of ", round(0.3*omB0,1)," kt
+    ", the estimation model estimates spawning biomass, $\\hat{B}_{",
+    thisYr,"} , at ", amSB_T, "$ kt (maximum likelihood estimate), which is
+    above the operating model LRP and USR of ", round(0.3*omB0,2)," kt
     and ", omBusr," kt, respectively.")
 
   cat(x)
@@ -224,10 +224,10 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
       " is estimated to be $\\hat{B}_{", assessYr + 1,"} = ", round(SB_forecast, 1),
       "$ kt (maximum likelihood estimate), with a stock status of $\\left( B_{",
       assessYr + 1,"}/B_0 \\right) = ", round(SB_forecast/B0, 2),
-      "$. Given that the spawning biomass is above the harvest control rule's ", 
-      "upper control point of $0.6 B_0$, the maximum target harvest rate of ", 
-      100*THR, 
-      "\\% can be applied in MP, resulting in a total allowable catch of ", 
+      "$. Given that the spawning biomass is above the harvest control rule's ",
+      "upper control point of $0.6 B_0$, the maximum target harvest rate of ",
+      100*THR,
+      "\\% can be applied in the MP, resulting in a total allowable catch of ",
       round(TAC,2), " kt.") #TODO (Sam): add quota
 
   cat(x)

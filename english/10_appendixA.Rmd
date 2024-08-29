@@ -296,7 +296,9 @@ at a time. For each year in the projection, apply the following:
 Selecting a MP by tuning to the conservation objective leads to a harvest control rule 
 recommendation with a 14\% maximum target harvest rate. If applied annually, the
 average yield, using recent 20-year average allocation among gear types,
-is 10 - 12 kt (Table \@ref(tab:statTable), Figure \@ref(fig:simEnv)).
+is 10 - 12 kt (Table \@ref(tab:statTable), Figure \@ref(fig:simEnv)). Selecting
+and MP with a lower maximum target harvest rate will also achieve the 
+conservation objective.
 
 Although additional fishery objectives are presented in 
 Section "[Fishery management objectives](#sec:fish-mgmt-objs)", these are not
@@ -320,9 +322,9 @@ rules.
 
 Simulation-evaluation of MPs show that harvest rates need to be lower 
 than $U_{MSY}$ to avoid the LRP with high probability (75\% or more). 
-This is because the LRP is quite high relative to 
-$B_{MSY}$ (Table \@ref(tab:parRefPtsTable), Figure \@ref(fig:simEnv)), 
-and is roughly 70\% of $B_{MSY}$ for the ensemble operating model. 
+This is because the LRP is high, roughly 70\% of 
+$B_{MSY}$ for the ensemble operating model
+(Table \@ref(tab:parRefPtsTable), Figure \@ref(fig:simEnv)).  
 For comparison, the default LRP in Canadian fisheries policy (@dfo2009) is 
 40\% of $B_{MSY}$ or some proxy, although this is largely applied to longer 
 lived groundfish species with less variable recruitment and 
@@ -331,12 +333,18 @@ lower predation pressures.
 The EM implements a density independent $M$ model and appears to overestimate 
 biomass in the 1-year ahead forecast. So called positive assessment errors are 
 reflected in the higher than neutral probability the effective harvest rate exceeds
-the maximum target harvest rate (Figure \@ref(fig:simEnv), bottom row). 
+the maximum total harvest rate (Figure \@ref(fig:simEnv), bottom row). 
 However because we have included this EM in the simulation-testing process, 
 any positive assessment errors are accounted for in the MP tuning for meeting
 the conservation objective.
 <!-- DELETE: "As such, MPs should aim for slightly lower maximum harvest rates than the biomass target implies.-->
-<!-- TODO (verify explanation)-->
+<!-- TODO (verify explanation)Sam would have to verify this,
+I don't think we used the EM in the simulation-testing process, we used the OM.
+Perhaps we could say:
+However because realized harvest if often historically below the target rate,
+the positive assessment errors are should not interfere with meeting
+the conservation objective.
+-->
 
 ```{r, statTable, echo = FALSE }
 #This produces HTML output TODO: FIX to table format for word?
