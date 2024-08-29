@@ -339,7 +339,7 @@ However the EM is in the simulation-testing process and
 any positive assessment errors are accounted for in the meeting of 
 the conservation objective.
 
-```{r, statTable, echo = FALSE }
+```{r statTable, echo = FALSE }
 #This produces HTML output TODO: FIX to table format for word?
 wtdPerfTable <- read.csv("data/wtdTable.csv")
 
@@ -417,10 +417,8 @@ kable(  statTable, escape = FALSE,
 
 ```
 
-
-```{r, captions, include = FALSE, echo = FALSE}
+```{r captions, include = FALSE, echo = FALSE}
 multiGridTulipCap <- "Simulated time series of projected spawning biomass (top), catch (middle), and harvest rate (bottom) for the MP tuned to the conservation objective (HS30-60_HR 0.14). Median values are shown by the thick black lines, the grey shaded region shows the central 95% of each simulation envelope, and three randomly selected individual replicate traces are shown as thin black lines."
-
 ```
 
 ```{r simEnv, echo = FALSE, fig.cap = multiGridTulipCap, fig.asp = 1.1}
@@ -441,5 +439,3 @@ SBtRtMtFtCaption <- paste0(
 )
 plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
 ```
-
-
