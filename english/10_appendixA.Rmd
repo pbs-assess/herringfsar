@@ -439,7 +439,7 @@ SBtRtMtFtCaption <- paste0(
   " and depletion (red trend), and blended spawn index,",
   " recruitment in millions of fish (Miss Ages denotes years with no age compoisiton data),",
   " estimated natural mortality (density independent formulation), as well as",
-  " harvest rate and catch in kt."
+  " harvest rate, and catch (kt)."
 )
 plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
 ```
