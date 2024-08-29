@@ -431,10 +431,15 @@ plotGridTulipBtCtUt( mpBlobList[MPname],
                      yLimHR = c(0,0.5))
 ```
 
-```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption , fig.asp = 1.1}
-
+```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption, fig.asp = 1.1}
+SBtRtMtFtCaption <- paste0(
+  "Time series of spawning biomass in kilotonnes (kt)",
+  " and depletion with scaled spawn indices,",
+  " recruitment in millions of fish,",
+  " natural mortality, as well as",
+  " harvest rate and catch in kt for Strait of Georgia Pacific Herring."
+)
 plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
-
 ```
 
 

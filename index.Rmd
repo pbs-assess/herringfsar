@@ -210,15 +210,12 @@ ensParTable <- read.csv("data/ensOM_meanPars.csv") |>
 
 ```{r scripts}
 # Files
-
 source(here("R", "variables.R"))
 source(here("R", "figures.R"))
 source(here("R", "themes.R"))
 
 # Theme for figures
 theme_set(theme_herring())
-
-
 ```
 
 <!-- Math expressions -->
