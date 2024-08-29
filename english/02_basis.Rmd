@@ -250,9 +250,12 @@ See Section "[Projections](#sec:projections)" for a full description.
 The harvest control rule component of each simulation-test MP is
 a "hockey-stick" shaped function defined by lower and upper control points, and
 a maximum target harvest rate [@cox2013roles]. 
-We explore two hockey-stick shapes which differ in their lower and upper
-control points, and three 3 maximum target harvest rates
+We explore three shapes which differ in their 
+control points and maximum target harvest rates
 (Figure \@ref(fig:plotHCRules)).
+These choices build on previous results which showed the harvest rate as
+the most influential component for meeting the conservation objective, and 
+and implement a ramp as per @dfo2009. 
 Sustainable harvest advice for SoG Herring for 2024/25 is presented using 
 the MP tuned to the conservation objective which has lower and upper control 
 points at 30\% and 60\% of unfished spawning biomass and a maximum target
