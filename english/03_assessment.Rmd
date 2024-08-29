@@ -125,7 +125,6 @@ is compliant with both the “DFO Sustainable Fisheries Framework” policy and
 the "Precautionary Approach" (@dfo2009), as per the 
 [Terms of Reference](https://www.dfo-mpo.gc.ca/csas-sccs/Schedule-Horraire/2024/09_23-eng.html). 
 
-
 ```{r, forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
 proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     fYear = 1951, 
@@ -134,11 +133,9 @@ proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     TAC = TAC,
                     targHR = THR  )
 ```
-
 This is shown graphically in Figure 4.
 
 <!-- ### Harvest Decision Rule Outputs {-}-->
-
 ```{r, TACtable, echo = FALSE, warnings = FALSE, eval = FALSE}
 
 TACtabCap <- "Harvest decision rule outputs when the SoG Herring SAR MP is applied to data up to 2024."
@@ -147,8 +144,6 @@ kable( TAC.df, escape = FALSE,
         caption = TACtabCap, booktabs = TRUE,
         align = c("l","c"),
         linesep = "\\addlinespace")
-
-
 ```
 
 ```{r, MPcaptions, include = FALSE, echo = FALSE}
