@@ -15,7 +15,7 @@ See: https://086gc.sharepoint.com/:w:/r/sites/FSARPilotImplementation2023-2024/_
 ::: {custom-style="fsar-bullet"}
 The Strait of Georgia (SoG) major stock assessment region (SAR) is healthy.
 
-Spawning biomass is above all candidate upper stock reference (USRs) points.
+Spawning biomass is above the LRP and above all candidate upper stock reference (USRs) points.
 :::
 
 ### Trends {-}
@@ -35,9 +35,9 @@ INCOMPLETE (JC...)
 
 High LRP = 0.3*(Spawning Biomass)
 
-Time-varying recruitment and density dependent mortality to represent predator, prey, and ecosystem dynamics.
+Assessment includes time-varying recruitment and density dependent mortality to represent ecosystem dynamics and predation mortality.
 
-Stocks managed and modelled with regional life-history, and ecosystem pressures.
+Each major stock area is modelled using regional life-history traits and regional ecosystem pressures.
 :::
 
 ### Stock Advice {-}
