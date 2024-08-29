@@ -165,15 +165,14 @@ left to right,", paste(stockLabs, collapse = ", "),".", sep = "")
 
 ```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 0.67}
 hcrCaption <- paste0(
-  stock,
+  "Strait of Georgia (SoG)",
   " Pacific Herring management procedure harvest",
   " control rule (line) and total allowable catch (TAC)",
-  " advice in tonnes (t; annotation).",
+  " advice in kilotonnes (kt; annotation).",
+  " Point indicates forecast spawning biomass in ", assess_yr + 1,
+  " $\\hat{B}_{2025}$ and",
+  " harvest rate in ", assess_yr + 1, " $U_{2025}$.",
   " Legend:",
-  " $\\hat{B}_{2025}$", 
-  " is forecast spawning biomass in ", assess_yr + 1, ",",
-  " $\\hat{B}_0$ is estimated unfished spawning biomass,",
-  " $U_{2025}$ is harvest rate in ", assess_yr + 1, ", and",
   " $Q_{2025}$ is TAC in ", assess_yr + 1, "."
 )
 plotRule(repList = mpFitList[[MPname]])
