@@ -161,19 +161,23 @@ SBtRtMtFtCaption <- paste("Time series of spawning biomass with scaled spawn
 indices (top),recruitments (second row), natural mortality (third row), and
 harvest rates (bottom row) for substocks of ", species, ". Stocks are, from 
 left to right,", paste(stockLabs, collapse = ", "),".", sep = "")
-
-
-hcrCaption <- paste0(stock," Herring management procedure harvest control rule 
-(line) and TAC advice (annotation).")
-
-
 ```
 
-```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 1.1}
-
+```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 0.67}
+hcrCaption <- paste0(
+  stock,
+  " Pacific Herring management procedure harvest",
+  " control rule (line) and total allowable catch (TAC)",
+  " advice in tonnes (t; annotation).",
+  " Legend:",
+  " $\\hat{B}_{2025}$", 
+  " is forecast spawning biomass in ", assess_yr + 1, ",",
+  " $\\hat{B}_0$ is estimated unfished spawning biomass,",
+  " $U_{2025}$ is harvest rate in ", assess_yr + 1, ", and",
+  " $Q_{2025}$ is TAC in ", assess_yr + 1, "."
+)
 plotRule(repList = mpFitList[[MPname]])
 #TODO (Sam): pls make this work with MPname 
-
 ```
 
 <!--### Evaluation of Exceptional Circumstances {-}-->
