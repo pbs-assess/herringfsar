@@ -304,5 +304,4 @@ The survey index is made up of two classes of surveys, surface
 and dive. Combining the surveys into a blended index properly accounts for 
 years in which these survey types co-occur and is a feature 
 of the new SISCAH model.
-SoG data are described in full in the 2024 SoG data summary report
-(https://github.com/grinnellm/Reports/blob/master/Summaries/2024/DataSummary.SoG.2024.pdf).
+SoG data are described in full in the [2024 SoG data summary report](https://github.com/grinnellm/Reports/blob/master/Summaries/2024/DataSummary.SoG.2024.pdf).
