@@ -441,10 +441,9 @@ plotGridTulipBtCtUt( mpBlobList[MPname],
 ```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption, fig.asp = 1.1}
 SBtRtMtFtCaption <- paste0(
   "Time series of spawning biomass with scaled spawn indices,",
-  " recruitments,",
+  " recruitment,",
   " natural mortality, and",
-  " harvest rate for ", species, ".",
-  " Stocks are, from left to right,", paste(stockLabs, collapse = ", "),"."
+  " harvest rate for Strait of Georgia Pacific Herring."
 )
 plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
 ```
