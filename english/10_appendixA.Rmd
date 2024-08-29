@@ -431,13 +431,15 @@ plotGridTulipBtCtUt( mpBlobList[MPname],
                      yLimHR = c(0,0.5))
 ```
 
+<!-- TODO (Sam): should the M0 and Mbar be on this figure given this is from EM and DIM?-->
+
 ```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption, fig.asp = 1.1}
 SBtRtMtFtCaption <- paste0(
-  "Time series of spawning biomass in kilotonnes (kt)",
-  " and depletion with scaled spawn indices,",
-  " recruitment in millions of fish,",
-  " natural mortality, as well as",
-  " harvest rate and catch in kt for Strait of Georgia Pacific Herring."
+  "Time series of maximum likelihood estimates of (top to bottom): spawning biomass in kilotonnes (kt)",
+  " and depletion (red trend), and blended spawn index,",
+  " recruitment in millions of fish (Miss Ages denotes years with no age compoisiton data),",
+  " estimated natural mortality (density independent formulation), as well as",
+  " harvest rate and catch in kt."
 )
 plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
 ```
