@@ -1569,18 +1569,16 @@ plotRule <- function( repList = reports )
 
 
   plot(x = c(0,B0), y=c(0,1.2*Fref), type = "n",
-        xlab = "Estimated biomass (1,000 t)", ylab = "Harvest rate", las = 1)
+        xlab = "Estimated biomass (kt)", ylab = "Harvest rate", las = 1)
     lines(x = Bseq, y = Fseq)
     abline( v = ctlPts * B0, lwd = 1, lty = 2 )
     points( x = predB, y = targF, pch = 16, col = "grey30" )
 
-    txt <- bquote( hat(italic(B))[.(year)] == .(format(Bhat, big.mark = ",")) ~ "t")
-    panLab( 0.75, 0.5, adj=0, cex=1, txt )
-    txt <- bquote( hat(italic(B))[0] == .(format(estB0, big.mark = ",")) ~ "t")
+    txt <- bquote( hat(italic(B))[.(year)] == .(formatC(Bhat/1000, big.mark = ",", digits = 1, format = "f")) ~ "kt")
     panLab( 0.75, 0.4, adj=0, cex=1, txt )
     txt <- bquote( italic(U)[.(year)] == .(targU) )
     panLab( 0.75, 0.3, adj=0, cex=1, txt )
-    txt <- bquote( italic(Q)[.(year)] == .(format(Q, big.mark = ",")) ~ "t")
+    txt <- bquote( italic(Q)[.(year)] == .(formatC(Q/1000, big.mark = ",", digits = 1, format = "f")) ~ "kt")
     panLab( 0.75, 0.2, adj=0, cex=1, txt )
 
 } # END plotRule()
