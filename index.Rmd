@@ -10,13 +10,12 @@ meeting_date: "September 23, 2024"
 region: "Pacific Region"
 phone: "(250) 555-5555"
 email: "DFO.PacificCSA-CASPacifique.MPO@dfo-mpo.gc.ca"
-csa_address: "3190 Hammond Bay Rd., Nanaimo, BC, V9T 6N7"
+csa_address: "3190 Hammond Bay Rd., Nanaimo, BC V9T 6N7"
 report_title_french: |
   Mise à jour du stock de hareng du Pacifique (*Clupea pallasii*)
   du détroit de Géorgie en 2024
 inuktitut_citation: |
   Inuktitut citation here
-# [Mandatory section; less than 150 words.]
 context: |
   Pacific Herring (*Clupea pallasii*) abundance in British Columbia is assessed
   using a spatially integrated statistical catch at age model fit to
@@ -98,8 +97,6 @@ MPname <- "maxTHR_0.14"
 
 # TODO: [SAM] add a list of any variables needed to
 # change. i.e. Region, USR, BO, [see functions.R/makeModelHistTable[arguments]]
-
-
 ```
 
 ```{r models}
@@ -128,7 +125,6 @@ scenarios <- c("SOG_Mb0.532_h0.70",
                "SOG_Mb0.562_h0.70",
                "SOG_Mb0.562_h0.75",
                "SOG_Mb0.584_h0.70")
-
 
 wtPosts <- readRDS("data/wtPosts.rds")
 
@@ -203,9 +199,6 @@ ensRefPtsTable <- read.csv("data/SOG_ensRefPts.csv") |>
 ensParTable <- read.csv("data/ensOM_meanPars.csv") |>
   mutate_if(is.numeric,round,2) |>
   mutate(PBTGtLRP = ifelse(PBTGtLRP > 0.99, 0.99, .)) # if >.99 set = 0.99 else leave alone
-
-
-
 ```
 
 ```{r scripts}
@@ -225,4 +218,4 @@ theme_set(theme_herring())
 \newcommand{\AVE}{\text{`r en2fr("AVE", translate = french)`}}
 
 <!-- Compile the document on the command line: -->
-<!-- bookdown::render_book("index.Rmd") -->
+<!-- csasdown::render_sar() -->
