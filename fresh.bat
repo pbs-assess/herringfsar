@@ -13,6 +13,7 @@ del texput.log
 
 del fsar.Rmd
 del fsar.docx
+del fsar.html
 
 rmdir /S /Q csas-style
 rmdir /S /Q knitr-figs-pdf
