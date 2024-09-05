@@ -155,14 +155,14 @@ kable( allEstTable, escape = FALSE,
                  bootstrap_options = c("striped", "hover") )
 
 ```
-<!-- Figure removed at this time. If the limits on the axis were changed so
-that spawning biomass < 100 kt and recruitment < 2500 then the relationships 
-could be seen better. 
+<!-- Figure removed at this time. If the limits on the axis were changed so -->
+<!-- that spawning biomass < 100 kt and recruitment < 2500 then the relationships  -->
+<!-- could be seen better  -->
 
-The effect of alternative operating models on the stock-recruitment 
-relationship is somewhat subtle. 
+<!-- The effect of alternative operating models on the stock-recruitment  -->
+<!-- relationship is somewhat subtle.  -->
 
-```{r SRfig, echo = FALSE, fig.cap = SRmodelCap, fig.asp = 1.1}
+```{r SRfig, eval = FALSE, echo = FALSE, fig.cap = SRmodelCap, fig.asp = 1.1}
 SRmodelCap <- "Stock-recruitment relationships and age-1 recruitment for the ensemble of operating models. Relationships are shown for the weighted ensemble model with uncertainty (black curve and grey shaded region) and the posterior median relationships for individual operating models (coloured lines). Annual age-1 recruitments are also shown with uncertainty for the historical 1951 - 2023 period (grey points with vertical segments) and for a single possible future in the 2024 - 2038 projection period (pink points). Finally, dashed lines show ensemble weighted average biomassa and recruitment levels for fishery reference points including unfished biomass (grey), the provisional upper stock reference (blue), and biomass at maximum sustainable yield (MSY, green)."
 
 SRpars <- read.csv("data/omGrid_SRpars.csv")
@@ -173,7 +173,7 @@ plotStockRecruitEnvelope( obj = mpBlobList[[MPname]],
                           inputUSR = 66.97,
                           inputB0 = 90.23 )
 ```
--->
+
 ## Management Procedures {-}
 
 Management procedures are evaluated using three components, data, the 

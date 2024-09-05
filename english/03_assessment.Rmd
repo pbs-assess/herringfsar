@@ -93,7 +93,6 @@ MP simulation testing.
 <!-- SP: I think these details are explained under "Management Procedures" in 
 the appendix, except for the years of data used. 
 Suggest that anything necessary for understanding be moved there. 
-### Projections {-#sec:projections}
 
 -JC: explain the process under full MSE
 REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024 and 2025,
@@ -101,9 +100,12 @@ ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
 ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
 PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
 -->
+
+### Projections {-#sec:projections}
+
 #### Interim Year Update for 2024 {-}
 
-```{r, current_year_statement, echo = FALSE, warnings = FALSE, results = "asis" }
+```{r current_year_statement, echo = FALSE, warnings = FALSE, results = "asis" }
 curr_biomass_text(  mpFit   = fit_maxTHR0.14,
                     fYear   = 1951, 
                     thisYr  = assess_yr,
@@ -127,7 +129,7 @@ is compliant with both the “DFO Sustainable Fisheries Framework” policy and
 the "Precautionary Approach" (@dfo2009), as per the 
 [Terms of Reference](https://www.dfo-mpo.gc.ca/csas-sccs/Schedule-Horraire/2024/09_23-eng.html). 
 
-```{r, forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
+```{r forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
 proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     fYear = 1951, 
                     assessYr = assess_yr,
@@ -138,7 +140,7 @@ proj_biomass_text(  mpFit = fit_maxTHR0.14,
 This is shown graphically in Figure 4.
 
 <!-- ### Harvest Decision Rule Outputs {-}-->
-```{r, TACtable, echo = FALSE, warnings = FALSE, eval = FALSE}
+```{r TACtable, echo = FALSE, warnings = FALSE, eval = FALSE}
 
 TACtabCap <- "Harvest decision rule outputs when the SoG Herring SAR MP is applied to data up to 2024."
 
@@ -148,8 +150,7 @@ kable( TAC.df, escape = FALSE,
         linesep = "\\addlinespace")
 ```
 
-```{r, MPcaptions, include = FALSE, echo = FALSE}
-
+```{r MPcaptions, include = FALSE, echo = FALSE}
 stockLabs <- fit_maxTHR0.14$stock
 species   <- fit_maxTHR0.14$ctlList$ctrl$speciesName
 stock     <- fit_maxTHR0.14$ctlList$ctrl$stockNames
