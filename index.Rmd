@@ -1,5 +1,4 @@
 ---
-# Start of options to set
 report_title: |
   Strait of Georgia Pacific Herring (*Clupea pallasii*) stock update in 2024
 assess_yr: "2024"
@@ -31,15 +30,11 @@ output:
 link-citations: false
 bibliography: bib/refs.bib
 csl: csl/csas.csl
-# End of options to set
 title: ""
 knit: (function(input, ...) {
        csasdown::render_sar()
       })
 always_allow_html: true
-header-includes:
-  - \usepackage{pifont}% http://ctan.org/pkg/pifont
-  - \newcommand{\xmark}{\ding{55}}%
 ---
 
 ```{r libraries, echo = FALSE, message = FALSE}
@@ -100,7 +95,6 @@ MPname <- "maxTHR_0.14"
 ```
 
 ```{r models}
-
 source(here("R", "functions.R"))
 
 # Load all model data.
@@ -218,5 +212,5 @@ theme_set(theme_herring())
 \newcommand{\AVE}{\text{`r en2fr("AVE", translate = french)`}}
 
 <!-- Compile the document on the command line: -->
-<!-- bookdown::render_book("index.Rmd") -->
+<!-- bookdown::render_book() -->
 <!-- csasdown::render_sar() -->
