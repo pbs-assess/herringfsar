@@ -2,7 +2,7 @@
 
 Once a harvest control rule is chosen through the MSE 
 process, that harvest control rule defines the maximum possible removal rate
-given the objective(s) until the next round of MSE occurs.
+given the objective(s) until the next MSE cycle.
 In the intervening years, an estimate of spawning biomass and  depletion
 is obtained using an estimation method (EM) to use with the harvest control rule.
 For SoG Herring, the EM used is a spatially integrated statistical catch at age 
