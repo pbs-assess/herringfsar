@@ -155,14 +155,8 @@ kable( allEstTable, escape = FALSE,
                  bootstrap_options = c("striped", "hover") )
 
 ```
-<!-- Figure removed at this time. If the limits on the axis were changed so
-that spawning biomass < 100 kt and recruitment < 2500 then the relationships 
-could be seen better. 
 
-The effect of alternative operating models on the stock-recruitment 
-relationship is somewhat subtle. 
-
-```{r SRfig, echo = FALSE, fig.cap = SRmodelCap, fig.asp = 1.1}
+```{r SRfig, eval = FALSE, echo = FALSE, fig.cap = SRmodelCap, fig.asp = 1.1}
 SRmodelCap <- "Stock-recruitment relationships and age-1 recruitment for the ensemble of operating models. Relationships are shown for the weighted ensemble model with uncertainty (black curve and grey shaded region) and the posterior median relationships for individual operating models (coloured lines). Annual age-1 recruitments are also shown with uncertainty for the historical 1951 - 2023 period (grey points with vertical segments) and for a single possible future in the 2024 - 2038 projection period (pink points). Finally, dashed lines show ensemble weighted average biomassa and recruitment levels for fishery reference points including unfished biomass (grey), the provisional upper stock reference (blue), and biomass at maximum sustainable yield (MSY, green)."
 
 SRpars <- read.csv("data/omGrid_SRpars.csv")
@@ -172,8 +166,15 @@ plotStockRecruitEnvelope( obj = mpBlobList[[MPname]],
                           inputBmsy = 39.127,
                           inputUSR = 66.97,
                           inputB0 = 90.23 )
+
+# Figure removed at this time. If the limits on the axis were changed so
+# that spawning biomass < 100 kt and recruitment < 2500 then the relationships
+# could be seen better
+
+# The effect of alternative operating models on the stock-recruitment
+# relationship is somewhat subtle.
 ```
--->
+
 ## Management Procedures {-}
 
 Management procedures are evaluated using three components, data, the 
@@ -373,8 +374,8 @@ statTable[3,"mp"] <- "0.20"
 statTable[2,-(1:2)] <- NA
 statTable[3,-(1:2)] <- NA
 
-statTable[2:3,2] <- "$X$"
-
+statTable[2:3,2] <- "N"
+statTable[statTable == "$\\checkmark$"] <- "Y"
 
 colnames(statTable) <- c( "Max HR",
                           "$0.3 B_0$",
@@ -392,7 +393,7 @@ colnames(statTable) <- c( "Max HR",
                           "$B_{2038}$"
                           )
 
-statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by a checkmark. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass. For SoG, $B_{prod}$ is calculated as 80% of the average spawning biomass during the productive period, ${0.8B}_{1998:2007}$."
+statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by 'Y', otherwise 'N'. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass. For SoG, $B_{prod}$ is calculated as 80% of the average spawning biomass during the productive period, ${0.8B}_{1998:2007}$."
 
 
 objNames <- c(  " " = 1,
