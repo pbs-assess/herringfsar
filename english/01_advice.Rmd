@@ -22,7 +22,7 @@ Spawning biomass is above the LRP and above all candidate upper stock reference 
 
 ::: {custom-style="fsar-bullet"}
 
-The ensemble model estimates spawning biomass to be above $B_{MSY}$ and the 5 candidate USRs for the majority of the historical time series.
+The ensemble model estimates spawning biomass to be above $B_{MSY}$ and all 5 candidate USRs for most of the historical time series.
 
 Spawning biomass has fluctuated above and below the unfished spawning biomass ($B_0$) for the last 10-years, since increasing from 2010.
 
@@ -31,11 +31,15 @@ Spawning biomass has fluctuated above and below the unfished spawning biomass ($
 ### Ecosystem and Climate Change Considerations {-}
 
 ::: {custom-style="fsar-bullet"}
-INCOMPLETE (JC...)
 
-High LRP = 0.3*(Spawning Biomass)
+The limit reference point (LRP) is set at 0.3${B_0}$ and is implemented using a 
+conservation objected which states to “avoid the LRP with a high probability” 
+(minimum 75%). This LRP is more conservative than the default LRP identified in 
+“DFO Sustainable Fisheries Framework” policy (@dfo2009).
 
-Assessment includes time-varying recruitment and density dependent mortality to represent ecosystem dynamics and predation mortality.
+Incorporating density dependent mortality and time-varying recruitment 
+accounts for predation mortality and ecosystem effects
+that Herring experience at their trophic level.
 
 Each major stock area is modelled using regional life-history traits and regional ecosystem pressures.
 :::
@@ -43,11 +47,10 @@ Each major stock area is modelled using regional life-history traits and regiona
 ### Stock Advice {-}
 
 ::: {custom-style="fsar-bullet"}
-INCOMPLETE (JC...)
-
-Maximum 14\% target harvest rate ($maxTHR$) with hockey stick ramp with lower and upper control 
-points at 30\% and 60\% of unfished spawning biomass 
-(green solid line, Figure \@ref(fig:plotHCRules)).
+<!-- TODO: automate this see "ASSESSMENT UNDER MSE" or "Applicaton of MP for 2025"
+A quota option for 2025 of 11,570 metic tonnes is provided using the management 
+procedure with a maximum 14\% target harvest rate of unfished spawning biomass 
+shown in Figure \@ref(fig:plotHCRules).
 :::
 
 <!--

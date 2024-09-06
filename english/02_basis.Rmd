@@ -9,27 +9,27 @@ The Pacific Herring Strait of Georgia
 major and the `r number_to_word(length(minor_regions_short))` minor stock
 areas are presented in [@dfo2024bInPrep, In Prep.].
 
-SoG Pacific Herring are assessed with a management 
+Managment strategies for SoG Pacific Herring are evaluated with a management 
 strategy evaluation (MSE) process, which implements a spatially integrated statistical 
 catch at age Herring (SISCAH) modelling framework [@dfo2023a]. 
 The modelling framework is fitted to historical time series of spawn survey indices, 
 biological and fishery age composition data, and commercial fishery catches.
 
-The SISCAH operating model represents SoG Herring historical biomass time series 
+The SISCAH operating model estimates SoG Herring historical biomass time series 
 from 1951-2003 with these features: density dependent mortality (DDM), an integrated surface 
 and dive survey index, gear-specific commercial fishery timing, and a 
 likelihood function with correlated age-compositions.
-Density dependent natural mortality was added to represent potential ecosystem 
+Incorporation of density dependent natural mortality models potential ecosystem 
 impacts (e.g., depensatory predation) on Pacific Herring stocks in line with
 DFO's EAFM (ecosystem approaches to fisheries management).
 
-A weighted ensemble of SISCAH operating models is used for management procedure 
-evaluation, containing five different models. 
+A weighted ensemble of five differently-parameterized SISCAH operating models 
+is used for management procedure evaluation. 
 This approach was chosen to encompass the uncertainty around the 
 productivity parameters stock recruitment steepness 
 ($h$), which affects productivity at low stock sizes, and the lower 
 limit on natural mortality ($M_b$), which represents the average mortality rate 
-at high stock sizes. Uncertainty exists, especially around $h$ since abundance in
+at high stock sizes. Uncertainty around $h$ is especially high since abundance in
 SoG has rarely dipped low enough to give the model a strong indication of what 
 $h$ should be. Details of the operating model ensemble are described in 
 Appendix [A](#sec:app-a).
@@ -128,11 +128,11 @@ insights.
 <!-- [Mandatory. -->
 <!-- A table may be used in lieu of bullets for this section. -->
 <!-- Refer to the Guidance Document for further instructions.] -->
-For Pacific Herring MSE we present a suite of biological reference 
-points as performance metrics for the MP evaluations. 
-These include fractions of $B_0$ (unfished spawning biomass) and $B_{MSY}$ (biomass at 
-maximum sustainable yield). 
-Figure \@ref(fig:yieldSSBcurve) shows relative position of biological reference
+A suite of biological reference points are used to develop performance metrics 
+for the MP evaluations. 
+These include a range of proportions of $B_0$ (unfished spawning biomass) and 
+$B_{MSY}$ (biomass at maximum sustainable yield). 
+Figure \@ref(fig:yieldSSBcurve) shows the relative position of biological reference
 points for SISCAH operating model 1 (OM 1, Appendix [A](#sec:app-a)),
 
 ```{r yieldSSBcurve, echo = FALSE, fig.cap = yieldSSBcap}
@@ -185,9 +185,9 @@ Ecosystem reference points are incorporated into
 the conservation objective for Herring through:
 
 1. A LRP of 0.3${B_0}$ based on an analysis of stock productivity [@kronlund2017]
-which is well-above the default LRP of 0.4$B_{MSY}$ [@dfo2009] and 
-which is also above the soft-limit of 0.5$B_{MSY}$ implemented in 
-New Zealand fisheries [@shelton2008].
+which is well-above the default LRP of 0.4$B_{MSY}$ [@dfo2009] and incidentally 
+is also above the soft-limit 
+of 0.5$B_{MSY}$ implemented in New Zealand fisheries [@shelton2008].
 The LRP of 0.3${B_0}$ for the ensemble operating model is
 approximately 0.7$B_{MSY}$ (Appendix [A](#sec:app-a)).
 

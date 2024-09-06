@@ -218,4 +218,5 @@ theme_set(theme_herring())
 \newcommand{\AVE}{\text{`r en2fr("AVE", translate = french)`}}
 
 <!-- Compile the document on the command line: -->
+<!-- bookdown::render_book("index.Rmd") -->
 <!-- csasdown::render_sar() -->
