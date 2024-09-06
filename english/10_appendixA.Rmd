@@ -73,8 +73,11 @@ e.g.,
 where $\theta_{ens}$ is the ensemble weighted average of the parameter values
 $\theta_{OM_k}$ from operating model $k = 1,...,5$.
 
-For all operating models, we report leading OM parameters, current biomass,
-current stock status relative to unfished biomass, and $MSY$ based reference points (Table \@ref(tab:parRefPtsTable)). The final column also gives the weighted ensemble value of the posterior mean values from each OM.
+For all operating models, we report leading OM parameters,
+current biomass, current stock status relative to unfished biomass, and
+$MSY$ based reference points (Table \@ref(tab:parRefPtsTable)).
+The final column also gives the weighted ensemble value
+of the posterior mean values from each OM.
 
 ```{r parRefPtsTable, echo = FALSE, warnings = FALSE}
 
@@ -121,7 +124,6 @@ allEstTable <- parTable |>
 
 colnames(allEstTable) <- c("OM 1","OM 2","OM 3","OM 4","OM 5","Ensemble")
 
-
 rownames(allEstTable) <- c( "$h$",
                             "$M_b$",
                             "$M_0$",
@@ -142,7 +144,6 @@ rownames(allEstTable) <- c( "$h$",
                             "$USR$",
                             "$Y_{USR}$",
                             "$U_{Crash}$")
-
 
 allEstTabCap <- "SISCAH-OM life-history and management parameter values from the 5 operating models (OMs 1 - 5) for stock-recruit steepness ($h$), asymptotic lower limit on depensatory $M$ ($M_b$, /yr), unfished biomass ($SB_0$, kt), unfished recruitment ($R_0$, 1e6), unfished mortality ($M_0$, /yr), mortality depensation rate ($m_1$), time-averaged mortality ($\\overline{M}$, /yr), surface survey design catchability ($q_s$), spawning biomass in 2023 ($SB_{2023}/SB_0$), stock status ($P(SB_{2023} > 0.3 SB_0)$), spawning biomass at maximum sustainable yield ($SB_{MSY}$, kt), harvest rate targeting maximum sustainable yield ($U_{MSY}$), maximum sustainable yield ($MSY$), upper stock reference ($USR$, kt), harvest rate targeting the upper stock reference ($U_{USR}$), equilibrium yield at the upper stock reference ($Y_{USR}$), harvest rate associated with negative production and higher risk of extirpation ($U_{Crash}$). Uncertainty is shown as the 95\\% credible interval where estimates could be drawn from posterior samples (indicated by two parenthetical values), or half the interquartile range where estimates were drawn from 200 year simulations (one parenthetical value)."
 
@@ -235,11 +236,10 @@ which reflect three additional objectives described in
 Section "[Fishery management objectives](#sec:fish-mgmt-objs)".
 
 To help fishery managers understand trade-offs among biomass and yield, 
-additional quantitative performance metrics are estimated. These metrics 
-do not have a minimum or target value like objectives, but give greater 
-detail on biomass and yield outcomes of each MP over the
-15 year simulation.
-
+additional quantitative performance metrics are estimated.
+These metrics do not have a minimum or target value like objectives,
+but give greater detail on biomass and yield outcomes of each MP
+over the 15-year simulation.
 
 1. $P(B_t > B_{MSY})$: The probability that biomass is above $B_{MSY}$.
 
@@ -262,13 +262,11 @@ in catch from year-to-year.
 
 1. $B_{2038}$: Median biomass in 2038.
 
-
 Performance metrics are estimated via the following closed loop feedback 
 simulation algorithm:
 
-
 1. For each operating model, initialize a pre-conditioned 
-simulation model for the period 1951 – 2023 based on a random
+simulation model for the period 1951 to 2023 based on a random
 draw from the operating model posterior distribution;
 
 2.  Project the SoG Herring DDM operating model into the future one year 
@@ -288,24 +286,27 @@ at a time. For each year in the projection, apply the following:
       to the total allowable catch in the previous step. 
       vii)   Repeat steps 2.i - 2.v until the projection period ends (2038).
 
-3.  Repeat Step-1 and Step-2 99 more times;
+3.  Repeat Step 1 and Step 2 99 more times;
 
 4.  Calculate quantitative performance statistics across all 
     100 replicates.
 
 # Discussion {-}
 
-Selecting a MP by tuning to the conservation objective leads to a harvest control rule 
-recommendation with a 14\% maximum target harvest rate. If applied annually, the
+Selecting a MP by tuning to the conservation objective leads to
+a harvest control rule recommendation with a 14\% maximum target harvest rate.
+If applied annually, the
 average yield, using recent 20-year average allocation among gear types,
-is 10 - 12 kt (Table \@ref(tab:statTable), Figure \@ref(fig:simEnv)). Selecting
+is 10 - 12 kt (Table \@ref(tab:statTable), Figure \@ref(fig:simEnv)).
+Selecting
 an MP with a maximum target harvest rate at or below 14\% will achieve the 
 conservation objective.
 
 Although additional fishery objectives are presented in 
 Section "[Fishery management objectives](#sec:fish-mgmt-objs)", these are not
 a full suite of objectives for SoG Herring and are not currently used for
-further MP tuning. If this was undertaken, for example, tuning the MP
+further MP tuning.
+If this was undertaken, for example, tuning the MP
 to a biomass target of 0.6$B_0$, the maximum target harvest rate and average
 annual catch would be lower.
 
@@ -333,7 +334,8 @@ lived groundfish species with less variable recruitment and
 lower predation pressures.
 
 The EM implements a density independent $M$ model and appears to overestimate 
-biomass in the 1-year ahead forecast. So called positive assessment errors are 
+biomass in the 1-year ahead forecast.
+So called positive assessment errors are 
 reflected in the higher than neutral probability the effective harvest rate exceeds
 the maximum target harvest rate (Figure \@ref(fig:simEnv), bottom row). 
 However the EM is in the simulation-testing process and 
@@ -395,7 +397,6 @@ colnames(statTable) <- c( "Max HR",
 
 statTabCap <- "Performance statistics for MPs differing by maximum target harvest rates indicated in column 1. Objectives that are met by an MP are indicated by 'Y', otherwise 'N'. $\\overline{B}$ is the average biomass from 1951 to 2023. Subscript $t$ indicates the years 2024 - 2038.  Biomass $B$ and Harvest Rate $U$ metrics (columns 2 -8)  are the probability that $B_t$ or $U_t$ respectively is greater than the value indicated in the header. Average Catch $\\overline{C_t}$ and Final Biomass $B_{2038}$ are in biomass units (kt), and final year $B_{2038}/B_0$ and average projection year $\\overline{B_t/B_0}$ stock status is biomass depletion relative to unfished biomass. For SoG, $B_{prod}$ is calculated as 80% of the average spawning biomass during the productive period, ${0.8B}_{1998:2007}$."
 
-
 objNames <- c(  " " = 1,
                 "Conservation" = 1,
                 "Biomass" = 2,
@@ -406,7 +407,6 @@ objNames <- c(  " " = 1,
                 "Stock Status" = 2,
                 "Final Biomass" = 1)
 
-
 kable(  statTable, escape = FALSE, 
         caption = statTabCap, booktabs = T,
         align = c(rep("c",ncol(statTable))),
@@ -415,7 +415,6 @@ kable(  statTable, escape = FALSE,
   kable_styling( latex_options = c("striped", "scale_down","hold_position"),
                  bootstrap_options = c("striped", "hover") ) |>
   add_header_above( objNames, bold = T ) 
-
 ```
 
 ```{r captions, include = FALSE, echo = FALSE}
