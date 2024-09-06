@@ -16,7 +16,8 @@ ParticipantTable <- tibble::tribble(
     "Miriam O",         "DFO Science",               "CSAS science advisor"
 )
 csasdown::csas_table(ParticipantTable, caption = NULL, align = "l") %>%
-  kable_styling(latex_options = "hold_position")
+  kable_styling(latex_options = "hold_position") %>%
+  row_spec(0, bold = TRUE)
 ```
 
 \clearpage

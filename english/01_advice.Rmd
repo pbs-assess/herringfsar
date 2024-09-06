@@ -1,14 +1,13 @@
 ## SCIENCE ADVICE {-}
 
-<!--
-[Mandatory.
-Maximum length 500 words.
-Include summary bullets of the following factors affecting the stock
-that are relevant for decision-making.
-Please refer to the Guidance Document for standardized language and examples,
-and what to avoid in this section.] 
-See: https://086gc.sharepoint.com/:w:/r/sites/FSARPilotImplementation2023-2024/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B7d2455b6-7b5b-41c7-81eb-07b15e270b97%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724309068814&web=1
--->
+<!-- [Mandatory. -->
+<!-- Maximum length 500 words. -->
+<!-- Include summary bullets of the following factors affecting the stock -->
+<!-- that are relevant for decision-making. -->
+<!-- Please refer to the Guidance Document -->
+<!-- for standardized language and examples, -->
+<!-- and what to avoid in this section.]  -->
+<!-- See: https://086gc.sharepoint.com/:w:/r/sites/FSARPilotImplementation2023-2024/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B7d2455b6-7b5b-41c7-81eb-07b15e270b97%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724309068814&web=1 -->
 
 ### Status {-}
 
@@ -51,7 +50,7 @@ Each major stock area is modelled using regional life-history traits and regiona
 
 ::: {custom-style="fsar-bullet"}
 
-<!-- TODO: automate this see "ASSESSMENT UNDER MSE" or "Applicaton of MP for 2025"
+<!-- TODO: automate this: "ASSESSMENT UNDER MSE" or "Applicaton of MP for 2025" -->
 A quota option for 2025 of 11,570 metic tonnes is provided using the management 
 procedure with a maximum 14\% target harvest rate of unfished spawning biomass 
 shown in Figure \@ref(fig:plotHCRules).

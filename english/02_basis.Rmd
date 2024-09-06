@@ -51,7 +51,9 @@ reviewed and approved by CSAS in June 2023 [@dfo2023a].
 
 <!-- [Mandatory. -->
 <!-- Select one of the following: -->
-Full assessment, MSE process, with update to the management procedure and harvest control rule.
+Full assessment,
+MSE process,
+with update to the management procedure and harvest control rule.
 <!-- Interim Year Update, or -->
 <!-- Harvest Decision Rule (HDR) Update. -->
 <!-- See the Guidance Document for definitions.]  -->
@@ -62,7 +64,8 @@ Last Full Assessment: this document (2024).
 
 #### Assessment Approach {-}
 
-1. Broad category: Full MSE process using a single stock operating model ensemble.
+1. Broad category:
+Full MSE process using a single stock operating model ensemble.
 <!-- [Select one of the following: -->
 <!-- Data-poor (e.g., catch-MSY, very limited data, etc.), -->
 <!-- index-based (trends in empirical indices only), -->
@@ -73,7 +76,12 @@ Last Full Assessment: this document (2024).
 <!-- multiple approaches, -->
 <!-- other (specify)] -->
 
-2.	Specific category:
+2. Specific category:
+Index-based,
+state-space,
+statistical catch-at-age model,
+with a Beverton-Holt stock-recruitment relationship and
+density dependent time varying natural mortality.
 <!-- [Select one or as many as apply: -->
 <!-- No data, -->
 <!-- Index-based (fishery-dependent indices only), -->
@@ -86,11 +94,6 @@ Last Full Assessment: this document (2024).
 <!-- Surplus Production, -->
 <!-- Potential Biological Removal, -->
 <!-- Other (please explain)] -->
-Index-based,
-state-space,
-statistical catch-at-age model, 
-with a Beverton-Holt stock-recruitment relationship and
-density dependent time varying natural mortality.
 
 <!-- [Optional short summary of stock assessment methodology. -->
 <!-- Include the method of considering ecosystem variables. -->
