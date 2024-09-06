@@ -1,6 +1,5 @@
 ## BASIS FOR ASSESSMENT {-}
 
-
 ### Assessment Details {-}
 
 The Pacific Herring Strait of Georgia 
@@ -74,7 +73,6 @@ Last Full Assessment: this document (2024).
 <!-- multiple approaches, -->
 <!-- other (specify)] -->
 
-
 2.	Specific category:
 <!-- [Select one or as many as apply: -->
 <!-- No data, -->
@@ -106,6 +104,7 @@ and quota calculations for 2024/25 season using the MP tuned to the conservation
 objective.
 
 ### Stock Structure Assumption {-}
+
 <!--Stock overview information: -->
 <!--[reference to a Research Document or other publication, and/or footnote to the working paper] -->
 <!--[Mandatory. Maximum length 150 words.]-->
@@ -125,6 +124,7 @@ used to update baseline data for SoG spawning ares and this may provide new
 insights.
 
 ### Reference Points {-}
+
 <!-- [Mandatory. -->
 <!-- A table may be used in lieu of bullets for this section. -->
 <!-- Refer to the Guidance Document for further instructions.] -->
@@ -139,10 +139,7 @@ points for SISCAH operating model 1 (OM 1, Appendix [A](#sec:app-a)),
 yieldSSBcap <- "Strait of Georgia Herring operating model 1 (OM 1) equilibrium yield curve with respect to spawning stock biomass. The horizontal dashed line indicates OM1's estimate of maximum sustainable yield ($MSY$), while vertical line segments show biomass reference points including, from right to left, unfished biomass ($B_0$), the provisional upper stock reference (USR= 0.8$B_{1998:2007}$), optimal biomass producing $MSY$ on average ($B_{MSY}$), default USR from the DFO policy (80\\% of $B_{MSY}$), the Herring limit reference point (LRP= 0.3$B_0$), and the default LRP from the DFO policy ($0.4 B_{MSY}$)."
 filepath <- "data/yieldSSB.png"
 knitr::include_graphics(filepath)
-
-
 ```
-
 
 #### Limit Reference Point (LRP) {-}
 
@@ -177,7 +174,6 @@ We currently do not specify an additional RR for SoG Herring because we
 use a process that directly selects an MP that meets the 
 conservation objective, avoids the LRP with high probability, 
 and whose harvest rate is more conservative than $U_{MSY}$).
-
 
 #### Ecosystem Reference Points {-}
 
@@ -277,7 +273,6 @@ plotHCRules(  LCP_i = c(.3,.3,.172),
               language = "English")
 ```
 
-
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
 For each interim year the realized catch, survey index, and 
@@ -292,6 +287,7 @@ For example, if the previous year's realized catch far exceeds the TAC
 prescribed by the MP or if the survey index is far below the projected index.
 
 ### Data {-}
+
 <!-- [Mandatory. -->
 <!-- Maximum length 300 words.]  -->
 <!-- Data changes: -->

@@ -13,9 +13,11 @@ See: https://086gc.sharepoint.com/:w:/r/sites/FSARPilotImplementation2023-2024/_
 ### Status {-}
 
 ::: {custom-style="fsar-bullet"}
+
 The Strait of Georgia (SoG) major stock assessment region (SAR) is healthy.
 
 Spawning biomass is above the LRP and above all candidate upper stock reference (USRs) points.
+
 :::
 
 ### Trends {-}
@@ -42,21 +44,16 @@ accounts for predation mortality and ecosystem effects
 that Herring experience at their trophic level.
 
 Each major stock area is modelled using regional life-history traits and regional ecosystem pressures.
+
 :::
 
 ### Stock Advice {-}
 
 ::: {custom-style="fsar-bullet"}
+
 <!-- TODO: automate this see "ASSESSMENT UNDER MSE" or "Applicaton of MP for 2025"
 A quota option for 2025 of 11,570 metic tonnes is provided using the management 
 procedure with a maximum 14\% target harvest rate of unfished spawning biomass 
 shown in Figure \@ref(fig:plotHCRules).
-:::
 
-<!--
-### Other Management Questions [if applicable, otherwise do not include] {-}
-
-::: {custom-style="fsar-bullet"}
-[Other bullets if applicable]
 :::
--->
