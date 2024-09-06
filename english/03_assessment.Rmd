@@ -63,20 +63,22 @@ JC: not including because not talking about RR-->
 
 ### Ecosystem and Climate Change Considerations {-}
 
-Ecosystem considerations are taken into account in the model in a number of ways.
-Firstly, and different than most fisheries, the biological LRP is set to a 
+Ecosystem considerations are taken into account in the model in a number of ways:
+
+1.    Different than most fisheries, the biological LRP is set to a 
 higher value than those in [@dfo2009] and the 0.5$B_{MSY}$ from
 [@shelton2008]. This is due to the middle-of-the-food-chain nature of 
 Herring which likely drives observed high variability in Herring productivity.
 The higher LRP allows for a certain amount of herring to remain for predators, such as
 salmon and whales.
-Secondly, while predators, prey and other ecosystem indicators are not directly 
+1.    While predators, prey and other ecosystem indicators are not directly 
 incorporated into models, they are modelled implicitly via time varying natural 
 mortality and recruitment. The new density dependent mortality feature
-deepens the modelling of underpinning ecosystem interactions.
-Thirdly, BC Pacific Herring are managed as 5 regional stocks such that stock specific 
+better represents the underpinning ecosystem interactions.
+1.    BC Pacific Herring are managed as 5 regional stocks such that stock specific 
 life history, abundance, and pressures are fed into the models. 
-Fourthly, candidate USRs [@dfo2022a] have been introduced to the MSE process and IFMP.
+1.    Candidate USRs [@dfo2022a] that may differ between stocks and fisheries
+have been introduced to the MSE process and IFMP.
 Ongoing research incorporating spatial, and other ecosystem indicators highlights
 DFO's commitment to an ecosystem approach to fisheries management.
 Summary of recent research can be found in [@dfo2024].
@@ -84,9 +86,9 @@ Summary of recent research can be found in [@dfo2024].
 <!--### History of Management Decisions,; Landings/Harvest/Effort, TAC \& Catch Advice] {-}-->
 ### History of Management {-}
 
-Since 1983 a maximal harvest rate of 20% has been implemented. The realized 
-harvest rate has mostly hovered below this rate since then with a few dips,
-including those of the past few years (Figure \@ref(fig:indicators), panel D).
+A maximal harvest rate of 20% has been implemented since 1983. The realized 
+harvest rate has mostly hovered below this rate since then with noticeable
+declines these past few years (Figure \@ref(fig:indicators), panel D).
 Since 2015 the selection of annual harvest rates has been informed by 
 MP simulation testing.
 

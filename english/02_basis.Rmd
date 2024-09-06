@@ -186,7 +186,7 @@ the conservation objective for Herring through:
 
 1. A LRP of 0.3${B_0}$ based on an analysis of stock productivity [@kronlund2017]
 which is well-above the default LRP of 0.4$B_{MSY}$ [@dfo2009] and incidentally 
-is also above the soft-limit 
+is also above the more conservative soft-limit 
 of 0.5$B_{MSY}$ implemented in New Zealand fisheries [@shelton2008].
 The LRP of 0.3${B_0}$ for the ensemble operating model is
 approximately 0.7$B_{MSY}$ (Appendix [A](#sec:app-a)).
@@ -203,7 +203,8 @@ centred on the LRP and labelled the conservation objective:
 at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$).
 
-Three additional objectives are presented for MP evaluation:
+Three additional objectives are presented for MP evaluationonly if the 
+LRP requirement is met:
 
 2. Maintain spawning biomass at or above the USR with at least 50% 
 probability over three Pacific Herring generations (i.e., achieve a 
@@ -235,8 +236,8 @@ every three years, following recommendations of @dfo2023a.
 In 2026 SISCAH will be fit to new SoG survey and fishery data 
 (extending the historical time series) and MPs will be re-evaluated against 
 fishery management objectives. 
-At this time new objectives and performance metrics may
-also be added to the MSE process.
+New objectives and performance metrics may
+also be added to the MSE process at this time.
 
 In the interim years (2024 and 2025), operating model status remains constant, 
 and the MP is updated which estimates spawning biomass and the one-year 
@@ -255,12 +256,12 @@ See Section "[Projections](#sec:projections)" for a full description.
 The harvest control rule component of each simulation-test MP is
 a "hockey-stick" shaped function defined by lower and upper control points, and
 a maximum target harvest rate [@cox2013roles]. 
-We explore three shapes which differ in their 
+Three shapes which differ in their 
 control points and maximum target harvest rates
-(Figure \@ref(fig:plotHCRules)).
-These choices build on previous results which showed the harvest rate as
-the most influential component for meeting the conservation objective, and 
-and implement a ramp as per @dfo2009. 
+(Figure \@ref(fig:plotHCRules)) are presented for illustration purposes.
+These options were chosen because previous results showed the harvest rate as
+the key factor governing conservation performance for Herring. A ramp is 
+implemented as per @dfo2009. 
 Sustainable harvest advice for SoG Herring for 2024/25 is presented using 
 the MP tuned to the conservation objective which has lower and upper control 
 points at 30\% and 60\% of unfished spawning biomass and a maximum target
