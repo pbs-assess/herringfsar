@@ -344,6 +344,7 @@ the conservation objective.
 
 ```{r statTable, echo = FALSE }
 #This produces HTML output TODO: FIX to table format for word?
+options(width = 300)
 wtdPerfTable <- read.csv("data/wtdTable.csv")
 
 statTable <- wtdPerfTable |>
