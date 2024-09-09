@@ -202,12 +202,12 @@ centred on the LRP and labelled the conservation objective:
 at least 75% probability over three Pacific Herring generations
 (i.e., avoid a biomass limit; $P(\SB_t \geq 0.3 \SB_0) \geq 0.75$).
 
-Three additional objectives are presented for MP evaluationonly if the 
+Three additional objectives are presented for MP evaluation only if the 
 LRP requirement is met:
 
 2. Maintain spawning biomass at or above the USR with at least 50% 
 probability over three Pacific Herring generations (i.e., achieve a 
-target biomass; $P(\B_t \geq \B_{targ}) \geq 0.50$),
+target biomass; $P(B_t \geq B_{targ}) \geq 0.50$),
 
 3. Maintain average annual variability (AAV) in catch below 25% over three
 Pacific Herring generations (i.e., minimize catch variability; 
