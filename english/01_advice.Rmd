@@ -36,7 +36,7 @@ Spawning biomass has fluctuated above and below the unfished spawning biomass ($
 The limit reference point (LRP) is set at 0.3${B_0}$ and is implemented using a 
 conservation objected which states to “avoid the LRP with a high probability” 
 (minimum 75%). This LRP is more conservative than the default LRP identified in 
-“DFO Sustainable Fisheries Framework” policy (@dfo2009).
+“DFO Sustainable Fisheries Framework” policy [@dfo2009].
 
 Incorporating density dependent mortality and time-varying recruitment 
 accounts for predation mortality and ecosystem effects

@@ -6,7 +6,7 @@ The Pacific Herring Strait of Georgia
 (SoG) stock assessment region, is one of the 
 `r number_to_word(length(major_regions_short))` major stock areas; the other 
 major and the `r number_to_word(length(minor_regions_short))` minor stock
-areas are presented in [@dfo2024bInPrep, In Prep.].
+areas are presented in [@dfo2024bInPrep].
 
 Managment strategies for SoG Pacific Herring are evaluated with a management 
 strategy evaluation (MSE) process, which implements a spatially integrated statistical 
