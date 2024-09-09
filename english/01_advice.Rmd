@@ -50,7 +50,7 @@ Each major stock area is modelled using regional life-history traits and regiona
 
 ::: {custom-style="fsar-bullet"}
 
-<!-- TODO: automate this: "ASSESSMENT UNDER MSE" or "Applicaton of MP for 2025" -->
+<!-- TODO: automate this: "ASSESSMENT UNDER MSE" or "Application of MP for 2025" -->
 A quota option for 2025 of 11,570 metric tonnes is provided using the management 
 procedure with a maximum 14\% target harvest rate applied to the 2025 forecast 
 spawning biomass shown in Figure \@ref(fig:plotHCRules).

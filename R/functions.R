@@ -181,9 +181,9 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   omB0 <- refPtsTab$B0
   omBusr <- round(refPtsTab$Busr,2)
 
-  x <- paste0( "For ", thisYr,
+  x <- paste0("For ", thisYr,
     ", the estimation model estimates spawning biomass, $\\hat{B}_{",
-    thisYr,"} , at ", amSB_T, "$ kt (maximum likelihood estimate), which is
+    thisYr, "}$, at ", amSB_T, " kt (maximum likelihood estimate), which is
     above the operating model LRP and USR of ", round(0.3*omB0,2)," kt
     and ", omBusr," kt, respectively.")
 

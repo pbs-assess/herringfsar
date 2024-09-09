@@ -64,23 +64,23 @@ JC: not including because not talking about RR-->
 
 Ecosystem considerations are taken into account in the model in a number of ways:
 
-1.    Different than most fisheries, the biological LRP is set to a 
-higher value than those in @dfo2009 and the 0.5$B_{MSY}$ from
-@shelton2008. This is due to the middle-of-the-food-chain nature of 
+1. Different than most fisheries, the biological LRP is set to a 
+higher value than those in @dfo2009 and the 0.5$B_{MSY}$ from @shelton2008.
+This is due to the middle-of-the-food-chain nature of 
 Herring which likely drives observed high variability in Herring productivity.
 The higher LRP allows for a certain amount of herring to remain for predators, such as
 salmon and whales.
-1.    While predators, prey and other ecosystem indicators are not directly 
+2. While predators, prey and other ecosystem indicators are not directly 
 incorporated into models, they are modelled implicitly via time varying natural 
 mortality and recruitment. The new density dependent mortality feature
 better represents the underpinning ecosystem interactions.
-1.    BC Pacific Herring are managed as 5 regional stocks such that stock specific 
+3. BC Pacific Herring are managed as 5 regional stocks such that stock specific 
 life history, abundance, and pressures are fed into the models. 
-1.    Candidate USRs [@dfo2022a] that may differ between stocks and fisheries
+4. Candidate USRs [@dfo2022a] that may differ between stocks and fisheries
 have been introduced to the MSE process and IFMP.
 Ongoing research incorporating spatial, and other ecosystem indicators highlights
 DFO's commitment to an ecosystem approach to fisheries management.
-Summary of recent research can be found in [@dfo2024].
+Summary of recent research can be found in @dfo2024.
 
 <!--### History of Management Decisions,; Landings/Harvest/Effort, TAC \& Catch Advice] {-}-->
 
