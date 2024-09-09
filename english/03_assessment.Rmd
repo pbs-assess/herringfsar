@@ -65,8 +65,8 @@ JC: not including because not talking about RR-->
 Ecosystem considerations are taken into account in the model in a number of ways:
 
 1.    Different than most fisheries, the biological LRP is set to a 
-higher value than those in [@dfo2009] and the 0.5$B_{MSY}$ from
-[@shelton2008]. This is due to the middle-of-the-food-chain nature of 
+higher value than those in @dfo2009 and the 0.5$B_{MSY}$ from
+@shelton2008. This is due to the middle-of-the-food-chain nature of 
 Herring which likely drives observed high variability in Herring productivity.
 The higher LRP allows for a certain amount of herring to remain for predators, such as
 salmon and whales.
@@ -87,21 +87,10 @@ Summary of recent research can be found in [@dfo2024].
 ### History of Management {-}
 
 A maximal harvest rate of 20% has been implemented since 1983. The realized 
-harvest rate has mostly hovered below this rate since then with noticeable
-declines these past few years (Figure \@ref(fig:indicators), panel D).
+harvest rate has mostly hovered below this rate since then with reduced harvest
+rates applied for the past few years (Figure \@ref(fig:indicators), panel D).
 Since 2015 the selection of annual harvest rates has been informed by 
 MP simulation testing.
-
-<!-- SP: I think these details are explained under "Management Procedures" in 
-the appendix, except for the years of data used. 
-Suggest that anything necessary for understanding be moved there. 
-
--JC: explain the process under full MSE
-REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024 and 2025,
-ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
-ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
-PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
--->
 
 ### Projections {-#sec:projections}
 
@@ -116,11 +105,6 @@ curr_biomass_text(  mpFit   = fit_maxTHR0.14,
 ```
 
 #### Application of MP for 2025 {-}
-
-<!-- Simulation of the management procedures has two components that are held constant:
-the data and the estimation model, and the the third component which we vary: 
-the management procedure (harvest control rule).  
-I think we can do without the above sentence SP -->
 
 We simulation tested three MPs,
 each with hockey-stick shaped harvest control rules
