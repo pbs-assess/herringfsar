@@ -6,9 +6,9 @@ THR <- TAC.df[5,2]
 TAC <- TAC.df[6,2]/1e3
 ```
 
-Stock trends and status for SoG Herring historical time series (1951-2023)
-is represented by the ensemble operating model, using 6 indicators 
-(Figure \@ref(fig:indicators)).
+Stock status and trends for SoG Herring are
+represented by the ensemble operating model, using the historical time series (1951-2023)
+and 6 indicators (Figure \@ref(fig:indicators)).
 Ensemble operating model trends are similar to those presented for SoG Herring 
 in previous stock assessments (e.g., @dfo2024), with  near-identical data 
 sources and choice of indicators.
@@ -32,7 +32,7 @@ stock_status_text(  refPtsTab = ensRefPtsTable,
 ```
 
 The ensemble model estimates spawning biomass to be above $B_{MSY}$ and
-the USR for the majority of the historical time series 
+all candidate USRs for the majority of the historical time series 
 (Figure \@ref(fig:indicators)A).
 Additionally, median posterior estimates of spawning biomass have remained
 above the LRP in all years since 1970.
@@ -55,7 +55,8 @@ forecast biomass.
 
 Estimated spawning biomass production was high in 2019 and then declined each 
 of the next three year to 2023 (Figure \@ref(fig:indicators)F), despite spawning
-biomass remaining fairly constant.
+biomass remaining fairly constant. This is likely due to the increasing trend
+in natural mortality estimates (Figure \@ref(fig:indicators)C).
 
 <!-- #### Fishing Mortality {-} 
 JC: not including because not talking about RR-->
@@ -65,7 +66,8 @@ JC: not including because not talking about RR-->
 Ecosystem considerations are taken into account in the model in a number of ways:
 
 1. Different than most fisheries, the biological LRP is set to a 
-higher value than those in @dfo2009 and the 0.5$B_{MSY}$ from @shelton2008.
+higher value than what is recommended by default [@dfo2009] (0.4$B_{MSY}$) and 
+0.5$B_{MSY}$ which is implemented in New Zealand fisheries [@shelton2008].
 This is due to the middle-of-the-food-chain nature of 
 Herring which likely drives observed high variability in Herring productivity.
 The higher LRP allows for a certain amount of herring to remain for predators, such as
@@ -73,11 +75,12 @@ salmon and whales.
 2. While predators, prey and other ecosystem indicators are not directly 
 incorporated into models, they are modelled implicitly via time varying natural 
 mortality and recruitment. The new density dependent mortality feature
-better represents the underpinning ecosystem interactions.
-3. BC Pacific Herring are managed as 5 regional stocks such that stock specific 
+of the new operating model, SISCAH, better represents the underpinning ecosystem interactions.
+3. BC Pacific Herring are managed as 5 stock assessment regions such that stock specific 
 life history, abundance, and pressures are fed into the models. 
-4. Candidate USRs [@dfo2022a] that may differ between stocks and fisheries
-have been introduced to the MSE process and IFMP.
+4. Candidate USRs [@dfo2022a], which incorporate area specific ecosystem considerations,
+have been introduced to the MSE process and IFMP for consideration as (1) a biomass target
+objective and (2) the lower boundary of the Healthy zone.
 Ongoing research incorporating spatial, and other ecosystem indicators highlights
 DFO's commitment to an ecosystem approach to fisheries management.
 Summary of recent research can be found in @dfo2024.
@@ -86,8 +89,8 @@ Summary of recent research can be found in @dfo2024.
 
 ### History of Management {-}
 
-A maximal harvest rate of 20% has been implemented since 1983. The realized 
-harvest rate has mostly hovered below this rate since then with reduced harvest
+A maximal harvest rate of 20% has been implemented since 1983 for the SoG Herring SAR. 
+The realized harvest rate has mostly hovered below this rate since then with reduced harvest
 rates applied for the past few years (Figure \@ref(fig:indicators), panel D).
 Since 2015 the selection of annual harvest rates has been informed by 
 MP simulation testing.
