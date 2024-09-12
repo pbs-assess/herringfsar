@@ -16,15 +16,18 @@ report_title_french: |
 inuktitut_citation: |
   Inuktitut citation here
 context: |
-  Pacific Herring (*Clupea pallasii*) abundance in British Columbia is assessed
-  using a spatially integrated statistical catch at age model fit to
-  spawn survey indices, fishery age composition data, and commercial catches.
-  This stock assessment evaluates abundance relative to
-  the limit reference point, the upper stock reference, and
-  fisheries management objectives.
-  [...]
-  We recommend a management procedure for the
-  Strait of Georgia stock assessment region.
+  Strait of Georgia British Columbia Pacific Herring (*Clupea pallasii*) stock 
+  is assessed using a management strategy evaluation (MSE) process which implements
+  the spatially integrated statistical catch at age Herring (SISCAH) modelling framework
+  fit to spawn survey indices, fishery age composition data, and commercial catches.
+  
+  The operating model provides an assessment of status relative to a suite of 
+  biological reference points, including the limit reference point and 
+  candidate upper stock reference points.
+
+  Management advice for the Strait of Georgia stock assessment region
+  includes quota option using a management procedure tuned to the 
+  conservation objective.
 output:
  csasdown::fsar_word
 link-citations: false
