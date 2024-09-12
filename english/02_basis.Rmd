@@ -3,10 +3,10 @@
 ### Assessment Details {-}
 
 The Pacific Herring Strait of Georgia 
-(SoG) stock assessment region, is one of the 
-`r number_to_word(length(major_regions_short))` major stock areas; the other 
-major and the `r number_to_word(length(minor_regions_short))` minor stock
-areas are presented in [@dfo2024bInPrep, In Prep.].
+(SoG) stock assessment region (SAR), is one of the 
+`r number_to_word(length(major_regions_short))` major SARs.
+Advice for the other major and the `r number_to_word(length(minor_regions_short))` 
+minor SARs is presented in [@dfo2024bInPrep, In Prep.].
 
 Managment strategies for SoG Pacific Herring are evaluated with a management 
 strategy evaluation (MSE) process, which implements a spatially integrated statistical 
@@ -15,7 +15,7 @@ The modelling framework is fitted to historical time series of spawn survey indi
 biological and fishery age composition data, and commercial fishery catches.
 
 The SISCAH operating model estimates SoG Herring historical biomass time series 
-from 1951-2003 with these features: density dependent mortality (DDM), an integrated surface 
+from 1951-2023 with these features: density dependent mortality (DDM), an integrated surface 
 and dive survey index, gear-specific commercial fishery timing, and a 
 likelihood function with correlated age-compositions.
 Incorporation of density dependent natural mortality models potential ecosystem 
@@ -24,18 +24,18 @@ DFO's EAFM (ecosystem approaches to fisheries management).
 
 A weighted ensemble of five differently-parameterized SISCAH operating models 
 is used for management procedure evaluation. 
-This approach was chosen to encompass the uncertainty around the 
-productivity parameters stock recruitment steepness 
+This approach was chosen to encompass the uncertainty around the two
+productivity parameters: stock recruitment steepness 
 ($h$), which affects productivity at low stock sizes, and the lower 
 limit on natural mortality ($M_b$), which represents the average mortality rate 
 at high stock sizes. Uncertainty around $h$ is especially high since abundance in
-SoG has rarely dipped low enough to give the model a strong indication of what 
+SoG has rarely decreased low enough to give the model a strong indication of what 
 $h$ should be. Details of the operating model ensemble are described in 
 Appendix [A](#sec:app-a).
 
-The weighted ensemble was used to simulate management procedures (MPs) over a 
-15-year projection period (2024-2038) and present a MP tuned to meet 
-the conservation objective
+The weighted ensemble of operating models was used to simulate management 
+procedures (MPs) over a 15-year projection period (2024-2038) 
+and present a MP tuned to meet the conservation objective
 (Section "[Fishery management objectives](#sec:fish-mgmt-objs)") that is
 compliant with both the “DFO Sustainable Fisheries Framework” policy and 
 “A fishery decision-making framework incorporating the Precautionary Approach”
@@ -112,8 +112,11 @@ objective.
 <!--[reference to a Research Document or other publication, and/or footnote to the working paper] -->
 <!--[Mandatory. Maximum length 150 words.]-->
 
-SoG Herring is one of five major BC Pacific Herring stocks [@dfo2024].
-The SoG stock spawns primarily in March, over multiple locations with variable timing.
+The current assessment framework assumes BC has five discrete homogeneous SARs of 
+Pacific Herring and does not consider between-area movement, potential straying, 
+finer scale stock structure or uncertainty in stock structure. 
+SoG Herring is one of five major BC Pacific Herring SARs [@dfo2024].
+Herring in SoG spawn primarily in March, over multiple locations with variable timing.
 Details of spawn timing and locations are described in the
 [2024 SoG data summary report](https://github.com/grinnellm/Reports/blob/master/Summaries/2024/DataSummary.SoG.2024.pdf).
 Post spawning, mature SoG Herring
@@ -122,9 +125,10 @@ feeding grounds with herring that spawn on the WCVI.
 However adult herring are also reported in the 
 Salish Sea throughout the summer months indicating some level of non-migratory life
 history. Previous genetic research has not identified finer-scale stock structure 
-within the SoG management area, however, new genetic methods are currently being 
-used to update baseline data for SoG spawning ares and this may provide new 
-insights.
+within the SoG management area, however, new single nucleotide polymorphism
+(SNP) method (similar to [@petrou2021]) 
+is currently being used to update genetic baseline data for SoG spawning areas 
+and this may provide new insights into stock structure.
 
 ### Reference Points {-}
 

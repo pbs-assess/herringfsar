@@ -33,9 +33,9 @@ Spawning biomass has fluctuated above and below the unfished spawning biomass ($
 
 ::: {custom-style="fsar-bullet"}
 
-An analysis of historical surplus production identified low biomass states for
-3 of 5 Pacific Herring stocks and was used to set the 
-limit reference point (LRP) at 0.3${B_0}$ for all 5 stocks [@kronlund2017].
+An analysis of Herring data from 1988-2016 identified evidence of low biomass and
+low productivity states for 3 of 5 Pacific Herring stocks and these states were used 
+to define a limit reference point (LRP) of 0.3${B_0}$ for all 5 stocks [@kronlund2017].
 The LRP is implemented in Herring MSE using a conservation objected which states to 
 “avoid the LRP with a high probability” (minimum 75%). 
 This LRP is more conservative than the default LRP identified in 
