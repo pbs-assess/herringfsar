@@ -232,11 +232,12 @@ economics, and access.
 
 ### Operating Model Stock Status {-}
 
-Stock status for the SoG major stock is derived from the operating model 
-ensemble which represents weighting across five different models each 
-representing a range of productivity levels (Appendix [A](#sec:app-a)).
+Stock status for the SoG SAR is derived from the operating model 
+ensemble which includes five different models each 
+representing a range of productivity levels and each with a different weighting 
+based on previous research (Appendix [A](#sec:app-a)).
 The ensemble model stock status for 2023 is reported in Section 
-"[Assessment under MSE](#sec:assessment)"
+"[Assessment under MSE](#sec:assessment)".
 
 DFO Science, Pacific Region, will be updating operating models for SoG Herring 
 every three years, following recommendations of @dfo2023a.
@@ -246,19 +247,22 @@ fishery management objectives.
 New objectives and performance metrics may
 also be added to the MSE process at this time.
 
-In the interim years (2024 and 2025), operating model status remains constant, 
-and the MP is updated which estimates spawning biomass and the one-year 
-projection required to calculate a TAC.
+In the interim years (2024 and 2025), the operating model remains constant. 
+The estimation model is used to generate interim estimates of unfished spawning biomass,
+the current spawning biomass, and the one-year-ahead spawning biomass
+projection which are all required as inputs to the MP HCR which is used to calculate
+an annual quota or total allowable catch (TAC).
 
 ### Harvest Decision Rule {-}
 
 Herring MSE presents sustainable harvest advice for SoG Herring using 
 simulation tested MPs which identify the maximum target harvest rate for 
-a MP tuned to the established conservation objective. 
+a MP tuned to meeting the established conservation objective. 
 MPs are evaluated using a 15-year projection period and 
 simulated performance is reported against a suite of biological reference points
 and fishery metrics.
 See Section "[Projections](#sec:projections)" for a full description.
+
 
 The harvest control rule component of each simulation-test MP is
 a "hockey-stick" shaped function defined by lower and upper control points, and
@@ -267,11 +271,12 @@ Three shapes which differ in their
 control points and maximum target harvest rates
 (Figure \@ref(fig:plotHCRules)) are presented.
 These options were chosen because previous results showed the harvest rate as
-the key factor governing conservation performance for Herring. A ramp is 
-implemented as per @dfo2009. 
+the key factor governing conservation performance for Herring. A ramp 
+to ensure that removals are progressively reduced in order to avoid reaching the LRP
+is implemented, as per @dfo2009. 
 Sustainable harvest advice for SoG Herring for 2024/25 is presented using 
-the MP tuned to the conservation objective which has lower and upper control 
-points at 30\% and 60\% of unfished spawning biomass and a maximum target
+the MP tuned to meeting the conservation objective which has lower and upper control 
+points at 30\% and 60\% of unfished spawning biomass, respectively, and a maximum target
 harvest ($maxTHR$) of 14\% (green solid line, Figure \@ref(fig:plotHCRules)).
 
 ```{r plotHCRules, echo = FALSE, fig.cap = HCRcap, fig.asp = 0.9}
@@ -287,16 +292,22 @@ plotHCRules(  LCP_i = c(.3,.3,.172),
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
-For each interim year the realized catch, survey index, and 
-estimation-model-derived spawning biomass, are 
-compared to the simulation envelopes from the ensemble model.
-Exceptional circumstances are determined 
-by visually comparing these three values for the new year
-with the central 95\% of the ensemble operating model simulations.
-Any unusual deviations from the ensemble model projections would be 
-investigated and consideration given to refitting operating models.
+For each interim year three indicators: the realized catch, survey index, and 
+estimation-model-derived spawning biomass, will be examined and 
+compared to the range of values simulated in the ensemble operating model
+in order to identify exceptional circumstances.
+Any unusual deviations from the ensemble operating model range of uncertainty 
+would be investigated for severity and potential impacts on the performance
+of the MP, and consideration given to reexamining operating models and
+reevaluating MPs through simulation in interim years.
 For example, if the previous year's realized catch far exceeds the TAC 
-prescribed by the MP or if the survey index is far below the projected index.
+prescribed by the MP or if the survey index is far below the projected index
+this would be an indication of an exceptional circumstance requiring consideration. 
+Additional criteria for 
+exceptional circumstances will be considered on a case by case basis. 
+For example, if the data required to implement the MP is not available in a 
+given year this would also be a form of exceptional circumstances that 
+would need to be examined.
 
 ### Data {-}
 
