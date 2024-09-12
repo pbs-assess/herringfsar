@@ -150,37 +150,41 @@ knitr::include_graphics(filepath)
 
 #### Limit Reference Point (LRP) {-}
 
-The LRP is $0.3B_0$, = `r round(ensRefPtsTable$B0*0.3, 1)` kt where ${B_0}$ is the long-term
+The current LRP ($0.3B_0$), estimated using the SISCAH operating model ensemble, is
+`r round(ensRefPtsTable$B0*0.3, 1)` kt, where ${B_0}$ is the long-term
 average estimated unfished spawning biomass [@kronlund2017],[@forrest2023].
-This LRP is more conservative than the default LRP identified in 
+This LRP is more conservative than the default LRP of 0.4$B_{MSY}$ identified in 
 “DFO Sustainable Fisheries Framework” policy [@dfo2009].
 
 #### Upper Stock Reference (USR) {-}
 
-The provisional USR is `r round(ensRefPtsTable$Busr, 1)` kt.
+The current provisional USR (0.8$B_{1998:2007}$), estimated using the SISCAH
+operating model ensemble is `r round(ensRefPtsTable$Busr, 1)` kt.
 Candidate USRs were first introduced in @cleary2018 and a formal analysis of 
 USR options was undertaken in 2022 [@dfo2022a].
 Following consultations, DFO Resource Management then selected and implemented 
 0.8$B_{1998:2007}$ as a "provisional USR" for the 2022/23 IFMP 
 where the USR was included as a performance metric in the MP evaluations.
-Because consultations are ongoing for SoG Herring USRs, we include 
-5 USR performance metrics in this analysis: 0.8$B_{MSY}$ (new this year) and 
-all four candidate USRs presented as $B_{MSY}$ proxies [@dfo2022a].
+Consultations are ongoing for selection of the SoG Herring USR, therefore we include 
+5 USR performance metrics in this analysis: 0.8$B_{MSY}$ (newly estimated this year) 
+and all four candidate USRs presented as $B_{MSY}$ proxies [@dfo2022a].
 
 #### Target Reference Point (TRP) {-}
 
+TRPs have yet to be defined for SoG Herring.
 A biomass target objective centered on the USR has been suggested within the 
 Herring MSE process, however final selection of a USR for SoG Herring requires 
-additional consultations and thus a TRP has not been defined.
+additional consultations.
 
 #### Removal Reference (RR) {-}
 
 The default maximum RR for commercially harvested fish stocks is
 $F_{MSY}$ [@dfo2009, @dfo2013].
-We currently do not specify an additional RR for SoG Herring because we 
-use a process that directly selects an MP that meets the 
+RRs for SoG Herring are not currently specified because 
+a simulation-evaluation process is instead used that  
+directly selects an MP that meets the 
 conservation objective, avoids the LRP with high probability, 
-and whose harvest rate is more conservative than $U_{MSY}$).
+and whose harvest rate is more conservative than $U_{MSY}$.
 
 #### Ecosystem Reference Points {-}
 
@@ -199,8 +203,8 @@ representing the trophic level of Herring as a forage species.
 
 ### Fishery Management Objectives {-#sec:fish-mgmt-objs}
 
-The first and core of the fisheries management objectives [@dfo2019c] is 
-centred on the LRP and labelled the conservation objective:
+The primary fishery management objective [@dfo2019c] is 
+centered on the LRP and termed the conservation objective:
 
 1. Maintain spawning biomass at or above the LRP with
 at least 75% probability over three Pacific Herring generations
