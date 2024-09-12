@@ -33,16 +33,19 @@ Spawning biomass has fluctuated above and below the unfished spawning biomass ($
 
 ::: {custom-style="fsar-bullet"}
 
-The limit reference point (LRP) is set at 0.3${B_0}$ and is implemented using a 
-conservation objected which states to “avoid the LRP with a high probability” 
-(minimum 75%). This LRP is more conservative than the default LRP identified in 
+An analysis of historical surplus production identified low biomass states for
+3 of 5 Pacific Herring stocks and was used to set the 
+limit reference point (LRP) at 0.3${B_0}$ for all 5 stocks [@kronlund2017].
+The LRP is implemented in Herring MSE using a conservation objected which states to 
+“avoid the LRP with a high probability” (minimum 75%). 
+This LRP is more conservative than the default LRP identified in 
 “DFO Sustainable Fisheries Framework” policy [@dfo2009].
 
 Incorporating density dependent mortality and time-varying recruitment 
 accounts for predation mortality and ecosystem effects
 that Herring experience at their trophic level.
 
-Each major stock area is modelled using regional life-history traits and regional ecosystem pressures.
+Each major SAR is modelled using regional life-history traits and regional ecosystem pressures.
 
 :::
 
@@ -50,9 +53,9 @@ Each major stock area is modelled using regional life-history traits and regiona
 
 ::: {custom-style="fsar-bullet"}
 
-<!-- TODO: automate this: "ASSESSMENT UNDER MSE" or "Application of MP for 2025" -->
+<!-- TODO: try to automate this: "ASSESSMENT UNDER MSE" or "Application of MP for 2025" -->
 A quota option for 2025 of 11,570 metric tonnes is provided using the management 
-procedure with a maximum 14\% target harvest rate applied to the 2025 forecast 
-spawning biomass shown in Figure \@ref(fig:plotHCRules).
+procedure (MP) tuned to the conservation objective. This MP applies a 14\% maximum 
+target harvest rate to the 2025 forecast spawning biomass (Figure \@ref(fig:plotHCRules)).
 
 :::
