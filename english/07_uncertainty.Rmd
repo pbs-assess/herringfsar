@@ -2,15 +2,14 @@
 
 Sources of uncertainty include those surrounding
 both the data and the model estimations.
-That being said Herring operating models are built on a 
+That being said, Herring operating models are built on a 
 data rich environment and uncertainty is well-accounted for in the model.
-
-<!--TODO (SP): Check if there anything in the "SOURCES OF UNCERTAINTY" section 
-of the res doc that would be relevant to bring in here -->
 
 ### Research Recommendations {-}
 
-The parameters of the ensemble model are currently calculated
+The parameters of the SoG ensemble model are currently calculated
 as a weighted average of the five operating models.
 Future work could involve generating a single weighted posterior 
-from the five OMs from which model parameters can be calculated.
+from the five OMs from which model parameters can be calculated. This
+would support a shift to reporting management outputs as median posterior
+density values, rather than currently used maximum likelihood estimates.
