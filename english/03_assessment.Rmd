@@ -106,6 +106,7 @@ curr_biomass_text(  mpFit   = fit_maxTHR0.14,
                     MSEyr   = MSE_yr,
                     B0 = NULL  )
 ```
+Time series of maximum likelihood estimates from the estimation model are presented in Figure \@ref(fig:AtAGlance).
 
 #### Application of MP for 2025 {-}
 

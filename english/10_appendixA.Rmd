@@ -434,11 +434,11 @@ plotGridTulipBtCtUt( mpBlobList[MPname],
 
 ```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption, fig.asp = 1.1}
 SBtRtMtFtCaption <- paste0(
-  "Time series of maximum likelihood estimates of (top to bottom): spawning biomass in kilotonnes (kt)",
-  " and depletion (red trend), and blended spawn index,",
+  "Time series (1951-2024) of maximum likelihood estimates from the estimation model (top to bottom): blended spawn index (circles, kilotonnes) and spawning",
+  " biomass (red trend, kt) and depletion (red trend),",
   " recruitment in millions of fish (Miss Ages denotes years with no age compoisiton data),",
-  " estimated natural mortality (density independent formulation), as well as",
-  " harvest rate, and catch (kt)."
+  " estimated natural mortality (density independent formulation), and",
+  " harvest rate (trend lines), and catch (kt, vertical bars)."
 )
 plotMulti(ts = c("SBtIdx","Rt","Mt","Ftg"), repList = fit_maxTHR0.14)
 ```
