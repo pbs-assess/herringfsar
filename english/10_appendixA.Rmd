@@ -300,40 +300,37 @@ at a time. For each year in the projection, apply the following:
 
 # Discussion {-}
 
-Selecting a MP by tuning to the conservation objective leads to
-a harvest control rule recommendation with a 14\% maximum target harvest rate.
+Selecting a MP by tuning to meet the conservation objective leads to a 
+recommended harvest control rule with a 14\% maximum target harvest rate.
 If applied annually, the
 average yield, using recent 20-year average allocation among gear types,
 is 10 - 12 kt (Table \@ref(tab:statTable), Figure \@ref(fig:simEnv)).
-Selecting
-an MP with a maximum target harvest rate at or below 14\% will achieve the 
-conservation objective.
+Selecting an MP with a maximum target harvest rate at or below 14\% will achieve 
+the conservation objective.
 
 Although additional fishery objectives are presented in 
 Section "[Fishery management objectives](#sec:fish-mgmt-objs)", these are not
 a full suite of objectives for SoG Herring and are not currently used for
 further MP tuning.
-If this was undertaken, for example, tuning the MP
-to a biomass target of 0.6$B_0$, the maximum target harvest rate and average
+If this was undertaken, for example, tuning the MP to meeting
+a biomass target of 0.6$B_0$, the maximum target harvest rate and average
 annual catch would be lower.
 
-Table \@ref(tab:statTable) includes MPs with maximum target harvest rates
+Table \@ref(tab:statTable) includes additional MPs with maximum target harvest rates
 of 20% and $U_{MSY}$, which reflect previously implemented harvest rate and 
-the reference removal (RR) defined in @dfo2009.  
+the maximum reference removal (RR) defined in @dfo2009.  
 
 However, when tested using an operating model that implements a density 
 dependent formulation of time-varying natural mortality, 
 neither of these harvest rates meets the conservation
-objective when included in a ramped harvest control rule and thus
-probabilities and performance statistics do not appear in the 
-Table \@ref(tab:statTable).
-See Figure \@ref(fig:plotHCRules) for shape of these additional simulation tested
-rules.
+objective when included in a ramped harvest control rule.
+Thus probabilities and performance statistics do not appear in the Table \@ref(tab:statTable).
+See Figure \@ref(fig:plotHCRules) for HCR shape for these additional simulation tested MPs.
 
 Simulation-evaluation of MPs show that harvest rates need to be lower 
 than $U_{MSY}$ to avoid the LRP with high probability (75\% or more). 
-This is because the LRP is high, roughly 70\% of 
-$B_{MSY}$ for the ensemble operating model
+This is due to the LRP being set at a higher level, roughly 70\% of 
+$B_{MSY}$ estimated from the ensemble operating model
 (Table \@ref(tab:parRefPtsTable), Figure \@ref(fig:simEnv)).  
 For comparison, the default LRP in Canadian fisheries policy (@dfo2009) is 
 40\% of $B_{MSY}$ or some proxy, although this is largely applied to longer 
@@ -342,12 +339,15 @@ lower predation pressures.
 
 The EM implements a density independent $M$ model and appears to overestimate 
 biomass in the 1-year ahead forecast.
-So called positive assessment errors are 
-reflected in the higher than neutral probability the effective harvest rate exceeds
+This positive bias can result in an effective harvest rate that exceeds
 the maximum target harvest rate (Figure \@ref(fig:simEnv), bottom row). 
-However the EM is in the simulation-testing process and 
-any positive assessment errors are accounted for in the meeting of 
-the conservation objective.
+However, the EM implemented here has been simulation-tested and despite this
+known positive bias the recommended MP was still able to meet the conservation objective
+by maintaining the spawning biomass above the LRP with a high probability
+over the long term.
+<!-- TODO(SP): do we need to elaborate? eg, defacto accounting for the bias in the MP 
+testing, or something about 'accounting for known positive bias rather than chasing
+down the source, or using strategies like forcing the model to fit the data more tightly-->
 
 ```{r statTable, echo = FALSE }
 #This produces HTML output TODO: FIX to table format for word?
@@ -426,7 +426,7 @@ kable(  statTable, escape = FALSE,
 ```
 
 ```{r captions, include = FALSE, echo = FALSE}
-multiGridTulipCap <- "Simulated time series of projected spawning biomass (top), catch (middle), and harvest rate (bottom) for the MP tuned to the conservation objective (HS30-60_HR 0.14). Median values are shown by the thick black lines, the grey shaded region shows the central 95% of each simulation envelope, and three randomly selected individual replicate traces are shown as thin black lines."
+multiGridTulipCap <- "Simulated time series of projected spawning biomass (top), catch (middle), and harvest rate (bottom) for the MP tuned to the conservation objective (HS30-60_HR 0.14). Median values are shown by the thick black lines, the grey shaded region shows the central 95% of each simulation envelope, and three randomly selected individual replicate traces are shown as thin black lines. The dashed vertical line represents the last year of the historical data, 2023, and the dashed horizontal line in the bottom panel represents 14% maximum target harvest rate. "
 ```
 
 ```{r simEnv, echo = FALSE, fig.cap = multiGridTulipCap, fig.asp = 1.1}
@@ -441,9 +441,9 @@ plotGridTulipBtCtUt( mpBlobList[MPname],
 
 ```{r AtAGlance, include = include_extras, echo = FALSE, message = FALSE, fig.cap = SBtRtMtFtCaption, fig.asp = 1.1}
 SBtRtMtFtCaption <- paste0(
-  "Time series (1951-2024) of maximum likelihood estimates from the estimation model (top to bottom): blended spawn index (circles, kilotonnes) and spawning",
-  " biomass (red trend, kt) and depletion (red trend),",
-  " recruitment in millions of fish (Miss Ages denotes years with no age compoisiton data),",
+  "Time series (1951-2024) of maximum likelihood estimates from the estimation model (top to bottom): blended spawn index (circles, kt) and spawning",
+  " biomass (kt) and depletion (red trend),",
+  " recruitment in millions of fish (Miss Ages denotes years with no age composition data),",
   " estimated natural mortality (density independent formulation), and",
   " harvest rate (trend lines), and catch (kt, vertical bars)."
 )
