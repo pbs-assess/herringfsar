@@ -178,14 +178,15 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
   B0 <- round(B0,3)
   PBTGtLRP <- ifelse(parTab$PBTGtLRP > .99, .99, parTab$PBTGtLRP)
 
+  emStatus <- round(amSB_T/B0,2)
+
   omB0 <- refPtsTab$B0
   omBusr <- round(refPtsTab$Busr,2)
 
   x <- paste0("For ", thisYr,
     ", the estimation model estimates spawning biomass, $\\hat{B}_{",
-    thisYr, "}$, at ", amSB_T, " kt (maximum likelihood estimate), which is
-    above the operating model LRP and USR of ", round(0.3*omB0,2)," kt
-    and ", omBusr," kt, respectively.")
+    thisYr, "}$, at ", amSB_T, " kt (maximum likelihood estimate),
+    with a stock status $\\hat{B}_{", thisYr, "}/\\hat{B}_0$ of ", emStatus,".")
 
   cat(x)
 } # END curr_biomass_text
