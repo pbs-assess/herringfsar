@@ -61,7 +61,7 @@ The above process creates a cross design (Table \@ref(tab:parRefPtsTable)) of
 operating models. The so called ensemble of operating models is then combined 
 via weighted averaging to estimate biomass, fishery reference points, and 
 current stock status relative to those reference points. The central OM (called OM1, 
-$M_b=0.562$ and $h = 0.7$) is given the highest weighting of of 0.34, and the 
+$M_b=0.562$ and $h = 0.7$) is given the highest weighting of 0.34, and the 
 remaining weight of 0.66 is equally split among the other operating models 
 (OM2 - OM5) giving a weight of 0.165 for the remaining models. Then, model
 parameters $\theta$ and derived quantites are found via a weighted average,
