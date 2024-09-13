@@ -8,8 +8,8 @@ Some fisheries and aquaculture activities in BC cause
 incidental mortality to Pacific Herring.
 Similar to FSC, and recreational catch,
 data on incidental mortality is not directly included in the 
-assessment process however it is indirectly included by
-estimating annual rates of natural mortality
+assessment process however it is indirectly accounted for in the
+annual estimates of natural mortality
 and is considered minor relative to commercial harvest.
 <!-- Impacts of additional mortality sources will be explored with the new  -->
 <!-- modelling framework. -->

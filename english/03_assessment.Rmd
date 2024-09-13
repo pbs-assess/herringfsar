@@ -182,7 +182,7 @@ SDNJ: Because the noise in the index is the uncertainty in SSB (process error) p
 uncertainty in spawn index (observation error)-->
 
 ```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
-ECfigCap <- "Evaluation of exceptional circumstances and operating model mis-specification: graphical comparison of simulation envelopes from the ensemble model and catch and spawn index data from interim year(s). Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SoG operating model. Forward projections in time (15-years) represent the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
+ECfigCap <- "Evaluation of exceptional circumstances and operating model mis-specification: graphical comparison of simulation envelopes from the ensemble model (1951-2023) and catch and spawn index data from interim year (2024). Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) from the 2023 weighted ensemble SoG operating model. Forward projections in time (15-years) represent the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
 
 SOGdata <- read.csv("data/SOGIdxCatData.csv")
 
