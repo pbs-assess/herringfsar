@@ -58,10 +58,11 @@ knitr::include_graphics(filepath)
 ```
 
 The above process creates a cross design (Table \@ref(tab:parRefPtsTable)) of 
-operating models. The so called ensemble of operating models is then combined 
+operating models. Thef ensemble of operating models is then combined 
 via weighted averaging to estimate biomass, fishery reference points, and 
 current stock status relative to those reference points. The central OM (called OM1, 
-$M_b=0.562$ and $h = 0.7$) is given the highest weighting of 0.34, and the 
+$M_b=0.562$ and $h = 0.7$) is given the highest weighting of 0.34, since it 
+is believed to be the most likely and the 
 remaining weight of 0.66 is equally split among the other operating models 
 (OM2 - OM5) giving a weight of 0.165 for the remaining models. Then, model
 parameters $\theta$ and derived quantites are found via a weighted average,
@@ -341,13 +342,15 @@ The EM implements a density independent $M$ model and appears to overestimate
 biomass in the 1-year ahead forecast.
 This positive bias can result in an effective harvest rate that exceeds
 the maximum target harvest rate (Figure \@ref(fig:simEnv), bottom row). 
-However, the EM implemented here has been simulation-tested and despite this
-known positive bias the recommended MP was still able to meet the conservation objective
-by maintaining the spawning biomass above the LRP with a high probability
-over the long term.
+However this is accounted for in the simulation.
+Harvest that occurs as a result of the overestimated projected biomass is subtracted from the simulated 
+actual biomass. Thus the MP is simulation-tested with this
+known positive bias and the probabilities reflect the likelihood of the  MP 
+being able to meet the conservation objective.
 <!-- TODO(SP): do we need to elaborate? eg, defacto accounting for the bias in the MP 
 testing, or something about 'accounting for known positive bias rather than chasing
-down the source, or using strategies like forcing the model to fit the data more tightly-->
+down the source, or using strategies like forcing the model to fit the data more tightly
+SP: I did  some editing I think this is just fine. -->
 
 ```{r statTable, echo = FALSE }
 #This produces HTML output TODO: FIX to table format for word?
