@@ -8,7 +8,7 @@ The Pacific Herring Strait of Georgia
 Advice for the other major and the `r number_to_word(length(minor_regions_short))` 
 minor SARs is presented in [@dfo2024bInPrep, In Prep.].
 
-Managment strategies for SoG Pacific Herring are evaluated with a management 
+Management strategies for SoG Pacific Herring are evaluated with a management 
 strategy evaluation (MSE) process, which implements a spatially integrated statistical 
 catch at age Herring (SISCAH) modelling framework [@dfo2023a]. 
 The modelling framework is fitted to historical time series of spawn survey indices, 
@@ -33,9 +33,9 @@ SoG has rarely decreased low enough to give the model a strong indication of wha
 $h$ should be. Details of the operating model ensemble are described in 
 Appendix [A](#sec:app-a).
 
-The weighted ensemble of operating models was used to simulate management 
+The weighted ensemble of operating models simulated management 
 procedures (MPs) over a 15-year projection period (2024-2038) 
-and present a MP tuned to meet the conservation objective
+and we present a MP tuned to meet the conservation objective
 (Section "[Fishery management objectives](#sec:fish-mgmt-objs)") that is
 compliant with both the “DFO Sustainable Fisheries Framework” policy and 
 “A fishery decision-making framework incorporating the Precautionary Approach”
