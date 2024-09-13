@@ -15,8 +15,9 @@ previous Herring assessment and operating models, the main difference in SISCAH-
 is the ability to model density dependent mortality (DDM), where 
 natural mortality is higher when biomass is lower [@johnson2024].
 
-Results from and ensemble of five SISCAH-OMs were weighted to incorporate 
-uncertainty in future productivity while evaluating candidate MPs. 
+Results from an ensemble of five SISCAH-OMs were weighted to incorporate 
+uncertainty in future productivity while evaluating candidate MPs identified in
+the Herring management strategy evaluation (MSE) process. 
 We first summarise the simulation approach,
 and then present results with some brief discussion of the management implications.  
 
@@ -26,17 +27,17 @@ and then present results with some brief discussion of the management implicatio
 
 To take into account uncertainty in productivity at high and low stock sizes 
 five SoG Herring operating models where chosen. Productivity
-at high stock sizes is influenced by the $M_b$ parameter, which 
+at high stock size is influenced by the $M_b$ parameter, which 
 represents the average mortality rate at very high biomass (generally above 
 unfished levels). At low stock size, productivity is more influenced by the 
 stock-recruit relationship's steepness parameter $h$, which is the ratio of 
-recruitment at 20\% of unfished to the unfished recruitment $R_0$. Overall $h$ 
+recruitment at 20\% of unfished biomass to the unfished recruitment $R_0$. Overall $h$ 
 is better estimated for stocks where the history includes recovery from very 
-low stock sizes. Since this isn't case for SoG, we capture some of the 
+low stock sizes. Since this isn't the case for SoG, we capture some of the 
 uncertainty around $M_b$ and $h$ by considering operating models with 
 different values for those parameters. First we used an established 
-value of $h=0.70$ [@cleary2018] and used a likelihood profile approach,
-estimating operating model parameters across a grid of a $M_b$ values.
+value of $h=0.70$ [@cleary2018] and then used a likelihood profile approach to
+estimate operating model parameters across a grid of a $M_b$ values.
 A likelihood profile is obtained by plotting negative log likelihood 
 values estimated by SISCAH at each grid point, which shows the minimum
 value (i.e., the value most in agreement with the data) occurs when
@@ -58,7 +59,7 @@ knitr::include_graphics(filepath)
 
 The above process creates a cross design (Table \@ref(tab:parRefPtsTable)) of 
 operating models. The so called ensemble of operating models is then combined 
-via weighted averaging to give estimates biomass, fishery reference points, and 
+via weighted averaging to estimate biomass, fishery reference points, and 
 current stock status relative to those reference points. The central OM (called OM1, 
 $M_b=0.562$ and $h = 0.7$) is given the highest weighting of of 0.34, and the 
 remaining weight of 0.66 is equally split among the other operating models 
@@ -178,35 +179,42 @@ plotStockRecruitEnvelope( obj = mpBlobList[[MPname]],
 
 ## Management Procedures {-}
 
-Management procedures are evaluated using three components, data, the 
-DDM operating model(OM), and the particular harvest control rule.
+Management procedures are evaluated using three components: data, the SISCAH
+ensemble operating model, and the particular harvest control rule.
 Fifteen year simulations are used to produce performance metrics which are
-used to evaluate the MP. This procedure occurs only every few years or so. 
+used to evaluate the MP. This procedure is recommended to occur every three years,
+or sooner if required under an exceptional circumstance. 
 
-For interim years in order to apply a forecast for the following year to the MP, 
-a simpler estimation model (EM) using a random walk M (DIM) formulation 
-which is blind to the true M~B dynamics is used [@dfo2023management].
+For interim years, a simpler estimation model (EM) using a density-independent $M$ 
+(DIM) random walk formulation is used to estimate the input signal to the HCR and 
+then calculate the annual TAC [@dfo2023management].
+
 The DIM EM is similar to the previous model used for 
 Herring assessments and setting TACs prior to 2023, 
-except that the previous model used
-a spline with 16 nodes instead of a simple random walk to estimate 
-time-varying $M$. The EM provides annual estimates of unfished biomass and 
+except that the previous model used a spline with 16 nodes instead of a simple 
+random walk to estimate time-varying $M$. 
+The EM provides annual estimates of unfished spawning biomass and 
 a 1-year ahead forecast of spawning biomass.
-Using a DIM EM is appropriate for setting up the MSE as it allows us to evaluate 
-population dynamic complexities in the OM, and then use simpler EMs.
+It is worth noting that when using a model-based approach for the EM it 
+should not be treated as a full stock assessment, and rather, it should be 
+considered as an algorithm that generates the input signal to the HCR. 
 
-TACs are derived from EM estimates via the harvest control rule. For
-SoG Herring, we use a "hockey-stick" shaped function defined
-by lower and upper control points, and a maximum target harvest rate
-[@cox2013roles]. The SoG Herring rules often have lower and upper control points 
-at 30\% and 60\% of unfished biomass, respectively. When biomass 
-is estimated to be below the lower control point the rule sets the harvest
+Using a DIM EM is appropriate for setting up the MSE as it allows more
+computational resources to be focused on evaluating 
+population dynamic complexities in the OM, with a simpler EM focused on
+generating annual TACs.
+
+SoG Herring, a "hockey-stick" shaped function defined
+by lower and upper control points, and a maximum target harvest rate was used in 
+the MP [@cox2013roles]. 
+When biomass is estimated to be below the lower control point the rule sets the harvest
 rate to zero. Between control points, the harvest rate is a linear ramp 
 from zero to the maximum harvest rate, and above the upper control point the 
 rule sets harvest rates to the maximum target harvest rate, called $maxTHR$. 
-This report shows results for MPs with maximum target harvest rates of 
-currently recommended 14\%, formerly recommended  20\%, and one 
-based on $U_{MSY}$([@dfo2009],Figure \@ref(fig:plotHCRules), Table \@ref(tab:statTable)).
+This report shows results for three MPs with the maximum target harvest rate set 
+to either the currently recommended 14\% (tuned to meet the conservation objective), 
+the formerly recommended 20\%, or $U_{MSY}$([@dfo2009],Figure \@ref(fig:plotHCRules), 
+Table \@ref(tab:statTable)).
 
 Finally, after the three year cycle (eg, in 2026) the operating model is fully 
 updated with new data and comprehensive performance evaluation of MPs is 
@@ -277,16 +285,15 @@ at a time. For each year in the projection, apply the following:
       to produce a 1-year ahead forecast of spawning biomass depletion;
       iii)  Determine the target harvest rate associated with the forecast 
       depletion using a harvest control rule;
-      iv)  Using this target harvest rate calculate the total allowable catch from the 1-year ahead          biomass forecast;
-      v)  Update the simulated DDM operating model Herring population in the with 
-      depletion using the harvest control rule;
-      vi)  Update the simulated DDM operating model Herring population the with 
+      iv)  Using this target harvest rate calculate the total allowable catch 
+      from the 1-year ahead biomass forecast;
+      v)  Update the simulated DDM operating model Herring population with 
       incoming recruitment from the DDM stock-recruit curve with recruitment process errors; 
       density dependent natural mortality; and fishing mortality corresponding 
       to the total allowable catch in the previous step. 
-      vii)   Repeat steps 2.i - 2.v until the projection period ends (2038).
+      vi)   Repeat steps 2.i - 2.v until the projection period ends (2038).
 
-3.  Repeat Step 1 and Step 2 99 more times;
+3.  Repeat Step 1. and Step 2. 99 more times;
 
 4.  Calculate quantitative performance statistics across all 
     100 replicates.
