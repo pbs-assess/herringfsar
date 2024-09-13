@@ -185,8 +185,8 @@ curr_biomass_text <- function(  mpFit   = fit_maxTHR0.14,
 
   x <- paste0("For ", thisYr,
     ", the estimation model estimates spawning biomass, $\\hat{B}_{",
-    thisYr, "}$, at ", amSB_T, " kt (maximum likelihood estimate),
-    with a stock status $\\hat{B}_{", thisYr, "}/\\hat{B}_0$ of ", emStatus,".")
+    thisYr, "}$, = ", amSB_T, " kt (maximum likelihood estimate),
+    with stock status ($\\hat{B}_{", thisYr, "}/\\hat{B}_0$) = ", emStatus,".")
 
   cat(x)
 } # END curr_biomass_text
@@ -223,13 +223,12 @@ proj_biomass_text <- function(  mpFit = fit_maxTHR0.14,
 
   x <- paste0( "In the absence of fishing, spawning biomass in ", assessYr + 1,
       " is estimated to be $\\hat{B}_{", assessYr + 1,"} = ", round(SB_forecast, 1),
-      "$ kt (maximum likelihood estimate), with a stock status of $\\left( B_{",
-      assessYr + 1,"}/B_0 \\right) = ", round(SB_forecast/B0, 2),
-      "$. Given that the spawning biomass is above the harvest control rule's ",
+      "$ kt (maximum likelihood estimate), with stock status ($\\hat{B}_{", assessYr + 1, "}/\\hat{B}_0$) = ",
+      round(SB_forecast/B0, 2),". Given that the spawning biomass is above the harvest control rule's ",
       "upper control point of $0.6 B_0$, the maximum target harvest rate of ",
       100*THR,
-      "\\% can be applied in the MP, resulting in a total allowable catch of ",
-      round(TAC,2), " kt.") #TODO (Sam): add quota
+      "\\% is recommended by the MP, resulting in a total allowable catch of ",
+      round(TAC,2), " kt.")
 
   cat(x)
 } # END proj_biomass_text
