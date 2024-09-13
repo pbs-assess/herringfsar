@@ -162,13 +162,18 @@ plotRule(repList = mpFitList[[MPname]])
 
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
-Fishery monitoring data collected since the adoption of the current SoG
-Herring MP indicate that the population is behaving within operating 
-model expectations. There is no indication of operating
-model mis-specification (Figure \@ref(fig:ECfig)), also know as exceptional
-circumstances. Mis-specification is evaluated visually by comparing catch and 
-spawn index values within the central 95% of 2023 ensemble operating 
-model simulations.
+All routine forms of Herring fishery monitoring data were collected in 2024 and show 
+the population is behaving within operating model expectations. 
+The most recent spawn index falls within the range 
+of uncertainty that was simulated in the MSE projections (Figure \@ref(fig:ECfig)).
+Also, catch in 2024 was considerably lower than the simulated catch in the MSE projections
+(i.e., from the MP tuned to meet the conservation objective) due to quota being
+set using a 10% harvest rate for 2023/24 season. 
+
+Model mis-specification is evaluated visually by comparing catch and 
+spawn index values within the central 95% of the 2023 ensemble operating 
+model simulations. There is no indication of operating
+model mis-specification (Figure \@ref(fig:ECfig)).
 
 <!-- For ECfig:
 JC: Why is the uncertainty in the index larger than SB?
