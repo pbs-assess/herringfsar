@@ -6,7 +6,11 @@ The Pacific Herring Strait of Georgia
 (SoG) stock assessment region (SAR), is one of the 
 `r number_to_word(length(major_regions_short))` major SARs.
 Advice for the other major and the `r number_to_word(length(minor_regions_short))` 
-minor SARs is presented in [@dfo2024bInPrep, In Prep.].
+minor SARs is presented in DFO (In Prep.).^[DFO. In Prep.
+Stock status update with application of management procedures for
+Pacific Herring (*Clupea pallasii*) in British Columbia:
+Status in 2024 and forecast for 2025.
+DFO Can. Sci. Advis. Sec. Sci. Resp.]
 
 Management strategies for SoG Pacific Herring are evaluated with a management 
 strategy evaluation (MSE) process, which implements a spatially integrated statistical 
@@ -181,7 +185,7 @@ additional consultations.
 The default maximum RR for commercially harvested fish stocks is
 $F_{MSY}$ [@dfo2009, @dfo2013].
 RRs for SoG Herring are not currently specified because 
-a simulation-evaluation process is instead used that  
+a simulation-evaluation process is instead used that
 directly selects an MP that meets the 
 conservation objective, avoids the LRP with high probability, 
 and whose harvest rate is more conservative than $U_{MSY}$.
