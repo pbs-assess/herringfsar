@@ -662,7 +662,7 @@ plotGridTulipBtCtUt <- function(  blobList = mpBlobList,
 
     if(dep)
     {
-      sbylab <- expression(SB[t]/SB[0])
+      sbylab <- expression(B[t]/B[0])
       for( t in 1:nTs[simIdx] )
       {
         SB_ispt[,,,t] <- SB_ispt[,,,t] / B0_isp
@@ -732,7 +732,7 @@ plotGridTulipBtCtUt <- function(  blobList = mpBlobList,
                 bty = "n",
                 lty = c(2,2,5,2,5),
                 col=c("grey30","darkgreen","purple","red"),
-                legend=c(bquote(SB[0]),"USR",bquote(B[MSY]),"LRP"),
+                legend=c(bquote(B[0]),"USR",bquote(B[MSY]),"LRP"),
                 lwd = c(1,2,2,2,2), cex=1.2)
       }
 
@@ -772,7 +772,7 @@ plotGridTulipBtCtUt <- function(  blobList = mpBlobList,
       if( mfg[2] == 1 )
       {
         axis(side = 2, las = 1)
-        mtext( side = 2, text = "Harvest Rate (/yr)", line = 3 )
+        mtext( side = 2, text = "Harvest Rate", line = 3 )
       }
 
       axis(side = 1 )
@@ -781,12 +781,14 @@ plotGridTulipBtCtUt <- function(  blobList = mpBlobList,
       grid()
       box()
 
+      Uref <- blobList[[simIdx]]$ctlList$mp$hcr$Uref_p[1]
+
       polygon( x = c(yrs,rev(yrs)),
                y = c(U_qspt[1,1,1,],rev(U_qspt[3,1,1,])),
                col = "grey60", border = NA )
       lines( x = yrs, y = U_qspt[2,1,1,], lwd = 3 )
       if(simLabs[simIdx] != "NoFish"){
-        abline( h = blobList[[simIdx]]$ctlList$mp$hcr$Uref_p[1], lty = 2, col = "grey30")
+        abline( h = Uref, lty = 2, col = "grey30", lwd = 2)
         abline(h = Umsy, lty = 5, col = "purple", lwd=2)
       }
       abline(v = yrs[tMP] - 0.5, lty = 2, lwd =.9 )
@@ -800,11 +802,11 @@ plotGridTulipBtCtUt <- function(  blobList = mpBlobList,
         axis(side = 4, las = 1)
 
         legend( x = "topright",
-                lty = 5,
+                lty = c(5,2),
                 bty = "n",
-                col = "purple",
-                legend = bquote(U[MSY]),
-                lwd=2,
+                col = c("purple","grey30"),
+                legend = c(bquote(U[MSY]),paste0("U = ",Uref)),
+                lwd=c(2,2),
                 cex=1.2)
       }
 
@@ -1247,14 +1249,16 @@ plotFtg <- function(  repList = reports,
 plotMt <- function( repList = reports,
                     noPar = FALSE,
                     pIdx = 1,
-                    labcex = .8)
+                    labcex = .8,
+                    plotMjuve = TRUE,
+                    plotMinit = FALSE )
 {
   report    <- repList$repOpt
   initYear  <- repList$fYear
 
   # Pull stuff from report
   Mat       <- report$M_apt[,pIdx,,drop = FALSE]
-  Mbar      <- report$M
+  Minit     <- report$M
   M         <- report$M_p[pIdx]
   M0        <- report$M0_p[pIdx]
   nT        <- report$nT
@@ -1334,8 +1338,13 @@ plotMt <- function( repList = reports,
     }
 
     # abline( h = M, lty = 2, lwd = 2, col = "salmon")
-    abline( h = Mbar, lty = 2, lwd = 2, col = "grey50")
-    abline( h = Mjuve, lty = 4, lwd = 2, col = "salmon" )
+    
+    if(plotMinit)
+      abline( h = Minit, lty = 2, lwd = 2, col = "grey50")
+    
+    if(plotMjuve)
+      abline( h = Mjuve, lty = 4, lwd = 2, col = "salmon" )
+
     lines( x = years[1:nT], y = Mat[juveMage+1,1,1:nT], col = "salmon",
             lwd = 3  )
     # points( x = years[nT+1], y = Mat[juveMage+1,1,nT+1], col = "black",
@@ -1358,15 +1367,11 @@ plotMt <- function( repList = reports,
     {
       mtext(side = 2, text = "Natural\nMortality (/yr)", line = 3.5, cex = labcex)
       legend( x = "topleft",
-              lwd = c(2,2,2,NA),
-              lty = c(1,4,2,NA),
-              pch = c(22,NA,NA),
-              pt.bg = c(polyCol,NA,NA),
-              pt.lwd = c(0,NA,NA),
-              pt.cex = c(1.5,NA,NA),
+              lwd = c(2,2),
+              lty = c(1,4),
               cex = .8,
-              col = c("salmon","salmon","grey50"),
-              legend = c("Age-2+ M","M0","Mbar"), bty = "n")
+              col = c("salmon","salmon"),
+              legend = c("Age-2+ M","Age-1 M"), bty = "n")
     }
 }
 
