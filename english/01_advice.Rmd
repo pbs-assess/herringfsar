@@ -1,53 +1,61 @@
 ## SCIENCE ADVICE {-}
 
-<!--
-[Mandatory.
-Maximum length 500 words.
-Include summary bullets of the following factors affecting the stock
-that are relevant for decision-making.
-Please refer to the Guidance Document for standardized language and examples,
-and what to avoid in this section.] 
-See: https://086gc.sharepoint.com/:w:/r/sites/FSARPilotImplementation2023-2024/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B7d2455b6-7b5b-41c7-81eb-07b15e270b97%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724309068814&web=1
--->
+<!-- [Mandatory. -->
+<!-- Maximum length 500 words. -->
+<!-- Include summary bullets of the following factors affecting the stock -->
+<!-- that are relevant for decision-making. -->
+<!-- Please refer to the Guidance Document -->
+<!-- for standardized language and examples, -->
+<!-- and what to avoid in this section.]  -->
+<!-- See: https://086gc.sharepoint.com/:w:/r/sites/FSARPilotImplementation2023-2024/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B7d2455b6-7b5b-41c7-81eb-07b15e270b97%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1724309068814&web=1 -->
 
 ### Status {-}
 
 ::: {custom-style="fsar-bullet"}
+
 The Strait of Georgia (SoG) major stock assessment region (SAR) is healthy.
 
-Biomass above candidate Upper Stock Reference (USR.)
+Spawning biomass is above the LRP and above all candidate upper stock reference (USRs) points.
+
 :::
 
 ### Trends {-}
 
 ::: {custom-style="fsar-bullet"}
-Biomass declining from one of the 6th highest peaks since 1950. 
 
-Biomass above candidate USR and established Limit Reference Point (LRP).
+The ensemble model estimates spawning biomass to be above $B_{MSY}$ and all 5 candidate USRs for most of the historical time series.
+
+Spawning biomass has fluctuated above and below the unfished spawning biomass ($B_0$) for the last 10-years, since increasing from 2010.
+
 :::
 
 ### Ecosystem and Climate Change Considerations {-}
 
 ::: {custom-style="fsar-bullet"}
-High LRP = 0.3*(Spawning Biomass)
 
-Time-varying recruitment and density dependant mortality to represent predator, prey, and ecosystem dynamics.
+An analysis of Herring data from 1988-2016 identified evidence of low biomass and
+low productivity states for 3 of 5 Pacific Herring stocks and these states were used 
+to define a limit reference point (LRP) of 0.3${B_0}$ for all 5 stocks [@kronlund2017].
+The LRP is implemented in Herring MSE using a conservation objected which states to 
+“avoid the LRP with a high probability” (minimum 75%). 
+This LRP is more conservative than the default LRP identified in 
+“DFO Sustainable Fisheries Framework” policy [@dfo2009].
 
-Stocks managed and modelled with regional life-history, and ecosystem pressures.
+Incorporating density dependent mortality and time-varying recruitment 
+accounts for predation mortality and ecosystem effects
+that Herring experience at their trophic level.
+
+Each major SAR is modelled using regional life-history traits and regional ecosystem pressures.
+
 :::
 
 ### Stock Advice {-}
 
 ::: {custom-style="fsar-bullet"}
-Maximum 14\% target harvest rate ($maxTHR$) with hockey stick ramp with lower and upper control 
-points at 30\% and 60\% of unfished spawning biomass 
-(green solid line, Figure \@ref(fig:plotHCRules)).
-:::
 
-<!--
-### Other Management Questions [if applicable, otherwise do not include] {-}
+<!-- TODO: try to automate this: "ASSESSMENT UNDER MSE" or "Application of MP for 2025" -->
+A quota option for 2025 of 11,570 metric tonnes is provided using the management 
+procedure (MP) tuned to the conservation objective. This MP applies a 14\% maximum 
+target harvest rate to the 2025 forecast spawning biomass (Figure \@ref(fig:plotHCRules)).
 
-::: {custom-style="fsar-bullet"}
-[Other bullets if applicable]
 :::
--->

@@ -1,5 +1,4 @@
 ---
-# Start of options to set
 report_title: |
   Strait of Georgia Pacific Herring (*Clupea pallasii*) stock update in 2024
 assess_yr: "2024"
@@ -10,37 +9,35 @@ meeting_date: "September 23, 2024"
 region: "Pacific Region"
 phone: "(250) 555-5555"
 email: "DFO.PacificCSA-CASPacifique.MPO@dfo-mpo.gc.ca"
-csa_address: "3190 Hammond Bay Rd., Nanaimo, BC, V9T 6N7"
+csa_address: "3190 Hammond Bay Rd., Nanaimo, BC V9T 6N7"
 report_title_french: |
   Mise à jour du stock de hareng du Pacifique (*Clupea pallasii*)
   du détroit de Géorgie en 2024
 inuktitut_citation: |
   Inuktitut citation here
-# [Mandatory section; less than 150 words.]
 context: |
-  Pacific Herring (*Clupea pallasii*) abundance in British Columbia is assessed
-  using a spatially integrated statistical catch at age model fit to
-  spawn survey indices, fishery age composition data, and commercial catches.
-  This stock assessment evaluates abundance relative to
-  the limit reference point, the upper stock reference, and
-  fisheries management objectives.
-  [...]
-  We recommend a management procedure for the
-  Strait of Georgia stock assessment region.
+  Strait of Georgia British Columbia Pacific Herring (*Clupea pallasii*) stock 
+  is assessed using a management strategy evaluation (MSE) process which implements
+  the spatially integrated statistical catch at age Herring (SISCAH) modelling framework
+  fit to spawn survey indices, fishery age composition data, and commercial catches.
+  
+  The operating model provides an assessment of status relative to a suite of 
+  biological reference points, including the limit reference point and 
+  candidate upper stock reference points.
+
+  Management advice for the Strait of Georgia stock assessment region
+  includes quota option using a management procedure tuned to the 
+  conservation objective.
 output:
  csasdown::fsar_word
 link-citations: false
 bibliography: bib/refs.bib
 csl: csl/csas.csl
-# End of options to set
 title: ""
 knit: (function(input, ...) {
        csasdown::render_sar()
       })
 always_allow_html: true
-header-includes:
-  - \usepackage{pifont}% http://ctan.org/pkg/pifont
-  - \newcommand{\xmark}{\ding{55}}%
 ---
 
 ```{r libraries, echo = FALSE, message = FALSE}
@@ -87,11 +84,6 @@ knitr::opts_chunk$set(
 
 ```{r metadata}
 
-
-```
-
-```{r models}
-
 # assess_yr <- metadata$assess_yr
 assess_yr <- 2024
 MSE_yr    <- 2023
@@ -104,7 +96,9 @@ MPname <- "maxTHR_0.14"
 
 # TODO: [SAM] add a list of any variables needed to
 # change. i.e. Region, USR, BO, [see functions.R/makeModelHistTable[arguments]]
+```
 
+```{r models}
 
 source(here("R", "functions.R"))
 
@@ -130,7 +124,6 @@ scenarios <- c("SOG_Mb0.532_h0.70",
                "SOG_Mb0.562_h0.70",
                "SOG_Mb0.562_h0.75",
                "SOG_Mb0.584_h0.70")
-
 
 wtPosts <- readRDS("data/wtPosts.rds")
 
@@ -205,23 +198,17 @@ ensRefPtsTable <- read.csv("data/SOG_ensRefPts.csv") |>
 ensParTable <- read.csv("data/ensOM_meanPars.csv") |>
   mutate_if(is.numeric,round,2) |>
   mutate(PBTGtLRP = ifelse(PBTGtLRP > 0.99, 0.99, .)) # if >.99 set = 0.99 else leave alone
+```
+
+```{r scripts}
 
 # Files
-
 source(here("R", "variables.R"))
 source(here("R", "figures.R"))
 source(here("R", "themes.R"))
 
 # Theme for figures
 theme_set(theme_herring())
-
-
-```
-
-```{r scripts}
-#
-
-
 ```
 
 <!-- Math expressions -->
@@ -231,4 +218,5 @@ theme_set(theme_herring())
 \newcommand{\AVE}{\text{`r en2fr("AVE", translate = french)`}}
 
 <!-- Compile the document on the command line: -->
-<!-- bookdown::render_book("index.Rmd") -->
+<!-- bookdown::render_book() -->
+<!-- csasdown::render_sar() -->

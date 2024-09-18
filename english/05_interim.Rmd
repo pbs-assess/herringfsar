@@ -1,9 +1,13 @@
 ## PROCEDURE FOR INTERIM YEAR UPDATES {-}
 
-Once a harvest control rule is chosen through the management strategy evaluation 
-process, that harvest control rule stays in place until the next round of MSE
-occurs.
-For Pacific Herring in BC that is 3 years or more. 
-In the intervening years an estimate of biomass and biomass depletion
-is obtained to use with the harvest control rule.
-In our case it is the less computationally intensive DIM SISCAH model.
+Once a harvest control rule is chosen through the MSE 
+process, that harvest control rule defines the maximum possible removal rate
+given the objective(s) until the next MSE cycle.
+The recommended MP for the SoG SAR is model-based with a harvest control rule that
+depends on annual estimates of projected spawning biomass ($\hat{B}_{Y+1}$) and unfished spawning
+biomass ($\hat{B}_0$). These estimates are obtained using an estimation method (EM) and
+for SoG Herring, the EM is a spatially integrated statistical catch at age 
+Herring (SISCAH) model with density independent $M$ (DIM SISCAH).
+This EM was selected because it's performance was similar to the DDM formulation
+and it is less computationally intensive for interim updates.
+

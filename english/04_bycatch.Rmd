@@ -6,10 +6,10 @@
 <!-- on Herring populations such as incidental mortality.  -->
 Some fisheries and aquaculture activities in BC cause
 incidental mortality to Pacific Herring.
-Similar to SOK harvest, FSC, and recreational catch,
-incidental mortality is currently only indirectly accounted for 
-in Pacific Herring stock assessment by
-estimating annual rates of natural mortality, 
+Similar to FSC, and recreational catch,
+data on incidental mortality is not directly included in the 
+assessment process however it is indirectly accounted for in the
+annual estimates of natural mortality
 and is considered minor relative to commercial harvest.
 <!-- Impacts of additional mortality sources will be explored with the new  -->
 <!-- modelling framework. -->

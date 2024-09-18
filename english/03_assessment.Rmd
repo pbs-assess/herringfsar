@@ -2,19 +2,17 @@
 
 ```{r calcTACchunk, echo = FALSE, include = FALSE}
 TAC.df <- calcTAC(fit_maxTHR0.14, assessyear = assess_yr)
-
 THR <- TAC.df[5,2]
 TAC <- TAC.df[6,2]/1e3
 ```
 
-Stock trends and status for SoG Herring historical time series (1951-2023)
-is represented by the ensemble operating model, using 6 indicators 
-(Figure \@ref(fig:indicators)).
+Stock status and trends for SoG Herring are
+represented by the ensemble operating model, using the historical time series (1951-2023)
+and 6 indicators (Figure \@ref(fig:indicators)).
 Ensemble operating model trends are similar to those presented for SoG Herring 
 in previous stock assessments (e.g., @dfo2024), with  near-identical data 
 sources and choice of indicators.
 Step wise comparisons are found in @johnson2024.
-
 
 (ref:indicators-cap) Estimated stock status indicators for Pacific Herring in the Strait of Georgia (SoG) major stock assessment region (SAR) from `r yr_range[1]` to `r yr_range[2]`, as estimated by the ensemble operating model. All lines indicate weighted ensemble posterior median values, and where applicable, shading indicates `r ci_pct`\% credibility intervals. (A) Catch (x 1,000 t). (B) Estimated spawning stock biomass (x 1,000 t) with limit reference point (LRP; dashed red line), productive period upper stock reference (USR; dashed green line), and unfished spawning biomass ($B_0$; dashed black line). (C) Estimated natural mortality rate ($M$ /yr; red line). (D) Estimated harvest rate ($U_t$, black trend line), with dashed horizontal line at 20\% for 1983-2022. (E) Recruitment of age-`r age_recruit` fish, with historical average shown as a black dashed line. (F) Estimated surplus production (vertical axis) vs. spawning biomass (horizontal axis) for 1988 (triangle) though 2023 (square) with lighter points representing earlier years. Vertical dashed lines (left to right): LRP (red), productive period USR (green), and $B_0$ (black).
 
@@ -34,12 +32,13 @@ stock_status_text(  refPtsTab = ensRefPtsTable,
 ```
 
 The ensemble model estimates spawning biomass to be above $B_{MSY}$ and
-the USR for the majority of the historical time series 
+all candidate USRs for the majority of the historical time series 
 (Figure \@ref(fig:indicators)A).
 Additionally, median posterior estimates of spawning biomass have remained
-well-above the LRP in all years since 1970.
+above the LRP in all years since 1970.
 
 #### Recruitment and Natural Mortality {-}
+
 Most of the fluctuations in estimated spawning biomass have been attributed 
 to estimated recruitment, with lower than average age-1 recruitment in the 1970s, 
 1980s, and in 2007 and 2009, all of which mirror dips in spawning biomass. 
@@ -56,78 +55,71 @@ forecast biomass.
 
 Estimated spawning biomass production was high in 2019 and then declined each 
 of the next three year to 2023 (Figure \@ref(fig:indicators)F), despite spawning
-biomass remaining fairly constant.
+biomass remaining fairly constant. This is likely due to the increasing trend
+in natural mortality estimates (Figure \@ref(fig:indicators)C).
 
 <!-- #### Fishing Mortality {-} 
 JC: not including because not talking about RR-->
 
 ### Ecosystem and Climate Change Considerations {-}
 
-Ecosystem considerations are taken into account in the model in a number of ways.
-Firstly, and different than most fisheries, the biological LRP is set to a 
-higher value than those in [@dfo2009] and the 0.5$B_{MSY}$ from
-[@shelton2008]. This is due to the middle-of-the-food-chain nature of 
+Ecosystem considerations are taken into account in the model in a number of ways:
+
+1. Different than most fisheries, the biological LRP is set to a 
+higher value than what is recommended by default [@dfo2009] (0.4$B_{MSY}$) and 
+0.5$B_{MSY}$ which is implemented in New Zealand fisheries [@shelton2008].
+This is due to the middle-of-the-food-chain nature of 
 Herring which likely drives observed high variability in Herring productivity.
 The higher LRP allows for a certain amount of herring to remain for predators, such as
 salmon and whales.
-Secondly, while predators, prey and other ecosystem indicators are not directly 
+2. While predators, prey and other ecosystem indicators are not directly 
 incorporated into models, they are modelled implicitly via time varying natural 
 mortality and recruitment. The new density dependent mortality feature
-deepens the modelling of underpinning ecosystem interactions.
-Thirdly, BC Pacific Herring are managed as 5 regional stocks such that stock specific 
+of the new operating model, SISCAH, better represents the underpinning ecosystem interactions.
+3. BC Pacific Herring are managed as 5 stock assessment regions such that stock specific 
 life history, abundance, and pressures are fed into the models. 
-Fourthly, candidate USRs [@dfo2022a] have been introduced to the MSE process and IFMP.
+4. Candidate USRs [@dfo2022a], which incorporate area specific ecosystem considerations,
+have been introduced to the MSE process and IFMP for consideration as (1) a biomass target
+objective and (2) the lower boundary of the Healthy zone.
 Ongoing research incorporating spatial, and other ecosystem indicators highlights
 DFO's commitment to an ecosystem approach to fisheries management.
-Summary of recent research can be found in [@dfo2024].
+Summary of recent research can be found in @dfo2024.
 
 <!--### History of Management Decisions,; Landings/Harvest/Effort, TAC \& Catch Advice] {-}-->
+
 ### History of Management {-}
 
-Since 1983 a maximal harvest rate of 20% has been implemented. The realized 
-harvest rate has mostly hovered below this rate since then with a few dips,
-including those of the past few years (Figure \@ref(fig:indicators), panel D).
+A maximal harvest rate of 20% has been implemented since 1983 for the SoG Herring SAR. 
+The realized harvest rate has mostly hovered below this rate since then with reduced harvest
+rates applied for the past few years (Figure \@ref(fig:indicators), panel D).
 Since 2015 the selection of annual harvest rates has been informed by 
 MP simulation testing.
 
 ### Projections {-#sec:projections}
 
--JC: explain the process under full MSE
-REMIND READER THAT THE ENSEMBLE OM REPRESENTS THE HISTORY AS 1951-2023, AND THEN THAT 2024 and 2025,
-ARE INTERIM YEARS IN WHICH WE DO NOT REFIT THE OM BUT RATHER USE THE
-ESIMTATION MODEL COMPONENT OF THE MP TO ESTIMATE STOCK STATUS (2024), 
-PROJECT THE STOCK FORWARD (TO 2025), AND THEN FEED THAT ESTMATE TO THE HCR.
-
 #### Interim Year Update for 2024 {-}
 
-```{r, current_year_statement, echo = FALSE, warnings = FALSE, results = "asis" }
+```{r current_year_statement, echo = FALSE, warnings = FALSE, results = "asis" }
 curr_biomass_text(  mpFit   = fit_maxTHR0.14,
                     fYear   = 1951, 
                     thisYr  = assess_yr,
                     MSEyr   = MSE_yr,
                     B0 = NULL  )
 ```
+Time series of maximum likelihood estimates from the estimation model are presented in Figure \@ref(fig:AtAGlance).
 
 #### Application of MP for 2025 {-}
 
-<!-- Simulation of the management procedures has two components that are held constant:
-the data and the estimation model, and the the third component which we vary: 
-the management procedure (harvest control rule).  
-I think we can do without the above sentence SP -->
-
-We simulation tested MPs with hockey-stick shaped harvest control rules 
-(\@ref(fig:plotHCRules)). The MP with a maximum 14% harvest rate 
-meets the conservation objective and
+We simulation tested three MPs,
+each with hockey-stick shaped harvest control rules
+(Figure \@ref(fig:plotHCRules)).
+The MP with lower and upper control points at 30% and 60% of unfished spawning biomass, respectively,
+and a maximum target harvest rate of 14% meets the conservation objective and
 is compliant with both the “DFO Sustainable Fisheries Framework” policy and 
-the "Precautionary Approach" (#refs, #refLinkCSASTOR). We recommend management keep this in mind
-in their consultations.
-<!--
-“A fishery decision-making framework incorporating the Precautionary Approach” policy
-(as per the Terms of Reference (#refLinkCSASTOR)).
--->
+the "Precautionary Approach" (@dfo2009), as per the 
+[Terms of Reference](https://www.dfo-mpo.gc.ca/csas-sccs/Schedule-Horraire/2024/09_23-eng.html). 
 
-
-```{r, forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
+```{r forecast_statement, echo = FALSE, warnings = FALSE, results = "asis"}
 proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     fYear = 1951, 
                     assessYr = assess_yr,
@@ -135,12 +127,10 @@ proj_biomass_text(  mpFit = fit_maxTHR0.14,
                     TAC = TAC,
                     targHR = THR  )
 ```
-
-TODO: This is shown graphically in Figure 4.
+This is shown graphically in Figure 4.
 
 <!-- ### Harvest Decision Rule Outputs {-}-->
-
-```{r, TACtable, echo = FALSE, warnings = FALSE, eval = FALSE}
+```{r TACtable, echo = FALSE, warnings = FALSE, eval = FALSE}
 
 TACtabCap <- "Harvest decision rule outputs when the SoG Herring SAR MP is applied to data up to 2024."
 
@@ -148,45 +138,42 @@ kable( TAC.df, escape = FALSE,
         caption = TACtabCap, booktabs = TRUE,
         align = c("l","c"),
         linesep = "\\addlinespace")
-
-
 ```
 
-```{r, MPcaptions, include = FALSE, echo = FALSE}
-
+```{r MPcaptions, include = FALSE, echo = FALSE}
 stockLabs <- fit_maxTHR0.14$stock
 species   <- fit_maxTHR0.14$ctlList$ctrl$speciesName
 stock     <- fit_maxTHR0.14$ctlList$ctrl$stockNames
-
-SBtRtMtFtCaption <- paste("Time series of spawning biomass with scaled spawn 
-indices (top),recruitments (second row), natural mortality (third row), and
-harvest rates (bottom row) for substocks of ", species, ". Stocks are, from 
-left to right,", paste(stockLabs, collapse = ", "),".", sep = "")
-
-
-hcrCaption <- paste0(stock," Herring management procedure harvest control rule 
-(line) and TAC advice (annotation).")
-
-
 ```
 
-```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 1.1}
-
+```{r mpHCR, echo = FALSE, message = FALSE, fig.cap = hcrCaption, fig.asp = 0.67}
+hcrCaption <- paste0(
+  "Strait of Georgia (SoG)",
+  " Pacific Herring management procedure harvest",
+  " control rule (HCR; line), showing forecast spawning biomass (kt) in ", 
+  assess_yr + 1,
+  " ($\\hat{B}_{2025}$, point), and associated harvest rate",
+  " $U_{2025}$",
+  " and total allowable catch (TAC (kt); $Q_{2025}$)."
+)
 plotRule(repList = mpFitList[[MPname]])
-#TODO (Sam): pls make this work with MPname 
-
 ```
 
-<!--### Evaluation of Exceptional Circumstances {-}-->
+
 ### Performance Evaluation for Interim Years and Exceptional Circumstances {-}
 
-Fishery monitoring data collected since the adoption of the current SoG
-Herring MP indicate that the population is behaving within operating 
-model expectations. In formal language there is no indication of operating
-model mis-specification (Figure \@ref(fig:ECfig)), also know as exceptional
-circumstances. Mis-specification is checked visually by comparing catch and 
-spawn index values within the central 95% of 2023 ensemble operating 
-model simulations.
+All routine forms of Herring fishery monitoring data were collected in 2024 and show 
+the population is behaving within operating model expectations. 
+The most recent spawn index falls within the range 
+of uncertainty that was simulated in the MSE projections (Figure \@ref(fig:ECfig)).
+Also, catch in 2024 was considerably lower than the simulated catch in the MSE projections
+(i.e., from the MP tuned to meet the conservation objective) due to quota being
+set using a 10% harvest rate for 2023/24 season. 
+
+Model mis-specification is evaluated visually by comparing catch and 
+spawn index values within the central 95% of the 2023 ensemble operating 
+model simulations. There is no indication of operating
+model mis-specification (Figure \@ref(fig:ECfig)).
 
 <!-- For ECfig:
 JC: Why is the uncertainty in the index larger than SB?
@@ -195,7 +182,7 @@ SDNJ: Because the noise in the index is the uncertainty in SSB (process error) p
 uncertainty in spawn index (observation error)-->
 
 ```{r ECfig, echo = FALSE, fig.cap = ECfigCap, fig.asp = 1.1 }
-ECfigCap <- "Evaluation of exceptional circumstances and operating model mis-specification: graphical comparison of simulation envelopes from the ensemble model and catch and spawn index data from interim year(s) f. Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) under the weighted ensemble 2023 SoG operating model. Forward projections in time (15-years) represent the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
+ECfigCap <- "Evaluation of exceptional circumstances and operating model mis-specification: graphical comparison of simulation envelopes from the ensemble model (1951-2023) and catch and spawn index data from interim year (2024). Panels show the central 95\\% of projected simulated data, including spawn index data (top) and catch (bottom) from the 2023 weighted ensemble SoG operating model. Forward projections in time (15-years) represent the maxTHR0.14 MP. Realised data are overlaid as points for the history (black) and projection years (red)."
 
 SOGdata <- read.csv("data/SOGIdxCatData.csv")
 
@@ -204,5 +191,4 @@ plotSimDataEnvelopes( obj = mpBlobList[[MPname]],
                       Cdata = SOGdata$Catch,
                       Idata = SOGdata$totSpawn,
                       fYear = 1951 )
-
 ```
