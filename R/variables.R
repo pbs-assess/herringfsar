@@ -52,7 +52,9 @@ special_regions_full_parens <- paste0(
 #     R_med = `R-E06`, R_min = `Rlow-E06`, R_max = `Rhigh-E06`
 #   )
 
-true_dat <- makeModelHistTable(mpBlobList[[2]], wtPosts = wtPosts, lYear = 2023)
+true_dat <- makeModelHistTable( obj = mpBlobList[[2]], 
+                                wtPosts = wtPosts, 
+                                lYear = 2023 )
 
 # Years and seasons
 last_assess_yr <- assess_yr - 1
