@@ -42,10 +42,10 @@ This LRP is more conservative than the default LRP identified in
 “DFO Sustainable Fisheries Framework” policy [@dfo2009].
 
 Incorporating density dependent mortality and time-varying recruitment 
-accounts for predation mortality and ecosystem effects
+accounts for predation mortality and other ecosystem effects
 that Herring experience at their trophic level.
 
-Each major SAR is modelled using regional life-history traits and regional ecosystem pressures.
+The SoG SAR is modelled using regional life-history traits and regional ecosystem pressures.
 
 :::
 

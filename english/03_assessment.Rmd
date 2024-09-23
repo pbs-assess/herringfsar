@@ -54,7 +54,7 @@ forecast biomass.
 #### Spawn Biomass Production {-}
 
 Estimated spawning biomass production was high in 2019 and then declined each 
-of the next three year to 2023 (Figure \@ref(fig:indicators)F), despite spawning
+of the next three years to 2023 (Figure \@ref(fig:indicators)F), despite spawning
 biomass remaining fairly constant. This is likely due to the increasing trend
 in natural mortality estimates (Figure \@ref(fig:indicators)C).
 
@@ -68,8 +68,8 @@ Ecosystem considerations are taken into account in the model in a number of ways
 1. Different than most fisheries, the biological LRP is set to a 
 higher value than what is recommended by default [@dfo2009] (0.4$B_{MSY}$) and 
 0.5$B_{MSY}$ which is implemented in New Zealand fisheries [@shelton2008].
-This is due to the middle-of-the-food-chain nature of 
-Herring which likely drives observed high variability in Herring productivity.
+Herring’s position in the lower to mid-trophic levels of the ecosystem likely 
+drives the high variability observed in their recruitment and productivity.
 The higher LRP allows for a certain amount of herring to remain for predators, such as
 salmon and whales.
 2. While predators, prey and other ecosystem indicators are not directly 
@@ -77,7 +77,7 @@ incorporated into models, they are modelled implicitly via time varying natural
 mortality and recruitment. The new density dependent mortality feature
 of the new operating model, SISCAH, better represents the underpinning ecosystem interactions.
 3. BC Pacific Herring are managed as 5 stock assessment regions such that stock specific 
-life history, abundance, and pressures are fed into the models. 
+life history and abundance information are fed into the models. 
 4. Candidate USRs [@dfo2022a], which incorporate area specific ecosystem considerations,
 have been introduced to the MSE process and IFMP for consideration as (1) a biomass target
 objective and (2) the lower boundary of the Healthy zone.
