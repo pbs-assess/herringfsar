@@ -3,9 +3,9 @@
 report_title: |
   Strait of Georgia Pacific Herring (*Clupea pallasii*) stock update in 2024
 assess_yr: "2024"
-report_year: "2025"
-release_month: "January"
-report_number: "XXX"
+report_year: "2024"
+release_month: "December"
+report_number: "041"
 meeting_date: "September 23, 2024"
 region: "Pacific Region"
 phone: "(250) 555-5555"
