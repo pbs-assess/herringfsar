@@ -226,3 +226,4 @@ theme_set(theme_herring())
 <!-- bookdown::render_book("index.Rmd") -->
 <!-- TODO: update to render_sar() next year -->
 <!-- csasdown::render_sar() -->
+<!-- Or, run render_book() and then render_sar() -->
